@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Leadership Atlas</title>
+<script>
+  // set the theme before first paint so there is no flash
+  try { var t = localStorage.getItem("atlas-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+<link rel="stylesheet" href="styles.css?v=41">
+</head>
+<body>
+
+<header id="topbar">
+  <button id="nav-toggle" class="icon-btn" title="Menu" aria-label="Menu">
+    <svg viewBox="0 0 20 20" width="18" height="18"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+  </button>
+  <a class="brand" href="#/index" title="The Leadership Atlas — home">
+    <span class="brand-mark">&#9818;</span>
+    <span class="brand-text"><b>The Leadership Atlas</b><i>An instrument for understanding political leadership</i></span>
+  </a>
+  <div class="jump">
+    <svg class="jump-ico" viewBox="0 0 20 20" width="16" height="16"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <input id="jump" type="search" placeholder="Jump to a leader, concept, book or view&hellip;" autocomplete="off" spellcheck="false">
+    <kbd class="jump-kbd">/</kbd>
+    <div id="jump-results" hidden></div>
+  </div>
+  <div class="top-actions">
+    <button class="btn primary" id="btn-add" title="Add a new leader to your index">&#43; Add leader</button>
+    <button class="icon-btn" id="btn-export" title="Export a backup — leaders, notes, insights, books">
+      <svg viewBox="0 0 20 20" width="17" height="17"><path d="M10 3v10M6 9l4 4 4-4M4 16h12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-import" title="Import a backup or a JSON list of leaders">
+      <svg viewBox="0 0 20 20" width="17" height="17"><path d="M10 14V4M6 8l4-4 4 4M4 16h12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <input type="file" id="import-file" accept="application/json" hidden>
+    <button class="icon-btn" id="theme-toggle" title="Switch light / dark">
+      <svg class="ico-moon" viewBox="0 0 20 20" width="17" height="17"><path d="M16 12.5A6.5 6.5 0 0 1 7.5 4a6.5 6.5 0 1 0 8.5 8.5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+      <svg class="ico-sun" viewBox="0 0 20 20" width="17" height="17"><circle cx="10" cy="10" r="3.4" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<div id="shell">
+  <nav id="sidenav">
+    <div class="nav-group">
+      <div class="nav-h">Browse</div>
+      <button class="nav-item" data-view="index"><svg viewBox="0 0 20 20"><path d="M4 5h12M4 10h12M4 15h12"/></svg>Index<span class="ni-count" id="nc-index"></span></button>
+      <button class="nav-item" data-view="chronicle"><svg viewBox="0 0 20 20"><path d="M3 5h7M6 10h9M9 15h8"/></svg>Chronicle</button>
+      <button class="nav-item" data-view="orgs"><svg viewBox="0 0 20 20"><circle cx="10" cy="4.5" r="2"/><circle cx="4.5" cy="15" r="2"/><circle cx="15.5" cy="15" r="2"/><path d="M10 6.5v3.5M10 10l-4.5 3.2M10 10l4.5 3.2"/></svg>Organizations<span class="ni-new">new</span></button>
+      <button class="nav-item" data-view="map"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M3 10h14M10 3c2.5 2 2.5 12 0 14M10 3c-2.5 2-2.5 12 0 14"/></svg>Map</button>
+    </div>
+    <div class="nav-group">
+      <div class="nav-h">Analyse</div>
+      <button class="nav-item" data-view="convergence"><svg viewBox="0 0 20 20"><path d="M3 4l7 6-7 6M17 4l-7 6 7 6"/></svg>Convergence</button>
+      <button class="nav-item" data-view="compare"><svg viewBox="0 0 20 20"><rect x="3" y="4" width="5.5" height="12" rx="1"/><rect x="11.5" y="4" width="5.5" height="12" rx="1"/></svg>Compare</button>
+      <button class="nav-item" data-view="patterns"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="4" height="4"/><rect x="8" y="8" width="4" height="4"/><rect x="13" y="13" width="4" height="4"/><rect x="13" y="3" width="4" height="4"/><rect x="3" y="13" width="4" height="4"/></svg>Patterns</button>
+      <button class="nav-item" data-view="temperament"><svg viewBox="0 0 20 20"><path d="M2 11h3l2-5 3 9 3-7 2 3h3"/></svg>Temperament</button>
+      <button class="nav-item" data-view="time"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 5v5l3.5 2"/></svg>Political Time<span class="ni-new">new</span></button>
+      <button class="nav-item" data-view="survival"><svg viewBox="0 0 20 20"><path d="M10 3l6 2.5v4.5c0 3.5-2.6 6-6 7-3.4-1-6-3.5-6-7V5.5z"/></svg>Survival<span class="ni-new">new</span></button>
+      <button class="nav-item" data-view="patronage"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="5.5" rx="6" ry="2.3"/><path d="M4 5.5v4.2c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V5.5M4 9.7v4.2c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V9.7"/></svg>Patronage<span class="ni-new">new</span></button>
+      <button class="nav-item" data-view="instruments"><svg viewBox="0 0 20 20"><path d="M10 3v14M5 17h10M4 7h12M4 7l-2 5h4zM16 7l-2 5h4z"/></svg>Carrots &amp; Sticks</button>
+    </div>
+    <div class="nav-group">
+      <div class="nav-h">Reference</div>
+      <button class="nav-item" data-view="library"><svg viewBox="0 0 20 20"><path d="M4 4h4v12H4zM9 4h3v12H9zM13.5 4.5l3 .8-2.8 11-3-.8z"/></svg>Library<span class="ni-count" id="nc-library"></span></button>
+      <button class="nav-item" data-view="insights"><svg viewBox="0 0 20 20"><path d="M10 3a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9zM8 17h4"/></svg>Insights<span class="ni-count" id="nc-insights"></span></button>
+      <button class="nav-item" data-view="traits"><svg viewBox="0 0 20 20"><path d="M10 3l7 4-7 4-7-4zM3 11l7 4 7-4"/></svg>Frameworks</button>
+    </div>
+    <div class="nav-foot" id="nav-foot"></div>
+  </nav>
+
+  <main id="stage">
+
+    <div id="filterbar" hidden>
+      <div class="fb-row">
+        <div class="chips" id="era-chips"></div>
+      </div>
+      <div class="fb-row">
+        <input id="search" type="search" placeholder="Filter by name, title, country, years&hellip;" autocomplete="off">
+        <button class="chip special" id="chip-presidents" title="Show only leaders tagged as Presidents">&#9733; Presidents</button>
+        <button class="chip ghost" id="chip-all" title="Reset every filter">Reset filters</button>
+        <div id="active-filters"></div>
+      </div>
+    </div>
+
+    <!-- ===== INDEX (home) ===== -->
+    <section class="view" id="view-index" hidden>
+      <div id="index-hero"></div>
+      <div id="index-toolbar"></div>
+      <div id="index-body"></div>
+    </section>
+
+    <!-- ===== CHRONICLE ===== -->
+    <section class="view wide" id="view-chronicle" hidden>
+      <div class="page-intro">
+        <h2>Chronicle</h2>
+        <p>Every leader on one timeline, laid out by region. Hover a bar to light up everyone who held power at the same moment &mdash; the contemporaries who were actually reading each other&rsquo;s dispatches. The scale compresses the ancient centuries so the crowded modern ones stay legible.</p>
+      </div>
+      <div id="chronicle-toolbar"></div>
+      <div id="chronicle-body"></div>
+    </section>
+
+    <!-- ===== ORGANIZATIONS ===== -->
+    <section class="view" id="view-orgs" hidden>
+      <div class="page-intro">
+        <h2>Organizations &amp; Machines</h2>
+        <p>The apparatus between a leader and the people they rule &mdash; urban machines, dominant parties, cadre movements, palace guards and patronage networks. Each is read the same way: <em>who it mobilised</em>, <em>what it traded</em>, <em>the chain of brokers</em> from the top to the street, <em>how it kept people in line</em>, <em>where the money came from</em> and <em>how it ended</em>. An organization outlives its leaders, so it gets a page of its own.</p>
+      </div>
+      <div id="orgs-toolbar" class="orgs-toolbar"></div>
+      <div id="orgs-body"></div>
+    </section>
+
+    <!-- ===== ORGANIZATION (full page) ===== -->
+    <section class="view" id="view-org" hidden>
+      <div id="org-body"></div>
+    </section>
+
+    <!-- ===== MAP ===== -->
+    <section class="view flush" id="view-map" hidden>
+      <div id="map-layout">
+        <section id="map-wrap">
+          <div id="map-hint">Click a country to filter &middot; scroll to zoom &middot; drag to pan</div>
+          <div id="map"></div>
+          <div id="map-tooltip" hidden></div>
+          <div id="map-error" hidden>
+            <p>Couldn&rsquo;t load the world map data (vendor/countries-110m.json).</p>
+            <p>The Index still works fully without it.</p>
+          </div>
+        </section>
+        <aside id="sidebar">
+          <div id="list-meta"></div>
+          <div id="leader-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== CONVERGENCE ===== -->
+    <section class="view" id="view-convergence" hidden>
+      <div class="page-intro">
+        <h2>Convergence</h2>
+        <p>Seven independent ways of reading a leader &mdash; <em>Rubenzer&rsquo;s traits</em>, <em>Simonton&rsquo;s styles</em>, <em>Hermann&rsquo;s trait analysis</em>, the <em>carrots and sticks</em> they reached for, the <em>selectorate</em> they answered to, <em>Svolik&rsquo;s</em> account of how they held an autocracy, and <em>how their power ended</em>. Where they agree, the portrait is probably right. Where they contradict each other, either a framework is wrong about that leader or the leader was genuinely two things at once &mdash; and that is where the real thinking is.</p>
+      </div>
+      <div id="convergence-toolbar"></div>
+      <div id="convergence-body"></div>
+    </section>
+
+    <!-- ===== COMPARE ===== -->
+    <section class="view" id="view-compare" hidden>
+      <div class="page-intro">
+        <h2>Compare</h2>
+        <p>Two leaders side by side across every vector. Shared concepts are highlighted; <em>Most similar</em> finds the closest case by overlapping concepts (a most-similar-systems design), so you can isolate the one variable that differed.</p>
+      </div>
+      <div id="compare-controls"></div>
+      <div id="compare-body"></div>
+    </section>
+
+    <!-- ===== PATTERNS ===== -->
+    <section class="view" id="view-patterns" hidden>
+      <div class="page-intro">
+        <h2>Patterns</h2>
+        <p>The index as a dataset. Which concepts travel together, which never do, and which predict how power ends. Every number here is computed live from your tags and outcomes &mdash; edit a leader and the patterns move.</p>
+      </div>
+      <div id="patterns-body"></div>
+    </section>
+
+    <!-- ===== TEMPERAMENT ===== -->
+    <section class="view" id="view-temperament" hidden>
+      <div class="page-intro">
+        <h2>Temperament</h2>
+        <p>Three psychologies of leadership. <strong>Rubenzer, Faschingbauer &amp; Ones</strong> measure personality <em>traits</em> &mdash; nine NEO-PI-R facets that predict presidential greatness, scored as percentiles against U.S. presidents, a reference class already extraordinary. <strong>Simonton</strong> measures leadership <em>styles</em> &mdash; five behavioural factors describing what a leader actually does in office. <strong>Hermann</strong> reads seven traits from what leaders say off-script and combines them into eight styles of handling a situation. Two facets are reverse-coded because the asset is the absence of the thing: <em>Not Vulnerable</em> and <em>Not Straightforward</em>. Bands are real scholarly disagreement, not decoration.</p>
+      </div>
+      <div id="temperament-toolbar"></div>
+      <div id="temperament-body"></div>
+    </section>
+
+    <!-- ===== POLITICAL TIME ===== -->
+    <section class="view" id="view-time" hidden>
+      <div class="page-intro">
+        <h2>Political Time</h2>
+        <p>Stephen Skowronek&rsquo;s question is not <em>who</em> the leader was but <em>where they stood</em>: affiliated with the governing order they inherited, or opposed to it &mdash; and was that order still resilient, or already failing? The answers give four recurring positions, each with its own opportunity and its own way of going wrong. It is the one lens in the atlas that measures the situation rather than the person, which is why the ablest leader in the index can sit in the worst chair.</p>
+      </div>
+      <div id="time-toolbar"></div>
+      <div id="time-body"></div>
+    </section>
+
+    <!-- ===== SURVIVAL ===== -->
+    <section class="view" id="view-survival" hidden>
+      <div class="page-intro">
+        <h2>Survival</h2>
+        <p>Two questions every ruler without an independent enforcer has to answer, from Milan Svolik&rsquo;s <em>The Politics of Authoritarian Rule</em>: how to share power with the few who could remove you, and how to control everyone else &mdash; by <em>repression</em>, which empowers the armed men who do it, or by <em>co-optation</em>, which is expensive. Bruce Bueno de Mesquita asks who a leader actually has to keep happy &mdash; the winning coalition inside the selectorate &mdash; and what they must be paid. Mancur Olson&rsquo;s bandits ask how rulers taxed and how long they expected to stay. Then, for every leader in the atlas, the Archigos questions: how did they come to power, and what happened to them after it ended?</p>
+      </div>
+      <div id="survival-body"></div>
+    </section>
+
+    <!-- ===== PATRONAGE ===== -->
+    <section class="view" id="view-patronage" hidden>
+      <div class="page-intro">
+        <h2>Patronage</h2>
+        <p>The machines in the catalogue were built on patronage; this page asks how patronage actually works now. Fourteen twenty-first-century systems, from Peronist brokers in Buenos Aires to Orb&aacute;n&rsquo;s procurement state, read through the in-depth studies &mdash; ethnographies, field experiments, surveys, commissions of inquiry &mdash; that have overturned much of the common wisdom. Most payments do not buy votes, most enforcement is not surveillance, and rich countries did not abolish patronage so much as move it from the voter to the contract.</p>
+      </div>
+      <div id="pat-toolbar"></div>
+      <div id="pat-body"></div>
+    </section>
+
+    <!-- ===== CARROTS & STICKS ===== -->
+    <section class="view" id="view-instruments" hidden>
+      <div class="page-intro">
+        <h2>Carrots &amp; Sticks</h2>
+        <p>The instruments of rule, filed by what they are for: <em>trust</em>, <em>loyalty</em>, <em>fear</em>, <em>motivation</em>. Each tool carries its characteristic failure mode &mdash; the cost column is usually the useful one. <strong>Creeds</strong> sets what leaders <em>said</em> moved people against what they actually reached for.</p>
+      </div>
+      <div id="instruments-toolbar"></div>
+      <div id="instruments-body"></div>
+    </section>
+
+    <!-- ===== LIBRARY ===== -->
+    <section class="view" id="view-library" hidden>
+      <div class="page-intro">
+        <h2>Library</h2>
+        <p>Your reading index. Books link to the leaders they cover and the concepts they illuminate, so a profile shows its own bibliography and a theory book sits with the idea it explains. The seeded note says what a book is known for; the <em>takeaway</em> is yours &mdash; the one thing it taught you.</p>
+      </div>
+      <div id="library-stats"></div>
+      <div id="library-toolbar"></div>
+      <div id="library-body"></div>
+    </section>
+
+    <!-- ===== INSIGHTS ===== -->
+    <section class="view" id="view-insights" hidden>
+      <div class="page-intro">
+        <h2>Insights</h2>
+        <p>Your theses about leadership &mdash; the cross-cutting conclusions that don&rsquo;t belong to any one leader. Link each to the leaders and concepts it draws on; they&rsquo;ll appear on those profiles too.</p>
+      </div>
+      <div id="insights-toolbar"></div>
+      <div id="insights-body"></div>
+    </section>
+
+    <!-- ===== FRAMEWORKS ===== -->
+    <section class="view" id="view-traits" hidden>
+      <div id="traits-intro">
+        <blockquote>&ldquo;Everyone sees what you appear to be, few experience what you really are.&rdquo;<cite>&mdash; Machiavelli, <em>The Prince</em></cite></blockquote>
+        <p>The analytical vocabulary behind the atlas &mdash; a growing library of concepts. Pick a category; every taggable concept links to the leaders who exemplify it.</p>
+      </div>
+      <div id="traits-nav"></div>
+      <div id="traits-body"></div>
+    </section>
+
+    <!-- ===== LEADER PROFILE (full page) ===== -->
+    <section class="view" id="view-leader" hidden>
+      <div id="leader-body"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- add / edit leader -->
+<div id="form-overlay" class="overlay" hidden></div>
+<aside id="form-panel" class="drawer" hidden>
+  <button id="form-close" class="drawer-close" title="Close">&times;</button>
+  <div id="form-body"></div>
+</aside>
+
+<!-- insight editor -->
+<div id="insight-overlay" class="overlay" hidden></div>
+<aside id="insight-panel" class="drawer" hidden>
+  <button id="insight-close" class="drawer-close" title="Close">&times;</button>
+  <div id="insight-body"></div>
+</aside>
+
+<!-- book editor -->
+<div id="book-overlay" class="overlay" hidden></div>
+<aside id="book-panel" class="drawer" hidden>
+  <button id="book-close" class="drawer-close" title="Close">&times;</button>
+  <div id="book-body"></div>
+</aside>
+
+<script src="vendor/d3.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="data/leaders.js?v=12"></script>
+<script src="data/traits.js?v=18"></script>
+<script src="data/bios.js?v=12"></script>
+<script src="data/collaborators.js?v=12"></script>
+<script src="data/outcomes.js?v=12"></script>
+<script src="data/library.js?v=23"></script>
+<script src="data/instruments.js?v=14"></script>
+<script src="data/powerbase.js?v=18"></script>
+<script src="data/powerbase-ancient.js?v=1"></script>
+<script src="data/powerbase-early.js?v=1"></script>
+<script src="data/powerbase-c20.js?v=1"></script>
+<script src="data/selectorate.js?v=2"></script>
+<script src="data/rubenzer.js?v=22"></script>
+<script src="data/anecdotes.js?v=23"></script>
+<script src="data/simonton.js?v=24"></script>
+<script src="data/politicaltime.js?v=2"></script>
+<script src="data/svolik.js?v=1"></script>
+<script src="data/hermann.js?v=2"></script>
+<script src="data/fate.js?v=2"></script>
+<script src="data/olson.js?v=2"></script>
+<script src="data/organizations.js?v=4"></script>
+<script src="data/org-dossiers.js?v=2"></script>
+  <script src="data/patronage.js?v=2"></script>
+<script src="app.js?v=52"></script>
+</body>
+</html>

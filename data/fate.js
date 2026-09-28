@@ -1,0 +1,163 @@
+// ============================================================
+// ENTRY, EXIT & FATE — after Archigos (Goemans, Gleditsch & Chiozza 2009)
+// and H. E. Goemans, "Fighting for Survival" (2000); Chiozza & Goemans,
+// Leaders and International Conflict (2011)
+// ============================================================
+// The Outcomes file records how power ended. This file records how it
+// BEGAN and what happened to the leader AFTERWARDS — the two variables
+// Archigos made standard:
+//   entry  "regular"   — by the regime's own rules: inheritance, election, party selection, appointment
+//          "irregular" — outside them: coup, revolt, usurpation, civil war, conquest
+//          "foreign"   — installed or restored by an outside power
+//   fate   what became of them —
+//          "office"    — died in power of natural causes
+//          "killed"    — died violently in or on leaving power (assassination, execution, battle, suicide in defeat)
+//          "exile" | "prison"  — punished after leaving
+//          "ok"        — lived on unpunished
+//          "incumbent" — still in power
+// Goemans's argument: leaders who expect to be punished after losing
+// office — exile, prison, death — gamble harder to keep it, including
+// by prolonging wars they are losing. The regimes that punish fallen
+// leaders produce leaders who cannot afford to fall.
+// ============================================================
+
+window.FATES = {
+  office: { name: "Died in power", tone: "neutral" },
+  killed: { name: "Killed", tone: "bad" },
+  exile: { name: "Exile", tone: "bad" },
+  prison: { name: "Prison", tone: "bad" },
+  ok: { name: "Lived on unpunished", tone: "good" },
+  incumbent: { name: "Still in power", tone: "neutral" }
+};
+window.ENTRIES = {
+  regular: "By the regime's rules",
+  irregular: "Outside the rules — coup, revolt, usurpation, conquest",
+  foreign: "Installed or restored by a foreign power"
+};
+
+window.LEADER_FATE = {
+  hammurabi: { entry: "regular", fate: "office", note: "Succeeded his father Sin-Muballit and died on the throne." },
+  ramesses2: { entry: "regular", fate: "office", note: "Died in his nineties after sixty-six years; succeeded by his thirteenth son." },
+  cyrus: { entry: "irregular", fate: "killed", note: "Rose by revolt against his Median overlord; killed campaigning against the Massagetae." },
+  darius1: { entry: "irregular", fate: "office", note: "Took the throne by killing the reigning king (whom he called an impostor) with six conspirators." },
+  pericles: { entry: "regular", fate: "office", note: "Re-elected general year after year; died of the plague in office — after being briefly deposed and fined in 430 BC." },
+  alexander: { entry: "regular", fate: "office", note: "Succeeded his murdered father and eliminated rivals; died of fever at 32." },
+  chandragupta: { entry: "irregular", fate: "ok", note: "Overthrew the Nanda dynasty; tradition says he abdicated and died as a Jain ascetic." },
+  ashoka: { entry: "irregular", fate: "office", note: "Tradition records a four-year war of succession against his brothers." },
+  qinshihuang: { entry: "regular", fate: "office", note: "Inherited the throne of Qin at thirteen; died on tour, and his death was concealed while the succession was rigged." },
+  hannibal: { entry: "regular", fate: "exile", note: "Acclaimed by the army and confirmed by Carthage; later driven into exile by Rome and took poison rather than be surrendered." },
+  jcaesar: { entry: "irregular", fate: "killed", note: "Took power by civil war; stabbed in the Senate." },
+  augustus: { entry: "irregular", fate: "office", note: "Won power through proscription and civil war; died in his bed after forty years." },
+  marcusaurelius: { entry: "regular", fate: "office", note: "Adopted heir; died on campaign on the Danube." },
+  cleopatra: { entry: "foreign", fate: "killed", note: "Restored to the throne by Caesar's army; took her own life after Actium rather than be paraded in Rome." },
+  caocao: { entry: "irregular", fate: "office", note: "Rose through civil war; died as King of Wei, a step short of the throne his son took." },
+  attila: { entry: "regular", fate: "office", note: "Succeeded his uncle jointly with his brother, whom he later killed; died on his wedding night." },
+  genghis: { entry: "irregular", fate: "office", note: "Proclaimed khan in 1206 after uniting the tribes by war; died on campaign." },
+  kublai: { entry: "irregular", fate: "office", note: "Proclaimed himself khan without a full kurultai and won a civil war against his brother." },
+  timur: { entry: "irregular", fate: "office", note: "Seized the Chagatai lands by war; died marching on China." },
+  nobunaga: { entry: "regular", fate: "killed", note: "Inherited the clan headship; killed by his own general at Honnō-ji." },
+  shaka: { entry: "irregular", fate: "killed", note: "Took the chieftaincy with Mthethwa backing; assassinated by his half-brothers." },
+  justinian: { entry: "regular", fate: "office", note: "Succeeded his uncle Justin; reigned thirty-eight years." },
+  charlemagne: { entry: "regular", fate: "office", note: "Succeeded his father with his brother Carloman, whose death left him sole king." },
+  harun: { entry: "regular", fate: "office", note: "Succeeded his brother; died on campaign in Khurasan." },
+  alfred: { entry: "regular", fate: "office", note: "Succeeded his brother; died on the throne." },
+  william1: { entry: "irregular", fate: "office", note: "Conquered the throne at Hastings; died of injuries on campaign in France." },
+  eleanor: { entry: "regular", fate: "office", note: "Duchess by inheritance and queen by marriage twice; imprisoned for sixteen years by Henry II, then powerful again under her sons." },
+  saladin: { entry: "irregular", fate: "office", note: "Took Egypt as a lieutenant and set aside his masters' dynasty; died in Damascus." },
+  frederick2: { entry: "regular", fate: "office", note: "Inherited Sicily and won the empire; died excommunicated and deposed by the pope, but still in power." },
+  louis9: { entry: "regular", fate: "office", note: "Died of disease on crusade at Tunis." },
+  mansamusa: { entry: "regular", fate: "office", note: "Succeeded as deputy of a ruler who never returned from an Atlantic voyage." },
+  mehmed2: { entry: "regular", fate: "office", note: "Deposed once as a boy by the Janissaries' pressure and restored; died — possibly poisoned — on campaign." },
+  lorenzo: { entry: "regular", fate: "office", note: "Inherited his family's informal primacy at twenty; died at forty-three." },
+  cesareborgia: { entry: "irregular", fate: "prison", note: "Carved out a state with his father's papacy and French troops; after his father's death arrested, imprisoned in Spain, escaped, and was killed in a skirmish in 1507." },
+  isabella: { entry: "irregular", fate: "office", note: "Won the throne in a war of succession against her niece Juana." },
+  henry8: { entry: "regular", fate: "office", note: "Succeeded his father; died on the throne." },
+  suleiman: { entry: "regular", fate: "office", note: "Died in his tent at the siege of Szigetvár; his death was hidden from the army." },
+  charles5: { entry: "regular", fate: "ok", note: "Abdicated in 1555–56 and retired to the monastery of Yuste." },
+  elizabeth1: { entry: "regular", fate: "office", note: "Succeeded her half-sister; died on the throne." },
+  akbar: { entry: "regular", fate: "office", note: "Succeeded his father at thirteen under a regent." },
+  ieyasu: { entry: "irregular", fate: "ok", note: "Won power at Sekigahara; retired as shogun while keeping control, and died in his bed." },
+  richelieu: { entry: "regular", fate: "office", note: "Appointed by the king; died in office." },
+  cromwell: { entry: "irregular", fate: "office", note: "Came to power by civil war and the army's dissolution of Parliament; died in office. His body was exhumed and hanged after the Restoration." },
+  louis14: { entry: "regular", fate: "office", note: "Succeeded at four; reigned seventy-two years." },
+  kangxi: { entry: "regular", fate: "office", note: "Succeeded at seven under regents." },
+  peter1: { entry: "regular", fate: "office", note: "Crowned co-tsar in a disputed succession; sole ruler from 1696." },
+  frederick2p: { entry: "regular", fate: "office", note: "Succeeded his father; died at Sanssouci." },
+  mariatheresa: { entry: "regular", fate: "office", note: "Inherited under the Pragmatic Sanction — which her neighbours immediately contested by war." },
+  catherine2: { entry: "irregular", fate: "office", note: "Seized the throne in a Guards coup against her husband, who was killed days later." },
+  nzinga: { entry: "irregular", fate: "office", note: "Took power on her brother's death amid contested claims; died in her eighties." },
+  washington: { entry: "regular", fate: "ok", note: "Elected unanimously twice; retired to Mount Vernon." },
+  jefferson: { entry: "regular", fate: "ok", note: "Elected in 1800 after a deadlock in the House; retired to Monticello." },
+  toussaint: { entry: "irregular", fate: "prison", note: "Rose through revolution; seized by the French and died in a cell at Fort de Joux in 1803." },
+  bolivar: { entry: "irregular", fate: "exile", note: "Rose by war of independence; resigned in 1830 and died heading into exile at Santa Marta." },
+  sanmartin: { entry: "irregular", fate: "exile", note: "Liberator of Argentina, Chile and Peru; withdrew from power and lived out his life in France." },
+  napoleon: { entry: "irregular", fate: "exile", note: "Came to power by the coup of 18 Brumaire; exiled twice, died on St Helena." },
+  jackson: { entry: "regular", fate: "ok", note: "Elected twice; retired to the Hermitage." },
+  victoria: { entry: "regular", fate: "office", note: "Succeeded her uncle; reigned sixty-three years." },
+  lincoln: { entry: "regular", fate: "killed", note: "Elected; assassinated at Ford's Theatre." },
+  juarez: { entry: "regular", fate: "office", note: "Succeeded constitutionally as head of the Supreme Court; died in office." },
+  bismarck: { entry: "regular", fate: "ok", note: "Appointed by the king; dismissed by Wilhelm II in 1890 and retired to write his memoirs." },
+  disraeli: { entry: "regular", fate: "ok", note: "Lost the 1880 election; died a year later." },
+  cavour: { entry: "regular", fate: "office", note: "Appointed prime minister; died months after Italy was proclaimed." },
+  cixi: { entry: "irregular", fate: "office", note: "Took power in the Xinyou coup of 1861 against the appointed regents." },
+  meiji: { entry: "regular", fate: "office", note: "Succeeded his father at fourteen." },
+  menelik2: { entry: "regular", fate: "office", note: "Crowned on Yohannes IV's death; incapacitated by strokes years before he died." },
+  mckinley: { entry: "regular", fate: "killed", note: "Elected; assassinated in Buffalo." },
+  troosevelt: { entry: "regular", fate: "ok", note: "Succeeded on McKinley's death, then elected; lost a comeback in 1912." },
+  taft: { entry: "regular", fate: "ok", note: "Defeated in 1912; later Chief Justice." },
+  wilson: { entry: "regular", fate: "ok", note: "Served out his term incapacitated by a stroke; died in 1924." },
+  harding: { entry: "regular", fate: "office", note: "Died in office in 1923." },
+  coolidge: { entry: "regular", fate: "ok", note: "Declined to run again in 1928." },
+  hoover: { entry: "regular", fate: "ok", note: "Defeated in 1932; lived another thirty-two years." },
+  lenin: { entry: "irregular", fate: "office", note: "Took power in the October coup; incapacitated by strokes from 1922." },
+  ataturk: { entry: "irregular", fate: "office", note: "Rose through a war of independence against the Sultan's government and the occupying powers." },
+  stalin: { entry: "regular", fate: "office", note: "Rose inside the party's own procedures; possibly left untreated by frightened colleagues when he collapsed." },
+  fdr: { entry: "regular", fate: "office", note: "Elected four times; died at Warm Springs." },
+  hitler: { entry: "regular", fate: "killed", note: "Appointed chancellor by the constitutional route in 1933; suicide in the bunker." },
+  churchill: { entry: "regular", fate: "ok", note: "Lost the 1945 election, returned in 1951, retired in 1955." },
+  degaulle: { entry: "regular", fate: "ok", note: "Invested legally in 1958 amid the threat of a military coup; resigned after losing a referendum in 1969." },
+  mao: { entry: "irregular", fate: "office", note: "Came to power by revolutionary war." },
+  hochiminh: { entry: "irregular", fate: "office", note: "Proclaimed independence in the August Revolution of 1945." },
+  bengurion: { entry: "regular", fate: "ok", note: "Resigned twice; retired to Sde Boker." },
+  nasser: { entry: "irregular", fate: "office", note: "Came to power in the Free Officers' coup of 1952." },
+  nkrumah: { entry: "regular", fate: "exile", note: "Elected; overthrown by coup while in Beijing, died in exile." },
+  leekuanyew: { entry: "regular", fate: "ok", note: "Elected; handed over to Goh Chok Tong and stayed in cabinet." },
+  tito: { entry: "irregular", fate: "office", note: "Came to power by partisan war and revolution." },
+  jfk: { entry: "regular", fate: "killed", note: "Elected; assassinated in Dallas." },
+  lbj: { entry: "regular", fate: "ok", note: "Succeeded on Kennedy's death; declined to run in 1968." },
+  goldameir: { entry: "regular", fate: "ok", note: "Resigned in 1974 after the Agranat Commission." },
+  indira: { entry: "regular", fate: "killed", note: "Elected; assassinated by her own bodyguards in 1984." },
+  deng: { entry: "regular", fate: "ok", note: "Rose within the party after Mao's death; retired from formal posts while retaining authority." },
+  thatcher: { entry: "regular", fate: "ok", note: "Forced out by her own party in 1990." },
+  reagan: { entry: "regular", fate: "ok", note: "Served two terms." },
+  gorbachev: { entry: "regular", fate: "ok", note: "Chosen by the Politburo; left office when the USSR dissolved, and lived another thirty years." },
+  mandela: { entry: "regular", fate: "ok", note: "Elected in 1994; stepped down after one term." },
+  castro: { entry: "irregular", fate: "ok", note: "Came to power by revolution; handed over to his brother through illness." },
+  truman: { entry: "regular", fate: "ok", note: "Succeeded on Roosevelt's death; did not run in 1952." },
+  eisenhower: { entry: "regular", fate: "ok", note: "Served two terms." },
+  nixon: { entry: "regular", fate: "ok", note: "Resigned in 1974; pardoned by his successor a month later — the pardon is what kept the fate 'ok'." },
+  ford: { entry: "regular", fate: "ok", note: "Appointed vice-president and succeeded on Nixon's resignation; defeated in 1976." },
+  carter: { entry: "regular", fate: "ok", note: "Defeated in 1980." },
+  ghwbush: { entry: "regular", fate: "ok", note: "Defeated in 1992." },
+  clinton: { entry: "regular", fate: "ok", note: "Impeached and acquitted; served two terms." },
+  gwbush: { entry: "regular", fate: "ok", note: "Served two terms." },
+  putin: { entry: "regular", fate: "incumbent", note: "Appointed prime minister and anointed by Yeltsin, then elected." },
+  obama: { entry: "regular", fate: "ok", note: "Served two terms." },
+  xi: { entry: "regular", fate: "incumbent", note: "Selected by the party's leadership process in 2012." },
+  merkel: { entry: "regular", fate: "ok", note: "Chose not to run in 2021." },
+  erdogan: { entry: "regular", fate: "incumbent", note: "Won office by election in 2003 after a political ban was lifted." },
+  abe: { entry: "regular", fate: "ok", note: "Resigned twice on health grounds; assassinated in 2022, two years after leaving office." },
+  modi: { entry: "regular", fate: "incumbent", note: "Elected in 2014." },
+  trump: { entry: "regular", fate: "incumbent", note: "Elected in 2016 and again in 2024; criminally indicted between the two terms." },
+  ardern: { entry: "regular", fate: "ok", note: "Resigned in 2023." },
+  zelensky: { entry: "regular", fate: "incumbent", note: "Elected in 2019." },
+  lula: { entry: "regular", fate: "incumbent", note: "Left office in 2010 unpunished; imprisoned in 2018 on a conviction later annulled, and re-elected in 2022." },
+  biden: { entry: "regular", fate: "ok", note: "Withdrew from the 2024 race under pressure from his own party." },
+  taizong: { entry: "irregular", fate: "office", note: "Took power by killing two brothers at the Xuanwu Gate and forcing his father to abdicate." },
+  robertbruce: { entry: "irregular", fate: "office", note: "Seized the crown after killing his rival John Comyn." },
+  chiang: { entry: "irregular", fate: "office", note: "Rose through the Northern Expedition and military force; died on Taiwan still in power." },
+  hueylong: { entry: "regular", fate: "killed", note: "Elected governor and senator; shot in the Louisiana State Capitol." },
+  rjdaley: { entry: "regular", fate: "office", note: "Slated by the organisation and elected mayor six times; died of a heart attack in office in December 1976." },
+  goh: { entry: "regular", fate: "ok", note: "Chosen by the PAP leadership; handed over to Lee Hsien Loong." },
+  kissinger: { entry: "regular", fate: "ok", note: "Appointed; left office in 1977 and lived to a hundred." }
+};
