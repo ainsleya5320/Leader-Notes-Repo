@@ -1149,6 +1149,26 @@ window.TEMPERAMENT = {
       ten: "Warm toward his own — the neighbourhood, the committeemen's families — and hard toward those outside: the public-housing sites, the open-housing marchers, the 1968 orders."
     }
   },
+  suharto: {
+    source: "estimate",
+    profile: "A patient, opaque operator: low display and high control — a man who built a regime without ever appearing to reach for it — with very low tender-mindedness where the 1965–66 record is concerned. The intellectual band is wide because his public speech was scripted and his autobiography was dictated to a ghostwriter.",
+    f: { ach: [75, 90], com: [82, 94], act: [55, 78], int: [35, 65], nvul: [80, 94], ass: [72, 90], nstr: [90, 98], pos: [30, 62], ten: [8, 38] },
+    notes: {
+      nstr: "Took power in stages over two-odd years so that Sukarno remained head of state throughout; the 11 March 1966 order that transferred effective power is under 200 words, its original has never been found, and the surviving copies differ.",
+      nvul: "Spent the night of 30 September 1965 at his scalded son's hospital bed, and by dawn was at Kostrad headquarters; within a day he had retaken central Jakarta without a fight.",
+      ten: "The 1965–66 killings, the 1983–85 'mysterious shootings' and the occupation of East Timor. The band reaches up at the top because the same government built schools, clinics and a family-planning programme that reached most villages."
+    }
+  },
+  parkchunghee: {
+    source: "estimate",
+    profile: "An austere, disciplined organiser — the officer's profile — with near-ceiling assertiveness and achievement, high concealment, and low tender-mindedness toward opponents, though a private diary shows real grief.",
+    f: { ach: [88, 97], com: [82, 94], act: [78, 92], int: [50, 75], nvul: [72, 90], ass: [90, 98], nstr: [80, 94], pos: [15, 45], ten: [10, 40] },
+    notes: {
+      pos: "Austere in public. The one glimpse of feeling is private: a year after his wife's death he wrote in his diary that he had 'cried alone in secret' too many times to count.",
+      ten: "The 1973 kidnapping of Kim Dae-jung, the 1975 executions, and opponents held without trial and tortured. The band reaches upward because the poverty he set out to end was real, and his rural and industrial programmes reached most of the country.",
+      nstr: "Agreed under American pressure to restore civilian rule and then won the 1963 election as a civilian; promised after his 1967 victory to stand down in 1971, and then had the constitution amended to let him run a third time."
+    }
+  },
   kissinger: {
     source: "estimate",
     profile: "The highest combination of intellect and concealment in the file. On Rubenzer's scale that is close to an optimal profile, which is precisely why the man remains contested.",

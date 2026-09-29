@@ -624,6 +624,26 @@ window.COLLABORATORS = {
     { name: "Michael Bilandic", role: "Alderman chosen as his successor; lost the machine's 1979 primary to Jane Byrne" },
     { name: "Richard M. Daley", role: "Son; mayor of Chicago 1989–2011, longer than his father" }
   ],
+  suharto: [
+    { name: "Ali Moertopo", role: "Intelligence chief and political fixer of the palace 'Aspri' circle; built Golkar's early machinery" },
+    { name: "Widjojo Nitisastro", role: "Head of the 'Berkeley Mafia' economists; architect of the stabilisation and the five-year Repelita plans" },
+    { name: "Sarwo Edhie Wibowo", role: "Para-commando commander whom Suharto used in Central Java and Bali in 1965–66" },
+    { name: "Leonardus Benny Moerdani", role: "Armed forces commander from 1983 and the regime's security hardliner; a Catholic, so no political threat to Suharto" },
+    { name: "Liem Sioe Liong", role: "Businessman and old associate; his Salim Group held state-backed monopolies and partnered the president's children" },
+    { name: "Hamengkubuwono IX", role: "Sultan of Yogyakarta and vice-president 1973–78; lent the New Order legitimacy in Java's cultural heartland" },
+    { name: "B. J. Habibie", role: "Technology minister for two decades, vice-president from March 1998 and Suharto's successor on 21 May 1998" },
+    { name: "Prabowo Subianto", role: "Special-forces officer and then son-in-law; Kostrad commander in May 1998; president of Indonesia since 2024" }
+  ],
+  parkchunghee: [
+    { name: "Kim Jong-pil", role: "Relative by marriage and coup planner; founded the KCIA and the Democratic Republican Party, and was prime minister 1971–75" },
+    { name: "Kim Jae-gyu", role: "Military-academy classmate and KCIA director from December 1976; shot him on 26 October 1979 and was hanged in May 1980" },
+    { name: "Cha Ji-chul", role: "Chief of the Presidential Security Service from 1974; hardline rival of Kim Jae-gyu, shot dead at the same dinner" },
+    { name: "Lee Hu-rak", role: "Presidential chief of staff and later KCIA director; ran the secret 1972 talks with the North and is credited as a chief architect of Yushin" },
+    { name: "Park Tae-joon", role: "Founding head of POSCO, the state steel company created in 1968 at the centre of heavy industrialisation" },
+    { name: "Chung Ju-yung", role: "Founder of Hyundai; built the Seoul–Busan expressway and the shipyards of the heavy-industry drive — the archetypal favoured chaebol" },
+    { name: "Yuk Young-soo", role: "Wife; killed by a stray bullet in the August 1974 assassination attempt" },
+    { name: "Park Geun-hye", role: "Daughter; acted as first lady after 1974 and was president of South Korea 2013–17, impeached and removed" }
+  ],
   goh: [
     { name: "Lee Kuan Yew", role: "Predecessor, retained in his cabinet as Senior Minister" },
     { name: "Lee Hsien Loong", role: "Deputy, groomed successor, and the founder's son" },

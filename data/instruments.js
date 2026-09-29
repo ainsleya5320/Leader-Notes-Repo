@@ -597,6 +597,30 @@ window.LEADER_INSTRUMENTS = {
     ]
   },
 
+  suharto: {
+    creed: "'Stability and development' — the New Order's formula, later the 'Trilogy of Development' (stability, growth, equity) — with Pancasila the only permitted foundation for any organisation from 1985.",
+    practice: "Fear for the organised opposition, spoils for the organised elite, and growth for everyone else; the three were kept apart on purpose, and each was administered through a different institution — the army, Golkar and the civil service, and the economists.",
+    tools: [
+      { reg: "fear", key: "f_exemplary", detail: "The army-led purge of 1965–66 (500,000 to over a million dead by the usual estimates, contested) destroyed the PKI and told every later opposition what the state could do; the 1983–85 'mysterious shootings' killed a further 300 to 10,000 suspected criminals (estimates vary) and left the bodies in public." },
+      { reg: "fear", key: "f_surveillance", detail: "The Kopkamtib security command and the BAKIN intelligence agency, with a screening of civil servants and candidates for links to the banned PKI." },
+      { reg: "fear", key: "f_legal", detail: "The forced fusion of nine parties into two in 1973, press licences (required from 1984) and the 1985 requirement that every organisation adopt Pancasila as its sole basis." },
+      { reg: "loyalty", key: "l_spoils", detail: "Golkar, a civil service bound to it by 'monoloyalty', and licences and monopolies for friends and family — toll roads, the national car project, the cinema chain." },
+      { reg: "loyalty", key: "l_complicity", detail: "Foundations (yayasan) chaired by the president and funded by levies on companies and state banks, so that access to the palace and payment to its foundations went together." },
+      { reg: "loyalty", key: "l_mobility", detail: "Gave the University of Indonesia economists real authority over macroeconomic policy from 1966 — a career route open to training rather than to army rank." }
+    ]
+  },
+  parkchunghee: {
+    creed: "Diligence, self-help and cooperation — the Saemaul slogans — and 'Korean-style democracy': a strong presidency first, liberal politics later.",
+    practice: "Development run as a campaign: numerical export targets, monthly reviews he chaired himself, credit rationed to those who met them — and for critics the KCIA, emergency decrees and the courts. The same instruments served both halves of the project, which is why they could not be separated in 1979.",
+    tools: [
+      { reg: "loyalty", key: "l_spoils", detail: "Loans on easy terms, tax cuts, licences and subsidies for the chaebol that met their export quotas — Hyundai, Samsung, LG — and, in Amsden's account, their withdrawal from those that did not." },
+      { reg: "motivate", key: "m_emulation", detail: "The Saemaul Undong from 1970: some 33,000 villages received the same allotment of cement, and the roughly 16,600 that showed results were given more." },
+      { reg: "motivate", key: "m_glory", detail: "Export targets as national victories — about US$100 million reached in 1964 and US$10 billion in 1977, each celebrated as a triumph of the whole country." },
+      { reg: "fear", key: "f_surveillance", detail: "The KCIA, created on 19 June 1961 with power to arrest and detain anyone suspected of anti-government sentiment; in August 1973 its agents kidnapped Kim Dae-jung from a Tokyo hotel." },
+      { reg: "fear", key: "f_legal", detail: "The Yushin constitution let the president rule by decree and suspend constitutional freedoms; it was approved by referendum on 21 November 1972, under martial law, with an official yes vote above 90 per cent." },
+      { reg: "fear", key: "f_exemplary", detail: "Eight men were executed in April 1975 after the People's Revolutionary Party case, brought under the National Security Law; a court cleared them posthumously in 2007." }
+    ]
+  },
   kissinger: {
     creed: "“Power is the ultimate aphrodisiac” — and a scholar's conviction that stability, not justice, is what foreign policy can actually deliver.",
     practice: "The purest courtier's toolkit in the index: flattery upward, information hoarded sideways, and the channel never delegated.",

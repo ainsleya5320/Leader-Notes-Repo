@@ -388,6 +388,32 @@ Object.assign(window.POWER_BASE, {
     danger: "The Xi'an Incident (1936), when his own generals kidnapped him.",
     verdict: "Lost the mainland; died in power on Taiwan and was succeeded by his son."
   },
+  suharto: {
+    system: "Military-bureaucratic regime with a managed electoral façade — a small winning coalition inside a large, administered selectorate",
+    w_scale: 2, sizes: { n: 125000000, s: 4000000, w: 300 },
+    n: { who: "Registered voters in the five-yearly elections, which Golkar always won (62.8% in 1971, about 74% in 1997).", size: "~125 million (1997)" },
+    s: { who: "The organised state: civil servants bound to Golkar by 'monoloyalty' and the armed forces, plus the appointed members of the People's Consultative Assembly (MPR) that formally re-elected him.", size: "~4 million (estimate)" },
+    w: { who: "The armed-forces command, the palace circle, the ministers and technocrats of the economic team, and the heads of the great conglomerates, including his own family's.", size: "~300 (estimate)" },
+    loyalty: "Very strong: a small W drawn from millions of officers and officials who could replace any of them. Commands, licences and promotion all ran through the president, and officers were rotated so that none built a base.",
+    currency: "Private goods for the essentials — commands, licences, credit and monopolies — and public goods for the population (rice, schools, clinics, roads) as the price of quiet.",
+    revenue: "Oil and gas exports, foreign aid through the IGGI donor group, and levies on business: rents that did not require the population's consent, though growth was also the regime's promise.",
+    shuffle: "Rotation of officers and officials, the removal of rivals (General Sumitro after the 1974 Malari riots), the forced fusion of the parties into two in 1973, and the 1976 reorganisation of the armed forces that moved power from commanders to the president.",
+    danger: "1974, when a deputy armed-forces commander was found to have encouraged the Malari riots; 1988, when the military's legislators tried and failed to block his vice-presidential nominee; and May 1998, when the crisis cost him the private goods and his ministers refused to join a reshuffled cabinet.",
+    verdict: "Thirty-two years, then removal in 1998 when the economic collapse made the essentials' private goods unaffordable and his allies deserted him; the vice-president took over under the constitution. Small-W rulers with rents last long, and fall when the money stops."
+  },
+  parkchunghee: {
+    system: "Military-turned-civilian party-state — a directly elected president until 1972, then an electoral college; a small coalition of generals, security chiefs and export firms",
+    w_scale: 2, sizes: { n: 17000000, s: 2400, w: 300 },
+    n: { who: "Registered voters, who chose the president directly until 1971 (margins: about 156,000 in 1963, narrow again in 1971) and after 1972 elected the delegates who chose him.", size: "~15–19 million (estimate)" },
+    s: { who: "Delegates of the National Conference for Unification, the Yushin electoral college, which returned him unopposed in 1972 and 1978.", size: "~2,400 (estimate)" },
+    w: { who: "The generals, the KCIA and Presidential Security chiefs, the leadership of the Democratic Republican Party, the Economic Planning Board technocrats, and the heads of the largest chaebol.", size: "~300 (estimate)" },
+    loyalty: "Strong but self-dividing: Park kept two armed agencies, the KCIA and the Presidential Security Service, as rivals. Each knew it could be replaced, and the feud between their chiefs was the mechanism that killed him.",
+    currency: "Private goods for the essentials — cheap credit, licences and contracts for chaebol that met export targets, commands and party posts for officers and politicians — and public goods for the rest: roads, electrification, rural programmes and growth.",
+    revenue: "Taxes, Japanese claims money and loans after 1965, U.S. aid and Vietnam War remittances, and directed credit through state-controlled banks: revenue that depended on export growth rather than on consent.",
+    shuffle: "The arrest of junta rivals in 1961 (General Chang Do-yong, the coup's nominal leader), rotation of KCIA directors, and after 1972 the power to nominate a third of the assembly and to dissolve it.",
+    danger: "1963 (a margin of 1.5 per cent), 1971 (a narrow win over Kim Dae-jung), the 1978 legislative election (the opposition won the popular vote), and October 1979: the Pusan–Masan protests, the expulsion of Kim Young-sam from the assembly, and the feud between Kim Jae-gyu and Cha Ji-chul.",
+    verdict: "Eighteen years, ended by an essential — his own security chief — not by voters or an outside coup. The coalition then regrouped around Chun Doo-hwan within seven weeks."
+  },
   kissinger: {
     system: "A courtier's power base — one essential at a time: the president",
     w_scale: 1, sizes: { n: 10000, s: 1000, w: 2 },

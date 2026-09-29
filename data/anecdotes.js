@@ -50,6 +50,8 @@ window.ANECDOTES = [
   { l: "coolidge", f: "ach", end: "low", text: "Ended his own career in nine words handed to reporters on slips of paper: 'I do not choose to run for President in 1928.' He offered no elaboration then or later." },
   { l: "taft", f: "ach", end: "low", text: "He had wanted the Supreme Court his whole life and endured the presidency as a detour. Appointed Chief Justice in 1921, he remarked that he could not remember that he had ever been president." },
 
+  { l: "parkchunghee", f: "ach", end: "high", text: "Launched the Heavy and Chemical Industry drive in 1973 over strong objections from the World Bank, building on the state steel company POSCO, created in 1968 with Japanese financial and technical help, in a country whose exports were still mostly light manufactures." },
+
   // ---------------------------------------------------------- COMPETENCE
   { l: "jcaesar", f: "com", end: "high", text: "Captured by Cilician pirates as a young man, he was told his ransom was twenty talents and objected that they had no idea who they had taken — he told them to demand fifty. He joked throughout his captivity that he would return and crucify them, and on release he raised a fleet and did.", src: "Plutarch" },
   { l: "degaulle", f: "com", end: "high", text: "In June 1940, holding no office, commanding nobody and legally a fugitive, he broadcast from London on the assumption that he personally constituted the legitimate French state. The self-belief preceded any evidence for it by several years." },
@@ -90,6 +92,9 @@ window.ANECDOTES = [
   { l: "nasser", f: "nvul", end: "low", text: "After the 1967 defeat he resigned live on television, visibly broken. Crowds filled the streets demanding he stay, and he did — and was dead three years later at fifty-two." },
   { l: "victoria", f: "nvul", end: "low", text: "After Albert's death in 1861 she withdrew almost entirely for a decade, had his clothes laid out daily, and damaged the monarchy's standing badly enough that republican sentiment became a live political force." },
 
+  { l: "suharto", f: "nvul", end: "high", text: "On the night of 30 September 1965 he was at the army hospital beside his three-year-old son Tommy, who had been scalded, and the conspirators' colonel visited him there. By dawn on 1 October he was at Kostrad headquarters, and within a day he had mobilised Kostrad and the para-commandos and retaken the radio station and central Jakarta without a fight. Colonel Latief later testified that he had told Suharto of the plan; Suharto's own accounts differ, and the exchange remains disputed." },
+  { l: "parkchunghee", f: "nvul", end: "high", text: "On 15 August 1974 a gunman fired at him from the front row during a speech at the National Theater; a stray bullet struck his wife, Yuk Young-soo, who died that day. He continued his speech as she was carried from the stage." },
+
   // ---------------------------------------------------------- ASSERTIVENESS
   { l: "jackson", f: "ass", end: "high", text: "Fought a duel with Charles Dickinson in 1806 by letting Dickinson fire first, taking the bullet an inch from his heart, standing still, and then shooting him dead. He carried that bullet for the rest of his life." },
   { l: "lbj", f: "ass", end: "high", text: "'The Treatment' was physical: he would advance until his face was inches away, grip lapels or shoulders, and alternate flattery, pleading and threat for as long as it took. Photographs of him working Senator Theodore Green show it as a kind of assault." },
@@ -118,6 +123,9 @@ window.ANECDOTES = [
   { l: "carter", f: "nstr", end: "low", text: "He campaigned on 'I will never lie to you,' and then as president delivered a televised address telling Americans they were suffering a crisis of confidence — accurate, unwelcome, and politically ruinous." },
   { l: "sanmartin", f: "nstr", end: "low", text: "After a private meeting with Bolívar at Guayaquil in 1822 he concluded the other man was better placed to finish the war, handed over his army, resigned every command, and sailed for Europe. He never publicly explained." },
   { l: "goldameir", f: "nstr", end: "low", text: "Her bluntness was a policy and sometimes a liability: 'We can forgive you for killing our sons, but we will never forgive you for making us kill yours.'" },
+
+  { l: "suharto", f: "nstr", end: "high", text: "The 11 March 1966 order that transferred effective power ran to fewer than 200 words, and its original cannot now be found. When the National Archives were asked to locate it, they had only two copies — one from the army's information centre and one from the State Secretariat — with significant differences between them. Suharto used it the next day to ban the Communist Party." },
+  { l: "parkchunghee", f: "nstr", end: "high", text: "After his 1967 victory he promised that, under the two-term limit in the 1963 constitution, he would step down in 1971. The ruling party's assembly majority then pushed through an amendment in 1969 allowing the incumbent a third consecutive term, and he ran in 1971." },
 
   // ---------------------------------------------------------- POSITIVE EMOTIONS
   { l: "troosevelt", f: "pos", end: "high", text: "His daughter Alice: 'Father always wanted to be the corpse at every funeral, the bride at every wedding, and the baby at every christening.'" },
@@ -149,5 +157,8 @@ window.ANECDOTES = [
   { l: "jcaesar", f: "ten", end: "low", text: "At Uxellodunum he spared the lives of the surrendered garrison and had the hands of every man who had borne arms cut off, so that the punishment would be visible wherever they went.", src: "Caesar, Gallic War VIII" },
   { l: "timur", f: "ten", end: "low", text: "At Isfahan, after a tax revolt, his army was required to deliver a quota of severed heads; the towers built from them were counted by contemporaries in the tens of thousands, and were addressed to the next city on the road." },
   { l: "stalin", f: "ten", end: "low", text: "'One death is a tragedy, a million is a statistic' is universally attributed to him and appears in no document he produced. It persists because the documented record — the signed execution lists, the quotas by region — makes it entirely credible.", legend: true },
-  { l: "qinshihuang", f: "ten", end: "low", text: "The tradition holds that he had 460 scholars buried alive for possessing prohibited texts. Han historians had every reason to exaggerate, and the burning of the books is beyond dispute.", legend: true }
+  { l: "qinshihuang", f: "ten", end: "low", text: "The tradition holds that he had 460 scholars buried alive for possessing prohibited texts. Han historians had every reason to exaggerate, and the burning of the books is beyond dispute.", legend: true },
+  { l: "suharto", f: "ten", end: "low", text: "Acknowledged the 1983–85 'mysterious shootings' only in his autobiography, where he wrote that 'we had to resort to force' and that those who resisted 'had to be shot'. Estimates of the dead range from about 300 to 10,000; many victims were tattooed men, whose bodies were left in public places.", src: "Soeharto: Pikiran, Ucapan dan Tindakan Saya (with G. Dwipayana and Ramadhan K.H.)" },
+  { l: "parkchunghee", f: "ten", end: "low", text: "On 8 August 1973 KCIA agents kidnapped the opposition leader Kim Dae-jung from a Tokyo hotel and took him by boat toward Korea. By Kim's own account his kidnappers meant to drown him in the Korea Strait, and gave up when Japan's Maritime Self-Defense Force began a pursuit and fired an illuminating shell; he was found alive at his Seoul home five days later. In 2007 South Korea's intelligence service admitted the KCIA had done it, with at least tacit backing from Park.", src: "NIS inquiry, October 2007" },
+
 ];

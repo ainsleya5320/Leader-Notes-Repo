@@ -158,6 +158,8 @@ window.LEADER_FATE = {
   chiang: { entry: "irregular", fate: "office", note: "Rose through the Northern Expedition and military force; died on Taiwan still in power." },
   hueylong: { entry: "regular", fate: "killed", note: "Elected governor and senator; shot in the Louisiana State Capitol." },
   rjdaley: { entry: "regular", fate: "office", note: "Slated by the organisation and elected mayor six times; died of a heart attack in office in December 1976." },
+  suharto: { entry: "irregular", fate: "ok", note: "Took power from Sukarno in stages after 1965 (Supersemar, then an assembly vote in 1967–68) — formally transferred, but under army pressure. Resigned 21 May 1998; house arrest in 2000, a trial halted on medical grounds, the case dropped in 2006; never tried, and died in 2008 with a state funeral." },
+  parkchunghee: { entry: "irregular", fate: "killed", note: "Seized power in the May 1961 coup and was elected in 1963; shot by his KCIA director, Kim Jae-gyu, on 26 October 1979 — the regime then passed to Chun Doo-hwan by a second coup seven weeks later." },
   goh: { entry: "regular", fate: "ok", note: "Chosen by the PAP leadership; handed over to Lee Hsien Loong." },
   kissinger: { entry: "regular", fate: "ok", note: "Appointed; left office in 1977 and lived to a hundred." }
 };

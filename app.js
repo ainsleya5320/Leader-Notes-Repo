@@ -36,6 +36,7 @@ const SUCCESSIONS = { orderly: "Orderly succession", crisis: "Succession crisis"
 
 // Wikipedia page titles for portraits where the display name won't resolve
 const WIKI_OVERRIDES = {
+  parkchunghee: "Park Chung Hee",
   ramesses2: "Ramesses II", cyrus: "Cyrus the Great", darius1: "Darius the Great",
   qinshihuang: "Qin Shi Huang", jcaesar: "Julius Caesar", alexander: "Alexander the Great",
   william1: "William the Conqueror", louis9: "Louis IX of France", louis14: "Louis XIV",
@@ -112,7 +113,7 @@ const state = {
   surv: { tab: "svolik" },
   orgs: { mode: "catalogue", kind: "all", search: "", dcmp: ["pap", "ldp", "umno", "kmt", "golkar"] },
   orgId: null,
-  pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null }
+  pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null, rotParties: true }
 };
 
 /* ---------------- leader store (seeded + custom) ---------------- */
@@ -1481,14 +1482,16 @@ const LEADER_ALIASES = {
   hueylong: ["Huey Long", "Kingfish"],
   rjdaley: ["Richard J Daley", "Richard J. Daley", "Mayor Daley", "Boss Daley"],
   goh: ["Goh Chok Tong"],
-  kissinger: ["Kissinger"]
+  kissinger: ["Kissinger"],
+  suharto: ["Soeharto", "Pak Harto"],
+  parkchunghee: ["Park Chung Hee", "Park Chunghee"]
 };
 const NUMERAL = /^(I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII|XIV|XV)$/i;
 // surnames that are also ordinary English words — never match on these alone
 // ("Long" would otherwise pull in Long Walk to Freedom, "Ford" the Ford Motor Company)
 const SURNAME_STOPWORDS = new Set(["long", "ford", "bush", "grant", "king", "pope", "young", "white",
   "black", "green", "brown", "stone", "wood", "hill", "field", "park", "price", "best", "moore", "rice",
-  "bruce", "daley"]);   // "Bruce" would match every author named Bruce; "Daley" alone would catch books on Richard M. Daley, the son
+  "bruce", "daley", "huang", "conqueror"]);   // "Bruce" would match every author named Bruce; "Daley" alone would catch books on Richard M. Daley, the son
 
 var MATCHERS = null;   // var: assigned from rebuildAll(), which runs earlier in the file
 function buildMatchers() {
@@ -3468,7 +3471,7 @@ function bdmSectionHtml() {
    ================================================================ */
 
 const DOSSIERS = window.ORG_DOSSIERS || {};
-const DOSSIER_COLORS = { pap: "var(--reg-motivate)", ldp: "var(--reg-loyalty)", umno: "var(--reg-fear)", kmt: "var(--era-c21)", golkar: "var(--era-c19)" };
+const DOSSIER_COLORS = { pap: "var(--reg-motivate)", ldp: "var(--reg-loyalty)", umno: "var(--reg-fear)", kmt: "var(--era-c21)", golkar: "var(--era-c19)", congress: "var(--era-c20)", pri: "var(--reg-trust)", drp: "var(--era-renaissance)" };
 function dossierColor(id) { return DOSSIER_COLORS[id] || "var(--accent)"; }
 function rotMean(ph) { const v = (window.ROT_TYPES || []).map(r => ph.rot[r.key]); return Math.round(v.reduce((a, b) => a + b, 0) / v.length); }
 // entrenched rot: how much rot there is, how far it leaked, and how hard it was to remove — my construction
@@ -3650,13 +3653,14 @@ function patDebatesFor(id) {
 
 function renderPatronage() {
   const S = state.pat, tb = $("#pat-toolbar"), body = $("#pat-body");
-  const modes = [["cases", "Case studies"], ["anatomy", "Anatomy & debates"], ["map", "Typology"], ["reading", "Reading"]];
+  const modes = [["cases", "Case studies"], ["anatomy", "Anatomy & debates"], ["map", "Typology"], ["rot", "Rot ledger"], ["reading", "Reading"]];
   tb.innerHTML = `<div class="seg">${modes.map(([k, label]) => `<button data-pmode="${k}" class="${S.mode === k ? "on" : ""}">${label}</button>`).join("")}</div>`;
   tb.querySelectorAll("[data-pmode]").forEach(b => b.onclick = () => { S.mode = b.dataset.pmode; S.caseId = null; if (location.hash !== "#/patronage") location.hash = "#/patronage"; else renderPatronage(); });
   $("#view-patronage .page-intro").hidden = !!(S.mode === "cases" && S.caseId);
   if (S.mode === "cases" && S.caseId && PAT_BY_ID[S.caseId]) body.innerHTML = patCaseHtml(PAT_BY_ID[S.caseId]);
   else if (S.mode === "anatomy") body.innerHTML = patAnatomyHtml();
   else if (S.mode === "map") body.innerHTML = patMapHtml();
+  else if (S.mode === "rot") body.innerHTML = patRotHtml();
   else if (S.mode === "reading") body.innerHTML = patReadingHtml();
   else body.innerHTML = patGridHtml();
   body.querySelectorAll("[data-pcase]").forEach(el => el.onclick = () => openPatCase(el.dataset.pcase));
@@ -3664,6 +3668,7 @@ function renderPatronage() {
   body.querySelectorAll("[data-org]").forEach(el => el.onclick = () => openOrg(el.dataset.org));
   body.querySelectorAll("[data-pdeb]").forEach(el => el.onclick = () => { S.mode = "anatomy"; S.caseId = null; S.focusDebate = el.dataset.pdeb; if (location.hash !== "#/patronage") location.hash = "#/patronage"; else renderPatronage(); });
   body.querySelectorAll("[data-pyax]").forEach(b => b.onclick = () => { S.yAxis = b.dataset.pyax; renderPatronage(); });
+  body.querySelectorAll("[data-prot]").forEach(b => b.onclick = () => { S.rotParties = !S.rotParties; renderPatronage(); });
   body.querySelectorAll(".read-row").forEach(r => r.onclick = ev => {
     if (ev.target.dataset.shelfId) { ev.stopPropagation(); cycleShelf(ev.target.dataset.shelfId); renderPatronage(); return; }
     openBookEditor(r.dataset.book);
@@ -3673,6 +3678,18 @@ function renderPatronage() {
   body.querySelectorAll(".pat-pt").forEach(p => {
     const c = PAT_BY_ID[p.dataset.pcase];
     p.onmouseenter = () => { tip.innerHTML = `<b>${esc(c.country)}</b><div class="m">${esc(c.title)}</div><div class="co">scale ${c.scale} · network ${c.centre} · coercion ${c.coercion}</div>`; tip.hidden = false; };
+    p.onmousemove = moveTip;
+    p.onmouseleave = () => { tip.hidden = true; };
+  });
+  body.querySelectorAll(".pat-rpt").forEach(p => {
+    const c = PAT_BY_ID[p.dataset.pcase], R = window.PAT_ROT[c.id];
+    p.onmouseenter = () => { tip.innerHTML = `<b>${esc(c.country)}</b><div class="m">${esc(c.title)}</div><div class="co">mean rot ${rotMean(R)} · leakage ${R.leakage} · reversibility ${R.reversibility} · entrenched ${entrenched(R)}</div>`; tip.hidden = false; };
+    p.onmousemove = moveTip;
+    p.onmouseleave = () => { tip.hidden = true; };
+  });
+  body.querySelectorAll(".pat-rring").forEach(p => {
+    const D = DOSSIERS[p.dataset.org], ph = D.phases[+p.dataset.ph], o = ORG_BY_ID[p.dataset.org];
+    p.onmouseenter = () => { tip.innerHTML = `<b>${esc(o.short)} · ${esc(ph.name)}</b><div class="m">${phaseYears(ph)} · party dossier, peak phase</div><div class="co">mean rot ${rotMean(ph)} · leakage ${ph.leakage} · reversibility ${ph.reversibility} · entrenched ${entrenched(ph)}</div>`; tip.hidden = false; };
     p.onmousemove = moveTip;
     p.onmouseleave = () => { tip.hidden = true; };
   });
@@ -3727,6 +3744,7 @@ function patCaseHtml(c) {
     </div><aside class="pat-rail">
       <div class="rail-card"><h4>Placement</h4><div class="pat-meters">${["scale", "centre", "coercion"].map(k => patMeter(c, k)).join("")}</div>
         <p class="rail-note">${Object.values(PAT_AXES).map(a => `<b>${a.name}</b>: ${esc(a.lo)} → ${esc(a.hi)}`).join("<br>")}<br>My estimates, for comparison between cases — not measurements.</p></div>
+      ${patRotCard(c)}
       ${debates.length ? `<div class="rail-card"><h4>Debates this case speaks to</h4><div class="rail-list">${debates.map(x => `<div class="rl-row pat-deb-link" data-pdeb="${x.d.key}"><b>${esc(x.d.q)}</b><span class="m">${x.hits.map(a => esc(a.view)).join(" · ")}</span></div>`).join("")}</div></div>` : ""}
       ${orgs.length ? `<div class="rail-card"><h4>Organizations in the atlas</h4><div class="rail-list">${orgs.map(o => `<div class="rl-row" data-org="${o.id}"><span class="org-mark sm" style="--c:${ORG_KIND_BY_KEY[o.kind].color}">${orgMark(o)}</span><b>${esc(o.short || o.name)}</b><span class="m">${esc(o.place)}</span></div>`).join("")}</div></div>` : ""}
       ${leaders.length ? `<div class="rail-card"><h4>Leaders in the atlas</h4><div class="pt-chips">${leaders.map(l => `<span class="pt-chip" data-id="${l.id}">${esc(shortName(l))}</span>`).join("")}</div></div>` : ""}
@@ -3793,6 +3811,76 @@ function patMapHtml() {
     <div class="pat-map">${svg}</div>
     <div class="pat-quads">${cells}</div>
     <p class="ch-note">Across the ${PAT_CASES.length} placements, scale and ${ya.name.toLowerCase()} correlate at r = ${sign}${Math.abs(rv).toFixed(2)} — a description of my own coding, not evidence about patronage.</p>`;
+}
+
+const ROT_SHORT = { graft: "Graft", capture: "Capture", closure: "Closure", suppression: "Suppression", feedback: "Feedback", sclerosis: "Sclerosis", succession: "Succession" };
+function patRotRows() {
+  const R = window.PAT_ROT || {};
+  return PAT_CASES.filter(c => R[c.id]).map(c => ({ c, R: R[c.id], m: rotMean(R[c.id]), e: entrenched(R[c.id]) })).sort((x, y) => y.e - x.e);
+}
+function patRotCard(c) {
+  const R = (window.PAT_ROT || {})[c.id];
+  if (!R) return "";
+  const rows = patRotRows(), rank = rows.findIndex(x => x.c.id === c.id) + 1;
+  const meter = (label, v, col, tip) => `<div class="sm-row" title="${esc(tip)}"><span class="sm-name">${label}</span><span class="sm-track"><span class="sm-fill" style="width:${v}%;background:${col}"></span></span><span class="sm-val">${v}</span></div>`;
+  return `<div class="rail-card"><h4>Rot ledger</h4><div class="sm-list">
+    ${(window.ROT_TYPES || []).map(r => meter(ROT_SHORT[r.key] || esc(r.name), R.rot[r.key], "var(--bad)", r.def)).join("")}
+    ${meter("Leakage", R.leakage, "var(--reg-fear)", (window.ROT_AXES || [])[0].def)}
+    ${meter("Reversible", R.reversibility, "var(--good)", (window.ROT_AXES || [])[1].def)}
+    </div><p class="rail-note"><b>Entrenched rot ${entrenched(R)}</b> — ${rank} of ${rows.length} systems here. ${esc(R.why)}<br>My estimates, for the system at its most developed within the period shown; entrenched = mean rot × leakage × (1 − reversibility).</p></div>`;
+}
+
+function patRotHtml() {
+  const S = state.pat, rows = patRotRows();
+  const W = 640, H = 430, M = { l: 56, r: 24, t: 20, b: 48 };
+  const x = v => M.l + (W - M.l - M.r) * v / 100, y = v => H - M.b - (H - M.t - M.b) * v / 100;
+  let g = [0, 25, 50, 75, 100].map(v => `<line class="rz-grid" x1="${x(v)}" y1="${M.t}" x2="${x(v)}" y2="${H - M.b}"/><line class="rz-grid" x1="${M.l}" y1="${y(v)}" x2="${W - M.r}" y2="${y(v)}"/>
+    <text class="rz-ytick" x="${M.l - 8}" y="${y(v) + 4}">${v}</text><text class="rz-ytick" style="text-anchor:middle" x="${x(v)}" y="${H - M.b + 16}">${v}</text>`).join("");
+  const q = (tx, ty, t, a) => `<text class="sv-quad" x="${tx}" y="${ty}" style="text-anchor:${a}">${t}</text>`;
+  g += q(M.l + 8, M.t + 14, "CLEAN AND REMOVABLE", "start") + q(W - M.r - 8, M.t + 14, "ROTTEN BUT REMOVABLE", "end") + q(M.l + 8, H - M.b - 8, "CLEAN BUT ENTRENCHED", "start") + q(W - M.r - 8, H - M.b - 8, "ROTTEN AND ENTRENCHED", "end");
+  const labels = []; let dots = "";
+  // party dossiers, peak phase, as hollow rings on the same scale
+  const parties = S.rotParties ? Object.keys(DOSSIERS).filter(id => ORG_BY_ID[id]).map(id => {
+    const D = DOSSIERS[id], i = D.phases.map((ph, k) => [entrenched(ph), k]).sort((a, b) => b[0] - a[0])[0][1];
+    return { id, i, ph: D.phases[i], o: ORG_BY_ID[id] };
+  }) : [];
+  parties.forEach(P => {
+    const cx = x(rotMean(P.ph)), cy = y(P.ph.reversibility), r = 4 + P.ph.leakage / 14;
+    dots += `<circle class="pat-rring" data-org="${P.id}" data-ph="${P.i}" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${dossierColor(P.id)}" stroke-width="2" stroke-dasharray="3 2"/>`;
+    labels.push({ cx, cy, r, text: `${P.o.short || P.o.name} ${P.ph.from}–${P.ph.to >= NOW_YEAR ? "now" : P.ph.to}`, fill: dossierColor(P.id), it: true });
+  });
+  rows.forEach(({ c, R }) => {
+    const cx = x(rotMean(R)), cy = y(R.reversibility), r = 4 + R.leakage / 14;
+    dots += `<circle class="sv-pt pat-rpt" data-pcase="${c.id}" cx="${cx}" cy="${cy}" r="${r}" style="fill:${patCentreColor(c)};fill-opacity:.85"/>`;
+    labels.push({ cx, cy, r, text: c.country, fill: "var(--text)" });
+  });
+  const placed = []; let lab = "";
+  labels.forEach(L => {
+    const w = L.text.length * 5.9 + 4, off = L.r + 3;
+    const tries = [[off, 3.5], [-off - w, 3.5], [-w / 2, -off - 3], [-w / 2, off + 10], [off, -off], [-off - w, -off]];
+    for (const [dx, dy] of tries) {
+      const tx = L.cx + dx, ty = L.cy + dy, b = [tx, ty - 9, tx + w, ty + 2];
+      if (b[0] < M.l - 2 || b[2] > W - 2 || b[1] < 2 || b[3] > H - M.b + 4) continue;
+      if (!placed.some(p => !(b[2] < p[0] || b[0] > p[2] || b[3] < p[1] || b[1] > p[3]))) { placed.push(b); lab += `<text class="sv-lab pat-lab" x="${tx}" y="${ty}" style="fill:${L.fill};${L.it ? "font-style:italic" : ""}">${esc(L.text)}</text>`; break; }
+    }
+  });
+  const svg = `<svg class="sv-scatter" viewBox="0 0 ${W} ${H}" width="100%">${g}
+    <text class="rz-ylabel" x="${(M.l + W - M.r) / 2}" y="${H - 8}">Mean rot →</text><text class="rz-ylabel" transform="translate(14,${(M.t + H - M.b) / 2}) rotate(-90)">Reversibility →</text>${dots}${lab}</svg>`;
+
+  // captions computed from the scores
+  const corner = rows.filter(r => r.m >= 50 && r.R.reversibility < 50), clean = rows.filter(r => r.m < 50 && r.R.reversibility >= 50);
+  const names = arr => arr.length ? arr.map(r => `<a data-pcase="${r.c.id}">${esc(r.c.country)}</a>`).join(", ") : "none";
+  const top = rows.slice(0, 3), bottom = rows.slice(-3).reverse();
+  const partyRank = parties.slice().sort((a, b) => entrenched(b.ph) - entrenched(a.ph));
+  const table = `<div class="dc-table-wrap"><table class="rot-table pat-rtable"><thead><tr><th></th>${(window.ROT_TYPES || []).map(r => `<th title="${esc(r.def)}">${ROT_SHORT[r.key] || esc(r.name)}</th>`).join("")}<th>Leakage</th><th>Reversible</th><th>Entrenched</th></tr></thead><tbody>
+    ${rows.map(({ c, R, e }) => `<tr class="pat-rrow" data-pcase="${c.id}"><th class="rot-name">${esc(c.country)}</th>${(window.ROT_TYPES || []).map(r => heatCell(R.rot[r.key])).join("")}${heatCell(R.leakage)}${heatCell(R.reversibility, true)}${heatCell(e)}</tr>`).join("")}
+    </tbody></table></div>`;
+  return `<div class="cmp-summary">The party dossiers ask how rotten a machine got and how hard it was to remove. This page asks the same of each patronage system, on the same seven kinds of decay and the same two axes. Left to right is how much rot the system carried, bottom to top how removable it was, and the size of each point how far it leaked into the state and economy. <strong>All scores are my estimates</strong>; each case page says what drove them, and a different reader would move several by 10–15 points. Colour runs from blue (party-centred network) to gold (leader- or candidate-centred), as on the Typology tab.</div>
+    <div class="seg" style="margin-bottom:10px"><button data-prot="1" class="${S.rotParties ? "on" : ""}">Party peaks from the dossiers: ${S.rotParties ? "shown" : "hidden"}</button></div>
+    <div class="pat-map">${svg}</div>
+    <div class="cmp-summary" style="margin-top:12px"><strong>Most entrenched:</strong> ${top.map(r => `<a data-pcase="${r.c.id}">${esc(r.c.country)}</a> (${r.e})`).join(", ")}. <strong>Least:</strong> ${bottom.map(r => `<a data-pcase="${r.c.id}">${esc(r.c.country)}</a> (${r.e})`).join(", ")}. In the rotten-and-entrenched corner (mean rot 50 or more, reversibility under 50): ${names(corner)}. Clean and removable (mean rot under 50, reversibility 50 or more): ${names(clean)}.${partyRank.length ? ` The hollow rings are the party dossiers at their peak entrenched phase, ranked ${partyRank.map(P => `${esc(P.o.short || P.o.name)} ${entrenched(P.ph)}`).join(", ")} — the same formula.` : ""}</div>
+    <p class="ch-note">Read across the two sets with care: a party dossier scores one organisation in five historical phases, while these score a whole system of exchange, at one moment, in the period shown. Entrenched rot is mean rot × leakage × (1 − reversibility) — my construction.</p>
+    ${table}`;
 }
 
 function patReadingHtml() {

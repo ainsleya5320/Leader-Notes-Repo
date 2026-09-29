@@ -155,6 +155,8 @@ window.OUTCOMES = {
   chiang:         { exit: "died",         succession: "orderly" },
   hueylong:       { exit: "assassinated", succession: "crisis" },
   rjdaley:        { exit: "died",         succession: "crisis" },
+  suharto:        { exit: "deposed",      succession: "orderly" },
+  parkchunghee:   { exit: "assassinated", succession: "crisis" },
   goh:            { exit: "voluntary",    succession: "orderly" },
   kissinger:      { exit: "defeated",     succession: "na" }
 };

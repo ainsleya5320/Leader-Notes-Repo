@@ -1328,3 +1328,15 @@ tr.dc-sec td { background: var(--bg) !important; font: 650 11px var(--font-ui) !
   .pat-quads { grid-template-columns: 1fr; }
   .pat-hero h2 { font-size: 24px; }
 }
+
+.pat-rrow { cursor: pointer; }
+.pat-rrow:hover th.rot-name { color: var(--accent); }
+.pat-rring { cursor: pointer; }
+.pat-rring:hover { stroke-width: 3; }
+.pat-map ~ .cmp-summary a, .cmp-summary a[data-pcase] { color: var(--accent); cursor: pointer; }
+table.pat-rtable th.rot-name { text-align: left; padding-right: 10px; white-space: nowrap; font-weight: 600; }
+table.pat-rtable { min-width: 560px; }
+@media (max-width: 520px) {
+  #pat-toolbar .seg { max-width: 100%; }
+  #pat-toolbar .seg button { padding: 5px 7px; font-size: 12px; }
+}

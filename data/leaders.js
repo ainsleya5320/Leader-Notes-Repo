@@ -762,6 +762,18 @@ window.LEADERS = [
     delegation: "Delegated the precincts to 50 ward committeemen and kept everything else: reviewed appointments and the budget himself, met the aldermen on the fifth floor, and groomed no successor who could hold both offices.",
     tags: ["machine", "bossism", "spoils", "clientelism", "transactional", "micromanage", "coalitionbrokerage"] },
 
+  { id: "suharto", name: "Suharto", years: "in power 1966–1998", title: "President of Indonesia (the New Order)", country: "Indonesia", iso: "360", era: "c20", president: true,
+    style: "The 'Smiling General' — patient, opaque and unemotional; took power from Sukarno in stages between 1965 and 1968 so that no single act looked like a seizure, then governed by keeping every institution dependent on the presidency.",
+    structure: "Three pillars under one chair: an army with officers at every level of government (the 'dual function'), Golkar as an electoral machine that won every election from 1971 to 1997, and a technocratic economic team insulated from politics.",
+    delegation: "Left the economy to the 'Berkeley Mafia' economists and internal security to the army, and kept appointments, rotation and the final word himself; from the 1980s he extended the same latitude to his children's and friends' conglomerates.",
+    tags: ["coercive", "partystate", "clientelism", "bureaucratic", "dividerule", "hubspoke"] },
+
+  { id: "parkchunghee", name: "Park Chung-hee", years: "in power 1961–1979", title: "President of South Korea", country: "South Korea", iso: "410", era: "c20", president: true,
+    style: "Soldier-modernizer — ran development as a military campaign of numerical targets and treated dissent as a threat to the campaign; 'Korean-style democracy' meant a strong presidency first and liberal politics later.",
+    structure: "A junta that turned itself into a civilian presidency: the KCIA and the Presidential Security Service for control, the Economic Planning Board and state-directed credit for the five-year plans, and after the 1972 Yushin constitution an electoral college and a third of the National Assembly filled on his nomination.",
+    delegation: "Left economic detail to technocrats and the chaebol but chaired the monthly export-promotion meetings himself, and kept the KCIA and the Presidential Security Service as rivals — the feud between their two chiefs ended in his death.",
+    tags: ["coercive", "transformational", "bureaucratic", "micromanage", "dividerule", "nationalism"] },
+
   { id: "goh", name: "Goh Chok Tong", years: "PM 1990–2004", title: "PM of Singapore", country: "Singapore", iso: "702", era: "c20", president: false,
     style: "Deliberately consultative — promised a 'kinder, gentler' Singapore and ran national conversations, defining himself against the founder without repudiating him.",
     structure: "Inherited the PAP mandarinate intact and governed as first among equals — in a cabinet that still contained Lee Kuan Yew as Senior Minister.",
@@ -774,3 +786,4 @@ window.LEADERS = [
     delegation: "Ran the openings to Beijing and the Paris talks personally, keeping cabinet colleagues uninformed; delegated implementation, never the channel.",
     tags: ["viziers", "hubspoke", "transactional", "dividerule", "micromanage"] }
 ];
+
