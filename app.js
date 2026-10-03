@@ -2528,6 +2528,51 @@ function openDetail(id) {
 }
 function closeDetail() { /* profiles are pages now, not a drawer — nothing to close */ }
 
+// ---------- essays (long-form pieces from data/essays.js) ----------
+function essaysFor(id) { return (window.ESSAYS && window.ESSAYS[id]) || []; }
+function mdInline(t) {
+  return esc(t).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+}
+function mdToHtml(src) {
+  const lines = String(src || "").split("\n"), out = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (!line.trim()) { i++; continue; }
+    if (line.startsWith("## ")) { out.push(`<h4>${mdInline(line.slice(3))}</h4>`); i++; continue; }
+    if (line.trim().startsWith("|")) {
+      const rows = [];
+      while (i < lines.length && lines[i].trim().startsWith("|")) { rows.push(lines[i].trim()); i++; }
+      const cells = r => r.replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+      const head = cells(rows[0]), bodyRows = rows.slice(1).filter(r => !/^\|[\s\-:|]+\|$/.test(r));
+      out.push(`<div class="es-tablewrap"><table class="es-table"><thead><tr>${head.map(c => `<th>${mdInline(c)}</th>`).join("")}</tr></thead><tbody>${bodyRows.map(r => `<tr>${cells(r).map(c => `<td>${mdInline(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`);
+      continue;
+    }
+    if (/^- /.test(line)) {
+      const items = [];
+      while (i < lines.length && /^- /.test(lines[i])) { items.push(lines[i].slice(2)); i++; }
+      out.push(`<ul>${items.map(x => `<li>${mdInline(x)}</li>`).join("")}</ul>`); continue;
+    }
+    if (/^\d+\. /.test(line)) {
+      const items = [];
+      while (i < lines.length && /^\d+\. /.test(lines[i])) { items.push(lines[i].replace(/^\d+\. /, "")); i++; }
+      out.push(`<ol>${items.map(x => `<li>${mdInline(x)}</li>`).join("")}</ol>`); continue;
+    }
+    const para = [];
+    while (i < lines.length && lines[i].trim() && !/^(## |- |\d+\. |\s*\|)/.test(lines[i])) { para.push(lines[i]); i++; }
+    out.push(`<p>${mdInline(para.join(" "))}</p>`);
+  }
+  return out.join("");
+}
+function essaysHtml(l) {
+  const list = essaysFor(l.id);
+  if (!list.length) return "";
+  return list.map(e => `<details class="es-essay">
+    <summary><span class="es-title">${esc(e.title)}</span>${e.date ? `<span class="es-date">${esc(e.date)}</span>` : ""}${e.dek ? `<span class="es-dek">${esc(e.dek)}</span>` : ""}<span class="es-open">Read essay</span></summary>
+    <div class="es-body">${mdToHtml(e.body)}</div>
+  </details>`).join("");
+}
+
 function renderLeader(id) {
   const l = byId(id);
   if (!l) { location.hash = "#/index"; return; }
@@ -2558,6 +2603,7 @@ function renderLeader(id) {
 
   const main =
     sec("sec-portrait", "Portrait", "Portrait", "", overview) +
+    sec("sec-essays", "Essays", "Essays", `${essaysFor(l.id).length} long-form`, essaysHtml(l)) +
     sec("sec-convergence", "Convergence", "Convergence", "do the five frameworks agree?", convergenceHtml(l)) +
     sec("sec-temperament", "Temperament", "Temperament", `Rubenzer facet profile ${temp ? sourceBadge(temp) : ""}`, temperamentHtml(l)) +
     sec("sec-style", "Style", "Leadership style", sty ? `Simonton's five factors <span class="sm-domain ${sty.domain}">${esc(DOMAIN_LABEL[sty.domain])}</span>` : "", stylesHtml(l)) +
