@@ -5,6 +5,7 @@
 // own "Essays" section on the leader's profile, collapsed by
 // default. `body` is light Markdown: "## " headings, paragraphs,
 // "- " bullets, "1. " numbered lists, pipe tables, **bold**, *italic*.
+// An optional `also: [ids]` shows the essay on those leaders' pages too.
 // ============================================================
 
 window.ESSAYS = {
@@ -137,6 +138,160 @@ The nuance worth keeping is that Caesar was neither a genocidal brute nor an enl
 - Christian Meier, *Caesar* (1982). Excellent on why Rome's political class could not accommodate him.
 - Greg Woolf, *Becoming Roman: The Origins of Provincial Civilization in Gaul* (1998). What happened to the Gallic elites after the conquest.
 - Andrew Riggsby, *Caesar in Gaul and Rome: War in Words* (2006). How the *Commentaries* built Caesar's image and Roman ideas of the barbarian.
+
+Figures and quotations above are from memory of the ancient sources, not freshly checked; treat specific numbers as approximate.`
+    }
+  ],
+
+  augustus: [
+    {
+      title: "Augustus and Caesar: Two Theories of Power",
+      dek: "A companion to the Caesar essay: the same machine of army, money, clients and crowd, wired the opposite way — why one man's rule lasted five years and the other's forty-four.",
+      date: "2026-10-02",
+      also: ["jcaesar"],
+      body: `## The short version
+
+Augustus ran Caesar's machine with the wiring reversed. Both men held power through the same four assets: an army loyal to them personally, a mountain of money, a popular following, and a vast web of clients. Caesar displayed that ownership and governed by personal obligation, which his peers experienced as humiliation. Augustus hid the ownership inside republican forms and converted personal obligation into institutions (salaries, pensions, career ladders, a cult), so that loyalty attached to the position rather than the man.
+
+The result: Caesar had about five years of sole rule and left thirteen years of civil war. Augustus had forty-four years and left a system that survived Tiberius, Caligula, and Nero.
+
+This is a companion to the essay on Caesar's governance of Gaul, and it uses the same idea of power as a balance sheet. The difference is that Caesar kept lending, while Augustus refinanced the whole book into long-dated paper nobody could call.
+
+**Sources.** The main ancient witnesses are Augustus's own *Res Gestae* (his inscribed autobiography, a masterpiece of selective truth), Suetonius's *Life of Augustus*, Cassius Dio books 45–56, Appian on the triumviral years, and the opening of Tacitus's *Annals*, which is the cynic's verdict. As before, numbers are approximate and motives reconstructed.
+
+## The heir who inverted the clemency
+
+Octavian learned from the Ides of March that mercy to surviving enemies is a loan they repay with a knife. So he ran Caesar's sequence backwards: ruthless while winning, merciful only once no one was left who could threaten him.
+
+He started with almost nothing but a name. At eighteen, adopted in Caesar's will, he raised a private army on his own initiative and money (the *Res Gestae* opens by boasting of exactly this illegality). Within eighteen months he had marched on Rome, extorted a consulship, and joined Antony and Lepidus in the Second Triumvirate.
+
+Then came the proscriptions of 43 BC. Appian puts the death list at around 300 senators and 2,000 equestrians; Cicero was among them, and Octavian gave him up to Antony. Suetonius says Octavian resisted the killing at first but, once started, pursued it more relentlessly than his colleagues. After the siege of Perusia in 40 BC, some sources claimed he sacrificed several hundred prisoners at an altar to the deified Caesar on the Ides of March. That story may be hostile invention, but people found it believable.
+
+After Actium and Alexandria (31–30 BC) he had Caesarion, Caesar's son by Cleopatra, killed. Plutarch has an adviser quip that too many Caesars is not a good thing. Only then, with every rival dead or exiled, did the clemency appear, and the *Res Gestae* claims he spared all citizens who asked for pardon.
+
+The contrast with Caesar is exact. Caesar pardoned enemies during the civil war, as a strategy for winning it, and they killed him. Octavian killed enemies during the civil war, and pardoned only those who no longer mattered. Tacitus makes the point sourly: by the time Augustus offered peace, the boldest men had already fallen in battle or the proscriptions.
+
+## The mask: titles, the Senate, and dignitas
+
+Caesar's fatal problem was that he made the Senate watch him be king. Augustus's solution was to own the substance of power while letting the aristocracy keep its forms, offices, and self-respect.
+
+**What Caesar did.** He took the dictatorship for life in early 44 BC, sat on a golden chair, and (Suetonius says) failed to rise when a delegation of senators came to him. Whether or not he wanted the crown Antony offered at the Lupercalia, he let the question be asked in public.
+
+**What Augustus did instead.**
+
+- **The "restoration" of 27 BC.** He formally handed the state back to Senate and people, and was handed back most of it in return, plus the name Augustus ("revered"), a religious honorific rather than a title of office.
+- **The settlement of 23 BC.** He stopped holding the consulship every year, which freed up the top office for nobles who wanted it. In its place he took tribunician power (the people's protector, sacred and inviolable) and an overriding military command, neither of which required a magistracy.
+- **Refusing the dictatorship.** When the people pressed it on him in 22 BC, he publicly declined. He called himself *princeps*, "first citizen."
+- **The key sentence.** Near the end of the *Res Gestae* he claims he surpassed everyone in *auctoritas* (influence, standing) but held no more formal power than his colleagues. It is technically defensible and fundamentally false, which is the whole art.
+
+**Managing dignitas.** Senators got consulships, priesthoods, governorships of the peaceful provinces, and seats at his table. What they lost was the chance at independent military glory: after 19 BC, no one outside the imperial family celebrated a full triumph. Augustus also trimmed the Senate from about 1,000 members to 600, removing many of Caesar's appointees, which flattered the old families even as it reduced the body to his preferred size.
+
+The principle is that a defeated elite can bear losing power far more easily than losing face. Caesar took both; Augustus took only the first.
+
+## Army and money: from personal army to pension fund
+
+This is the biggest structural difference, and the one a financial planner will appreciate most. Caesar's soldiers were loyal because Caesar paid them, led them, and promised them land. Augustus turned that into a defined-benefit plan with a dedicated funding source.
+
+**Caesar's model.** A personal army, raised partly at his own expense, paid from Gallic plunder, held together by his presence and charisma, and owed land at the end. It worked spectacularly and was inherently unstable: the next ambitious general could copy it, which is exactly what Octavian, Antony, and Sextus Pompey did after 44 BC.
+
+**Augustus's model.**
+
+- **Downsize.** After Actium he cut roughly sixty legions to twenty-eight, settling the surplus veterans. The *Res Gestae* claims he paid about 860 million sesterces for Italian land and 260 million for provincial land, rather than confiscating it as the triumvirs had.
+- **Professionalize.** Fixed terms of service (sixteen years from 13 BC, raised to twenty plus five in reserve in AD 5), standard pay, and a cash bonus at discharge instead of land.
+- **Fund it.** In AD 6 he created the *aerarium militare*, a military treasury, seeded with 170 million sesterces of his own money and fed by a 5% inheritance tax and a 1% sales tax. Veterans' pensions now came from a dedicated fund, not a general's promise.
+- **Remove the rivals.** Armies sat in "imperial" provinces governed by his appointed legates. The legions' oaths ran to him. A praetorian guard stood in Italy.
+- **Outsource the glory, to family.** Augustus was a mediocre general and knew it. Agrippa won his battles, then his stepsons Tiberius and Drusus. Triumphs went to the family, and every victory was formally won under his auspices.
+
+The effect was to make a soldier's retirement depend on the system rather than on any one commander's success. No future general could promise more than the treasury already guaranteed, which quietly removed the economic engine of the late Republic's civil wars.
+
+## Provinces and elites: Gaul organized, citizenship rationed
+
+Caesar conquered Gaul and left it as a network of personal clients. Augustus turned it into a province with a census, a tax base, and a ceremonial home for its aristocracy, and he was noticeably stingier than Caesar about making outsiders Roman.
+
+**Gaul, finished.** Augustus formally organized the conquered territory as the Three Gauls (Aquitania, Lugdunensis, Belgica), ran a census from 27 BC to fix tribute on a measured basis, and made Lugdunum (Lyon) the administrative center. In 12 BC his stepson Drusus dedicated an altar to Rome and Augustus there, with an annual council of delegates from some sixty Gallic states. That council is the institutional heir to the assemblies Caesar used to summon. Under Caesar, Gallic nobles competed for his personal favor; under Augustus, they competed for priesthoods in an imperial cult, which bound them to the office rather than the man.
+
+**A salaried administration.** Augustus split provinces between those with armies (governed by his legates, on longer terms) and peaceful ones (governed by senatorial proconsuls). He built out a cadre of equestrian officials, procurators and prefects, who managed revenues and were paid salaries. Egypt became a personal domain under an equestrian prefect, and senators needed permission even to visit. Extortion did not disappear, but governors now answered to a single permanent boss who cared about the long-run tax base.
+
+**Citizenship, rationed.** This is where Augustus most visibly broke with Caesar. Suetonius says he was very sparing with citizenship, and tells a story in which Livia asked it for a Gallic client. Augustus refused, but offered tax exemption instead, saying he would rather lose revenue than cheapen the citizenship. He purged many of Caesar's provincial senators, framed his war against Antony as all Italy swearing loyalty to him, and passed marriage and morals laws aimed at rebuilding the old Italian elite.
+
+The nuance is that integration did not stop; it was slowed and channeled. Provincial elites still rose through army service, the equestrian career, and local cult. Within a few generations Gauls sat in the Senate and Spaniards became emperors. Augustus did not close Caesar's door. He put a ticket booth in front of it.
+
+## Image and information: a book versus an environment
+
+Caesar persuaded Rome with a narrative starring himself. Augustus redesigned the environment so that nearly everything a Roman saw told his story without naming it as such.
+
+**Caesar's medium** was the *Commentaries*: brisk, third-person dispatches that made the conquest feel inevitable and the author indispensable. It was brilliant political journalism, but it was still one man arguing his case, and it invited argument back.
+
+**Augustus's medium** was everything:
+
+- **Portraits.** His official likeness stayed a calm, idealized young man for forty years, on statues and coins across the empire. He never visibly aged.
+- **Buildings.** Suetonius has him boasting that he found Rome a city of brick and left it marble. The Forum of Augustus, the Ara Pacis, temples restored by the dozen; Agrippa built the Pantheon's first version and public baths.
+- **Literature.** Through Maecenas he patronized Virgil, Horace, and others. The *Aeneid* gave Rome a founding epic in which Augustus's family is the destination of history.
+- **War framing.** He fought Antony by declaring war on Cleopatra, recasting a Roman civil war as a foreign one, and publicized Antony's will to make him look captured by Egypt.
+- **The last word.** The *Res Gestae*, posted on bronze at his mausoleum and copied across the provinces, is a ledger of offices declined, money spent, and peace restored, with every rival unnamed.
+
+The tonal difference matters. Caesar's self-presentation was charismatic and a little dangerous: speed, risk, brilliance. Augustus's was reassuring: piety, restoration, peace, old Roman virtue. Caesar invited Romans to admire him. Augustus invited them to feel safe.
+
+## Security and succession
+
+Caesar treated his own safety and his succession as afterthoughts. Augustus treated them as the main project of his reign.
+
+**Personal security.** Caesar dismissed his Spanish bodyguard shortly before the Ides, reportedly preferring to die once than live in fear. Augustus kept a praetorian guard, wore a breastplate under his toga during the 18 BC review of the Senate, and dealt with several real or alleged conspiracies (Murena and Caepio around 23–22 BC, Egnatius Rufus in 19 BC) by trial and execution rather than pardon. He was unsentimental even about family: in 2 BC he exiled his own daughter Julia on charges of adultery that may have covered a political plot.
+
+**Lifestyle as security.** He lived in a modest house on the Palatine, ate plainly, and Suetonius says he wore clothes woven by the women of his household. Caesar's spending advertised power; Augustus's frugality made his power look like service.
+
+**Succession.** Caesar's "plan" was a will naming an eighteen-year-old great-nephew, and the result was civil war. Augustus spent four decades trying to engineer a handover, and kept being thwarted by deaths:
+
+1. **Marcellus**, nephew and son-in-law, died 23 BC.
+2. **Agrippa**, his partner and Julia's second husband, died 12 BC.
+3. **Gaius and Lucius**, Julia's sons by Agrippa, adopted as his own, died AD 4 and AD 2.
+4. **Tiberius**, his stepson and fourth choice, adopted in AD 4 and given shared tribunician power and command.
+
+The method mattered more than the man. By sharing his formal powers with the designated heir while still alive, Augustus made the handover look like continuity rather than coronation. When he died in AD 14, power passed to Tiberius without a battle. That had not happened in Rome for more than sixty years.
+
+## Side by side
+
+| Dimension | Caesar | Augustus |
+| --- | --- | --- |
+| Route to power | Conquest of Gaul, then civil war | Inheritance of a name, then civil war |
+| Sole rule | About 5 years (49–44 BC) | 44 years (30 BC–AD 14) |
+| Title | Dictator for life | *Princeps*; refused the dictatorship |
+| Mercy | Clemency during the civil war, to win it | Proscriptions during, clemency after |
+| Fear | Performed and episodic (Uxellodunum) | Systematized early, then latent |
+| The Senate | Packed with his men; humiliated | Purged to 600; flattered and given offices |
+| Army | Personal, paid from plunder and promises | Professional, funded by a military treasury |
+| Command | Led from the front himself | Outsourced to Agrippa and stepsons |
+| Provinces | Ruled through personal clients | Census, salaried officials, imperial cult |
+| Citizenship | Granted widely, Gauls into the Senate | Rationed; Italy first |
+| Image | The *Commentaries*: brilliance and speed | Total environment: piety, peace, restoration |
+| Lifestyle | Lavish, generous, convivial | Frugal and conspicuously modest |
+| Security | Dismissed his bodyguard | Praetorian guard, armor, executions |
+| Succession | A will | Forty years of engineering |
+| How it ended | Stabbed in the Senate; 13 years of civil war | Died in bed; peaceful handover |
+
+## Verdict: optimizing for winning versus lasting
+
+Caesar optimized for winning, and his toolkit was superb at it: speed, charisma, generosity, and calibrated terror. Its weakness was that it ran on personal obligation, a ledger that had to be serviced continuously by one man and that his equals resented carrying.
+
+Augustus optimized for lasting. He kept the same assets but moved them off his personal books: soldiers paid from a treasury, officials paid salaries, nobles given honors, provincials given a cult, Romans given a story. Tacitus put it cynically and accurately: he won over the soldiers with gifts, the people with grain, and everyone with the sweetness of peace.
+
+Three honest caveats keep this from becoming a morality tale:
+
+- **Augustus learned from Caesar's corpse.** He had a worked example of what not to do. Caesar had no such example.
+- **He inherited a decimated opposition.** The civil wars and proscriptions had removed most of the men who might have resisted him, and he was the one who removed many of them.
+- **Time is a confounder.** Caesar had five years; Augustus had forty-four. Some of what looks like superior design is simply survival long enough to finish. Augustus also completed many of Caesar's projects: the calendar, his Forum, the Senate house, the colonies.
+
+The usable lesson, for anyone who thinks about power, is that Caesar's methods are how you take control and Augustus's are how you keep it. The first is about obligation; the second is about structure. Caesar made people owe him. Augustus made it unnecessary for anyone to choose.
+
+## Further reading
+
+- *Res Gestae Divi Augusti*, best read with Alison Cooley's edition and commentary (2009).
+- Suetonius, *Life of Augustus*; Tacitus, *Annals* 1.1–15; Cassius Dio books 51–56.
+- Ronald Syme, *The Roman Revolution* (1939). Still the great hostile reading: Augustus as a faction boss who won.
+- Adrian Goldsworthy, *Augustus: First Emperor of Rome* (2014). The companion to his Caesar biography, and the best single modern life.
+- Paul Zanker, *The Power of Images in the Age of Augustus* (1988). How the visual program actually worked.
+- Barbara Levick, *Augustus: Image and Substance* (2010). Strong on the gap between the two.
+- Tom Holland, *Rubicon* (2003). A readable bridge from Caesar to Augustus.
 
 Figures and quotations above are from memory of the ancient sources, not freshly checked; treat specific numbers as approximate.`
     }

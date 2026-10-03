@@ -2529,7 +2529,11 @@ function openDetail(id) {
 function closeDetail() { /* profiles are pages now, not a drawer — nothing to close */ }
 
 // ---------- essays (long-form pieces from data/essays.js) ----------
-function essaysFor(id) { return (window.ESSAYS && window.ESSAYS[id]) || []; }
+function essaysFor(id) {
+  const E = window.ESSAYS || {};
+  const shared = Object.keys(E).filter(k => k !== id).flatMap(k => E[k].filter(e => (e.also || []).includes(id)).map(e => Object.assign({ home: k }, e)));
+  return (E[id] || []).concat(shared);
+}
 function mdInline(t) {
   return esc(t).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/\*([^*]+)\*/g, "<em>$1</em>");
 }
@@ -2568,7 +2572,7 @@ function essaysHtml(l) {
   const list = essaysFor(l.id);
   if (!list.length) return "";
   return list.map(e => `<details class="es-essay">
-    <summary><span class="es-title">${esc(e.title)}</span>${e.date ? `<span class="es-date">${esc(e.date)}</span>` : ""}${e.dek ? `<span class="es-dek">${esc(e.dek)}</span>` : ""}<span class="es-open">Read essay</span></summary>
+    <summary><span class="es-title">${esc(e.title)}</span>${e.date ? `<span class="es-date">${esc(e.date)}</span>` : ""}${e.dek ? `<span class="es-dek">${esc(e.dek)}</span>` : ""}${e.home && byId(e.home) ? `<span class="es-from">Filed under ${esc(byId(e.home).name)}</span>` : ""}<span class="es-open">Read essay</span></summary>
     <div class="es-body">${mdToHtml(e.body)}</div>
   </details>`).join("");
 }

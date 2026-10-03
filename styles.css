@@ -1363,3 +1363,4 @@ table.pat-rtable { min-width: 560px; }
 .es-table th, .es-table td { border-bottom: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
 .es-table th { font-weight: 650; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); border-bottom-color: var(--line-strong); }
 @media (max-width: 640px) { .es-body { padding: 4px 14px 16px; } }
+.es-from { grid-column: 1 / -1; font: 400 12px var(--font-ui); color: var(--muted); }
