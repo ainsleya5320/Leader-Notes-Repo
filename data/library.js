@@ -884,5 +884,17 @@ window.LIBRARY = [
     note: "The one-volume distillation of the official biographer's life's work — dense with the documentary record of his days." },
   { id: "alanbrooke-diaries", title: "War Diaries 1939–1945", author: "Field Marshal Lord Alanbrooke (ed. Alex Danchev & Daniel Todman)", year: 2001,
     leaders: ["churchill"], tags: [],
-    note: "The diary of Churchill's chief military adviser, full of admiration and exasperation — the best record of what Churchill's working habits cost the people around him." }
+    note: "The diary of Churchill's chief military adviser, full of admiration and exasperation — the best record of what Churchill's working habits cost the people around him." },
+  { id: "chandler-campaigns", title: "The Campaigns of Napoleon", author: "David G. Chandler", year: 1966,
+    leaders: ["napoleon"], tags: [],
+    note: "The classic military analysis: the system behind the victories — staff, maps, returns, corps — as much as the battles themselves." },
+  { id: "las-cases-memorial", title: "Mémorial de Sainte-Hélène", author: "Emmanuel de Las Cases", year: 1823,
+    leaders: ["napoleon"], tags: [],
+    note: "Napoleon's conversations in exile, recorded by a devoted companion: the founding text of the Napoleonic legend, to be read as his own case for himself." },
+  { id: "bourrienne-memoirs", title: "Memoirs of Napoleon Bonaparte", author: "Louis Antoine Fauvelet de Bourrienne", year: 1829,
+    leaders: ["napoleon"], tags: [],
+    note: "By his schoolfriend and private secretary, later dismissed — a hostile but close-up witness to his working habits, including the debunking of the sleepless-genius story. Partly ghost-written by Villemarest, so use with care." },
+  { id: "van-creveld-command", title: "Command in War", author: "Martin van Creveld", year: 1985,
+    leaders: ["napoleon"], tags: [],
+    note: "How commanders from antiquity to Vietnam have gathered information and controlled their forces; the Napoleon chapter introduces the 'directed telescope'." }
 ];
