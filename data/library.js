@@ -872,5 +872,17 @@ window.LIBRARY = [
     note: "Baker's own account of his years as Secretary of State: German unification, the Gulf War coalition, and the long road to the Madrid conference." },
   { id: "baker-work-hard", title: "Work Hard, Study… and Keep Out of Politics!", author: "James A. Baker III with Steve Fiffer", year: 2006,
     leaders: [], tags: [],
-    note: "The memoir, titled after his grandfather's advice: the Five Ps, the Bush friendship, the Reagan White House and his rules of the trade, in his own voice." }
+    note: "The memoir, titled after his grandfather's advice: the Five Ps, the Bush friendship, the Reagan White House and his rules of the trade, in his own voice." },
+  { id: "churchill-my-early-life", title: "My Early Life: A Roving Commission", author: "Winston S. Churchill", year: 1930,
+    leaders: ["churchill"], tags: [],
+    note: "His account of his first thirty years — school failure, Cuba, the Bangalore reading, the wars and the first campaigns. The best source for how he made himself, in his own voice and to his own advantage." },
+  { id: "churchill-painting", title: "Painting as a Pastime", author: "Winston S. Churchill", year: 1948,
+    leaders: ["churchill"], tags: [],
+    note: "First published as two Strand Magazine essays in 1921–22: why a mind worn out by worry needs a complete change of activity, and how he found his in painting after the Dardanelles." },
+  { id: "gilbert-churchill-life", title: "Churchill: A Life", author: "Martin Gilbert", year: 1991,
+    leaders: ["churchill"], tags: [],
+    note: "The one-volume distillation of the official biographer's life's work — dense with the documentary record of his days." },
+  { id: "alanbrooke-diaries", title: "War Diaries 1939–1945", author: "Field Marshal Lord Alanbrooke (ed. Alex Danchev & Daniel Todman)", year: 2001,
+    leaders: ["churchill"], tags: [],
+    note: "The diary of Churchill's chief military adviser, full of admiration and exasperation — the best record of what Churchill's working habits cost the people around him." }
 ];
