@@ -114,7 +114,8 @@ const state = {
   orgs: { mode: "catalogue", kind: "all", search: "", dcmp: ["pap", "ldp", "umno", "kmt", "golkar"] },
   orgId: null,
   pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null, rotParties: true },
-  prac: { mode: "leader", leader: "lbj", cat: "all" }
+  prac: { mode: "leader", leader: "lbj", cat: "all" },
+  gloss: ""
 };
 
 /* ---------------- leader store (seeded + custom) ---------------- */
@@ -4083,6 +4084,193 @@ function practicesProfileHtml(l) {
 }
 
 /* ================================================================
+   GLOSSARY — hover definitions for terms of art
+   ================================================================ */
+// Gathered at load from every framework file that carries definitions, plus
+// data/glossary.js for the rest. Multi-word or distinctive terms are marked in
+// running text (first use per page); ordinary single words (Graft, Network…) are
+// marked only where they stand alone as a label.
+
+const GL = new Map();   // normalised term -> { key, term, senses: [{ src, def, main, hide }], prose, cs }
+const glNorm = s => String(s).toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
+function glAdd(term, def, src, opts) {
+  opts = opts || {};
+  if (!term || !def) return;
+  [term].concat(opts.aliases || []).flatMap(n => String(n).replace(/\(s\)/g, "").split(/\s+\/\s+/)).forEach(n => {
+    n = n.trim();
+    const k = glNorm(n);
+    if (k.length < 3) return;
+    let e = GL.get(k);
+    if (!e) { e = { key: k, term: n, senses: [], prose: false, cs: !!opts.cs }; GL.set(k, e); }
+    if (!e.senses.some(s => s.def === def)) e.senses.push({ src, def, main: glNorm(term) === k ? null : String(term).trim(), hide: !!opts.hide });
+    if (opts.prose === true || (/[\s-]/.test(n) && opts.prose !== false)) e.prose = true;
+  });
+}
+const PAT_GL_OPTS = {
+  patronage: { prose: false }, clientelism: { prose: true }, brokers: { prose: false }, neopatrimonialism: { prose: true },
+  votebuying: { aliases: ["vote buying", "turnout buying", "abstention buying"] },
+  pork: { aliases: ["pork-barrel"] },
+  capture: { aliases: ["state capture", "wholesale patronage"] }
+};
+function glBuild() {
+  GL.clear();
+  const W = window;
+  (W.RUBENZER_FACETS || []).forEach(f => {
+    glAdd(f.name, f.def, "Rubenzer facet" + (f.neo ? " · " + f.neo : ""));
+    if (f.short) glAdd(f.short, f.def, "Rubenzer facet — " + f.name, { prose: false, hide: true });
+  });
+  (W.SIMONTON_STYLES || []).forEach(s => glAdd(s.name, s.def, "Simonton leadership style"));
+  (W.LTA_TRAITS || []).forEach(t => { glAdd(t.name, t.def, "Hermann trait"); glAdd(t.short, t.def, "Hermann trait — " + t.name, { prose: false, hide: true }); });
+  (W.LTA_STYLES || []).forEach(s => glAdd(s.name, s.def, "Hermann style", { prose: false }));
+  (W.TIME_TYPES || []).forEach(t => glAdd(t.name, (t.posture ? t.posture + ". " : "") + t.def, "Skowronek: political time", { prose: false }));
+  Object.values(W.SVOLIK_SHARING || {}).forEach(s => glAdd(s.name, s.def, "Svolik: power-sharing"));
+  Object.values(W.SVOLIK_ARMY || {}).forEach(s => glAdd(s.name, s.def, "Svolik: the army's role", { prose: false }));
+  (W.OLSON_TYPES || []).forEach(t => glAdd(t.name, t.def, "Olson"));
+  Object.values(W.OLSON_DC || {}).forEach(d => glAdd(d.label, d.def, "Olson: distributional coalitions", { prose: false }));
+  (W.ORG_KINDS || []).forEach(k => glAdd(k.name, k.def, "Organization type", { prose: false }));
+  (W.ROT_TYPES || []).forEach(r => {
+    glAdd(r.name, r.def, "Rot ledger");
+    if (typeof ROT_SHORT !== "undefined" && ROT_SHORT[r.key] && ROT_SHORT[r.key] !== r.name) glAdd(ROT_SHORT[r.key], r.def, "Rot ledger — " + r.name, { prose: false, hide: true });
+  });
+  (W.ROT_AXES || []).forEach(a => glAdd(a.name, a.def, "Rot ledger", a.key === "reversibility" ? { aliases: ["Reversible"] } : {}));
+  (W.ENGINE_KEYS || []).forEach(k => glAdd(k.name, k.def, "Dossier engine"));
+  (W.PAT_CONCEPTS || []).forEach(c => glAdd(c.name, c.def + (c.distinct ? " " + c.distinct : ""), "Patronage", PAT_GL_OPTS[c.key] || {}));
+  if (typeof PAT_AXES !== "undefined") Object.values(PAT_AXES).forEach(a => glAdd(a.name, `0 = ${a.lo}; 100 = ${a.hi}.`, "Patronage placement", { prose: false }));
+  Object.values(W.PRACTICE_GRADES || {}).forEach(g => glAdd(g.name, g.def, "Practices: evidence grade", { prose: false }));
+  (W.PRACTICE_CATS || []).forEach(c => glAdd(c.name, c.q, "Practices category", { prose: false }));
+  (W.TRAIT_SECTIONS || []).forEach(s => s.traits.filter(t => t.def).forEach(t => glAdd(t.name, t.def, "Concept · " + s.title, t.key ? {} : { prose: false })));
+  (W.INSTRUMENTS || []).forEach(i => glAdd(i.name, i.def, "Carrots & sticks · " + ((REG_BY_KEY[i.reg] || {}).label || i.reg), { prose: false }));
+  (W.GLOSSARY_EXTRA || []).forEach(g => glAdd(g.term, g.def, g.src, g));
+  glCompile();
+}
+let GL_RE = null, GL_RE_CS = null;
+function glCompile() {
+  const pat = k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/ /g, "\\s+");
+  const all = [...GL.values()].filter(e => e.prose);
+  const mk = (arr, fl) => arr.length ? new RegExp("(^|[^\\p{L}\\p{N}-])(" + arr.sort((a, b) => b.length - a.length).map(pat).join("|") + ")(?![\\p{L}\\p{N}])", fl) : null;
+  GL_RE = mk(all.filter(e => !e.cs).map(e => e.key), "giu");
+  GL_RE_CS = mk(all.filter(e => e.cs).map(e => e.term), "gu");
+}
+const GL_SKIP_TAGS = /^(SCRIPT|STYLE|TEXTAREA|INPUT|SELECT|OPTION|CODE|PRE|A|LABEL)$/;
+function glSkip(el) {
+  for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
+    if (GL_SKIP_TAGS.test(n.tagName) || n.namespaceURI === "http://www.w3.org/2000/svg" || n.isContentEditable) return true;
+    if (n.classList.contains("gl") || n.classList.contains("gl-off")) return true;
+    if (n.classList.contains("view")) return false;
+  }
+  return false;
+}
+function glSpan(e, text) { const s = document.createElement("span"); s.className = "gl"; s.dataset.gl = e.key; s.tabIndex = 0; s.textContent = text; return s; }
+function glossify(root) {
+  if (!root || !GL.size) return;
+  const used = new Set([...root.querySelectorAll(".gl")].map(g => g.dataset.gl));
+  const labelCount = {};
+  root.querySelectorAll(".gl").forEach(g => { labelCount[g.dataset.gl] = (labelCount[g.dataset.gl] || 0) + 1; });
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.nodeValue.trim().length > 2 && !glSkip(n.parentElement) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const raw = node.nodeValue, t = raw.trim();
+    // a label: the whole text is a term (allowing a trailing count); at most 8 per term per page
+    if (t.length <= 48) {
+      const e = GL.get(glNorm(t.replace(/\s*[\d.,]+\s*%?$/, "").replace(/[\s:·•–—]+$/, "")));
+      if (e) {
+        if ((labelCount[e.key] = (labelCount[e.key] || 0) + 1) > 8) return;
+        const i = raw.indexOf(t); node.replaceWith(raw.slice(0, i), glSpan(e, t), raw.slice(i + t.length)); return;
+      }
+    }
+    if (node.parentElement.closest("button")) return;   // inside controls, only whole-label terms
+    // running text: first use of each distinctive term on the page
+    const hits = [];
+    [GL_RE, GL_RE_CS].forEach(re => {
+      if (!re) return;
+      re.lastIndex = 0;
+      let m;
+      while ((m = re.exec(raw))) { const start = m.index + m[1].length; hits.push({ start, end: start + m[2].length, k: glNorm(m[2]) }); }
+    });
+    if (!hits.length) return;
+    hits.sort((a, b) => a.start - b.start);
+    const frag = document.createDocumentFragment();
+    let pos = 0, any = false;
+    hits.forEach(h => {
+      const e = GL.get(h.k);
+      if (!e || h.start < pos || used.has(h.k)) return;
+      used.add(h.k); any = true;
+      frag.append(raw.slice(pos, h.start), glSpan(e, raw.slice(h.start, h.end)));
+      pos = h.end;
+    });
+    if (!any) return;
+    frag.append(raw.slice(pos));
+    node.replaceWith(frag);
+  });
+}
+function glTipHtml(e) {
+  const senses = e.senses.slice(0, 3);
+  return `<b>${esc(e.term)}</b>` + senses.map(s => `<div class="gl-sense"><span class="gl-src">${esc(s.src)}</span>${esc(s.def)}</div>`).join("") +
+    (e.senses.length > 3 ? `<div class="gl-more">+${e.senses.length - 3} more senses in the Glossary</div>` : "");
+}
+function glShow(el, x, y) {
+  const e = GL.get(el.dataset.gl); if (!e) return;
+  const tip = tipEl(); tip.innerHTML = glTipHtml(e); tip.classList.add("gl-tip"); tip.hidden = false;
+  tip.style.left = Math.max(8, Math.min(x + 14, window.innerWidth - 340)) + "px";
+  const h = tip.offsetHeight; tip.style.top = (y + 18 + h > window.innerHeight ? Math.max(8, y - h - 12) : y + 18) + "px";
+}
+function glHide() { const tip = tipEl(); if (tip.classList.contains("gl-tip")) { tip.hidden = true; tip.classList.remove("gl-tip"); } }
+document.addEventListener("mouseover", ev => { const g = ev.target.closest && ev.target.closest(".gl"); if (g) glShow(g, ev.clientX, ev.clientY); });
+document.addEventListener("mousemove", ev => { const g = ev.target.closest && ev.target.closest(".gl"); if (g) glShow(g, ev.clientX, ev.clientY); });
+document.addEventListener("mouseout", ev => { const g = ev.target.closest && ev.target.closest(".gl"); if (g && !g.contains(ev.relatedTarget)) glHide(); });
+document.addEventListener("focusin", ev => { if (ev.target.classList && ev.target.classList.contains("gl")) { const r = ev.target.getBoundingClientRect(); glShow(ev.target, r.left, r.bottom - 6); } });
+document.addEventListener("focusout", ev => { if (ev.target.classList && ev.target.classList.contains("gl")) glHide(); });
+let glTimer = null, glObs = null;
+function glRun() {
+  const root = document.getElementById("view-" + state.view);
+  if (!root || !glObs) return;
+  glObs.disconnect();
+  try { glossify(root); } finally { glObs.observe($("#stage"), { childList: true, subtree: true }); }
+}
+function glInit() {
+  glBuild();
+  glObs = new MutationObserver(() => { clearTimeout(glTimer); glTimer = setTimeout(glRun, 60); });
+  glObs.observe($("#stage"), { childList: true, subtree: true });
+}
+
+const GL_GROUPS = [
+  ["Temperament & style", ["Rubenzer facet", "Simonton leadership style", "Hermann trait", "Hermann style", "Hermann", "Personality psychology", "Rubenzer & Faschingbauer", "Domain label"]],
+  ["Power & survival", ["Bueno de Mesquita et al.", "Svolik", "Olson", "Goemans, Gleditsch & Chiozza", "Skowronek", "Convergence view"]],
+  ["Organizations & dossiers", ["Organization type", "Rot ledger", "Dossier engine", "Kitschelt & Wilkinson", "This atlas (my construction)", "Robert Michels"]],
+  ["Patronage", ["Patronage", "Patronage placement", "Kanchan Chandra", "Richard Joseph", "Nigerian politics", "Electoral systems", "Mexico", "Japan", "Indonesia", "South Korea", "Argentina", "India", "Singapore", "South Africa"]],
+  ["Concepts", ["Concept", "Max Weber"]],
+  ["Carrots & sticks", ["Carrots & sticks"]],
+  ["Practices", ["Practices", "Practices category", "Lyndon Johnson", "James Baker", "Martin van Creveld"]]
+];
+function glGroup(f) { const g = GL_GROUPS.find(([, fs]) => fs.includes(f)); return g ? g[0] : "Other"; }
+function renderGlossary() {
+  const tb = $("#gloss-toolbar"), body = $("#gloss-body");
+  if (!$("#gloss-search")) {
+    tb.innerHTML = `<input type="search" id="gloss-search" class="tb-search" placeholder="Search terms and definitions…" value="${esc(state.gloss || "")}">`;
+    $("#gloss-search").oninput = e => { state.gloss = e.target.value; renderGlossaryBody(); };
+  }
+  renderGlossaryBody();
+}
+function renderGlossaryBody() {
+  const q = (state.gloss || "").trim().toLowerCase(), body = $("#gloss-body");
+  const rows = [];
+  GL.forEach(e => e.senses.filter(s => !s.main && !s.hide).forEach(s => rows.push({ term: e.term, src: s.src, def: s.def })));
+  const shown = rows.filter(r => !q || (r.term + " " + r.src + " " + r.def).toLowerCase().includes(q));
+  const fam = src => glGroup(src.split(/\s+[·—]\s+|:\s+/)[0]);
+  const groups = {};
+  shown.forEach(r => (groups[fam(r.src)] = groups[fam(r.src)] || []).push(r));
+  const order = GL_GROUPS.map(g => g[0]).concat("Other");
+  const names = Object.keys(groups).sort((a, b) => order.indexOf(a) - order.indexOf(b));
+  body.innerHTML = `<div class="cmp-summary">${shown.length} of ${rows.length} definitions${q ? ` matching “${esc(q)}”` : ""}. Hover any underlined term anywhere in the atlas to see its definition; this page lists them all.</div>
+    <div class="gl-index">${names.map(n => `<a data-gjump="${esc(n)}">${esc(n)} <span>${groups[n].length}</span></a>`).join("")}</div>
+    ${names.map(n => `<section class="gl-group" id="glg-${esc(n).replace(/[^a-z0-9]+/gi, "-")}"><h3 class="pat-h">${esc(n)}</h3><dl class="gl-list">${groups[n].sort((a, b) => a.term.localeCompare(b.term)).map(r => `<dt>${esc(r.term)} <small>${esc(r.src)}</small></dt><dd>${esc(r.def)}</dd>`).join("")}</dl></section>`).join("")}`;
+  body.querySelectorAll("[data-gjump]").forEach(a => a.onclick = () => { const el = document.getElementById("glg-" + a.dataset.gjump.replace(/[^a-z0-9]+/gi, "-")); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); });
+}
+
+/* ================================================================
    JUMP SEARCH — one box for leaders, concepts, books and views
    ================================================================ */
 
@@ -4094,7 +4282,7 @@ const NAV_VIEWS = [
   { v: "time", label: "Political Time", hint: "Skowronek — reconstruction, articulation, preemption, disjunction" },
   { v: "survival", label: "Survival", hint: "Svolik · Bueno de Mesquita · Olson · entry, exit & fate" },
   { v: "patronage", label: "Patronage", hint: "21st-century patronage systems in depth" }, { v: "practices", label: "Practices", hint: "the daily habits behind their success" }, { v: "instruments", label: "Carrots & Sticks", hint: "trust · loyalty · fear · motivation" },
-  { v: "library", label: "Library", hint: "your books" }, { v: "insights", label: "Insights", hint: "your theses" }, { v: "traits", label: "Frameworks", hint: "the concept library" }
+  { v: "library", label: "Library", hint: "your books" }, { v: "insights", label: "Insights", hint: "your theses" }, { v: "traits", label: "Frameworks", hint: "the concept library" }, { v: "glossary", label: "Glossary", hint: "every term of art, defined" }
 ];
 let jumpItems = [], jumpActive = 0;
 function renderJump() {
@@ -4157,7 +4345,7 @@ function onThemeChange() { paintMap(); if (state.view === "patterns") renderPatt
    VIEWS & ROUTING — #/index, #/convergence, #/leader/<id> …
    ================================================================ */
 
-const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "patronage", "practices", "instruments", "library", "insights", "traits", "leader"];
+const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "patronage", "practices", "instruments", "library", "insights", "traits", "glossary", "leader"];
 const FILTERED_VIEWS = ["index", "chronicle", "map"];
 
 function switchView(v) {
@@ -4212,6 +4400,7 @@ function refreshView() {
   else if (v === "library") renderLibrary();
   else if (v === "insights") renderInsights();
   else if (v === "traits") renderTraits();
+  else if (v === "glossary") renderGlossary();
   else if (v === "leader") renderLeader(state.leaderId);
   updateNav();
 }
@@ -4279,6 +4468,7 @@ window.addEventListener("resize", () => {
   resizeT = setTimeout(() => { syncFilterbarHeight(); if (state.view === "chronicle") renderChronicle(); }, 150);
 });
 
+glInit();
 window.addEventListener("hashchange", applyRoute);
 if (!location.hash || location.hash === "#" || location.hash === "#/") history.replaceState(null, "", "#/index");
 applyRoute();

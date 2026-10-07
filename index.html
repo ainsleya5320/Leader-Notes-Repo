@@ -8,7 +8,7 @@
   // set the theme before first paint so there is no flash
   try { var t = localStorage.getItem("atlas-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
 </script>
-<link rel="stylesheet" href="styles.css?v=47">
+<link rel="stylesheet" href="styles.css?v=48">
 </head>
 <body>
 
@@ -68,6 +68,7 @@
       <button class="nav-item" data-view="library"><svg viewBox="0 0 20 20"><path d="M4 4h4v12H4zM9 4h3v12H9zM13.5 4.5l3 .8-2.8 11-3-.8z"/></svg>Library<span class="ni-count" id="nc-library"></span></button>
       <button class="nav-item" data-view="insights"><svg viewBox="0 0 20 20"><path d="M10 3a5 5 0 0 0-3 9v2h6v-2a5 5 0 0 0-3-9zM8 17h4"/></svg>Insights<span class="ni-count" id="nc-insights"></span></button>
       <button class="nav-item" data-view="traits"><svg viewBox="0 0 20 20"><path d="M10 3l7 4-7 4-7-4zM3 11l7 4 7-4"/></svg>Frameworks</button>
+      <button class="nav-item" data-view="glossary"><svg viewBox="0 0 20 20"><path d="M5 3h9a1 1 0 0 1 1 1v13H6a1 1 0 0 1-1-1z"/><path d="M8 7h4M8 10h4"/></svg>Glossary<span class="ni-new">new</span></button>
     </div>
     <div class="nav-foot" id="nav-foot"></div>
   </nav>
@@ -215,6 +216,16 @@
       <div id="prac-body"></div>
     </section>
 
+    <!-- ===== GLOSSARY ===== -->
+    <section class="view" id="view-glossary" hidden>
+      <div class="page-intro gl-off">
+        <h2>Glossary</h2>
+        <p>Every term of art in the atlas, defined in one place &mdash; Hermann&rsquo;s traits, Rubenzer&rsquo;s facets, Skowronek&rsquo;s positions, Svolik&rsquo;s categories, Olson&rsquo;s bandits, the rot ledger, the patronage vocabulary, and the concepts and instruments. Anywhere else in the atlas, a dotted underline means you can hover for the definition.</p>
+      </div>
+      <div id="gloss-toolbar"></div>
+      <div id="gloss-body" class="gl-off"></div>
+    </section>
+
     <!-- ===== CARROTS & STICKS ===== -->
     <section class="view" id="view-instruments" hidden>
       <div class="page-intro">
@@ -310,8 +321,9 @@
 <script src="data/olson.js?v=3"></script>
 <script src="data/organizations.js?v=6"></script>
 <script src="data/org-dossiers.js?v=4"></script>
+  <script src="data/glossary.js?v=2"></script>
   <script src="data/practices.js?v=5"></script>
   <script src="data/patronage.js?v=5"></script>
-<script src="app.js?v=62"></script>
+<script src="app.js?v=65"></script>
 </body>
 </html>
