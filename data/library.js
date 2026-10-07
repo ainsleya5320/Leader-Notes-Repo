@@ -863,5 +863,14 @@ window.LIBRARY = [
     note: "The best reported history of the Clinton presidency: how his habits — the attention, the lateness, the endless consultation — shaped the way the White House worked." },
   { id: "branch-clinton-tapes", title: "The Clinton Tapes: Wrestling History with the President", author: "Taylor Branch", year: 2009,
     leaders: ["clinton"], tags: [],
-    note: "Based on dozens of late-night oral-history sessions Branch recorded with Clinton during his presidency — Clinton thinking aloud about the job as he did it." }
+    note: "Based on dozens of late-night oral-history sessions Branch recorded with Clinton during his presidency — Clinton thinking aloud about the job as he did it." },
+  { id: "baker-glasser-man", title: "The Man Who Ran Washington: The Life and Times of James A. Baker III", author: "Peter Baker & Susan Glasser", year: 2020,
+    leaders: [], tags: [],
+    note: "The definitive biography, with Baker's cooperation but not his control: the method behind 'the man who ran Washington' — preparation, the paper flow, the press — and its harder edges." },
+  { id: "baker-politics-diplomacy", title: "The Politics of Diplomacy: Revolution, War and Peace, 1989–1992", author: "James A. Baker III with Thomas M. DeFrank", year: 1995,
+    leaders: [], tags: [],
+    note: "Baker's own account of his years as Secretary of State: German unification, the Gulf War coalition, and the long road to the Madrid conference." },
+  { id: "baker-work-hard", title: "Work Hard, Study… and Keep Out of Politics!", author: "James A. Baker III with Steve Fiffer", year: 2006,
+    leaders: [], tags: [],
+    note: "The memoir, titled after his grandfather's advice: the Five Ps, the Bush friendship, the Reagan White House and his rules of the trade, in his own voice." }
 ];

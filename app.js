@@ -221,6 +221,7 @@ function initials(name) {
   const w = String(name).replace(/\(.*?\)/g, "").trim().split(/\s+/).filter(Boolean);
   if (!w.length) return "?";
   if (w.length === 1) return w[0].slice(0, 2).toUpperCase();
+  if (w.length > 2 && /^(II|III|IV|Jr\.?|Sr\.?)$/i.test(w[w.length - 1])) w.pop();   // 'James A. Baker III' -> JB, not JI
   return (w[0][0] + w[w.length - 1][0]).toUpperCase();
 }
 function cachedImg(l) {
@@ -3967,6 +3968,12 @@ Source (book, page):
 
 How I would use it:`;
 
+// a practices subject may be outside the leader index (an operator, not a principal)
+function pracPerson(id) {
+  const l = byId(id); if (l) return l;
+  const P = PRACTICES[id]; if (!P || !P.person) return null;
+  return Object.assign({ id, ext: true }, P.person);
+}
 function openPractices(leader, pid) {
   if (leader && PRACTICES[leader]) { state.prac.leader = leader; state.prac.mode = "leader"; }
   state.prac.focus = pid || null;
@@ -3995,9 +4002,9 @@ function pracCard(p) {
 
 function renderPractices() {
   const S = state.prac, tb = $("#prac-toolbar"), body = $("#prac-body");
-  const ids = Object.keys(PRACTICES).filter(id => byId(id));
+  const ids = Object.keys(PRACTICES).filter(id => pracPerson(id));
   if (!PRACTICES[S.leader]) S.leader = ids[0];
-  tb.innerHTML = `<div class="seg">${ids.map(id => `<button data-prl="${id}" class="${S.mode === "leader" && S.leader === id ? "on" : ""}">${esc(shortName(byId(id)))}</button>`).join("")}<button data-prm="compare" class="${S.mode === "compare" ? "on" : ""}">Compare</button><button data-prm="template" class="${S.mode === "template" ? "on" : ""}">The template</button></div>`;
+  tb.innerHTML = `<div class="seg">${ids.map(id => `<button data-prl="${id}" class="${S.mode === "leader" && S.leader === id ? "on" : ""}">${esc(shortName(pracPerson(id)))}</button>`).join("")}<button data-prm="compare" class="${S.mode === "compare" ? "on" : ""}">Compare</button><button data-prm="template" class="${S.mode === "template" ? "on" : ""}">The template</button></div>`;
   tb.querySelectorAll("[data-prl]").forEach(b => b.onclick = () => openPractices(b.dataset.prl));
   tb.querySelectorAll("[data-prm]").forEach(b => b.onclick = () => { S.mode = b.dataset.prm; if (location.hash !== "#/practices") location.hash = "#/practices"; else renderPractices(); });
   if (S.mode === "compare") body.innerHTML = pracCompareHtml(ids);
@@ -4021,19 +4028,19 @@ function renderPractices() {
 }
 
 function pracLeaderHtml(id) {
-  const P = PRACTICES[id], l = byId(id), S = state.prac;
+  const P = PRACTICES[id], l = pracPerson(id), S = state.prac;
   const cats = (window.PRACTICE_CATS || []).filter(c => P.practices.some(p => p.cat === c.key));
   const shown = cats.filter(c => S.cat === "all" || S.cat === c.key);
   const books = (P.books || []).map(bookById).filter(Boolean);
   const nSelf = P.practices.filter(p => (p.attrib || []).includes("self")).length;
   return `<header class="pr-hero" style="--era-color:${eraColor(l)}">
-      <div class="pr-hero-who" data-id="${l.id}">${avatarMarkup(l)}<div><b>${esc(l.name)}</b><span>${esc(l.title)} · ${esc(l.years)}</span></div></div>
+      <div class="pr-hero-who" ${l.ext ? "" : `data-id="${l.id}"`}>${avatarMarkup(l)}<div><b>${esc(l.name)}</b><span>${esc(l.title)} · ${esc(l.years)}${l.ext ? " · not in the leader index" : ""}</span></div></div>
       <p class="pr-one">${esc(P.oneLine)}</p>
       <div class="pr-stats"><span><b>${P.practices.length}</b> practices</span><span><b>${nSelf}</b> that he credited himself</span><span><b>${P.practices.filter(p => p.grade === "documented").length}</b> documented</span></div>
     </header>
     <div class="pr-top-grid">
       <div class="pr-panel"><h5>In his own words</h5>${P.ownWords.map(q => q.para ? `<p class="pr-para"><span class="pr-tag">Paraphrase</span>${esc(q.text)}<cite>${esc(q.src)}</cite></p>` : `<blockquote class="pr-quote">“${esc(q.text)}”<cite>${esc(q.src)}</cite></blockquote>`).join("")}</div>
-      <div class="pr-panel"><h5>Operating rhythm</h5><ol class="pr-rhythm">${P.rhythm.map(r => `<li><span class="t">${esc(r.t)}</span><span class="d">${esc(r.d)}</span></li>`).join("")}</ol><p class="pr-note">${esc(P.rhythmSrc)}</p></div>
+      <div class="pr-panel"><h5>Operating rhythm</h5><ol class="pr-rhythm">${(P.rhythm || []).map(r => `<li><span class="t">${esc(r.t)}</span><span class="d">${esc(r.d)}</span></li>`).join("")}</ol><p class="pr-note">${esc(P.rhythmSrc)}</p></div>
     </div>
     <div class="cv-pills pr-cats"><span class="lab">Show</span><button class="chip ${S.cat === "all" ? "on" : ""}" data-prcat="all">All <span style="opacity:.6">${P.practices.length}</span></button>${cats.map(c => `<button class="chip ${S.cat === c.key ? "on" : ""}" data-prcat="${c.key}">${esc(c.name)} <span style="opacity:.6">${P.practices.filter(p => p.cat === c.key).length}</span></button>`).join("")}</div>
     ${shown.map(c => `<section class="pr-sec"><h3 class="pat-h">${esc(c.name)} <small>${esc(c.q)}</small></h3><div class="pr-grid">${P.practices.filter(p => p.cat === c.key).map(pracCard).join("")}</div></section>`).join("")}
@@ -4043,11 +4050,11 @@ function pracLeaderHtml(id) {
 function pracCompareHtml(ids) {
   const cats = window.PRACTICE_CATS || [];
   const cell = (id, c) => PRACTICES[id].practices.filter(p => p.cat === c.key).map(p => `<button class="pr-chipbtn" data-pjump="${id}:${p.id}" title="${esc(p.what)}">${esc(p.name)}${(p.attrib || []).includes("self") ? ' <span class="pr-self" title="He credited it himself">●</span>' : ""}</button>`).join("") || `<span class="pr-none">—</span>`;
-  return `<div class="cmp-summary">The two worked examples side by side, by category. A filled dot marks a practice the leader credited himself; the rest come from witnesses and biographers. Click any practice to read it.</div>
-    <div class="dc-table-wrap"><table class="xtab pr-table"><thead><tr><th></th>${ids.map(id => `<th><a data-id="${id}">${esc(shortName(byId(id)))}</a></th>`).join("")}</tr></thead><tbody>
+  return `<div class="cmp-summary">The worked examples side by side, by category. A filled dot marks a practice the leader credited himself; the rest come from witnesses and biographers. Click any practice to read it.</div>
+    <div class="dc-table-wrap"><table class="xtab pr-table"><thead><tr><th></th>${ids.map(id => `<th>${byId(id) ? `<a data-id="${id}">${esc(shortName(byId(id)))}</a>` : esc(shortName(pracPerson(id)))}</th>`).join("")}</tr></thead><tbody>
       ${cats.map(c => `<tr><th class="rot-name" title="${esc(c.q)}">${esc(c.name)}</th>${ids.map(id => `<td>${cell(id, c)}</td>`).join("")}</tr>`).join("")}
     </tbody></table></div>
-    <h3 class="pat-h">What the two share <small>my synthesis, not a finding</small></h3>
+    <h3 class="pat-h">What they share <small>my synthesis, not a finding</small></h3>
     <div class="pr-patterns">${(window.PRACTICE_PATTERNS || []).map(p => `<div class="pat-concept"><h4>${esc(p.name)}</h4><p>${esc(p.text)}</p></div>`).join("")}</div>`;
 }
 
