@@ -1364,3 +1364,69 @@ table.pat-rtable { min-width: 560px; }
 .es-table th { font-weight: 650; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); border-bottom-color: var(--line-strong); }
 @media (max-width: 640px) { .es-body { padding: 4px 14px 16px; } }
 .es-from { grid-column: 1 / -1; font: 400 12px var(--font-ui); color: var(--muted); }
+/* ---------------- practices ---------------- */
+#prac-toolbar { margin-bottom: 14px; }
+.pr-hero { border-left: 4px solid var(--era-color, var(--accent)); padding: 2px 0 2px 18px; margin-bottom: 18px; max-width: 900px; }
+.pr-hero-who { display: flex; align-items: center; gap: 10px; cursor: pointer; margin-bottom: 8px; }
+.pr-hero-who b { display: block; font-family: var(--font-display); font-size: 22px; font-weight: 560; }
+.pr-hero-who span { font-size: 12.5px; color: var(--muted); }
+.pr-one { font-family: var(--font-serif); font-size: 16px; line-height: 1.6; max-width: 820px; }
+.pr-stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+.pr-stats b { color: var(--text); }
+.pr-top-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.pr-panel { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
+.pr-panel h5 { font-size: 11px; font-weight: 650; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 9px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pr-quote { font-family: var(--font-serif); font-size: 15px; line-height: 1.55; border-left: 3px solid var(--accent); padding: 2px 0 2px 12px; margin: 0 0 12px; }
+.pr-quote cite { display: block; font: 400 11.5px var(--font-ui); color: var(--muted); margin-top: 5px; font-style: normal; }
+.pr-rhythm { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.pr-rhythm li { display: grid; grid-template-columns: 96px 1fr; gap: 10px; font-size: 13px; line-height: 1.45; }
+.pr-rhythm .t { font-weight: 650; font-variant-numeric: tabular-nums; color: var(--accent); }
+.pr-note { font-size: 11.5px; color: var(--muted); margin-top: 9px; line-height: 1.45; }
+.pr-cats { margin: 4px 0 6px; }
+.pr-sec { margin-bottom: 8px; }
+.pr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.pr-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px 12px; box-shadow: var(--shadow); scroll-margin-top: 16px; display: flex; flex-direction: column; gap: 7px; }
+.pr-card.flash { animation: patflash 1.6s ease-out; }
+.pr-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.pr-top h4 { font-family: var(--font-display); font-size: 17px; font-weight: 560; line-height: 1.25; }
+.pr-stage { font-size: 11.5px; color: var(--muted); }
+.pr-badges { display: flex; flex-wrap: wrap; gap: 5px; }
+.pr-grade, .pr-attrib, .pr-vol { font-size: 10.5px; font-weight: 600; padding: 1px 7px; border-radius: 9px; border: 1px solid var(--line); white-space: nowrap; }
+.pr-grade.documented { color: var(--good); border-color: color-mix(in srgb, var(--good) 45%, transparent); }
+.pr-grade.reported { color: var(--reg-loyalty); border-color: color-mix(in srgb, var(--reg-loyalty) 45%, transparent); }
+.pr-grade.legend { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, transparent); }
+.pr-attrib { color: var(--muted); font-weight: 500; }
+.pr-attrib.self { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); font-weight: 650; }
+.pr-vol { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.pr-what { font-family: var(--font-serif); font-size: 14.5px; line-height: 1.55; }
+.pr-row { display: grid; grid-template-columns: 92px 1fr; gap: 8px; font-size: 13px; line-height: 1.5; }
+.pr-row .k { font-size: 10.5px; font-weight: 650; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.pr-row.cost p { color: var(--bad); }
+.pr-row.try p { color: var(--text); font-weight: 500; }
+.pr-src { font-size: 11px; color: var(--faint); border-top: 1px solid var(--line); padding-top: 6px; margin-top: auto; line-height: 1.45; }
+.pr-table td { vertical-align: top; }
+.pr-table th a { cursor: pointer; }
+.pr-chipbtn { display: block; text-align: left; background: none; border: none; padding: 3px 0; font: inherit; font-size: 13px; color: var(--text); cursor: pointer; }
+.pr-chipbtn:hover { color: var(--accent); }
+.pr-self { color: var(--accent); font-size: 9px; }
+.pr-none { color: var(--faint); }
+.pr-patterns { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.pr-qs { padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5; }
+.pr-fields { display: grid; grid-template-columns: 130px 1fr; gap: 6px 10px; font-size: 13px; line-height: 1.45; }
+.pr-fields dt { font-weight: 600; }
+.pr-fields dd { color: var(--muted); }
+.pr-def { font-size: 13px; color: var(--muted); margin-bottom: 6px; line-height: 1.5; }
+.pr-template { width: 100%; min-height: 300px; font: 12.5px/1.5 ui-monospace, Menlo, Consolas, monospace; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 10px; resize: vertical; }
+.pr-copybtn { font: 600 11px var(--font-ui); text-transform: none; letter-spacing: 0; padding: 3px 10px; border-radius: 7px; border: 1px solid var(--accent); color: var(--accent); background: var(--accent-soft); cursor: pointer; }
+.pr-mini { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px 18px; margin: 10px 0 12px; }
+.pr-mini h5 { font-size: 10.5px; font-weight: 650; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.pr-mini a { display: block; font-size: 13px; cursor: pointer; padding: 1px 0; }
+.pr-mini a:hover { color: var(--accent); }
+@media (max-width: 520px) {
+  .pr-row { grid-template-columns: 1fr; gap: 2px; }
+  .pr-rhythm li { grid-template-columns: 78px 1fr; }
+  .pr-fields { grid-template-columns: 1fr; }
+}
+.pr-para { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin: 0 0 12px; padding-left: 15px; }
+.pr-para cite { display: block; font-size: 11.5px; margin-top: 4px; font-style: normal; }
+.pr-tag { font-size: 10px; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); margin-right: 6px; }

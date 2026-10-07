@@ -113,7 +113,8 @@ const state = {
   surv: { tab: "svolik" },
   orgs: { mode: "catalogue", kind: "all", search: "", dcmp: ["pap", "ldp", "umno", "kmt", "golkar"] },
   orgId: null,
-  pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null, rotParties: true }
+  pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null, rotParties: true },
+  prac: { mode: "leader", leader: "lbj", cat: "all" }
 };
 
 /* ---------------- leader store (seeded + custom) ---------------- */
@@ -2619,6 +2620,7 @@ function renderLeader(id) {
     sec("sec-instruments", "Carrots & sticks", "Carrots &amp; sticks", "the instruments they reached for", instrumentsHtml(l)) +
     sec("sec-people", "People", "Key subordinates &amp; collaborators", "", collabsHtml(l)) +
     sec("sec-orgs", "Organizations", "Organizations &amp; machines", "the apparatus they built, used or fought", orgsHtml(l)) +
+    sec("sec-practices", "Practices", "Practices", "the blocking and tackling — what they actually did every day", practicesProfileHtml(l)) +
     sec("sec-reading", "Reading", "Reading", `${booksForLeader(l.id).length} linked`, readingHtml(l)) +
     sec("sec-notes", "Notes", "My notes", "", notes);
 
@@ -2677,6 +2679,7 @@ function renderLeader(id) {
   body.querySelectorAll(".collab-link, .similar-row, .rl-row").forEach(a => a.onclick = () => openDetail(a.dataset.id));
   body.querySelectorAll("[data-org]").forEach(a => a.onclick = () => openOrg(a.dataset.org));
   body.querySelectorAll("[data-pcase]").forEach(a => a.onclick = () => openPatCase(a.dataset.pcase));
+  body.querySelectorAll("[data-prac]").forEach(a => a.onclick = () => openPractices(a.dataset.prac, a.dataset.pid));
   body.querySelectorAll(".d-insights-list a").forEach(a => a.onclick = () => openInsightEditor(a.dataset.ins));
   body.querySelectorAll(".read-row").forEach(r => r.onclick = ev => {
     if (ev.target.dataset.shelfId) { ev.stopPropagation(); cycleShelf(ev.target.dataset.shelfId); renderLeader(id); return; }
@@ -3944,6 +3947,135 @@ function patReadingHtml() {
 }
 
 /* ================================================================
+   PRACTICES — the blocking and tackling
+   ================================================================ */
+
+const PRACTICES = window.PRACTICES || {};
+const PRAC_CAT = Object.fromEntries((window.PRACTICE_CATS || []).map(c => [c.key, c]));
+const PRAC_TEMPLATE = `## Practice: [short name]
+Leader:
+Category: network | patrons | intelligence | persuasion | preparation | energy & routine | machinery
+Career stage (years):
+
+What they actually did:
+How often / how much (the number, if there is one):
+Why it worked (the link to their success):
+What it cost them, or others:
+Who credits it: they did / witnesses / a biographer
+Evidence grade: documented / reported / legend
+Source (book, page):
+
+How I would use it:`;
+
+function openPractices(leader, pid) {
+  if (leader && PRACTICES[leader]) { state.prac.leader = leader; state.prac.mode = "leader"; }
+  state.prac.focus = pid || null;
+  const h = "#/practices" + (leader ? "/" + encodeURIComponent(leader) : "");
+  if (location.hash !== h) location.hash = h; else renderPractices();
+}
+
+function pracBadges(p) {
+  const g = (window.PRACTICE_GRADES || {})[p.grade] || { name: p.grade, def: "" };
+  return `<span class="pr-grade ${p.grade}" title="${esc(g.def)}">${esc(g.name)}</span>` +
+    (p.attrib || []).map(a => `<span class="pr-attrib ${a}">${esc((window.PRACTICE_ATTRIB || {})[a] || a)}</span>`).join("");
+}
+
+function pracCard(p) {
+  const row = (label, txt, cls) => txt ? `<div class="pr-row ${cls || ""}"><span class="k">${label}</span><p>${esc(txt)}</p></div>` : "";
+  return `<article class="pr-card" id="pr-${p.id}">
+    <div class="pr-top"><h4>${esc(p.name)}</h4><span class="pr-stage">${esc(p.stage)}</span></div>
+    <div class="pr-badges">${pracBadges(p)}${p.volume ? `<span class="pr-vol">${esc(p.volume)}</span>` : ""}</div>
+    <p class="pr-what">${esc(p.what)}</p>
+    ${row("Why it worked", p.mechanism)}
+    ${row("What it cost", p.cost, "cost")}
+    ${row("Try it", p.tryit, "try")}
+    <div class="pr-src">Source: ${esc(p.source)}</div>
+  </article>`;
+}
+
+function renderPractices() {
+  const S = state.prac, tb = $("#prac-toolbar"), body = $("#prac-body");
+  const ids = Object.keys(PRACTICES).filter(id => byId(id));
+  if (!PRACTICES[S.leader]) S.leader = ids[0];
+  tb.innerHTML = `<div class="seg">${ids.map(id => `<button data-prl="${id}" class="${S.mode === "leader" && S.leader === id ? "on" : ""}">${esc(shortName(byId(id)))}</button>`).join("")}<button data-prm="compare" class="${S.mode === "compare" ? "on" : ""}">Compare</button><button data-prm="template" class="${S.mode === "template" ? "on" : ""}">The template</button></div>`;
+  tb.querySelectorAll("[data-prl]").forEach(b => b.onclick = () => openPractices(b.dataset.prl));
+  tb.querySelectorAll("[data-prm]").forEach(b => b.onclick = () => { S.mode = b.dataset.prm; if (location.hash !== "#/practices") location.hash = "#/practices"; else renderPractices(); });
+  if (S.mode === "compare") body.innerHTML = pracCompareHtml(ids);
+  else if (S.mode === "template") body.innerHTML = pracTemplateHtml();
+  else body.innerHTML = pracLeaderHtml(S.leader);
+  body.querySelectorAll("[data-id]").forEach(el => el.onclick = () => openDetail(el.dataset.id));
+  body.querySelectorAll("[data-pjump]").forEach(el => el.onclick = () => { const [lid, pid] = el.dataset.pjump.split(":"); openPractices(lid, pid); });
+  body.querySelectorAll("[data-prcat]").forEach(b => b.onclick = () => { S.cat = b.dataset.prcat; renderPractices(); });
+  body.querySelectorAll(".read-row").forEach(r => r.onclick = ev => {
+    if (ev.target.dataset.shelfId) { ev.stopPropagation(); cycleShelf(ev.target.dataset.shelfId); renderPractices(); return; }
+    openBookEditor(r.dataset.book);
+  });
+  if ($("#pr-copy")) $("#pr-copy").onclick = () => {
+    const t = $("#pr-template"); t.select();
+    (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject()).then(() => { $("#pr-copy").textContent = "Copied"; }, () => { document.execCommand("copy"); $("#pr-copy").textContent = "Copied"; });
+  };
+  if (S.focus) {
+    const el = document.getElementById("pr-" + S.focus); S.focus = null;
+    if (el) { el.classList.add("flash"); requestAnimationFrame(() => el.scrollIntoView({ block: "start" })); }
+  }
+}
+
+function pracLeaderHtml(id) {
+  const P = PRACTICES[id], l = byId(id), S = state.prac;
+  const cats = (window.PRACTICE_CATS || []).filter(c => P.practices.some(p => p.cat === c.key));
+  const shown = cats.filter(c => S.cat === "all" || S.cat === c.key);
+  const books = (P.books || []).map(bookById).filter(Boolean);
+  const nSelf = P.practices.filter(p => (p.attrib || []).includes("self")).length;
+  return `<header class="pr-hero" style="--era-color:${eraColor(l)}">
+      <div class="pr-hero-who" data-id="${l.id}">${avatarMarkup(l)}<div><b>${esc(l.name)}</b><span>${esc(l.title)} · ${esc(l.years)}</span></div></div>
+      <p class="pr-one">${esc(P.oneLine)}</p>
+      <div class="pr-stats"><span><b>${P.practices.length}</b> practices</span><span><b>${nSelf}</b> that he credited himself</span><span><b>${P.practices.filter(p => p.grade === "documented").length}</b> documented</span></div>
+    </header>
+    <div class="pr-top-grid">
+      <div class="pr-panel"><h5>In his own words</h5>${P.ownWords.map(q => q.para ? `<p class="pr-para"><span class="pr-tag">Paraphrase</span>${esc(q.text)}<cite>${esc(q.src)}</cite></p>` : `<blockquote class="pr-quote">“${esc(q.text)}”<cite>${esc(q.src)}</cite></blockquote>`).join("")}</div>
+      <div class="pr-panel"><h5>Operating rhythm</h5><ol class="pr-rhythm">${P.rhythm.map(r => `<li><span class="t">${esc(r.t)}</span><span class="d">${esc(r.d)}</span></li>`).join("")}</ol><p class="pr-note">${esc(P.rhythmSrc)}</p></div>
+    </div>
+    <div class="cv-pills pr-cats"><span class="lab">Show</span><button class="chip ${S.cat === "all" ? "on" : ""}" data-prcat="all">All <span style="opacity:.6">${P.practices.length}</span></button>${cats.map(c => `<button class="chip ${S.cat === c.key ? "on" : ""}" data-prcat="${c.key}">${esc(c.name)} <span style="opacity:.6">${P.practices.filter(p => p.cat === c.key).length}</span></button>`).join("")}</div>
+    ${shown.map(c => `<section class="pr-sec"><h3 class="pat-h">${esc(c.name)} <small>${esc(c.q)}</small></h3><div class="pr-grid">${P.practices.filter(p => p.cat === c.key).map(pracCard).join("")}</div></section>`).join("")}
+    ${books.length ? `<h3 class="pat-h">Sources</h3><div class="read-list">${books.map(b => `<div class="read-row" data-book="${b.id}"><div class="rr-top"><span class="rr-title">${esc(b.title)}</span><span class="rr-author">${esc(b.author)}${b.year ? ", " + b.year : ""}</span><span class="rr-shelf">${shelfBadge(b)}</span></div>${b.note ? `<div class="rr-note">${esc(b.note)}</div>` : ""}</div>`).join("")}</div>` : ""}`;
+}
+
+function pracCompareHtml(ids) {
+  const cats = window.PRACTICE_CATS || [];
+  const cell = (id, c) => PRACTICES[id].practices.filter(p => p.cat === c.key).map(p => `<button class="pr-chipbtn" data-pjump="${id}:${p.id}" title="${esc(p.what)}">${esc(p.name)}${(p.attrib || []).includes("self") ? ' <span class="pr-self" title="He credited it himself">●</span>' : ""}</button>`).join("") || `<span class="pr-none">—</span>`;
+  return `<div class="cmp-summary">The two worked examples side by side, by category. A filled dot marks a practice the leader credited himself; the rest come from witnesses and biographers. Click any practice to read it.</div>
+    <div class="dc-table-wrap"><table class="xtab pr-table"><thead><tr><th></th>${ids.map(id => `<th><a data-id="${id}">${esc(shortName(byId(id)))}</a></th>`).join("")}</tr></thead><tbody>
+      ${cats.map(c => `<tr><th class="rot-name" title="${esc(c.q)}">${esc(c.name)}</th>${ids.map(id => `<td>${cell(id, c)}</td>`).join("")}</tr>`).join("")}
+    </tbody></table></div>
+    <h3 class="pat-h">What the two share <small>my synthesis, not a finding</small></h3>
+    <div class="pr-patterns">${(window.PRACTICE_PATTERNS || []).map(p => `<div class="pat-concept"><h4>${esc(p.name)}</h4><p>${esc(p.text)}</p></div>`).join("")}</div>`;
+}
+
+function pracTemplateHtml() {
+  const G = window.PRACTICE_GRADES || {}, A = window.PRACTICE_ATTRIB || {};
+  const fields = [["What they actually did", "The concrete behaviour, not the trait. 'Called donors' is a habit; 'charismatic' is not."], ["How often / how much", "The number, if there is one: calls a day, cards in the file, hours slept."], ["Career stage", "When it mattered. Many practices belong to the climb and fade once someone has power."], ["Why it worked", "The causal link to their success — my reading or the source's, said plainly."], ["What it cost", "Every practice here had a price: health, sleep, staff, relationships, reputation."], ["Who credits it", "They did, witnesses did, or a biographer infers it. Self-credit is the most quoted and the least neutral."], ["Evidence grade", "How solid the account is (below). Self-help writing about famous people is full of legends."], ["Try it", "The transferable version for someone building a practice today."]];
+  return `<div class="cmp-summary">The template behind every entry, so you can fill it from your own reading — Churchill's rehearsed rhetoric, Ari Emanuel's calls, whoever you are reading next. The seven categories are the questions to ask of any biography.</div>
+    <div class="pr-top-grid">
+      <div class="pr-panel"><h5>Seven questions to ask of any biography</h5><ol class="pr-qs">${(window.PRACTICE_CATS || []).map(c => `<li><b>${esc(c.name)}.</b> ${esc(c.q)}</li>`).join("")}</ol></div>
+      <div class="pr-panel"><h5>Each entry records</h5><dl class="pr-fields">${fields.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></div>
+    </div>
+    <div class="pr-top-grid">
+      <div class="pr-panel"><h5>Evidence grades</h5>${Object.entries(G).map(([k, g]) => `<p class="pr-def"><span class="pr-grade ${k}">${esc(g.name)}</span> ${esc(g.def)}</p>`).join("")}<h5 style="margin-top:12px">Who credits it</h5>${Object.entries(A).map(([k, a]) => `<p class="pr-def"><span class="pr-attrib ${k}">${esc(a)}</span></p>`).join("")}</div>
+      <div class="pr-panel"><h5>Capture template <button class="pr-copybtn" id="pr-copy">Copy</button></h5><textarea id="pr-template" class="pr-template" readonly>${esc(PRAC_TEMPLATE)}</textarea><p class="pr-note">Paste it into your notes while you read; send the filled entries back and they can be added here.</p></div>
+    </div>`;
+}
+
+// the Practices block on a leader profile
+function practicesProfileHtml(l) {
+  const P = PRACTICES[l.id];
+  if (!P) return "";
+  const cats = (window.PRACTICE_CATS || []).filter(c => P.practices.some(p => p.cat === c.key));
+  return `<p class="pr-one" style="margin-top:0">${esc(P.oneLine)}</p>
+    <div class="pr-mini">${cats.map(c => `<div><h5>${esc(c.name)}</h5>${P.practices.filter(p => p.cat === c.key).map(p => `<a data-prac="${l.id}" data-pid="${p.id}">${esc(p.name)}</a>`).join("")}</div>`).join("")}</div>
+    <button class="chip action" data-prac="${l.id}">Open all ${P.practices.length} practices →</button>`;
+}
+
+/* ================================================================
    JUMP SEARCH — one box for leaders, concepts, books and views
    ================================================================ */
 
@@ -3954,7 +4086,7 @@ const NAV_VIEWS = [
   { v: "temperament", label: "Temperament", hint: "Rubenzer · Simonton · Hermann" },
   { v: "time", label: "Political Time", hint: "Skowronek — reconstruction, articulation, preemption, disjunction" },
   { v: "survival", label: "Survival", hint: "Svolik · Bueno de Mesquita · Olson · entry, exit & fate" },
-  { v: "patronage", label: "Patronage", hint: "21st-century patronage systems in depth" }, { v: "instruments", label: "Carrots & Sticks", hint: "trust · loyalty · fear · motivation" },
+  { v: "patronage", label: "Patronage", hint: "21st-century patronage systems in depth" }, { v: "practices", label: "Practices", hint: "the daily habits behind their success" }, { v: "instruments", label: "Carrots & Sticks", hint: "trust · loyalty · fear · motivation" },
   { v: "library", label: "Library", hint: "your books" }, { v: "insights", label: "Insights", hint: "your theses" }, { v: "traits", label: "Frameworks", hint: "the concept library" }
 ];
 let jumpItems = [], jumpActive = 0;
@@ -4018,7 +4150,7 @@ function onThemeChange() { paintMap(); if (state.view === "patterns") renderPatt
    VIEWS & ROUTING — #/index, #/convergence, #/leader/<id> …
    ================================================================ */
 
-const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "patronage", "instruments", "library", "insights", "traits", "leader"];
+const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "patronage", "practices", "instruments", "library", "insights", "traits", "leader"];
 const FILTERED_VIEWS = ["index", "chronicle", "map"];
 
 function switchView(v) {
@@ -4032,6 +4164,7 @@ function applyRoute() {
   const id = raw ? decodeURIComponent(raw) : null;
   if (v === "leader" && id && byId(id)) showView("leader", id);
   else if (v === "org" && id && ORG_BY_ID[id]) showView("org", id);
+  else if (v === "practices") { if (id && (window.PRACTICES || {})[id]) { state.prac.leader = id; state.prac.mode = "leader"; } showView("practices"); }
   else if (v === "patronage") { state.pat.caseId = id && PAT_BY_ID[id] ? id : null; if (state.pat.caseId) state.pat.mode = "cases"; showView("patronage"); }
   else showView(VIEWS.includes(v) && v !== "leader" && v !== "org" ? v : "index");
 }
@@ -4067,6 +4200,7 @@ function refreshView() {
   else if (v === "time") renderTime();
   else if (v === "survival") renderSurvival();
   else if (v === "patronage") renderPatronage();
+  else if (v === "practices") renderPractices();
   else if (v === "instruments") renderInstruments();
   else if (v === "library") renderLibrary();
   else if (v === "insights") renderInsights();
