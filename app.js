@@ -115,7 +115,8 @@ const state = {
   orgId: null,
   pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null, rotParties: true },
   prac: { mode: "leader", leader: "lbj", cat: "all", cmp: ["lbj", "clinton", "churchill", "napoleon", "baker"], bq: "", bcat: "all", bgrade: "all", bself: false, bera: "all" },
-  gloss: ""
+  gloss: "",
+  rhet: { mode: "styles", cmp: ["orator", "fireside", "bypass"], caseStyle: "all", yAxis: "register" }
 };
 
 /* ---------------- leader store (seeded + custom) ---------------- */
@@ -2623,6 +2624,7 @@ function renderLeader(id) {
     sec("sec-people", "People", "Key subordinates &amp; collaborators", "", collabsHtml(l)) +
     sec("sec-orgs", "Organizations", "Organizations &amp; machines", "the apparatus they built, used or fought", orgsHtml(l)) +
     sec("sec-practices", "Practices", "Practices", "the blocking and tackling — what they actually did every day", practicesProfileHtml(l)) +
+    sec("sec-rhetoric", "Rhetoric", "Rhetoric &amp; the press", "style, set pieces and press relations", rhetProfileHtml(l)) +
     sec("sec-reading", "Reading", "Reading", `${booksForLeader(l.id).length} linked`, readingHtml(l)) +
     sec("sec-notes", "Notes", "My notes", "", notes);
 
@@ -2682,6 +2684,7 @@ function renderLeader(id) {
   body.querySelectorAll("[data-org]").forEach(a => a.onclick = () => openOrg(a.dataset.org));
   body.querySelectorAll("[data-pcase]").forEach(a => a.onclick = () => openPatCase(a.dataset.pcase));
   body.querySelectorAll("[data-prac]").forEach(a => a.onclick = () => openPractices(a.dataset.prac, a.dataset.pid));
+  body.querySelectorAll("[data-rhopen]").forEach(a => a.onclick = () => switchView("rhetoric"));
   body.querySelectorAll(".d-insights-list a").forEach(a => a.onclick = () => openInsightEditor(a.dataset.ins));
   body.querySelectorAll(".read-row").forEach(r => r.onclick = ev => {
     if (ev.target.dataset.shelfId) { ev.stopPropagation(); cycleShelf(ev.target.dataset.shelfId); renderLeader(id); return; }
@@ -2765,7 +2768,7 @@ function ltaBars(r) {
 }
 // a compact label that still identifies the person: "Henry VIII", "Peter", "Bismarck"
 const TAG_NAMES = { fdr: "FDR", troosevelt: "T. Roosevelt", jfk: "JFK", lbj: "LBJ", ghwbush: "Bush 41", gwbush: "Bush 43",
-  hannibal: "Hannibal", harun: "Harun" };
+  hannibal: "Hannibal", harun: "Harun", degaulle: "de Gaulle", lula: "Lula", leekuanyew: "Lee Kuan Yew", mandela: "Mandela", meiji: "Meiji" };
 function tagName(l) {
   if (TAG_NAMES[l.id]) return TAG_NAMES[l.id];
   const n = shortName(l);
@@ -4197,6 +4200,9 @@ function glBuild() {
   (W.PRACTICE_CATS || []).forEach(c => glAdd(c.name, c.q, "Practices category", { prose: false }));
   (W.TRAIT_SECTIONS || []).forEach(s => s.traits.filter(t => t.def).forEach(t => glAdd(t.name, t.def, "Concept · " + s.title, t.key ? {} : { prose: false })));
   (W.INSTRUMENTS || []).forEach(i => glAdd(i.name, i.def, "Carrots & sticks · " + ((REG_BY_KEY[i.reg] || {}).label || i.reg), { prose: false }));
+  const RH_PROSE = { anaphora: 1, epistrophe: 1, tricolon: 1, antithesis: 1, chiasmus: 1, kairos: 1, ethos: 1, pathos: 1, soundbite: 1 };
+  (W.RHET_TOOLKIT || []).forEach(g => g.terms.forEach(t => glAdd(t.term, t.def, "Rhetoric · " + g.group, /\s|-/.test(t.term) ? {} : { prose: !!RH_PROSE[t.term.toLowerCase()] })));
+  (W.RHET_STYLES || []).forEach(s => glAdd(s.name, s.def, "Communication style", { prose: false }));
   (W.GLOSSARY_EXTRA || []).forEach(g => glAdd(g.term, g.def, g.src, g));
   glCompile();
 }
@@ -4300,7 +4306,8 @@ const GL_GROUPS = [
   ["Patronage", ["Patronage", "Patronage placement", "Kanchan Chandra", "Richard Joseph", "Nigerian politics", "Electoral systems", "Mexico", "Japan", "Indonesia", "South Korea", "Argentina", "India", "Singapore", "South Africa"]],
   ["Concepts", ["Concept", "Max Weber"]],
   ["Carrots & sticks", ["Carrots & sticks"]],
-  ["Practices", ["Practices", "Practices category", "Lyndon Johnson", "James Baker", "Martin van Creveld"]]
+  ["Practices", ["Practices", "Practices category", "Lyndon Johnson", "James Baker", "Martin van Creveld"]],
+  ["Rhetoric & propaganda", ["Rhetoric", "Communication style"]]
 ];
 function glGroup(f) { const g = GL_GROUPS.find(([, fs]) => fs.includes(f)); return g ? g[0] : "Other"; }
 function renderGlossary() {
@@ -4328,6 +4335,160 @@ function renderGlossaryBody() {
 }
 
 /* ================================================================
+   RHETORIC — communication, propaganda and the press
+   ================================================================ */
+
+const RHET_STYLE = Object.fromEntries((window.RHET_STYLES || []).map(s => [s.key, s]));
+function rhetChip(id) { const l = byId(id); return l ? `<span class="pt-chip" data-id="${id}" style="--c:${eraColor(l)}">${esc(shortName(l))}</span>` : ""; }
+function rhetStyleBadge(key) { const s = RHET_STYLE[key]; return s ? `<span class="rh-badge" style="--c:${s.color}">${esc(s.name)}</span>` : ""; }
+// persuasion practices of a style's exemplars, from the Practices layer
+function rhetPractices(ids, n) {
+  return ids.flatMap(id => ((PRACTICES[id] || {}).practices || []).filter(p => p.cat === "persuasion").map(p => ({ id, p }))).slice(0, n || 4);
+}
+
+function renderRhetoric() {
+  const S = state.rhet, tb = $("#rhet-toolbar"), body = $("#rhet-body");
+  const modes = [["styles", "Styles"], ["compare", "Compare styles"], ["map", "Map"], ["cases", "Set pieces"], ["press", "The press"], ["channels", "Channels"], ["toolkit", "Toolkit"], ["reading", "Reading"]];
+  tb.innerHTML = `<div class="seg">${modes.map(([k, l]) => `<button data-rhm="${k}" class="${S.mode === k ? "on" : ""}">${l}</button>`).join("")}</div>`;
+  tb.querySelectorAll("[data-rhm]").forEach(b => b.onclick = () => { S.mode = b.dataset.rhm; renderRhetoric(); });
+  body.innerHTML = S.mode === "compare" ? rhetCompareHtml() : S.mode === "map" ? rhetMapHtml() : S.mode === "cases" ? rhetCasesHtml() : S.mode === "press" ? rhetPressHtml() :
+    S.mode === "channels" ? rhetChannelsHtml() : S.mode === "toolkit" ? rhetToolkitHtml() : S.mode === "reading" ? rhetReadingHtml() : rhetStylesHtml();
+  body.querySelectorAll("[data-id]").forEach(el => el.onclick = () => openDetail(el.dataset.id));
+  body.querySelectorAll("[data-pjump]").forEach(el => el.onclick = () => { const [lid, pid] = el.dataset.pjump.split(":"); openPractices(lid, pid); });
+  body.querySelectorAll("[data-rhstyle]").forEach(el => el.onclick = () => { S.caseStyle = el.dataset.rhstyle; S.mode = "cases"; renderRhetoric(); });
+  body.querySelectorAll("[data-rhcs]").forEach(b => b.onclick = () => { S.caseStyle = b.dataset.rhcs; renderRhetoric(); });
+  body.querySelectorAll("[data-rhcmp]").forEach(b => b.onclick = () => { const k = b.dataset.rhcmp; S.cmp = S.cmp.includes(k) ? S.cmp.filter(x => x !== k) : S.cmp.concat(k).slice(-4); renderRhetoric(); });
+  body.querySelectorAll("[data-rhy]").forEach(b => b.onclick = () => { S.yAxis = b.dataset.rhy; renderRhetoric(); });
+  body.querySelectorAll(".read-row").forEach(r => r.onclick = ev => {
+    if (ev.target.dataset.shelfId) { ev.stopPropagation(); cycleShelf(ev.target.dataset.shelfId); renderRhetoric(); return; }
+    openBookEditor(r.dataset.book);
+  });
+  const tip = tipEl();
+  body.querySelectorAll(".rh-pt").forEach(p => {
+    const l = byId(p.dataset.id), m = window.RHET_MAP[p.dataset.id], st = RHET_STYLE[m[3]];
+    p.onmouseenter = () => { tip.innerHTML = `<b>${esc(l.name)}</b><div class="m">${esc(st ? st.name : "")}</div><div class="co">register ${m[0]} · route ${m[1]} · control ${m[2]}</div>`; tip.hidden = false; };
+    p.onmousemove = moveTip;
+    p.onmouseleave = () => { tip.hidden = true; };
+  });
+}
+
+function rhetStylesHtml() {
+  return `<div class="cmp-summary">Ten recognisable ways leaders have communicated. They are not exclusive — Churchill was orator and writer, FDR fireside speaker and press courtier — but most leaders lean on one. Each card says how the style works, its techniques, what it does well, how it fails, and who used it. The exemplars' own persuasion habits link through to Practices.</div>
+    <div class="rh-grid">${(window.RHET_STYLES || []).map(s => {
+      const prs = rhetPractices(s.exemplars, 3);
+      const nCases = (window.RHET_CASES || []).filter(c => c.style === s.key).length;
+      return `<article class="rh-card" style="--c:${s.color}">
+        <h4>${esc(s.name)}</h4>
+        <p class="rh-def">${esc(s.def)}</p>
+        <div class="rh-row"><span class="k">How it works</span><p>${esc(s.mechanism)}</p></div>
+        <div class="rh-row"><span class="k">Techniques</span><ul>${s.techniques.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>
+        <div class="rh-row good"><span class="k">Strengths</span><p>${esc(s.strengths)}</p></div>
+        <div class="rh-row bad"><span class="k">Failure mode</span><p>${esc(s.failure)}</p></div>
+        <div class="pt-chips">${s.exemplars.map(rhetChip).join("")}</div>
+        ${prs.length ? `<div class="rh-prac"><span class="k">Related practices</span>${prs.map(r => `<a data-pjump="${r.id}:${r.p.id}">${esc(shortName(byId(r.id) || pracPerson(r.id)))}: ${esc(r.p.name)}</a>`).join("")}</div>` : ""}
+        ${nCases ? `<button class="chip" data-rhstyle="${s.key}">${nCases} set piece${nCases > 1 ? "s" : ""} →</button>` : ""}
+      </article>`; }).join("")}</div>`;
+}
+
+function rhetCompareHtml() {
+  const S = state.rhet, sel = S.cmp.map(k => RHET_STYLE[k]).filter(Boolean);
+  const rows = [["What it is", s => esc(s.def)], ["How it works", s => esc(s.mechanism)], ["Techniques", s => `<ul>${s.techniques.map(t => `<li>${esc(t)}</li>`).join("")}</ul>`], ["Strengths", s => esc(s.strengths)], ["Failure mode", s => esc(s.failure)],
+    ["Exemplars", s => `<div class="pt-chips">${s.exemplars.map(rhetChip).join("")}</div>`],
+    ["On the map", s => { const pts = Object.entries(window.RHET_MAP).filter(([, m]) => m[3] === s.key); if (!pts.length) return "—"; const avg = i => Math.round(pts.reduce((a, [, m]) => a + m[i], 0) / pts.length); return `register ${avg(0)} · route ${avg(1)} · control ${avg(2)} <span class="rh-note">(mean of ${pts.length})</span>`; }]];
+  return `<div class="cmp-summary">Pick up to four styles to set side by side.</div>
+    <div class="cv-pills">${(window.RHET_STYLES || []).map(s => `<button class="chip ${S.cmp.includes(s.key) ? "on" : ""}" data-rhcmp="${s.key}" style="--era-color:${s.color}"><span class="dot"></span>${esc(s.name)}</button>`).join("")}</div>
+    ${sel.length ? `<div class="dc-table-wrap"><table class="xtab dc-table rh-cmp"><thead><tr><th></th>${sel.map(s => `<th style="color:${s.color}">${esc(s.name)}</th>`).join("")}</tr></thead><tbody>
+      ${rows.map(([label, f]) => `<tr><th class="rot-name">${label}</th>${sel.map(s => `<td>${f(s)}</td>`).join("")}</tr>`).join("")}
+    </tbody></table></div>` : `<p class="pr-none">Choose at least one style.</p>`}`;
+}
+
+function rhetMapHtml() {
+  const S = state.rhet, yk = S.yAxis || "register", yi = yk === "register" ? 0 : 2;
+  const W = 640, H = 440, M = { l: 52, r: 18, t: 22, b: 50 };
+  const x = v => M.l + (W - M.l - M.r) * v / 100, y = v => H - M.b - (H - M.t - M.b) * v / 100;
+  let g = [0, 25, 50, 75, 100].map(v => `<line class="rz-grid" x1="${x(v)}" y1="${M.t}" x2="${x(v)}" y2="${H - M.b}"/><line class="rz-grid" x1="${M.l}" y1="${y(v)}" x2="${W - M.r}" y2="${y(v)}"/><text class="rz-ytick" style="text-anchor:middle" x="${x(v)}" y="${H - M.b + 16}">${v}</text><text class="rz-ytick" x="${M.l - 8}" y="${y(v) + 4}">${v}</text>`).join("");
+  const Q = yk === "register" ? ["ELEVATED, VIA THE PRESS", "ELEVATED, DIRECT", "PLAIN, VIA THE PRESS", "PLAIN, DIRECT"] : ["CONTROLLED, VIA THE PRESS", "CONTROLLED, DIRECT", "OPEN, VIA THE PRESS", "OPEN, DIRECT"];
+  const q = (tx, ty, t, a) => `<text class="sv-quad" x="${tx}" y="${ty}" style="text-anchor:${a}">${t}</text>`;
+  g += q(M.l + 8, M.t + 14, Q[0], "start") + q(W - M.r - 8, M.t + 14, Q[1], "end") + q(M.l + 8, H - M.b - 8, Q[2], "start") + q(W - M.r - 8, H - M.b - 8, Q[3], "end");
+  const entries = Object.entries(window.RHET_MAP).filter(([id]) => byId(id));
+  let dots = "", lab = ""; const placed = [];
+  entries.forEach(([id, m]) => { const st = RHET_STYLE[m[3]]; dots += `<circle class="sv-pt rh-pt" data-id="${id}" cx="${x(m[1])}" cy="${y(m[yi])}" r="6.5" style="fill:${st ? st.color : "var(--accent)"}"/>`; });
+  entries.slice().sort((a, b) => a[1][1] - b[1][1]).forEach(([id, m]) => {
+    const name = tagName(byId(id)), w = name.length * 5.6 + 4, cx = x(m[1]), cy = y(m[yi]);
+    for (const [dx, dy] of [[9, 3.5], [-9 - w, 3.5], [-w / 2, -10], [-w / 2, 17]]) {
+      const b = [cx + dx, cy + dy - 9, cx + dx + w, cy + dy + 2];
+      if (b[0] < M.l - 2 || b[2] > W - 2) continue;
+      if (!placed.some(p => !(b[2] < p[0] || b[0] > p[2] || b[3] < p[1] || b[1] > p[3]))) { placed.push(b); lab += `<text class="sv-lab" x="${cx + dx}" y="${cy + dy}">${esc(name)}</text>`; break; }
+    }
+  });
+  const svg = `<svg class="sv-scatter" viewBox="0 0 ${W} ${H}" width="100%">${g}<text class="rz-ylabel" x="${(M.l + W - M.r) / 2}" y="${H - 10}">Route: through the press → direct to the public</text><text class="rz-ylabel" transform="translate(12,${(M.t + H - M.b) / 2}) rotate(-90)">${yk === "register" ? "Register: plain → elevated" : "Control of information: open → controlled"}</text>${dots}${lab}</svg>`;
+  const quad = (hx, hy) => entries.filter(([, m]) => (m[1] >= 50) === hx && (m[yi] >= 50) === hy).map(([id]) => `<a data-id="${id}">${esc(tagName(byId(id)))}</a>`);
+  const cells = [[false, true, Q[0]], [true, true, Q[1]], [false, false, Q[2]], [true, false, Q[3]]].map(([hx, hy, label]) => { const arr = quad(hx, hy); return `<div class="pat-quad"><b>${label.toLowerCase().replace(/^./, c => c.toUpperCase())}</b> <span>${arr.length}</span><div>${arr.join(", ") || "none"}</div></div>`; }).join("");
+  return `<div class="cmp-summary">Where ${entries.length} leaders sit. Left to right: do they reach the public through journalists, or go direct — by rally, radio, broadcast or social media? Bottom to top: plain speech or elevated oratory — or, switched, how far they controlled what information could circulate. Colour is the main style. <strong>All placements are my estimates</strong>, to organise comparison, not to measure.</div>
+    <div class="seg" style="margin-bottom:10px"><button data-rhy="register" class="${yk === "register" ? "on" : ""}">Route × register</button><button data-rhy="control" class="${yk === "control" ? "on" : ""}">Route × control</button></div>
+    <div class="pat-map">${svg}</div>
+    <div class="rh-legend">${(window.RHET_STYLES || []).map(s => `<span><i style="background:${s.color}"></i>${esc(s.name)}</span>`).join("")}</div>
+    <div class="pat-quads">${cells}</div>`;
+}
+
+function rhetCasesHtml() {
+  const S = state.rhet, all = window.RHET_CASES || [];
+  const shown = all.filter(c => !S.caseStyle || S.caseStyle === "all" || c.style === S.caseStyle);
+  const styles = (window.RHET_STYLES || []).filter(s => all.some(c => c.style === s.key));
+  return `<div class="cmp-summary">Famous speeches and moments, read for technique: what the leader did, what to notice, and what it achieved. Filter by style to compare like with like.</div>
+    <div class="cv-pills"><button class="chip ${!S.caseStyle || S.caseStyle === "all" ? "on" : ""}" data-rhcs="all">All <span style="opacity:.6">${all.length}</span></button>${styles.map(s => `<button class="chip ${S.caseStyle === s.key ? "on" : ""}" data-rhcs="${s.key}" style="--era-color:${s.color}"><span class="dot"></span>${esc(s.name)} <span style="opacity:.6">${all.filter(c => c.style === s.key).length}</span></button>`).join("")}</div>
+    <div class="rh-cases">${shown.map(c => { const l = byId(c.leader); return `<article class="rh-case" style="--c:${(RHET_STYLE[c.style] || {}).color || "var(--accent)"}">
+      <div class="rh-case-top"><div class="rh-who" data-id="${c.leader}">${l ? avatarMarkup(l, "sm") : ""}<b>${esc(l ? shortName(l) : c.leader)}</b></div>${rhetStyleBadge(c.style)}</div>
+      <h4>${esc(c.title)}</h4><div class="rh-meta">${esc(c.date)} · ${esc(c.channel)}</div>
+      ${c.quote ? `<blockquote class="pr-quote">“${esc(c.quote)}”</blockquote>` : ""}
+      <p class="rh-ctx">${esc(c.context)}</p>
+      <div class="rh-row"><span class="k">Technique</span><ul>${c.technique.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>
+      <div class="rh-row"><span class="k">What to notice</span><p>${esc(c.look)}</p></div>
+      <div class="rh-row"><span class="k">Effect</span><p>${esc(c.effect)}</p></div>
+    </article>`; }).join("")}</div>`;
+}
+
+function rhetPressHtml() {
+  const models = window.RHET_PRESS || [];
+  return `<div class="cmp-summary">Six ways leaders have handled the press, from courting it to owning it. Most leaders mix several; the cases show each model at its clearest. The spectrum runs from the most open relationship to the most controlled.</div>
+    <div class="rh-spectrum">${models.map((m, i) => `<span style="--i:${i}">${esc(m.name)}</span>`).join("")}</div>
+    <div class="rh-press">${models.map(m => `<section class="rh-model"><h4>${esc(m.name)}</h4><p class="rh-def">${esc(m.def)}</p>
+      ${m.cases.map(c => { const l = byId(c.id); return `<div class="rh-pcase"><div class="rh-who" data-id="${c.id}">${l ? avatarMarkup(l, "sm") : ""}<b>${esc(l ? shortName(l) : c.id)}</b><span class="rh-meta">${esc(c.when)}</span></div><p>${esc(c.how)}</p></div>`; }).join("")}
+    </section>`).join("")}</div>`;
+}
+
+function rhetChannelsHtml() {
+  return `<div class="cmp-summary">Each new medium changed what worked — and the leaders who mastered it first gained an edge over rivals still working the old way.</div>
+    <div class="rh-channels">${(window.RHET_CHANNELS || []).map(c => `<section class="rh-channel"><div class="rh-meta">${esc(c.years)}</div><h4>${esc(c.name)}</h4><p class="rh-def">${esc(c.def)}</p><div class="rh-row"><span class="k">What changed</span><p>${esc(c.shift)}</p></div>
+      ${c.cases.map(x => { const l = byId(x.id); return `<div class="rh-pcase"><div class="rh-who" data-id="${x.id}">${l ? avatarMarkup(l, "sm") : ""}<b>${esc(l ? shortName(l) : x.id)}</b></div><p>${esc(x.how)}</p></div>`; }).join("")}
+    </section>`).join("")}</div>`;
+}
+
+function rhetToolkitHtml() {
+  return `<div class="cmp-summary">The vocabulary for describing what you see: Aristotle's appeals and the classical canons, the figures that make lines memorable, how applause and soundbites are built, the 1937 propaganda devices, and the modern theory of propaganda and the press. These terms also have hover definitions wherever they appear in the atlas.</div>
+    ${(window.RHET_TOOLKIT || []).map(g => `<section class="gl-group"><h3 class="pat-h">${esc(g.group)}</h3><p class="rh-intro">${esc(g.intro)}</p><dl class="gl-list gl-off">${g.terms.map(t => `<dt>${esc(t.term)}</dt><dd>${esc(t.def)}</dd>`).join("")}</dl></section>`).join("")}`;
+}
+
+function rhetReadingHtml() {
+  const books = (window.RHET_BOOKS || []).map(bookById).filter(Boolean);
+  return `<div class="cmp-summary">Where to start: Leith for a lively tour of rhetoric, Atkinson for how political speeches actually win applause, Wills for one speech read closely; then Lippmann, Bernays and Ellul on propaganda, Kershaw and Pomerantsev on two propaganda states, and Tulis and Kernell on presidents and the public.</div>
+    <div class="read-list">${books.map(b => `<div class="read-row" data-book="${b.id}"><div class="rr-top"><span class="rr-title">${esc(b.title)}</span><span class="rr-author">${esc(b.author)}${b.year ? ", " + (b.year < 0 ? -b.year + " BC" : b.year) : ""}</span><span class="rr-shelf">${shelfBadge(b)}</span></div>${b.note ? `<div class="rr-note">${esc(b.note)}</div>` : ""}</div>`).join("")}</div>`;
+}
+
+// the Rhetoric block on a leader profile
+function rhetProfileHtml(l) {
+  const m = (window.RHET_MAP || {})[l.id];
+  const cases = (window.RHET_CASES || []).filter(c => c.leader === l.id);
+  const press = (window.RHET_PRESS || []).flatMap(p => p.cases.filter(c => c.id === l.id).map(c => ({ p, c })));
+  if (!m && !cases.length && !press.length) return "";
+  const st = m ? RHET_STYLE[m[3]] : null;
+  return `${st ? `<p class="pr-one" style="margin-top:0">Main style: ${rhetStyleBadge(st.key)} — ${esc(st.def)}</p><p class="rh-note">Placement (my estimate): register ${m[0]} · route ${m[1]} · control ${m[2]}.</p>` : ""}
+    ${cases.map(c => `<div class="rh-pcase"><b>${esc(c.title)}</b> <span class="rh-meta">${esc(c.date)}</span><p>${esc(c.look)}</p></div>`).join("")}
+    ${press.map(({ p, c }) => `<div class="rh-pcase"><b>Press: ${esc(p.name)}</b> <span class="rh-meta">${esc(c.when)}</span><p>${esc(c.how)}</p></div>`).join("")}
+    <button class="chip action" data-rhopen="1">Open Rhetoric →</button>`;
+}
+
+/* ================================================================
    JUMP SEARCH — one box for leaders, concepts, books and views
    ================================================================ */
 
@@ -4338,7 +4499,7 @@ const NAV_VIEWS = [
   { v: "temperament", label: "Temperament", hint: "Rubenzer · Simonton · Hermann" },
   { v: "time", label: "Political Time", hint: "Skowronek — reconstruction, articulation, preemption, disjunction" },
   { v: "survival", label: "Survival", hint: "Svolik · Bueno de Mesquita · Olson · entry, exit & fate" },
-  { v: "patronage", label: "Patronage", hint: "21st-century patronage systems in depth" }, { v: "practices", label: "Practices", hint: "the daily habits behind their success" }, { v: "instruments", label: "Carrots & Sticks", hint: "trust · loyalty · fear · motivation" },
+  { v: "patronage", label: "Patronage", hint: "21st-century patronage systems in depth" }, { v: "practices", label: "Practices", hint: "the daily habits behind their success" }, { v: "rhetoric", label: "Rhetoric", hint: "communication, propaganda and the press" }, { v: "instruments", label: "Carrots & Sticks", hint: "trust · loyalty · fear · motivation" },
   { v: "library", label: "Library", hint: "your books" }, { v: "insights", label: "Insights", hint: "your theses" }, { v: "traits", label: "Frameworks", hint: "the concept library" }, { v: "glossary", label: "Glossary", hint: "every term of art, defined" }
 ];
 let jumpItems = [], jumpActive = 0;
@@ -4402,7 +4563,7 @@ function onThemeChange() { paintMap(); if (state.view === "patterns") renderPatt
    VIEWS & ROUTING — #/index, #/convergence, #/leader/<id> …
    ================================================================ */
 
-const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "patronage", "practices", "instruments", "library", "insights", "traits", "glossary", "leader"];
+const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "patronage", "practices", "rhetoric", "instruments", "library", "insights", "traits", "glossary", "leader"];
 const FILTERED_VIEWS = ["index", "chronicle", "map"];
 
 function switchView(v) {
@@ -4453,6 +4614,7 @@ function refreshView() {
   else if (v === "survival") renderSurvival();
   else if (v === "patronage") renderPatronage();
   else if (v === "practices") renderPractices();
+  else if (v === "rhetoric") renderRhetoric();
   else if (v === "instruments") renderInstruments();
   else if (v === "library") renderLibrary();
   else if (v === "insights") renderInsights();

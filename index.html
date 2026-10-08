@@ -8,7 +8,7 @@
   // set the theme before first paint so there is no flash
   try { var t = localStorage.getItem("atlas-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
 </script>
-<link rel="stylesheet" href="styles.css?v=49">
+<link rel="stylesheet" href="styles.css?v=50">
 </head>
 <body>
 
@@ -61,6 +61,7 @@
       <button class="nav-item" data-view="survival"><svg viewBox="0 0 20 20"><path d="M10 3l6 2.5v4.5c0 3.5-2.6 6-6 7-3.4-1-6-3.5-6-7V5.5z"/></svg>Survival<span class="ni-new">new</span></button>
       <button class="nav-item" data-view="patronage"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="5.5" rx="6" ry="2.3"/><path d="M4 5.5v4.2c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V5.5M4 9.7v4.2c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V9.7"/></svg>Patronage<span class="ni-new">new</span></button>
       <button class="nav-item" data-view="practices"><svg viewBox="0 0 20 20"><rect x="4" y="3" width="12" height="14" rx="1.5"/><path d="M7 7h6M7 10h6M7 13h4"/></svg>Practices<span class="ni-new">new</span></button>
+      <button class="nav-item" data-view="rhetoric"><svg viewBox="0 0 20 20"><path d="M4 8v4h3l5 4V4L7 8z"/><path d="M15 7.5c1 .8 1 4.2 0 5"/></svg>Rhetoric<span class="ni-new">new</span></button>
       <button class="nav-item" data-view="instruments"><svg viewBox="0 0 20 20"><path d="M10 3v14M5 17h10M4 7h12M4 7l-2 5h4zM16 7l-2 5h4z"/></svg>Carrots &amp; Sticks</button>
     </div>
     <div class="nav-group">
@@ -226,6 +227,16 @@
       <div id="gloss-body" class="gl-off"></div>
     </section>
 
+    <!-- ===== RHETORIC ===== -->
+    <section class="view" id="view-rhetoric" hidden>
+      <div class="page-intro">
+        <h2>Rhetoric</h2>
+        <p>How leaders communicate &mdash; the speech, the broadcast, the image, the leak and the lie. This page compares <em>styles</em> rather than people: ten recognisable ways of reaching the public, from the orator and the fireside chat to the bypasser and the controlled information state, with the set pieces that show each at work, six models of handling the press, the media revolutions that changed what worked, and the vocabulary to describe it all. Propaganda is included to be recognised, not admired.</p>
+      </div>
+      <div id="rhet-toolbar"></div>
+      <div id="rhet-body"></div>
+    </section>
+
     <!-- ===== CARROTS & STICKS ===== -->
     <section class="view" id="view-instruments" hidden>
       <div class="page-intro">
@@ -304,7 +315,7 @@
 <script src="data/essays.js?v=2"></script>
 <script src="data/collaborators.js?v=13"></script>
 <script src="data/outcomes.js?v=13"></script>
-<script src="data/library.js?v=30"></script>
+<script src="data/library.js?v=31"></script>
 <script src="data/instruments.js?v=15"></script>
 <script src="data/powerbase.js?v=18"></script>
 <script src="data/powerbase-ancient.js?v=1"></script>
@@ -321,9 +332,10 @@
 <script src="data/olson.js?v=3"></script>
 <script src="data/organizations.js?v=6"></script>
 <script src="data/org-dossiers.js?v=4"></script>
+  <script src="data/rhetoric.js?v=1"></script>
   <script src="data/glossary.js?v=2"></script>
   <script src="data/practices.js?v=6"></script>
   <script src="data/patronage.js?v=5"></script>
-<script src="app.js?v=67"></script>
+<script src="app.js?v=69"></script>
 </body>
 </html>
