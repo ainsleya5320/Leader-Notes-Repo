@@ -178,6 +178,45 @@ Object.assign(window.POWER_BASE, {
     danger: "48 BC, when her brother's regents expelled her, and 31 BC, when her Roman lost.",
     verdict: "When the foreign member of her coalition fell at Actium, so did she."
   },
+  aurelian: {
+    system: "Soldier-emperorship — the frontier armies as the selectorate and their officers as both the winning coalition and the pool of challengers",
+    w_scale: 1, sizes: { n: 400000, s: 3000, w: 50 },
+    n: { who: "The soldiers under arms, whose acclamation made emperors, with the Senate's formal recognition as an afterthought. After 212 every free inhabitant was a citizen, and none of them counted.", size: "~400,000 soldiers" },
+    s: { who: "Officers of the field armies and frontier commands: tribunes, prefects, the protectores of the imperial staff, governors with troops.", size: "~3,000" },
+    w: { who: "The Danubian officers at headquarters, the praetorian prefect and the commanders of the mobile cavalry, the circle that had killed Gallienus and made Claudius and Aurelian.", size: "~50" },
+    loyalty: "W/S about 1 in 60, which on paper is a strong loyalty norm. The theory's flaw in this setting is that a challenger could come from W itself and keep the same W. Every officer could become emperor without losing his place in the coalition, so the ruler's monopoly of the essentials' futures, the source of their loyalty, did not exist.",
+    currency: "Pay, donatives and booty for the soldiers, and promotion for the officers. Public goods (walls, bread, a reformed coin) went mainly to Rome, whose people did not matter to his survival.",
+    revenue: "Requisition from the provinces the armies crossed, the treasures of Palmyra and the Gallic Empire, and a debased coinage he tried to repair.",
+    shuffle: "Severity rather than rotation: corrupt officials and officers punished, and the fear that they would be next spread through the circle that mattered.",
+    danger: "Placentia in 271, when the Juthungi beat him in Italy and usurpers rose in his rear, and every month after 274, when there was no external enemy left to unite his officers.",
+    verdict: "Killed in 275 by officers who thought themselves condemned. The theory predicts it: a ruler of a tiny W whose members are all credible replacements survives only as long as they fear him less than they fear each other."
+  },
+  diocletian: {
+    system: "The Tetrarchy — one winning coalition split deliberately into four, each with its own emperor, court and army",
+    w_scale: 2, sizes: { n: 600000, s: 30000, w: 120 },
+    n: { who: "The enlarged army and the new bureaucracy, the people whose acquiescence or acclamation counted. The Senate in Rome was now a municipal ornament.", size: "~500,000 soldiers and ~30,000 officials" },
+    s: { who: "Officers of the field and frontier armies, governors of the hundred provinces, the vicars of the dioceses and the palace staff of four courts.", size: "~30,000" },
+    w: { who: "The four emperors, their praetorian prefects and the senior commanders and household officials of each court.", size: "~100–150" },
+    loyalty: "Lower per court than under Aurelian, because each emperor's essentials were few and drawn from a larger pool. The design's real effect was to remove the usurper's opportunity: an army whose own emperor was already in the camp did not need to make one.",
+    currency: "Regular pay in kind (the annona) and in a reformed coinage; career ladders in a bureaucracy now much larger; and the sacral majesty of the emperor, which made treason sacrilege.",
+    revenue: "The iugatio–capitatio, a surveyed and published tax on land and labour, collected largely in kind.",
+    shuffle: "Built in from the start: Caesars were promoted to Augusti and new Caesars chosen, by merit and adoption rather than birth, on a fixed calendar.",
+    danger: "The revolts of Carausius in Britain (286–96) and Domitianus and Achilleus in Egypt (297–98), and the Persian defeat of 296–97. The deepest danger was structural: the plan had no answer for an army that wanted an emperor's son.",
+    verdict: "Survived twenty-one years and retired, unique among the soldier-emperors. The coalition he had divided into four stayed divided after he left; by 308 there were six claimants."
+  },
+  constantine: {
+    system: "Dynastic monarchy over an enlarged coalition — army, court, senatorial order and, for the first time, the Christian episcopate",
+    w_scale: 2, sizes: { n: 1000000, s: 50000, w: 300 },
+    n: { who: "The army, the expanding senatorial and curial orders, and the Christian clergy and congregations he made into a constituency of the throne.", size: "~1 million" },
+    s: { who: "Officers, senators of Rome and Constantinople, high officials, and some 1,800 bishops.", size: "~50,000" },
+    w: { who: "The imperial family, the praetorian prefects and new magistri of the field army, the graded comites of the consistory, and the bishops closest to the court (Ossius, the two Eusebii).", size: "~300" },
+    loyalty: "Moderate. The Church gave him a second set of essentials whose loyalty ran to the emperor's faith rather than his sword. But the army's loyalty ran to his blood, which is why it killed his half-brothers' line in 337 on behalf of his sons.",
+    currency: "Gold. Donatives and salaries in the new solidus, titles (comes, clarissimus) handed out in thousands, and for the Church, basilicas, grain, tax exemptions and bishops' courts.",
+    revenue: "Diocletian's land tax, new gold levies on traders and senators, and the confiscated treasuries of the temples.",
+    shuffle: "Removed rivals by war and execution, and replaced Diocletian's merit-adoption Caesars with his own sons and nephews.",
+    danger: "312 at the Milvian Bridge, 316 and 324 against Licinius, and 326 inside his own household.",
+    verdict: "Died in power after thirty-one years. Blood succession worked in the sense the army cared about, since the dynasty ruled until 363, at the cost of a massacre and a war between his sons."
+  },
 
   // ---------------- warlords ----------------
   caocao: {

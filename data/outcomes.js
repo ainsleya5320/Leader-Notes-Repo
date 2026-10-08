@@ -38,6 +38,9 @@ window.OUTCOMES = {
   augustus:       { exit: "died",         succession: "orderly" },
   marcusaurelius: { exit: "died",         succession: "orderly" },
   cleopatra:      { exit: "deposed",      succession: "crisis" },
+  aurelian:       { exit: "assassinated", succession: "crisis" },   // the army sent the choice to the Senate; Tacitus lasted months, Florianus weeks
+  diocletian:     { exit: "voluntary",    succession: "crisis" },   // abdicated 305; the Tetrarchy broke into civil war within a year
+  constantine:    { exit: "died",         succession: "crisis" },   // the summer of 337: his half-brothers and nephews massacred, then war between his sons
   // warlords
   caocao:         { exit: "died",         succession: "orderly" },
   attila:         { exit: "died",         succession: "crisis" },

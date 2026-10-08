@@ -142,7 +142,8 @@ window.UNSCOREABLE = {
   nkrumah: "Scoreable in principle from his own writings, but the record is thin on behaviour under stress.",
   goh: "Living, and the record is institutional rather than personal.",
   abe: "Well documented publicly, but Japanese political convention keeps the interior life largely private.",
-  robertbruce: "Barbour's Brus is a verse romance composed two generations later."
+  robertbruce: "Barbour's Brus is a verse romance composed two generations later.",
+  aurelian: "The only connected life is the Historia Augusta's, a late-fourth-century work by one author posing as six, which invents letters, speeches and documents wholesale. What remains — Zosimus, the brief epitomes, coins — records deeds, not temperament. The famous severity is real; the anecdotes that illustrate it mostly are not."
 };
 
 // ============================================================
@@ -234,6 +235,34 @@ window.TEMPERAMENT = {
     notes: {
       int: "Reportedly spoke nine languages and was the first of her dynasty to learn Egyptian; wrote or sponsored technical works. The Roman caricature obscures a formidably educated administrator.",
       nstr: "The staged arrival in the carpet, the barge at Tarsus, the pearl dissolved in vinegar — self-presentation as statecraft, though the anecdotes are Roman and may be invention."
+    }
+  },
+
+  diocletian: {
+    source: "estimate",
+    profile: "An engine with an off-switch — the rarest shape in the index. Very high striving, competence and output directed at building a system rather than a legend, with a guarded, joyless public manner. Then, after twenty years, he stopped, which no comparable profile here did.",
+    contested: "The only intimate witness is Lactantius, a Christian rhetor at his court who wrote after the persecution to show that persecutors die badly. He gives us the timid, superstitious, blame-shifting Diocletian. The panegyrics give us the serene Jovius. The Not-Vulnerable and Tender-Mindedness bands hold that split.",
+    f: { ach: [85, 96], com: [80, 94], act: [78, 92], int: [60, 82], nvul: [45, 82], ass: [68, 88], nstr: [78, 94], pos: [15, 40], ten: [20, 45] },
+    notes: {
+      act: "Around 1,200 of his rescripts, answers to private petitions about dowries, debts and runaway slaves, survive in Justinian's Code, more than for any other emperor. Reconstructions of his movements show a ruler almost constantly on the road between Nicomedia, Sirmium, Antioch and the frontiers.",
+      int: "A systematiser's intellect rather than a speculative one. The Prices Edict prices more than a thousand items, down to a scribe's rate per hundred lines. But he reached for the haruspices and the oracle at Didyma when the decision was hard.",
+      nvul: "Ice-cold in 284–85: he killed Aper in front of the army and won a civil war against a legitimate emperor. Lactantius describes a man who would not move on the Christians without oracles and colleagues to share the blame, and who broke down physically in 304. Hostile, but specific.",
+      nstr: "High. He swore before the army that he had no part in Numerian's death and then killed the one witness who mattered. Lactantius says he did good things alone, to be praised, and bad things in council, so that the blame would be shared.",
+      ach: "The lower bound reflects the abdication, the only real evidence of a striving that knew when to stop. Read against everything else, it may be the most strategic act of the reign rather than a lack of drive."
+    }
+  },
+
+  constantine: {
+    source: "estimate",
+    profile: "Caesar's engine with Augustus's guile and neither man's restraint toward family. Ceiling-level striving and assertiveness, high and convenient candour about his own visions, and a Tender-Mindedness band as wide as any in the file, because his laws and his killings point in opposite directions.",
+    contested: "The record is split between Eusebius, a bishop writing panegyric after the emperor's death, and pagan writers (Zosimus, Julian's satire) who blamed him for everything after. His own letters and laws survive in unusual numbers and are the best guide. They show a man who was sincere, impatient and self-serving at once.",
+    f: { ach: [95, 99], com: [90, 98], act: [85, 96], int: [55, 80], nvul: [72, 92], ass: [93, 99], nstr: [82, 96], pos: [50, 78], ten: [20, 55] },
+    notes: {
+      com: "Invaded Italy in 312 with a fraction of his army against Maxentius's larger forces and the walls of Rome, and won outright. Then he refused to make the customary sacrifice on the Capitol.",
+      int: "Theologically curious, and impatient with theology. In 324 he wrote to Alexander and Arius that their quarrel was trifling and unworthy of serious men. Within a year he was presiding over the council that settled it with the word homoousios, which he was said to have proposed himself.",
+      nstr: "The vision changes with the audience. In 310 a panegyrist has him seeing Apollo in a Gallic shrine. Around 315 Lactantius has a dream and a sign on the shields. After 337 Eusebius has a cross of light seen by the whole army, which he says Constantine swore to on oath. He promised Licinius his life and had him killed within the year.",
+      pos: "A mocker more than a charmer, says the Epitome. Eusebius has him joking with bishops and weeping at sermons. Julian's satire has him chasing luxury. He enjoyed magnificence: the diadem, the jewelled robes, the colossal statue in Rome.",
+      ten: "High end: laws against branding the face of convicts 'made in the likeness of heavenly beauty', public support for parents too poor to raise their children, protection for slaves' families when estates were divided. Low end: Frankish kings fed to beasts at Trier, molten lead poured into the mouths of complicit nurses, and in 326 his own son and probably his wife."
     }
   },
 

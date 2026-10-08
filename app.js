@@ -1457,6 +1457,9 @@ const LEADER_ALIASES = {
   jcaesar: ["Caesar", "Julius Caesar"],
   augustus: ["Octavian", "Augustus"],
   marcusaurelius: ["Marcus Aurelius"],
+  aurelian: ["Aurelian", "Aurelianus", "Restitutor Orbis"],
+  diocletian: ["Diocletian", "Tetrarchy", "Tetrarchs"],
+  constantine: ["Constantine", "Constantine the Great", "Constantine I", "Constantinus"],   // bare "Constantine" overwhelmingly means him on a shelf, as "Napoleon" does
   genghis: ["Genghis", "Chinggis", "Temujin", "Genghis Khan"],
   kublai: ["Kublai", "Khubilai", "Kubla Khan"],
   qinshihuang: ["Qin Shi Huang", "Qin Shihuang", "First Emperor"],

@@ -104,6 +104,24 @@ window.LEADERS = [
     delegation: "Kept diplomacy, finance and self-presentation in her own hands; ministers ran the grain state beneath her.",
     tags: ["charismatic", "court", "transactional"] },
 
+  { id: "aurelian", name: "Aurelian", years: "r. AD 270–275", title: "Roman Emperor ('Restorer of the World')", country: "Italy", iso: "380", era: "ancients", president: false,
+    style: "The drill-sergeant restorer — reunited an empire broken in three in five years of non-stop campaigning, by being harder than every rival and every subordinate.",
+    structure: "A soldier-emperorship run from the saddle: the field army and its Danubian officers were the state, with Rome walled and fed behind them and Sol Invictus above them.",
+    delegation: "Commanded in person on every front and trusted a few proven soldiers (Probus, Marcellinus); ruled his own officers by fear — and a frightened secretary's forged death list killed him.",
+    tags: ["warrior", "coercive", "politicalreligion", "hubspoke"] },
+
+  { id: "diocletian", name: "Diocletian", years: "r. AD 284–305", title: "Roman Emperor (founder of the Tetrarchy)", country: "Turkey", iso: "792", era: "ancients", president: false,
+    style: "The systems engineer of autocracy — replaced the charisma of a lone soldier-emperor with a machine: four emperors, a hundred provinces, a published tax, a sacred court.",
+    structure: "The Tetrarchy: two Augusti and two Caesars, each with a court, a capital, a praetorian prefect and an army; provinces halved and grouped into dioceses; civil and military commands pulled apart.",
+    delegation: "The most radical delegation in Roman history — whole quarters of the empire handed to colleagues bound by adoption and marriage — while he kept seniority and the last word; where the colleague had the stronger will (Galerius on the persecution), he was carried along.",
+    tags: ["bureaucratic", "institutional", "collegial", "spectacle", "coercive"] },
+
+  { id: "constantine", name: "Constantine the Great", years: "r. AD 306–337", title: "Roman Emperor", country: "Turkey", iso: "792", era: "ancients", president: false,
+    style: "Conqueror-convert — won the empire in eighteen years of civil war under a god who granted victory, then bound that god's Church, the army and a new capital to a single dynasty.",
+    structure: "Diocletian's administrative state kept and deepened — praetorian prefects made civilian, a mobile field army under new marshals, a gold currency — with the Tetrarchy's collegial succession replaced by blood.",
+    delegation: "Delegated administration widely (Ablabius, the prefects, bishops as judges) and theology to councils he convened; never delegated power to anyone who could rival him — co-emperor, father-in-law and eldest son all died.",
+    tags: ["transformational", "warrior", "politicalreligion", "mythmaking", "clientelism", "propaganda"] },
+
   // ---------------- WARLORDS ----------------
   { id: "caocao", name: "Cao Cao", years: "155–220", title: "Warlord, Chancellor of Han", country: "China", iso: "156", era: "warlords", president: false,
     style: "Ruthless pragmatist and poet — issued edicts recruiting the talented regardless of virtue or birth.",

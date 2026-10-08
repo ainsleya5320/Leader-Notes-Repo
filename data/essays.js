@@ -295,6 +295,153 @@ The usable lesson, for anyone who thinks about power, is that Caesar's methods a
 
 Figures and quotations above are from memory of the ancient sources, not freshly checked; treat specific numbers as approximate.`
     }
+  ],
+
+  diocletian: [
+    {
+      title: "Force, System, Blood: Three Answers to the Third-Century Crisis",
+      dek: "Aurelian, Diocletian and Constantine inherited the same broken machine, an empire whose armies made and murdered its emperors, and tried three different repairs. What each fixed, what each could not, and why the repair that lasted was the one that cost the most inside the family.",
+      date: "2026-10-08",
+      also: ["aurelian", "constantine"],
+      body: `## The short version
+
+Between 235 and 284 the Roman empire had about twenty recognised emperors and many more usurpers, and most of them died violently. Barbarians, Persians and plague were all real, but the problem underneath them was a selection mechanism. The frontier armies chose emperors, and an army that could make an emperor this year could make another next year. Three men in turn tried to fix it.
+
+**Aurelian (270–275) fixed it by force.** He was harder and faster than every rival, and in five years he reunited an empire that had broken into three. He left the mechanism alone, and it killed him.
+
+**Diocletian (284–305) fixed it by system.** He multiplied emperors so that every army had one, split the state so that no single official could rebel with it, published the tax so the state stopped looting its own provinces, and wrapped the emperor in ceremony so that killing him became sacrilege. It worked for twenty-one years. It came apart within a year of his abdication, because the armies preferred emperors' sons to emperors' choices.
+
+**Constantine (306–337) fixed it by blood and God.** He accepted what the soldiers wanted, a dynasty, and gave it new sacred backing in the Christian Church, which he bought into the state with money and privileges. His dynasty lasted until 363, his capital until 1453, his gold coin for seven centuries and his religion to this day. The price was paid by his family: his father-in-law, his brother-in-law, his eldest son and his wife in his lifetime, and his half-brothers and nephews in the months after his death.
+
+Put crudely, Aurelian was the general who won the war, Diocletian the engineer who designed the peace, and Constantine the politician who made the peace inheritable. Each needed the one before.
+
+**Sources.** All three are badly documented next to Caesar or Augustus. For Aurelian the only connected life is in the *Historia Augusta*, written in the late fourth century by one author posing as six, who invented documents freely. The solid evidence is Zosimus, the brief Latin summaries (Aurelius Victor, Eutropius, the *Epitome de Caesaribus*), coins and inscriptions. For Diocletian the key witness is Lactantius, a Christian rhetor at his court, who wrote *On the Deaths of the Persecutors* to show that persecutors die horribly. For Constantine the problem is the reverse: too much partisan evidence, from Eusebius's adoring *Life* to the pagan hostility of Zosimus and the emperor Julian, together with an unusual number of the emperor's own letters and laws. Numbers below are approximate, and motives are reconstructions.
+
+## The problem they inherited
+
+The third-century crisis is usually told as a list of disasters. In 235 the soldiers murdered Severus Alexander and made Maximinus Thrax emperor. In 260 the Persian king Shapur I captured the emperor Valerian, the only Roman emperor ever taken alive by a foreign enemy. In the same decade the empire split three ways. Postumus ran a breakaway Gallic Empire from the Rhine to Britain and Spain, and Odaenathus of Palmyra, followed by his widow Zenobia, took over the defence of the East and then Egypt. A pandemic, the Plague of Cyprian, ran from about 249 to 262. The silver coin, the antoninianus, fell from about half silver to a few per cent, and prices and requisitions rose with it.
+
+Read through this atlas's frameworks, the list becomes one problem with three faces.
+
+- **The selectorate.** The people who chose emperors were the soldiers under arms, and the people who mattered were a few dozen senior officers. Selectorate theory says a small winning coalition drawn from a large selectorate should be loyal, because each member can be replaced and has no reason to expect a place under a challenger. That logic failed here, because the challenger usually came from inside the coalition. An officer who killed the emperor kept his colleagues' places and his own, and gained the purple. Loyalty to any one ruler bought them nothing the next ruler would not also give.
+- **Svolik's moral hazard.** The army was the regime's only instrument of force, and it knew it. Each crisis made the emperor more dependent on it, and each concession taught the soldiers what they could demand.
+- **Olson's horizon.** An emperor who expected to last eighteen months behaved like an insecure ruler: he debased the coinage, requisitioned and confiscated, and paid the troops now with whatever came to hand. The debasement was rational for each emperor and ruinous for the empire.
+
+The beginnings of a repair came from Gallienus (sole emperor 260–268). He stopped giving army commands to senators and opened the officer career to professionals from the ranks, most of them from the Danube provinces. He built a mobile cavalry force based in northern Italy, and he survived longer than anyone had a right to expect. In 268 his officers killed him. The men in that conspiracy, and the men they promoted, became the next two generations of emperors: Claudius II, Aurelian, Probus, Carus, and in time Diocletian and his colleagues. The atlas files them as an organisation, the Illyrian officer corps, because that is what they functioned as, a cadre that made and unmade rulers.
+
+## Aurelian: restoration by force
+
+Aurelian came out of that cadre. He was of obscure Balkan birth, commanded cavalry under Gallienus and Claudius, and some sources implicate him in the plot of 268. When Claudius died of plague in 270, the Senate recognised Claudius's brother Quintillus, and the Danube army acclaimed Aurelian. Quintillus was dead within weeks.
+
+The next five years were one long campaign:
+
+1. **Italy, 270–271.** The Juthungi crossed the Alps. Aurelian was beaten near Placentia and usurpers rose behind him, but he won at Fano and Pavia and destroyed the invaders. Rome had been badly frightened, and he began the wall of nearly nineteen kilometres that still rings the city. It was finished under Probus.
+2. **Rome, 271.** The mint workers revolted under the finance official Felicissimus, almost certainly to cover their own fraud in a debased coinage. The fighting on the Caelian hill reportedly killed seven thousand of Aurelian's soldiers. Senators were executed afterwards.
+3. **The East, 272–273.** He marched on Zenobia, who held Egypt, Syria and much of Anatolia in her son's name. He spared Tyana, won at Immae and Emesa, besieged Palmyra, and caught Zenobia at the Euphrates as she tried to reach Persia. When Palmyra rose again in 273, he came back and sacked it.
+4. **Gaul, 274.** The Gallic emperor Tetricus was defeated near Châlons. The sources say he had already arranged to abandon his own army. The empire was whole again.
+5. **Rome, 274.** A triumph with two captured rulers walking in it, and coins hailing him as Restitutor Orbis, Restorer of the World.
+
+The restoration was not only military. He reformed the coinage, raising the silver content and marking the new coin so its value was visible. He gave up the province of Dacia north of the Danube and moved its people south of the river, a realistic trade of territory for a shorter line. He replaced the Roman grain dole with daily bread and added pork and oil. He raised Sol Invictus, the Unconquered Sun, to the head of the state cult, with a great temple in Rome paid for from Palmyra's treasure and a new college of senatorial pontiffs. The Sun was a soldier's god, already worshipped across the army, and making him the empire's patron gave a fractured army one divine backer behind one emperor. Some coins call Aurelian himself *deo et domino nato*, born god and lord, and the *Epitome* says he was the first emperor to wear a diadem. That is the beginning of the sacred monarchy Diocletian would complete.
+
+The one problem he did not touch was selection. Aurelian ruled his officers the way he ruled his soldiers, through severity, and every account agrees he was feared. In 275, on the road to a war with Persia, a secretary (Eros in Zosimus, Mnestheus in the *Historia Augusta*) caught in a lie forged a list of officers Aurelian supposedly meant to execute and showed it to the men named. They killed him near Byzantium. In Svolik's terms, the allies struck first because they believed the ruler was about to become unremovable at their expense. The forgery only had to be believable.
+
+What followed is the clearest sign the mechanism was broken. The army, perhaps ashamed, asked the Senate to choose. The elderly senator Tacitus lasted about seven months, Florianus, said to be his half-brother, about three, and Probus six years before his own troops killed him. Aurelian proved the empire could be put back together. He could not show how to keep it together after him.
+
+## Diocletian: restoration by system
+
+Diocletian was another product of the Danubian cadre, born Diocles in Dalmatia, probably the son of a freedman. He commanded the imperial bodyguard when the young emperor Numerian was found dead in his litter in November 284. Acclaimed by the army, he swore he had nothing to do with it and killed the praetorian prefect Aper, the obvious suspect, in front of the troops. In 285 he defeated Numerian's brother Carinus, whose own officers finished Carinus off. Diocletian's reign began exactly as the others had, by acclamation, murder and civil war, and he seems to have understood that it would end the same way unless the rules changed.
+
+**More emperors.** In 285 he made his fellow officer Maximian Caesar, and in 286 Augustus, with the West as his share. In 293 he added two junior emperors, Constantius in the West and Galerius in the East, bound to their seniors by adoption and marriage. The logic was simple and new. Usurpers rose because a threatened frontier needed an emperor on the spot, and an army without one would make its own. With four emperors, each with his own court, capital, praetorian prefect and army, every major front had a legitimate ruler nearby. A usurper now faced four opponents rather than one. The usurpers who did appear (Carausius and Allectus in Britain, Domitianus and Achilleus in Egypt) were all defeated.
+
+**Smaller provinces, split powers.** The provinces were roughly doubled to about a hundred and grouped into a dozen dioceses under vicars. Civil government and military command were increasingly given to different men. No governor now controlled enough troops and money to make a bid, and the bureaucracy grew to fill the new posts.
+
+**A tax you could read.** Before Diocletian the armies were fed largely by requisition, seizing what they needed where they stood. He replaced that with a system: land and labour surveyed into fiscal units (*iugatio–capitatio*), and the rate per unit published every year in the indiction. The prefect of Egypt's edict of 297 explains to taxpayers how to work out what they owe. In Olson's terms, this was the stationary bandit's binding commitment in ancient form, a ruler announcing in advance what he will take. The take was heavy, and Lactantius complains that there were more people receiving taxes than paying them. But it was predictable, and predictability was what the third century had lost.
+
+**Money and prices.** He reformed the coinage again in the 290s. When inflation continued, he issued the Edict on Maximum Prices in 301: legal ceilings, on pain of death, for more than a thousand goods and services, with a preamble that blamed the avarice of merchants. It failed. Goods disappeared from the markets, Lactantius says blood was shed over trifles, and within a few years the edict was ignored. A system can publish a tax. It cannot repeal the effects of its own coinage.
+
+**The sacred emperor.** Diocletian took the name Jovius, from Jupiter, and gave Maximian the name Herculius. Visitors prostrated themselves and kissed the hem of his purple robe (*adoratio*). He appeared rarely and in silk and jewels. This was not vanity. The emperors of the third century had been comrades their soldiers could approach, and comrades could be killed. Distance was a security measure.
+
+**Law.** Two private collections of imperial law, the Gregorian and Hermogenian codes, were compiled in his reign. About 1,200 of his rescripts, answers to private petitions, survive in Justinian's Code. The system answered its subjects' letters.
+
+**The persecution.** The same machinery that published taxes could enforce conformity. A system that grounded the emperors' authority in the traditional gods could read the Christians' refusal to sacrifice as a structural flaw. In about 302 he moved against the Manichaeans as a Persian sect. On 23 February 303 the church at Nicomedia was demolished, and four edicts followed: scriptures surrendered, clergy imprisoned, and finally universal sacrifice on pain of death. Lactantius blames Galerius, and says Diocletian hesitated, consulted his council and the oracle of Apollo at Didyma, and wanted no bloodshed. The persecution was fiercest in Galerius's East and ended in failure. Galerius issued a grudging edict of toleration on his deathbed in 311.
+
+**The exit.** On 1 May 305, after a serious illness, Diocletian abdicated at Nicomedia and made Maximian abdicate the same day in Milan. Constantius and Galerius became Augusti, and two new Caesars, Severus and Maximinus Daia, were appointed. Both were Galerius's men. Maxentius, Maximian's son, and Constantine, Constantius's son, were both adults with armies' affection and both were passed over.
+
+The system did not survive this. In 306 the troops at York acclaimed Constantine on his father's death, and in Rome the Praetorian Guard and a city angry at being taxed for the first time made Maxentius emperor. Between 308 and 310 six men claimed the rank of Augustus. Diocletian was asked to come back and settle it, and he talked about his cabbages instead. He died around 311, after watching his statues pulled down. Licinius later put his wife and daughter to death.
+
+**Why it failed.** Three reasons, in rising order of importance:
+
+- **The keystone left.** The Tetrarchy worked while a senior emperor with unchallengeable authority arbitrated among the other three. Diocletian designed a system meant to make him unnecessary, and it failed at exactly the moment he was gone.
+- **Merit looked like faction.** The 305 appointments looked to everyone outside Galerius's circle like Galerius stacking the college, so the merit principle lost its claim to fairness the first time it was used.
+- **The soldiers wanted sons.** Armies had been loyal to dynasties since Augustus, and the acclamation of Constantine and Maxentius shows the old instinct winning at its first chance. Diocletian's succession by adoption asked the soldiers to love an abstraction.
+
+## Constantine: restoration by blood and God
+
+Constantine was the clearest beneficiary of that third failure. He grew up at Diocletian's court as half heir and half hostage, served under Galerius, and saw the persecution begin. After 306 he spent eighteen years removing every rival. Maximian, his father-in-law, rebelled and died in 310. Maxentius, his brother-in-law, was beaten at the Milvian Bridge in 312. Licinius, his eastern co-emperor and another brother-in-law, was beaten in 316 and 324, spared, and executed in 325.
+
+**The god of victory.** Before the Milvian Bridge something happened that Constantine later described as a vision or dream of Christ's sign, and his soldiers fought with it on their shields. The accounts change over time (see his Temperament notes), and historians still argue about what he believed and when. Burckhardt's calculating sceptic, Barnes's sincere convert and Drake's coalition-builder are all serious readings. What is not in dispute is what he did. He gave the Church toleration with Licinius in 313 (the so-called Edict of Milan), then money, basilicas, grain allowances, exemption of clergy from civic duties, the right to receive legacies, and courts whose bishops' judgments the state enforced. He summoned councils and enforced their decisions: Arles in 314 against the Donatists, Nicaea in 325 against Arius. He kept pagans in high office and Sol on his coins until the 320s, banned some sacrifices and private divination, and confiscated temple treasures. In this atlas's terms he co-opted an empire-wide organisation that already had its own authority, its own loyalty and a presence in every city. The bishops became a second set of brokers between the throne and the cities, alongside the army and the officials. The cost showed at once: within ten years he had to stop town councillors from becoming clergy, because the exemption had turned ordination into a tax shelter.
+
+**The state he kept.** Much of Constantine's administration was Diocletian's, completed. The praetorian prefects lost their troops and became regional civil ministers. The field armies (*comitatenses*) were put under new commanders, the magistri. The Praetorian Guard, which had fought for Maxentius, was abolished and replaced by palace regiments under his own officers. The gold solidus, struck at 72 to the pound, gave the empire a coin that held its value where the silver had failed, financed in part by the gold of the temples. Laws tying tenant farmers to the land and sons to their fathers' trades turned the tax base into hereditary obligation. Constantinople, refounded in 330, gave the East a capital with its own senate and grain dole.
+
+**The succession.** This is where he broke with Diocletian most completely. Constantine named his sons Caesars: Crispus and Constantine II in 317, Constantius II in 324 and Constans in 333, with his nephew Dalmatius added in 335. Blood replaced adoption, which was the principle the soldiers had already chosen in 306. The danger of the principle showed in 326. Crispus, his eldest son, a Caesar and the admiral who had won the Hellespont two years earlier, was executed at Pola. Fausta, Constantine's wife, died soon afterwards in an overheated bath. No source gives a reason both sides accept. When Constantine died in May 337, baptised days earlier, the army refused to accept anyone but his sons. Over that summer his two half-brothers, two nephews and several officials were killed, with Constantius II at least complicit. Only two boys survived, Gallus and Julian. Three years later Constantine II died invading his brother Constans's territory.
+
+Measured by what the soldiers cared about, it worked: a Constantinian ruled until Julian's death in 363. Measured by the third century's standard, a succession without civil war, it did not, but the war now happened inside one family instead of across the officer corps.
+
+## Side by side
+
+| | Aurelian | Diocletian | Constantine |
+| --- | --- | --- | --- |
+| Years | 270–275 | 284–305 | 306–337 |
+| Route to power | Acclaimed by the Danube army against the Senate's choice | Acclaimed by the eastern army; killed Aper; beat Carinus | Acclaimed by his father's troops at York; eighteen years of civil war |
+| Answer to usurpation | Be harder and faster than any rival | Multiply the emperors; split the commands | Eliminate the co-rulers; found a dynasty |
+| Army | Personal, Danubian, ruled by fear | Enlarged; an emperor at every front | Field armies under new marshals; Praetorians abolished |
+| Money | Coin reform of 274; plunder | Published land-and-head tax; Prices Edict | The gold solidus; temple gold; new levies on traders |
+| Legitimacy | Sol Invictus; 'born god and lord' | Jupiter and Hercules; prostration at court | Christ; 'bishop of those outside' |
+| Christians | Ruled on a disputed bishopric in Antioch; persecution planned | The Great Persecution | Patronage, councils, Nicaea |
+| Capital | Rome walled, rarely visited | Nicomedia; his colleagues at Milan, Trier and Sirmium | Constantinople |
+| Succession plan | None | Caesars chosen in advance by merit | Sons and nephews |
+| How it ended | Killed by his officers | Abdicated; died at Split | Died in bed; family massacred |
+| What lasted | Unity and the wall | The administrative state and the tax | The coin, the capital, the Church's place in the state |
+
+## Through the atlas's lenses
+
+- **Selectorate.** Aurelian ran a tiny winning coalition whose members could all replace him. Diocletian divided that coalition into four on purpose, breaking the Handbook's first rule. Constantine enlarged it, adding the bishops, an expanded senatorial order and thousands of new title-holders, and paid it in gold. The theory's prediction that small coalitions survive longer fails for Aurelian, for the reason above: here the challenger came from inside the coalition.
+- **Svolik.** All three were dealing with the moral hazard of the armed agent. Aurelian ignored it, Diocletian diluted it, and Constantine tied it to his dynasty and subordinated the Guard. Only Constantine reached an established autocracy that no insider could threaten, and the insiders struck as soon as he was dead.
+- **Olson.** Aurelian is the interesting anomaly, an insecure ruler who acted on a long horizon by fixing the coinage, walling the city and feeding Rome. Diocletian's published tax is the textbook move from requisition to taxation. Constantine's solidus is a long-horizon public good minted partly from confiscation, which is a roving act in the service of a stationary one.
+- **Skowronek.** Diocletian is the clearest reconstructor in the ancient section: he repudiated the old order's premises and called it a return to ancient discipline, as Augustus had. Constantine reconstructed again, replacing the Tetrarchy's gods and succession while articulating its administration. Aurelian is the contested case, either the last of the crisis emperors or a reconstructor before his time.
+- **Temperament.** Aurelian cannot be responsibly scored, because his only intimate portrait is the *Historia Augusta*'s fiction. Diocletian's profile has the rarest feature in the atlas, a ruler with very high drive who stopped. Constantine's has the widest Tender-Mindedness band of any ancient ruler here, because his laws and his killings point in opposite directions.
+- **Simonton.** Diocletian's style profile is close to Augustus's, with Deliberative and Creative near the ceiling and Charismatic low. The two most durable institution-builders in Roman history both governed by hiding the emperor inside a system.
+
+## Verdict: winning, designing, inheriting
+
+Four lessons, from the most general to the most particular.
+
+1. **Force restores but does not select.** Aurelian shows that a determined leader can repair almost any external damage in five years. He could not repair the rule that decides who leads next, and a restoration that leaves that rule alone has to be done again.
+2. **A system designed to make its founder unnecessary has to be tested while he is alive.** The Tetrarchy's real test, the succession of 305, came the day Diocletian left. A founder who had stayed on as arbiter for a second succession might have caught the problem: the merit principle looked like Galerius's faction from outside.
+3. **The design that fits beats the design that is better.** On paper Diocletian's succession by merit-adoption was a better rule than heredity. It ran against what the soldiers believed. Constantine's dynasty was a step back in design and a step forward in fit, routinising charisma in the oldest form, hereditary charisma, and giving it a new sacred source. It lasted.
+4. **A second organisation can stabilise a regime or bind it.** The Church gave Constantine a network in every city that owed him its privileges. It also brought emperors into theological disputes for a century and, by 390, produced a bishop (Ambrose) who could make an emperor do public penance.
+
+Three caveats keep this from becoming a neat story of progress:
+
+- **One long reform, not three.** Many 'Diocletianic' reforms began under Gallienus and Aurelian and were finished under Constantine. Recent scholarship sees 260–337 as one long reconstruction carried out by a single officer class.
+- **Survivorship.** Constantine looks wise partly because he won. Licinius, who co-signed the toleration of 313, made his son a Caesar and ran Diocletian's machine, might look much the same had he won at Adrianople.
+- **The sources are Christian.** Lactantius and Eusebius wrote the story of a persecutor punished and a convert rewarded. Diocletian's reputation, and Constantine's, still carry that frame.
+
+Augustus solved the same problem, an army that could choose its master, by disguising the monarchy as a republic. Diocletian solved it by building the monarchy openly. Constantine solved it by giving the monarchy a god who chose emperors through their fathers. The first and third lasted, and both relied on the soldiers' belief in a family.
+
+## Further reading
+
+- Lactantius, *On the Deaths of the Persecutors*, trans. J. L. Creed (1984). The inside view, hostile and indispensable.
+- Eusebius, *Life of Constantine*, trans. Averil Cameron and Stuart G. Hall (1999). Read the commentary as carefully as the text.
+- David S. Potter, *The Roman Empire at Bay, AD 180–395* (2004). The best modern narrative of the whole arc.
+- Alaric Watson, *Aurelian and the Third Century* (1999). The reign without the *Historia Augusta*.
+- Stephen Williams, *Diocletian and the Roman Recovery* (1985); Roger Rees, *Diocletian and the Tetrarchy* (2004); Simon Corcoran, *The Empire of the Tetrarchs* (1996).
+- William Leadbetter, *Galerius and the Will of Diocletian* (2009). The succession of 305 from the other side.
+- Timothy D. Barnes, *Constantine and Eusebius* (1981) and *Constantine: Dynasty, Religion and Power* (2011); H. A. Drake, *Constantine and the Bishops* (2000); Paul Stephenson, *Constantine: Unconquered Emperor, Christian Victor* (2009).
+- Edward Gibbon, *Decline and Fall*, chapters 11–18. Still the most readable account of all three.
+
+Figures and quotations above are from memory of the ancient sources and standard modern accounts, not freshly checked; treat specific numbers as approximate.`
+    }
   ]
 
 };

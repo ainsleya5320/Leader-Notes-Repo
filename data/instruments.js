@@ -715,5 +715,49 @@ window.LEADER_INSTRUMENTS = {
       { reg: "trust", key: "t_clemency", detail: "Pardoned the family and supporters of Avidius Cassius, who had declared himself emperor against him." },
       { reg: "trust", key: "t_justice", detail: "Extended the hours of the courts and personally heard appeals, including from slaves against masters." }
     ]
+  },
+
+  aurelian: {
+    creed: "Restitutor Orbis, 'Restorer of the World', on the coins, with Sol Invictus, the Unconquered Sun, as the single divine patron who stood behind the army and its emperor. Some coins call him deo et domino nato, 'born god and lord'.",
+    practice: "Discipline was nearly the whole of his politics. He restored the empire in five years by being more feared than any rival, and he was killed by officers who believed, on forged evidence, that they were next.",
+    tools: [
+      { reg: "fear", key: "f_discipline", detail: "A severity the sources treat as remarkable even for a soldier-emperor. The Historia Augusta's soldier torn apart between two bent trees for adultery is probably invented, but it decorates a real reputation." },
+      { reg: "fear", key: "f_exemplary", detail: "Crushed the revolt of Rome's mint workers under the finance official Felicissimus in 271; the sources put the dead at seven thousand. Senators were executed in the aftermath, and Palmyra was sacked when it rose a second time in 273." },
+      { reg: "trust", key: "t_clemency", detail: "Spared Zenobia for his triumph and a villa at Tibur, and made Tetricus, the surrendered Gallic emperor, a governor in southern Italy. The defeated were co-opted, not killed." },
+      { reg: "motivate", key: "m_conviction", detail: "Put Sol Invictus at the head of the state cult, with a temple in Rome paid for from Palmyrene spoils and a new college of pontiffs, giving a fractured army one god behind one emperor." },
+      { reg: "fear", key: "f_majesty", detail: "The Epitome says he was the first Roman ruler to bind a diadem on his head and wear jewels and gold on his clothes. Distance and majesty were beginning to replace comradeship as the emperor's protection." },
+      { reg: "trust", key: "t_hardship", detail: "Campaigned in person on the Danube, in Italy, in Syria and in Gaul within five years, and spent little time in Rome." }
+    ]
+  },
+
+  diocletian: {
+    creed: "Order restored under Jupiter. The edicts speak of the discipline of former times and treat avarice as an enemy of the state, with the emperor as Jovius, earthly agent of the god who governs the cosmos.",
+    practice: "Replaced charisma with a system: four emperors so no army lacked one, twice as many provinces so no governor could rebel, a published tax so revenue stopped depending on seizure. When the Christians refused the system's gods, the same machinery was turned on them.",
+    tools: [
+      { reg: "trust", key: "t_selfbind", detail: "Abdicated on 1 May 305, the first Roman emperor to retire by choice, made a reluctant Maximian do the same, and refused to come back in 308." },
+      { reg: "trust", key: "t_publicrule", detail: "The Gregorian and Hermogenian codes collected imperial law; the annual indiction published the tax rate; the Prices Edict published maximum prices for more than a thousand goods and services." },
+      { reg: "loyalty", key: "l_kinship", detail: "Bound the tetrarchs by adoption and marriage (Galerius married his daughter Valeria, Constantius married Maximian's stepdaughter Theodora) and by divine descent: the Jovii and the Herculii." },
+      { reg: "loyalty", key: "l_mobility", detail: "The tetrarchs were themselves the career open to talent: sons of Balkan peasants and herdsmen and, in his case, probably of a freedman, chosen for proven command rather than birth." },
+      { reg: "fear", key: "f_majesty", detail: "Adoratio: anyone admitted to the presence prostrated himself and kissed the hem of the purple robe. The emperor appeared rarely, in silk and jewels. Distance as security." },
+      { reg: "fear", key: "f_scapegoat", detail: "Lactantius' charge: he did good things alone to keep the credit and harsh things in council to share the blame. The persecution was decided that way, with Galerius, the council and an oracle all asked before he moved." },
+      { reg: "fear", key: "f_legal", detail: "The Great Persecution of 303–11 went forward by edict: churches demolished, scriptures surrendered, clergy imprisoned, and then universal sacrifice on pain of death." },
+      { reg: "motivate", key: "m_shame", detail: "After Galerius's defeat by the Persians, made him walk a mile in purple before the imperial carriage in front of the army. Galerius came back and won the war." }
+    ]
+  },
+
+  constantine: {
+    creed: "Instinctu divinitatis, 'by the prompting of the divinity', as his arch in Rome puts it: an emperor chosen by the highest god (at first the Sun, then plainly Christ) to free the world from tyrants and give the Church its peace.",
+    practice: "Victory first, theology after. He bound the Church to the throne with money, privileges and councils, kept pagan aristocrats in office, and killed every rival who stood between him and a single dynasty: co-emperor, father-in-law, brother-in-law and son.",
+    tools: [
+      { reg: "motivate", key: "m_conviction", detail: "The Chi-Rho on the shields and the labarum as the army's standard. After 312 the Christian God guaranteed victory, and the emperor called himself 'bishop of those outside' the Church." },
+      { reg: "loyalty", key: "l_spoils", detail: "Patronage for the Church: the Lateran, St Peter's and the Holy Sepulchre; grain allowances for clergy; exemption from civic burdens; the right to receive legacies; bishops' courts with civil jurisdiction." },
+      { reg: "loyalty", key: "l_honors", detail: "Multiplied the comites ('companions'), graded in three ranks, and opened senatorial rank to thousands of officials. Titles became a currency, and he minted a great deal of it." },
+      { reg: "motivate", key: "m_plunder", detail: "Donatives in the new gold solidus, funded partly from confiscated temple treasures, gave the soldiers a stake in a coin that, unlike the silver it replaced, kept its value." },
+      { reg: "fear", key: "f_exemplary", detail: "Fed the captured Frankish kings Ascaric and Merogaisus to beasts in the arena at Trier, and was praised for it in a panegyric to his face." },
+      { reg: "fear", key: "f_legal", detail: "Laws of exemplary savagery: molten lead poured into the mouth of a nurse who helped a girl's abduction, and parricides sewn into a sack with snakes and drowned." },
+      { reg: "fear", key: "f_purgefavorite", detail: "Crispus, his eldest son, Caesar and the admiral who won the Hellespont in 324, was executed at Pola in 326 on charges never recorded. The indispensable servant was also the obvious heir." },
+      { reg: "trust", key: "t_clemency", detail: "Promised Licinius his life at Constantia's plea in 324 and had him killed in 325. He used the instrument and then withdrew it, which taught everyone how much his word was worth." },
+      { reg: "motivate", key: "m_glory", detail: "Constantinople, refounded in 330 as a second Rome bearing his own name, with a senate, a grain dole and his porphyry column at its centre." }
+    ]
   }
 };
