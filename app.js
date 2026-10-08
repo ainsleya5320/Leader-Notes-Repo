@@ -114,7 +114,7 @@ const state = {
   orgs: { mode: "catalogue", kind: "all", search: "", dcmp: ["pap", "ldp", "umno", "kmt", "golkar"] },
   orgId: null,
   pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null, rotParties: true },
-  prac: { mode: "leader", leader: "lbj", cat: "all" },
+  prac: { mode: "leader", leader: "lbj", cat: "all", cmp: ["lbj", "clinton", "churchill", "napoleon", "baker"], bq: "", bcat: "all", bgrade: "all", bself: false, bera: "all" },
   gloss: ""
 };
 
@@ -4001,19 +4001,75 @@ function pracCard(p) {
   </article>`;
 }
 
+// practice subjects in index order (by era, then start), operators outside the index last
+function pracIds() {
+  const inIndex = window.ALL_LEADERS.filter(l => PRACTICES[l.id]).map(l => l.id);
+  return inIndex.concat(Object.keys(PRACTICES).filter(id => !byId(id) && pracPerson(id)));
+}
+function pracSelect(domId, current, placeholder) {
+  const ids = pracIds(), groups = {};
+  ids.forEach(id => { const p = pracPerson(id), k = p.ext ? "ext" : p.era; (groups[k] = groups[k] || []).push(p); });
+  const label = k => k === "ext" ? "Outside the leader index" : (ERA_BY_KEY[k] || {}).label || k;
+  const order = ERAS.map(e => e.key).concat("ext").filter(k => groups[k]);
+  return `<select id="${domId}" class="pr-select">${placeholder ? `<option value="">${esc(placeholder)}</option>` : ""}${order.map(k => `<optgroup label="${esc(label(k))}">${groups[k].map(p => `<option value="${p.id}" ${p.id === current ? "selected" : ""}>${esc(p.name)}</option>`).join("")}</optgroup>`).join("")}</select>`;
+}
+// every practice across every subject, for the browse mode
+function pracAll() {
+  return pracIds().flatMap(id => PRACTICES[id].practices.map(p => ({ id, p, person: pracPerson(id) })));
+}
+function pracBrowseHtml() {
+  const S = state.prac, all = pracAll(), q = S.bq.trim().toLowerCase();
+  const eraOf = r => r.person.ext ? "ext" : r.person.era;
+  const pass = r => (S.bcat === "all" || r.p.cat === S.bcat) && (S.bgrade === "all" || r.p.grade === S.bgrade) && (!S.bself || (r.p.attrib || []).includes("self")) && (S.bera === "all" || eraOf(r) === S.bera) &&
+    (!q || [r.p.name, r.p.what, r.p.mechanism, r.p.tryit, r.person.name].join(" ").toLowerCase().includes(q));
+  const shown = all.filter(pass);
+  const cats = window.PRACTICE_CATS || [];
+  const eras = ERAS.map(e => e.key).concat("ext").filter(k => all.some(r => eraOf(r) === k));
+  const chip = (attr, val, cur, label, n) => `<button class="chip ${cur === val ? "on" : ""}" data-${attr}="${val}">${esc(label)}${n != null ? ` <span style="opacity:.6">${n}</span>` : ""}</button>`;
+  return `<div class="cmp-summary">All ${all.length} practices across ${pracIds().length} people, filterable. Use it to ask one question of everyone — who managed their sleep, who kept a card file, who learned from a defeat.</div>
+    <div class="pr-browse-bar">
+      <input type="search" id="pr-bq" class="tb-search" placeholder="Search practices — 'sleep', 'letters', 'notes', 'radio'…" value="${esc(S.bq)}">
+      <label class="pr-toggle"><input type="checkbox" id="pr-bself" ${S.bself ? "checked" : ""}> Only what they credited themselves</label>
+    </div>
+    <div class="cv-pills"><span class="lab">Category</span>${chip("bcat", "all", S.bcat, "All", all.length)}${cats.map(c => chip("bcat", c.key, S.bcat, c.name, all.filter(r => r.p.cat === c.key).length)).join("")}</div>
+    <div class="cv-pills"><span class="lab">Evidence</span>${chip("bgrade", "all", S.bgrade, "Any")}${Object.entries(window.PRACTICE_GRADES || {}).map(([k, g]) => chip("bgrade", k, S.bgrade, g.name, all.filter(r => r.p.grade === k).length)).join("")}</div>
+    <div class="cv-pills"><span class="lab">Era</span>${chip("bera", "all", S.bera, "All")}${eras.map(k => chip("bera", k, S.bera, k === "ext" ? "Outside the index" : (ERA_BY_KEY[k] || {}).label || k)).join("")}</div>
+    <p class="ch-note">${shown.length} shown.</p>
+    <div class="pr-rows">${shown.map(r => `<div class="pr-brow" data-pjump="${r.id}:${r.p.id}">
+      <div class="pr-brow-who">${avatarMarkup(r.person, "sm")}<b>${esc(shortName(r.person))}</b></div>
+      <div class="pr-brow-main"><div class="pr-brow-top"><span class="pr-brow-name">${esc(r.p.name)}</span><span class="pr-brow-cat">${esc((PRAC_CAT[r.p.cat] || {}).name || r.p.cat)}</span>${pracBadges(r.p)}</div>
+      <p>${esc(r.p.what.length > 230 ? r.p.what.slice(0, r.p.what.lastIndexOf(" ", 225)) + "…" : r.p.what)}</p></div>
+    </div>`).join("") || `<p class="pr-none">Nothing matches.</p>`}</div>`;
+}
+function pracBrowseWire(body) {
+  const S = state.prac;
+  const q = $("#pr-bq");
+  if (q) { q.oninput = e => { S.bq = e.target.value; const pos = e.target.selectionStart; renderPractices(); const n = $("#pr-bq"); n.focus(); n.setSelectionRange(pos, pos); }; }
+  if ($("#pr-bself")) $("#pr-bself").onchange = e => { S.bself = e.target.checked; renderPractices(); };
+  body.querySelectorAll("[data-bcat]").forEach(b => b.onclick = () => { S.bcat = b.dataset.bcat; renderPractices(); });
+  body.querySelectorAll("[data-bgrade]").forEach(b => b.onclick = () => { S.bgrade = b.dataset.bgrade; renderPractices(); });
+  body.querySelectorAll("[data-bera]").forEach(b => b.onclick = () => { S.bera = b.dataset.bera; renderPractices(); });
+}
+
 function renderPractices() {
   const S = state.prac, tb = $("#prac-toolbar"), body = $("#prac-body");
-  const ids = Object.keys(PRACTICES).filter(id => pracPerson(id));
+  const ids = pracIds();
   if (!PRACTICES[S.leader]) S.leader = ids[0];
-  tb.innerHTML = `<div class="seg">${ids.map(id => `<button data-prl="${id}" class="${S.mode === "leader" && S.leader === id ? "on" : ""}">${esc(shortName(pracPerson(id)))}</button>`).join("")}<button data-prm="compare" class="${S.mode === "compare" ? "on" : ""}">Compare</button><button data-prm="template" class="${S.mode === "template" ? "on" : ""}">The template</button></div>`;
-  tb.querySelectorAll("[data-prl]").forEach(b => b.onclick = () => openPractices(b.dataset.prl));
+  const i = ids.indexOf(S.leader);
+  tb.innerHTML = `<div class="seg">${[["leader", "One leader"], ["browse", "Browse all"], ["compare", "Compare"], ["template", "The template"]].map(([k, l]) => `<button data-prm="${k}" class="${S.mode === k ? "on" : ""}">${l}</button>`).join("")}</div>
+    ${S.mode === "leader" ? `<div class="pr-picker"><button class="chip" data-prstep="-1" aria-label="Previous">←</button>${pracSelect("pr-pick", S.leader)}<button class="chip" data-prstep="1" aria-label="Next">→</button><span class="pr-count">${i + 1} of ${ids.length}</span></div>` : ""}`;
+  if ($("#pr-pick")) $("#pr-pick").onchange = e => openPractices(e.target.value);
+  tb.querySelectorAll("[data-prstep]").forEach(b => b.onclick = () => openPractices(ids[(i + +b.dataset.prstep + ids.length) % ids.length]));
   tb.querySelectorAll("[data-prm]").forEach(b => b.onclick = () => { S.mode = b.dataset.prm; if (location.hash !== "#/practices") location.hash = "#/practices"; else renderPractices(); });
-  if (S.mode === "compare") body.innerHTML = pracCompareHtml(ids);
+  if (S.mode === "compare") body.innerHTML = pracCompareHtml(S.cmp.filter(id => PRACTICES[id] && pracPerson(id)));
+  else if (S.mode === "browse") { body.innerHTML = pracBrowseHtml(); pracBrowseWire(body); }
   else if (S.mode === "template") body.innerHTML = pracTemplateHtml();
   else body.innerHTML = pracLeaderHtml(S.leader);
   body.querySelectorAll("[data-id]").forEach(el => el.onclick = () => openDetail(el.dataset.id));
   body.querySelectorAll("[data-pjump]").forEach(el => el.onclick = () => { const [lid, pid] = el.dataset.pjump.split(":"); openPractices(lid, pid); });
   body.querySelectorAll("[data-prcat]").forEach(b => b.onclick = () => { S.cat = b.dataset.prcat; renderPractices(); });
+  body.querySelectorAll("[data-prdel]").forEach(b => b.onclick = () => { S.cmp = S.cmp.filter(x => x !== b.dataset.prdel); renderPractices(); });
+  if ($("#pr-add")) $("#pr-add").onchange = e => { if (e.target.value && !S.cmp.includes(e.target.value)) S.cmp = S.cmp.concat(e.target.value).slice(-6); renderPractices(); };
   body.querySelectorAll(".read-row").forEach(r => r.onclick = ev => {
     if (ev.target.dataset.shelfId) { ev.stopPropagation(); cycleShelf(ev.target.dataset.shelfId); renderPractices(); return; }
     openBookEditor(r.dataset.book);
@@ -4037,10 +4093,10 @@ function pracLeaderHtml(id) {
   return `<header class="pr-hero" style="--era-color:${eraColor(l)}">
       <div class="pr-hero-who" ${l.ext ? "" : `data-id="${l.id}"`}>${avatarMarkup(l)}<div><b>${esc(l.name)}</b><span>${esc(l.title)} · ${esc(l.years)}${l.ext ? " · not in the leader index" : ""}</span></div></div>
       <p class="pr-one">${esc(P.oneLine)}</p>
-      <div class="pr-stats"><span><b>${P.practices.length}</b> practices</span><span><b>${nSelf}</b> that he credited himself</span><span><b>${P.practices.filter(p => p.grade === "documented").length}</b> documented</span></div>
+      <div class="pr-stats"><span><b>${P.practices.length}</b> practices</span><span><b>${nSelf}</b> that they credited themselves</span><span><b>${P.practices.filter(p => p.grade === "documented").length}</b> documented</span></div>
     </header>
     <div class="pr-top-grid">
-      <div class="pr-panel"><h5>In his own words</h5>${P.ownWords.map(q => q.para ? `<p class="pr-para"><span class="pr-tag">Paraphrase</span>${esc(q.text)}<cite>${esc(q.src)}</cite></p>` : `<blockquote class="pr-quote">“${esc(q.text)}”<cite>${esc(q.src)}</cite></blockquote>`).join("")}</div>
+      <div class="pr-panel"><h5>In their own words</h5>${(P.ownWords || []).length ? "" : `<p class="pr-note">No first-person statement about these habits could be verified, so none is quoted.</p>`}${(P.ownWords || []).map(q => q.para ? `<p class="pr-para"><span class="pr-tag">Paraphrase</span>${esc(q.text)}<cite>${esc(q.src)}</cite></p>` : `<blockquote class="pr-quote">“${esc(q.text)}”<cite>${esc(q.src)}</cite></blockquote>`).join("")}</div>
       <div class="pr-panel"><h5>Operating rhythm</h5><ol class="pr-rhythm">${(P.rhythm || []).map(r => `<li><span class="t">${esc(r.t)}</span><span class="d">${esc(r.d)}</span></li>`).join("")}</ol><p class="pr-note">${esc(P.rhythmSrc)}</p></div>
     </div>
     <div class="cv-pills pr-cats"><span class="lab">Show</span><button class="chip ${S.cat === "all" ? "on" : ""}" data-prcat="all">All <span style="opacity:.6">${P.practices.length}</span></button>${cats.map(c => `<button class="chip ${S.cat === c.key ? "on" : ""}" data-prcat="${c.key}">${esc(c.name)} <span style="opacity:.6">${P.practices.filter(p => p.cat === c.key).length}</span></button>`).join("")}</div>
@@ -4050,12 +4106,13 @@ function pracLeaderHtml(id) {
 
 function pracCompareHtml(ids) {
   const cats = window.PRACTICE_CATS || [];
-  const cell = (id, c) => PRACTICES[id].practices.filter(p => p.cat === c.key).map(p => `<button class="pr-chipbtn" data-pjump="${id}:${p.id}" title="${esc(p.what)}">${esc(p.name)}${(p.attrib || []).includes("self") ? ' <span class="pr-self" title="He credited it himself">●</span>' : ""}</button>`).join("") || `<span class="pr-none">—</span>`;
-  return `<div class="cmp-summary">The worked examples side by side, by category. A filled dot marks a practice the leader credited himself; the rest come from witnesses and biographers. Click any practice to read it.</div>
+  const cell = (id, c) => PRACTICES[id].practices.filter(p => p.cat === c.key).map(p => `<button class="pr-chipbtn" data-pjump="${id}:${p.id}" title="${esc(p.what)}">${esc(p.name)}${(p.attrib || []).includes("self") ? ' <span class="pr-self" title="They credited it themselves">●</span>' : ""}</button>`).join("") || `<span class="pr-none">—</span>`;
+  return `<div class="cmp-summary">Up to six people side by side, by category. A filled dot marks a practice the leader credited themselves; the rest come from witnesses and biographers. Click any practice to read it.</div>
+    <div class="pr-cmp-pick">${ids.map(id => `<span class="pr-cmp-chip">${esc(shortName(pracPerson(id)))}<button data-prdel="${id}" aria-label="Remove">×</button></span>`).join("")}${ids.length < 6 ? pracSelect("pr-add", "", "Add someone…") : ""}</div>
     <div class="dc-table-wrap"><table class="xtab pr-table"><thead><tr><th></th>${ids.map(id => `<th>${byId(id) ? `<a data-id="${id}">${esc(shortName(byId(id)))}</a>` : esc(shortName(pracPerson(id)))}</th>`).join("")}</tr></thead><tbody>
       ${cats.map(c => `<tr><th class="rot-name" title="${esc(c.q)}">${esc(c.name)}</th>${ids.map(id => `<td>${cell(id, c)}</td>`).join("")}</tr>`).join("")}
     </tbody></table></div>
-    <h3 class="pat-h">What they share <small>my synthesis, not a finding</small></h3>
+    <h3 class="pat-h">Patterns across the worked examples <small>my synthesis, drawn from Johnson, Clinton, Baker, Churchill and Napoleon — not a finding</small></h3>
     <div class="pr-patterns">${(window.PRACTICE_PATTERNS || []).map(p => `<div class="pat-concept"><h4>${esc(p.name)}</h4><p>${esc(p.text)}</p></div>`).join("")}</div>`;
 }
 

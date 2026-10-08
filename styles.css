@@ -1450,3 +1450,24 @@ table.pat-rtable { min-width: 560px; }
 .gl-list dt small { display: block; font-weight: 400; font-size: 11.5px; color: var(--muted); }
 .gl-list dd { font-family: var(--font-serif); font-size: 14px; line-height: 1.55; color: var(--text); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
 @media (max-width: 620px) { .gl-list { grid-template-columns: 1fr; gap: 2px; } .gl-list dd { margin-bottom: 8px; } }
+
+.pr-picker { display: flex; align-items: center; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.pr-select { font: inherit; font-size: 13.5px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-2); color: var(--text); max-width: 100%; }
+.pr-count { font-size: 12px; color: var(--muted); }
+.pr-browse-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 8px; }
+.pr-browse-bar .tb-search { flex: 1 1 260px; max-width: 460px; }
+.pr-toggle { font-size: 12.5px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.pr-rows { display: flex; flex-direction: column; gap: 6px; }
+.pr-brow { display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding: 10px 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; }
+.pr-brow:hover { border-color: var(--accent); }
+.pr-brow-who { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.pr-brow-who .avatar { width: 26px; height: 26px; font-size: 9.5px; }
+.pr-brow-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 8px; margin-bottom: 3px; }
+.pr-brow-name { font-family: var(--font-display); font-size: 15.5px; font-weight: 560; }
+.pr-brow-cat { font-size: 11px; color: var(--muted); }
+.pr-brow p { font-family: var(--font-serif); font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.pr-cmp-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 12px; }
+.pr-cmp-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 12.5px; padding: 2px 4px 2px 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); }
+.pr-cmp-chip button { border: none; background: none; cursor: pointer; color: var(--muted); font-size: 14px; line-height: 1; padding: 0 4px; }
+.pr-cmp-chip button:hover { color: var(--bad); }
+@media (max-width: 620px) { .pr-brow { grid-template-columns: 1fr; gap: 4px; } }
