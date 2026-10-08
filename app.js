@@ -4433,9 +4433,10 @@ function rhetMapHtml() {
 
 function rhetCasesHtml() {
   const S = state.rhet, all = window.RHET_CASES || [];
-  const shown = all.filter(c => !S.caseStyle || S.caseStyle === "all" || c.style === S.caseStyle);
+  const yr = c => +((String(c.date).match(/\d{4}/) || [9999])[0]);
+  const shown = all.filter(c => !S.caseStyle || S.caseStyle === "all" || c.style === S.caseStyle).slice().sort((a, b) => yr(a) - yr(b));
   const styles = (window.RHET_STYLES || []).filter(s => all.some(c => c.style === s.key));
-  return `<div class="cmp-summary">Famous speeches and moments, read for technique: what the leader did, what to notice, and what it achieved. Filter by style to compare like with like.</div>
+  return `<div class="cmp-summary">${all.length} famous speeches and moments, in date order, read for technique: what the leader did, what to notice, and what it achieved. Filter by style to compare like with like.</div>
     <div class="cv-pills"><button class="chip ${!S.caseStyle || S.caseStyle === "all" ? "on" : ""}" data-rhcs="all">All <span style="opacity:.6">${all.length}</span></button>${styles.map(s => `<button class="chip ${S.caseStyle === s.key ? "on" : ""}" data-rhcs="${s.key}" style="--era-color:${s.color}"><span class="dot"></span>${esc(s.name)} <span style="opacity:.6">${all.filter(c => c.style === s.key).length}</span></button>`).join("")}</div>
     <div class="rh-cases">${shown.map(c => { const l = byId(c.leader); return `<article class="rh-case" style="--c:${(RHET_STYLE[c.style] || {}).color || "var(--accent)"}">
       <div class="rh-case-top"><div class="rh-who" data-id="${c.leader}">${l ? avatarMarkup(l, "sm") : ""}<b>${esc(l ? shortName(l) : c.leader)}</b></div>${rhetStyleBadge(c.style)}</div>
