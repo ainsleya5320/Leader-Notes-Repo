@@ -446,38 +446,65 @@ window.RHET_PRESS = [
       { id: "troosevelt", how: "Made the presidency the 'bully pulpit'; the new West Wing of 1902 included a press room, and he briefed reporters freely, often while being shaved.", when: "1901–09" },
       { id: "wilson", how: "Held the first regular presidential press conferences, from 15 March 1913 — though he grew stiff and suspicious of them.", when: "1913–17" },
       { id: "fdr", how: "Nearly a thousand informal press conferences in twelve years, with rules on what could be quoted and what was background.", when: "1933–45" },
-      { id: "jfk", how: "The first live televised press conferences, from January 1961, using wit before an audience of millions.", when: "1961–63" }
+      { id: "jfk", how: "The first live televised press conferences, from January 1961, using wit before an audience of millions.", when: "1961–63" },
+      { id: "lincoln", how: "Cultivated editors as allies: rewarded friendly ones with patronage posts, secretly bought a German-language Illinois paper in 1859, and made his case in public letters printed by the press — as in his 1862 reply to Horace Greeley.", when: "1859–65" },
+      { id: "churchill", how: "A former war correspondent who understood the trade, kept close friendships with press barons such as Lord Beaverbrook, and brought Beaverbrook into his wartime government.", when: "1899–1945" },
+      { id: "gorbachev", how: "Glasnost: from 1986 editors such as Vitaly Korotich at Ogonyok were allowed to publish what had been forbidden, and a 1990 press law ended formal censorship.", when: "1986–91" },
+      { id: "ardern", how: "During the 2020 lockdown she and the director-general of health held a 1 p.m. briefing almost daily, taking questions until they ran out.", when: "2020" }
     ] },
   { key: "manage", name: "Manage the press", def: "Supply the story: the daily line, the briefing, the off-the-record guidance and the leak.",
     cases: [
       { id: "reagan", how: "His aides set a single 'line of the day' and staged visuals for the evening news.", when: "1981–89" },
       { id: "thatcher", how: "Her press secretary Bernard Ingham ran unattributable lobby briefings that told political journalists what she thought.", when: "1979–90" },
       { id: "kissinger", how: "Cultivated reporters with background briefings as a 'senior official'.", when: "1969–77" },
-      { id: "bismarck", how: "The dark version: a secret 'reptile fund' paid for friendly coverage.", when: "1868–90" }
+      { id: "bismarck", how: "The dark version: a secret 'reptile fund' paid for friendly coverage.", when: "1868–90" },
+      { id: "jfk", how: "Asked The New York Times to tone down its advance reporting of the Bay of Pigs invasion in 1961; critics in 1962–63 accused his administration of 'news management'.", when: "1961–63" },
+      { id: "lbj", how: "Optimistic official accounts of Vietnam that reporters could see contradicted produced the 'credibility gap' — a phrase that stuck to his presidency.", when: "1965–69" },
+      { id: "gwbush", how: "'Embedded' several hundred reporters with combat units in the 2003 invasion of Iraq — access in exchange for ground rules.", when: "2003" },
+      { id: "obama", how: "Combined tight control of access with an unprecedented pursuit of leakers: more Espionage Act prosecutions of sources than all previous administrations together, and the seizure of Associated Press phone records in 2013.", when: "2009–17" }
     ] },
   { key: "ration", name: "Ration the press", def: "Appear seldom and on your own terms; make every appearance an event.",
     cases: [
       { id: "degaulle", how: "Staged grand press conferences in the Élysée, with questions effectively arranged in advance, at which major policy was announced.", when: "1958–69" },
-      { id: "eisenhower", how: "Allowed the first filmed press conference in January 1955, with his press secretary editing the footage before release.", when: "1955" }
+      { id: "eisenhower", how: "Allowed the first filmed press conference in January 1955, with his press secretary editing the footage before release.", when: "1955" },
+      { id: "merkel", how: "Gave few interviews and kept to set formats — above all an annual summer press conference before the federal press corps, where she answered questions at length.", when: "2005–21" },
+      { id: "biden", how: "Held markedly fewer solo press conferences and interviews than his recent predecessors.", when: "2021–25" },
+      { id: "modi", how: "Has rarely, if ever, held an open, unscripted press conference in India as prime minister, preferring set-piece interviews and his own channels.", when: "2014–" }
     ] },
   { key: "bypass", name: "Bypass the press", def: "Go straight to the public through a channel the press does not control.",
     cases: [
       { id: "hueylong", how: "Radio broadcasts and his own newspaper and circulars, going around a hostile Louisiana press.", when: "1928–35" },
       { id: "nasser", how: "Voice of the Arabs radio, from 1953, carried his speeches over the heads of other Arab governments.", when: "1953–70" },
       { id: "modi", how: "A monthly radio address, Mann Ki Baat, from 2014, and very few open press conferences.", when: "2014–" },
-      { id: "trump", how: "Tweets that set the news agenda directly.", when: "2015–21" }
+      { id: "trump", how: "Tweets that set the news agenda directly.", when: "2015–21" },
+      { id: "fdr", how: "With most newspaper owners against him, used his fireside chats to reach voters over the publishers' heads.", when: "1933–44" },
+      { id: "clinton", how: "In 1992 went on talk shows, MTV and The Arsenio Hall Show, where he played the saxophone, to reach voters who did not read the political press.", when: "1992" },
+      { id: "obama", how: "Appeared on the comedy web series Between Two Ferns in 2014 to promote enrolment on the HealthCare.gov site.", when: "2014" },
+      { id: "zelensky", how: "Recorded his own videos on a phone from 2022, reaching Ukrainians and foreign publics without intermediaries.", when: "2022–" }
     ] },
   { key: "attack", name: "Attack the press", def: "Treat the press as an enemy and make the fight itself the message.",
     cases: [
-      { id: "nixon", how: "An 'enemies list' that included journalists, and his vice-president's attacks on the networks.", when: "1969–74" },
-      { id: "trump", how: "Called the news media 'the enemy of the American people' in February 2017.", when: "2017–" }
+      { id: "nixon", how: "An 'enemies list' that included journalists and his vice-president's attacks on the networks; in 1971 his administration went to court to stop The New York Times publishing the Pentagon Papers, and lost in the Supreme Court.", when: "1969–74" },
+      { id: "trump", how: "Called the news media 'the enemy of the American people' in February 2017.", when: "2017–" },
+      { id: "hitler", how: "Before taking power, Nazi propaganda attacked the 'Lügenpresse' — the 'lying press' — as an enemy of the people.", when: "1920s–33" }
     ] },
   { key: "own", name: "Own the press", def: "Control the channels outright through state ownership, capture or censorship.",
     cases: [
       { id: "stalin", how: "A party-state monopoly of print and radio, with censorship and a cult of the leader.", when: "1920s–53" },
       { id: "mao", how: "The People's Daily and the Little Red Book (1964); campaigns against dissent.", when: "1949–76" },
       { id: "putin", how: "Took control of the independent channel NTV in 2001, and launched the foreign channel RT in 2005.", when: "2000–" },
-      { id: "xi", how: "Told state media to 'tell China's story well' and tightened controls on media and the internet.", when: "2012–" }
+      { id: "xi", how: "Told state media to 'tell China's story well' and tightened controls on media and the internet.", when: "2012–" },
+      { id: "napoleon", how: "A decree of January 1800 suppressed sixty of the seventy-three political newspapers in Paris; by 1811 only four remained, all supervised.", when: "1800–14" },
+      { id: "lenin", how: "The Decree on the Press, issued within days of the October Revolution in 1917, closed opposition newspapers — described as temporary.", when: "1917–24" },
+      { id: "hitler", how: "A propaganda ministry under Goebbels from March 1933, the Editors Law of October 1933 making journalists answerable to the state, and daily press directives telling papers what to print.", when: "1933–45" },
+      { id: "castro", how: "By 1960 the independent newspapers had been closed or taken over, leaving the press to the revolutionary state.", when: "1959–60" },
+      { id: "nasser", how: "Nationalised the press in 1960; Mohamed Hassanein Heikal's Al-Ahram became the voice of the regime.", when: "1960–70" },
+      { id: "indira", how: "Declaring the Emergency in June 1975, the government cut power to newspaper offices in Delhi that night and imposed censorship; the Indian Express answered with a blank editorial.", when: "1975–77" },
+      { id: "suharto", how: "Controlled the press through publishing licences, revoking them to close the magazines Tempo, Editor and DeTIK in 1994.", when: "1966–98" },
+      { id: "leekuanyew", how: "Closed two newspapers and detained executives of a third in 1971, then legislated in 1974 that newspapers issue management shares whose holders the government approved — control through licensing and ownership rather than nationalisation.", when: "1971–90" },
+      { id: "erdogan", how: "The opposition daily Zaman was seized in March 2016, and after the coup attempt that July some 150 media outlets were closed by decree.", when: "2016–" },
+      { id: "zelensky", how: "Under martial law the main national channels were combined in 2022 into a single 'United News' telemarathon — defended as wartime necessity, criticised as reducing pluralism.", when: "2022–" },
+      { id: "churchill", how: "During the 1926 General Strike, with Fleet Street shut, he edited the government's own newspaper, the British Gazette.", when: "1926" }
     ] }
 ];
 
