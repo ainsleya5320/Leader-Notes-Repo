@@ -42,7 +42,7 @@ window.RHET_STYLES = [
     techniques: ["Choreographed rallies and set designs", "Call-and-response with the crowd", "Repetition of slogans", "Film and broadcast of the crowd"],
     strengths: "Mobilises intense loyalty and fear of being left out.",
     failure: "Rewards the already committed; in its extreme forms it served totalitarian movements.",
-    exemplars: ["mussolini", "hitler", "nkrumah", "erdogan", "modi", "trump"] },
+    exemplars: ["mussolini", "hitler", "peron", "nkrumah", "erdogan", "modi", "trump"] },
   { key: "press", name: "The press manager", color: "var(--reg-loyalty)",
     def: "Working through journalists — access, briefings, leaks and the daily story — rather than around them.",
     mechanism: "Whoever supplies reporters with the story they need on deadline shapes how it is told.",
@@ -63,7 +63,7 @@ window.RHET_STYLES = [
     techniques: ["State ownership or capture of media", "Censorship and self-censorship", "The cult of personality", "In newer forms, flooding the space with contradictory claims"],
     strengths: "Near-total short-run control of what most people hear.",
     failure: "The leader stops hearing the truth too; trust collapses when reality breaks through.",
-    exemplars: ["stalin", "mao", "xi", "putin", "hitler", "franco"] },
+    exemplars: ["stalin", "mao", "xi", "putin", "hitler", "franco", "pinochet"] },
   { key: "pen", name: "The pen", color: "var(--era-c19)",
     def: "Leading through the written word — public letters, bulletins, pamphlets and memoirs that set the terms of debate.",
     mechanism: "Writing can be prepared, reread and reprinted, and a published text outlasts the news cycle that prompted it.",
@@ -93,10 +93,10 @@ window.RHET_MAP = {
   ataturk: [80, 55, 60, "orator"], castro: [80, 85, 90, "orator"], mandela: [65, 40, 5, "gesture"],
   fdr: [45, 80, 10, "fireside"], reagan: [50, 60, 10, "fireside"], zelensky: [45, 90, 30, "fireside"], ardern: [30, 80, 5, "fireside"], clinton: [50, 60, 10, "fireside"],
   truman: [20, 40, 10, "plain"], coolidge: [25, 50, 10, "plain"], merkel: [15, 30, 5, "plain"], gwbush: [25, 45, 10, "plain"], biden: [30, 50, 10, "plain"], lula: [45, 70, 15, "plain"], gorbachev: [50, 45, 45, "plain"],
-  mussolini: [85, 85, 90, "spectacle"], hitler: [90, 85, 95, "spectacle"], nkrumah: [70, 75, 60, "spectacle"], erdogan: [60, 80, 75, "spectacle"],
+  mussolini: [85, 85, 90, "spectacle"], peron: [60, 85, 70, "spectacle"], hitler: [90, 85, 95, "spectacle"], nkrumah: [70, 75, 60, "spectacle"], erdogan: [60, 80, 75, "spectacle"],
   troosevelt: [70, 55, 10, "press"], thatcher: [55, 35, 15, "press"], kissinger: [40, 15, 20, "press"], bismarck: [50, 20, 55, "press"], leekuanyew: [60, 40, 75, "press"],
   hueylong: [40, 90, 40, "bypass"], berlusconi: [25, 75, 65, "bypass"], nasser: [70, 85, 80, "bypass"], trump: [15, 95, 20, "bypass"], modi: [55, 90, 55, "bypass"], indira: [55, 70, 65, "bypass"],
-  franco: [45, 55, 90, "control"], stalin: [35, 70, 100, "control"], mao: [70, 80, 100, "control"], xi: [40, 70, 95, "control"], putin: [35, 75, 85, "control"],
+  franco: [45, 55, 90, "control"], pinochet: [25, 40, 90, "control"], stalin: [35, 70, 100, "control"], mao: [70, 80, 100, "control"], xi: [40, 70, 95, "control"], putin: [35, 75, 85, "control"],
   napoleon: [70, 70, 75, "pen"], lenin: [60, 60, 80, "pen"], wilson: [85, 55, 45, "pen"],
   salazar: [75, 30, 85, "majesty"], degaulle: [90, 60, 40, "majesty"], meiji: [90, 20, 60, "majesty"], victoria: [70, 20, 20, "majesty"]
 };
@@ -485,7 +485,31 @@ window.RHET_CASES = [
     context: "Read to the nation by the prime minister, Carlos Arias Navarro, hours after Franco's death.",
     technique: ["A last appeal for the unity of Spain and loyalty to the future king", "Forgiveness asked of all, and offered to those who had declared themselves his enemies", "Delivered by a weeping successor, which became the image of the day"],
     look: "A dictator's last word, written to bind the future — and set aside within months.",
-    effect: "Juan Carlos was proclaimed king two days later and steered the transition to democracy." }
+    effect: "Juan Carlos was proclaimed king two days later and steered the transition to democracy." },
+  { id: "17october", leader: "peron", title: "The night of 17 October", date: "17 October 1945", channel: "Balcony of the Casa Rosada, radio", style: "spectacle",
+    quote: null,
+    context: "A week after the army forced him out of the government and held him on the island of Martín García, tens of thousands of workers marched into the Plaza de Mayo to demand his release. The government gave way, and near midnight he spoke from the balcony.",
+    technique: ["Addressing the crowd as 'workers' — the descamisados, the shirtless — and making them the protagonists", "Presenting himself as one of them, freed by them", "A private bond made public: leader and crowd confirming each other in front of the country"],
+    look: "The founding myth of a movement, staged in the square where it would gather for the next thirty years.",
+    effect: "Celebrated by Peronists ever since as Loyalty Day; he won the presidency in February 1946." },
+  { id: "imberbes", leader: "peron", title: "The break with the Montoneros", date: "1 May 1974", channel: "Balcony speech, Plaza de Mayo", style: "spectacle",
+    quote: null,
+    context: "Back in power after eighteen years of exile, facing the left-wing Peronist youth and the Montoneros guerrillas who had fought for his return — and who now chanted against his wife and his ministers from the square.",
+    technique: ["Turning the balcony against part of his own crowd", "Contempt rather than argument: he called them 'beardless' and 'stupid'", "Choosing the union bosses and the right of the movement over the youth in public"],
+    look: "The pendulum stops: a leader who had kept left and right together from exile by promising both had to choose once he governed.",
+    effect: "The Montoneros' columns walked out, leaving half the square empty. He died two months later, and the movement's civil war deepened under his widow." },
+  { id: "chacarillas", leader: "pinochet", title: "The Chacarillas speech", date: "9 July 1977", channel: "Night-time ceremony on a Santiago hill, broadcast", style: "control",
+    quote: null,
+    context: "A ceremony organised by the regime's youth front on the Chacarillas hill, with 77 young people carrying torches in memory of 77 soldiers killed at the battle of La Concepción in 1882. The speech is generally attributed to the regime's ideologue Jaime Guzmán.",
+    technique: ["Ritual borrowed from the European right: torches, youth, the fallen", "A timetable instead of a promise: stages of 'recovery', 'transition' and 'normality'", "A future democracy defined in advance, with appointed senators and the market written in"],
+    look: "A dictatorship presenting itself as a bridge to a new order rather than a holding operation.",
+    effect: "Its plan became the 1980 constitution — whose own timetable led to the 1988 plebiscite he lost." },
+  { id: "franjano", leader: "pinochet", title: "The No campaign's television slot", date: "September 1988", channel: "Television, 15 minutes a night for each side", style: "control",
+    quote: "Chile, la alegría ya viene.",
+    context: "For the plebiscite of 5 October 1988 on eight more years of Pinochet, the regime allowed each side fifteen minutes of television a night — the first time in fifteen years the opposition had prime time.",
+    technique: ["The No side chose joy over denunciation: a rainbow, a jingle and humour, with banned artists on screen", "The government's Sí side relied on warnings of chaos and on its own record", "A regime used to monopoly found itself in a contest of advertising it had not practised"],
+    look: "What happens when a controlled information state opens one channel: its message, unused to competition, loses on the one ground where it has to compete.",
+    effect: "No won by about 56 to 44 per cent; Pinochet handed over to an elected president in March 1990." }
 ];
 
 window.RHET_PRESS = [
@@ -529,7 +553,8 @@ window.RHET_PRESS = [
       { id: "fdr", how: "With most newspaper owners against him, used his fireside chats to reach voters over the publishers' heads.", when: "1933–44" },
       { id: "clinton", how: "In 1992 went on talk shows, MTV and The Arsenio Hall Show, where he played the saxophone, to reach voters who did not read the political press.", when: "1992" },
       { id: "obama", how: "Appeared on the comedy web series Between Two Ferns in 2014 to promote enrolment on the HealthCare.gov site.", when: "2014" },
-      { id: "zelensky", how: "Recorded his own videos on a phone from 2022, reaching Ukrainians and foreign publics without intermediaries.", when: "2022–" }
+      { id: "zelensky", how: "Recorded his own videos on a phone from 2022, reaching Ukrainians and foreign publics without intermediaries.", when: "2022–" },
+      { id: "peron", how: "In exile from 1955, with even his name banned in Argentina by decree, he directed the movement through letters, envoys and tape-recorded messages played at union and party meetings.", when: "1955–72" }
     ] },
   { key: "attack", name: "Attack the press", def: "Treat the press as an enemy and make the fight itself the message.",
     cases: [
@@ -558,7 +583,9 @@ window.RHET_PRESS = [
       { id: "mussolini", how: "A former editor who built control step by step: press laws in 1925–26, then a press office that became the Ministry of Popular Culture, which sent newspapers daily instructions — the 'veline' — on what to print and what to ignore.", when: "1925–43" },
       { id: "berlusconi", how: "Owned Italy's three main commercial television channels while, as prime minister, his government also oversaw the state broadcaster RAI — a conflict of interest without precedent in a Western democracy.", when: "1994–2011" },
       { id: "franco", how: "The wartime Press Law of 1938 gave the state prior censorship and the right to appoint editors; from 1943 the NO-DO newsreel was compulsory in every cinema. Manuel Fraga's Press Law of 1966 ended prior censorship but kept heavy penalties, which made editors censor themselves.", when: "1938–75" },
-      { id: "salazar", how: "Prior censorship of the press — the 'blue pencil' — inherited from the military dictatorship and formalised in 1933, alongside a Secretariat of National Propaganda under António Ferro that built the image of the austere, reluctant ruler.", when: "1933–68" }
+      { id: "salazar", how: "Prior censorship of the press — the 'blue pencil' — inherited from the military dictatorship and formalised in 1933, alongside a Secretariat of National Propaganda under António Ferro that built the image of the austere, reluctant ruler.", when: "1933–68" },
+      { id: "peron", how: "A congressional commission closed dozens of opposition newspapers in 1949–50, newsprint was rationed to friends, and in 1951 the great independent daily La Prensa was expropriated and handed to the CGT union federation.", when: "1949–55" },
+      { id: "pinochet", how: "After the coup the left-wing press was closed and the rest put under censorship; later opposition magazines such as Análisis and Cauce were tolerated, then suspended under each state of siege. In 1986 the journalist José Carrasco of Análisis was taken from his home and murdered by security agents.", when: "1973–90" }
     ] }
 ];
 

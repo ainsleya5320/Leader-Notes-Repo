@@ -37,6 +37,7 @@ const SUCCESSIONS = { orderly: "Orderly succession", crisis: "Succession crisis"
 // Wikipedia page titles for portraits where the display name won't resolve
 const WIKI_OVERRIDES = {
   parkchunghee: "Park Chung Hee",
+  peron: "Juan Perón",
   ramesses2: "Ramesses II", cyrus: "Cyrus the Great", darius1: "Darius the Great",
   qinshihuang: "Qin Shi Huang", jcaesar: "Julius Caesar", alexander: "Alexander the Great",
   william1: "William the Conqueror", louis9: "Louis IX of France", louis14: "Louis XIV",
@@ -1490,7 +1491,8 @@ const LEADER_ALIASES = {
   suharto: ["Soeharto", "Pak Harto"],
   parkchunghee: ["Park Chung Hee", "Park Chunghee"],
   mussolini: ["Mussolini", "Il Duce"], berlusconi: ["Berlusconi", "Il Cavaliere"],
-  franco: ["Francisco Franco", "General Franco", "Generalísimo Franco", "Francoist"], salazar: ["Oliveira Salazar", "Salazarist"]
+  franco: ["Francisco Franco", "General Franco", "Generalísimo Franco", "Francoist"], salazar: ["Oliveira Salazar", "Salazarist"],
+  pinochet: ["General Pinochet", "Pinochetista"], peron: ["Juan Peron", "General Peron", "Peronism", "Peronist"]
 };
 const NUMERAL = /^(I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII|XIV|XV)$/i;
 // surnames that are also ordinary English words — never match on these alone
@@ -1510,7 +1512,7 @@ function buildMatchers() {
   });
   const out = [];
   const add = (phrase, id, minLen, isSurname) => {
-    const p = String(phrase).trim();
+    const p = String(phrase).trim().normalize("NFD").replace(/[̀-ͯ]/g, "");   // matchLeaders strips accents from the text, so strip them here too
     if (p.length < (minLen || 4)) return;   // explicit aliases may be short (FDR, JFK, Ike)
     const esc = p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/[\s\-']+/g, "[\\s\\-']+");
     try { out.push({ re: new RegExp("(^|[^\\p{L}])" + esc + "($|[^\\p{L}])", "iu"), id, sur: !!isSurname }); } catch (e) { /* skip */ }

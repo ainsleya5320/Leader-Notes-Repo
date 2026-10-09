@@ -658,6 +658,31 @@ window.LEADER_INSTRUMENTS = {
       { reg: "motivate", key: "m_conviction", detail: "Catholic corporatism and the 'civilising mission' of a pluricontinental nation, the creed in whose name Portugal fought on three African fronts from 1961." }
     ]
   },
+  pinochet: {
+    creed: "Order and the fatherland saved from 'Marxism' — the armed forces as the nation's last reserve, and a 'protected democracy' whose 1980 constitution (article 8) outlawed doctrines founded on class struggle.",
+    practice: "Terror first and targeted — the left's parties, unions and shanty-town organisers destroyed in 1973–77 — then a technocratic economy and a constitution meant to make the outcome permanent. The armed forces were bound in with autonomy, budgets and impunity; the population was offered order and, after the 1982 crash, growth.",
+    tools: [
+      { reg: "fear", key: "f_exemplary", detail: "The 'Caravan of Death' of October 1973, a helicopter tour of provincial garrisons by General Sergio Arellano Stark's delegation that killed at least seventy prisoners, many of whom had surrendered voluntarily; the National Stadium as a mass detention centre." },
+      { reg: "fear", key: "f_surveillance", detail: "DINA (1973–77) and then the CNI: secret detention centres such as Villa Grimaldi, torture and disappearances. Official commissions have recognised about 40,000 victims, among them 3,065 killed or disappeared." },
+      { reg: "fear", key: "f_scapegoat", detail: "DINA's crimes were Contreras's to answer for: Pinochet denied knowledge, Contreras was convicted for the Letelier murder in 1993, and later insisted that he had acted on Pinochet's orders — the deniable delegate who stopped being deniable." },
+      { reg: "fear", key: "f_legal", detail: "States of siege and emergency for most of the period; Decree Law 77 of October 1973 dissolving the Marxist parties and confiscating their property; military courts; and the 1978 amnesty decree law covering crimes committed since the coup." },
+      { reg: "fear", key: "f_deportation", detail: "Exile — expulsion or flight of a population commonly estimated at about 200,000 — and 'relegación', internal banishment of opponents to remote towns." },
+      { reg: "trust", key: "t_publicrule", detail: "The 1980 constitution's transitory articles: a published timetable that bound the regime to a plebiscite in 1988. He lost it, and the other commanders held him to the result." },
+      { reg: "motivate", key: "m_ownership", detail: "'A nation of proprietors, not proletarians': privatised pensions in individual accounts (1980–81), home ownership and the sale of state companies sold as giving Chileans a stake in the model." }
+    ]
+  },
+  peron: {
+    creed: "Social justice, economic independence and political sovereignty — the three banners of Justicialism, a 'Third Position' between capitalism and communism — set out in the Twenty Truths read from the balcony on 17 October 1950: 'for a Peronist there can be nothing better than another Peronist'.",
+    practice: "Material gains first — wages, paid holidays, the year-end bonus, pensions, collective agreements enforced by the state — delivered through unions he recognised and a foundation run by his wife, so that loyalty attached to the person rather than the state. For opponents, a narrowing space: a purged Supreme Court, newspapers bought or expropriated, opposition leaders jailed, a political police that tortured. Lighter repression than the dictatorships that followed him, and a far deeper attachment.",
+    tools: [
+      { reg: "loyalty", key: "l_debt", detail: "Rights that workers credited to him personally: the Estatuto del Peón for farm workers (1944), the aguinaldo year-end bonus (1945), paid holidays, pensions and the collective agreements his Secretariat enforced." },
+      { reg: "loyalty", key: "l_attention", detail: "At the Labour Secretariat in 1943–45 he received union delegations and anyone else who came; Eva later received petitioners there into the night, and the Foundation answered letters with sewing machines, houses and pensions." },
+      { reg: "loyalty", key: "l_spoils", detail: "Legal recognition (personería gremial) granted to one union per industry, which made union leaders depend on the state's favour; posts in the movement and the administration; the Eva Perón Foundation's resources." },
+      { reg: "fear", key: "f_legal", detail: "The impeachment of the Supreme Court in 1946–47; 'desacato' prosecutions for insulting officials; the expropriation of La Prensa in 1951 and its transfer to the CGT; a state of internal war declared after the failed coup of September 1951." },
+      { reg: "fear", key: "f_exemplary", detail: "Opponents jailed — the Labour Party leader Cipriano Reyes from 1948 to 1955 — and a police Special Section whose torture of detainees, such as the student Ernesto Bravo in 1951, became public scandals; on 31 August 1955 the balcony threat that 'five of theirs' would fall for every Peronist." },
+      { reg: "motivate", key: "m_conviction", detail: "Justicialism as a doctrine: the Twenty Truths, a Peronist school for cadres from 1951, and Eva's La razón de mi vida made required reading in schools." }
+    ]
+  },
   kissinger: {
     creed: "“Power is the ultimate aphrodisiac” — and a scholar's conviction that stability, not justice, is what foreign policy can actually deliver.",
     practice: "The purest courtier's toolkit in the index: flattery upward, information hoarded sideways, and the channel never delegated.",

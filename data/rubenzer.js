@@ -1200,6 +1200,28 @@ window.TEMPERAMENT = {
       ten: "Tarrafal, PIDE and the colonial wars, set against a ruler who took pains over individual letters and refugees in 1940 — the band reaches up for that reason."
     }
   },
+  pinochet: {
+    source: "estimate",
+    profile: "The suspicious staff officer: ceiling-level concealment, high drive and assertiveness, steady under physical danger, middling intellectual curiosity, and near the floor in tender-mindedness. Included as a dictator, not as a model, for the same reason as Franco and Mussolini.",
+    f: { ach: [72, 90], com: [55, 80], act: [55, 78], int: [25, 55], nvul: [72, 92], ass: [72, 92], nstr: [88, 98], pos: [15, 40], ten: [2, 12] },
+    notes: {
+      nstr: "Joined the coup at the last moment after a career-long reputation for loyalty; later told an interviewer that he wore dark glasses because a lie shows in the eyes, and that he often lied.",
+      int: "Wrote a textbook on geopolitics (1968) and built a personal library reported at more than 55,000 volumes, but left economic and constitutional ideas to others; the band is wide.",
+      com: "The economic record is his team's: shock stabilisation and opening from 1975, a crash in 1982 that cut output by more than a tenth, and recovery under Büchi after 1985.",
+      ten: "The Caravan of Death, DINA and the disappeared — and in 1994, asked about apologising: 'Whom are we going to ask for forgiveness? Those who tried to kill us?'"
+    }
+  },
+  peron: {
+    source: "estimate",
+    profile: "The warm tactician: exuberant, sociable and tireless on the way up, a teacher of 'conducción' who read military history, and a notoriously opaque operator who told each faction what it wanted to hear. Tender-mindedness was lower than the charm and the welfare state suggested, and his nerve failed, or held back, in 1955.",
+    f: { ach: [80, 95], com: [60, 82], act: [75, 95], int: [55, 78], nvul: [35, 65], ass: [75, 92], nstr: [88, 99], pos: [80, 96], ten: [35, 65] },
+    notes: {
+      pos: "The broad smile, the jokes and the easy manner with workers, officers and journalists were the trademark of the rise; the band reaches down for the colder, more calculating exile and the bitter last year.",
+      nstr: "From Madrid he praised the guerrilla 'special formations' while assuring the union leaders and the right of his favour; back in power he turned on the Montoneros from the balcony on 1 May 1974.",
+      nvul: "In September 1955 he gave up without a fight and took refuge on a Paraguayan gunboat — prudence or loss of nerve is still argued; the band reaches up for the self-possession of seventeen years in exile.",
+      int: "Taught military history at the War College and published on it (1932); his 1951 lectures on political 'conducción' draw on Napoleon and Clausewitz."
+    }
+  },
   kissinger: {
     source: "estimate",
     profile: "The highest combination of intellect and concealment in the file. On Rubenzer's scale that is close to an optimal profile, which is precisely why the man remains contested.",

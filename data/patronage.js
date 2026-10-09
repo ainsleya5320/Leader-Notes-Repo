@@ -89,7 +89,7 @@ window.PAT_CASES = [
     ],
     nuance: "This is a relationship, not a transaction. With a secret ballot, enforcement rests on reciprocity and self-interest rather than surveillance — and the system is limited less by law than by the middle class's disapproval.",
     trajectory: "In 2024 the Milei government abolished Potenciar Trabajo and paid beneficiaries directly, cutting the social organisations and municipalities out of distribution — a deliberate attempt to break the broker layer. In April 2026 it went further, replacing the successor programme's payments with training vouchers for about 900,000 people.",
-    orgs: ["peronism"], leaders: [], books: ["auyero-poor", "stokes-brokers", "szwarcberg-mobilizing", "oliveros-patronage", "weitz-shapiro-curbing"] },
+    orgs: ["peronism"], leaders: ["peron"], books: ["auyero-poor", "stokes-brokers", "szwarcberg-mobilizing", "oliveros-patronage", "weitz-shapiro-curbing"] },
 
   { id: "mexico", country: "Mexico", title: "From the PRI's machine to rules-based transfers — and personal credit", period: "2000–present",
     scale: 40, centre: 60, coercion: 35,

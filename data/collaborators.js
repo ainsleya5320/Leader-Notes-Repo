@@ -689,6 +689,34 @@ window.COLLABORATORS = {
     { name: "Maria de Jesus Caetano Freire", role: "Housekeeper from his Coimbra years who ran the São Bento household for the rest of his life" },
     { name: "Humberto Delgado", role: "Air force general and former regime official who ran against the regime's candidate in 1958 ('Obviously, I'll sack him' — of Salazar); murdered by PIDE agents in Spain in 1965" }
   ],
+  pinochet: [
+    { name: "Gustavo Leigh", role: "Air force commander and junta member from 1973; pressed hardest for the coup, then clashed with Pinochet over the junta's direction and the 1978 'consulta', and was forced out on 24 July 1978" },
+    { name: "José Toribio Merino", role: "Navy commander who fixed the date of the coup and sat on the junta from 1973 to 1990, overseeing much of its economic legislation" },
+    { name: "César Mendoza", role: "Director of the Carabineros and junta member 1973–85; resigned after the 'degollados' case, the murder of three Communists by Carabineros" },
+    { name: "Fernando Matthei", role: "Air force commander and junta member 1978–90; on the night of the 1988 plebiscite told reporters arriving at La Moneda that the No had won" },
+    { name: "Manuel Contreras", role: "Army officer who headed DINA from 1973 to 1977, answering to Pinochet personally; convicted for the Letelier and Prats murders, and serving sentences totalling more than 500 years when he died in 2015" },
+    { name: "Sergio de Castro", role: "Chicago-trained economist; economy minister from 1975 and finance minister 1976–82, architect of the opening and of the fixed exchange rate that broke in 1982" },
+    { name: "Jaime Guzmán", role: "Lawyer and leader of the gremialista movement; the regime's chief constitutional thinker and a principal designer of the 1980 constitution; assassinated by the FPMR on 1 April 1991" },
+    { name: "José Piñera", role: "Labour and then mining minister; author of the 1979 Plan Laboral and of the 1980 reform that moved pensions into private individual accounts (the AFPs)" },
+    { name: "Hernán Büchi", role: "Finance minister 1985–89, who managed the recovery after the crash; the regime's candidate in the 1989 presidential election" },
+    { name: "Sergio Fernández", role: "Interior minister 1978–82 and 1987–88, who managed the government's side of the 1988 plebiscite" },
+    { name: "Lucía Hiriart", role: "Wife from 1943; head of the CEMA-Chile network of mothers' centres, the regime's social face" },
+    { name: "Carlos Prats", role: "His predecessor as army commander, who recommended him to Allende; murdered with his wife by a DINA car bomb in Buenos Aires on 30 September 1974" }
+  ],
+  peron: [
+    { name: "Eva Perón", role: "Wife from 1945; ran the Eva Perón Foundation (1948) and the Peronist Women's Party (1949), received union delegations and petitioners at the Labour Secretariat, and was the movement's most powerful voice until her death on 26 July 1952" },
+    { name: "Domingo Mercante", role: "Army officer and his right hand at the Labour Secretariat in 1943–45, the link to the union leaders; governor of Buenos Aires province 1946–52, then dropped" },
+    { name: "Cipriano Reyes", role: "Meatpackers' leader who helped bring the workers to the Plaza on 17 October 1945 and founded the Labour Party that elected Perón; resisted its absorption into the Peronist party and was jailed from 1948 to 1955" },
+    { name: "Miguel Miranda", role: "Industrialist who ran economic policy from the central bank and the IAPI in 1946–49, until the reserves ran out" },
+    { name: "Ramón Carrillo", role: "Neurosurgeon; health secretary and then minister 1946–54, who led a large hospital-building programme and the campaigns against endemic disease" },
+    { name: "Raúl Apold", role: "Head of the information undersecretariat — press, radio, newsreels and propaganda — from 1949 to 1955" },
+    { name: "John William Cooke", role: "Peronist deputy, named by Perón in 1956 as his delegate in Argentina and his successor in case of death; led the early resistance and moved to the revolutionary left" },
+    { name: "Augusto Vandor", role: "Metalworkers' (UOM) leader who built the union machine of the 1960s and flirted with 'Peronism without Perón', which Perón undermined from Madrid; murdered in 1969" },
+    { name: "Héctor Cámpora", role: "Personal delegate from 1971 and president from 25 May to 13 July 1973 under the slogan 'Cámpora to government, Perón to power'; resigned to make way for him" },
+    { name: "José López Rega", role: "Former police corporal and astrologer; his secretary in Madrid, minister of social welfare 1973–75 and organiser of the Triple A death squads" },
+    { name: "Isabel Perón", role: "Third wife (married 1961), his envoy to Argentina in 1965, vice-president from 1973 and his successor on his death; overthrown on 24 March 1976" },
+    { name: "José Ignacio Rucci", role: "CGT secretary-general and pillar of the union right; murdered on 25 September 1973, two days after Perón's election" }
+  ],
   goh: [
     { name: "Lee Kuan Yew", role: "Predecessor, retained in his cabinet as Senior Minister" },
     { name: "Lee Hsien Loong", role: "Deputy, groomed successor, and the founder's son" },

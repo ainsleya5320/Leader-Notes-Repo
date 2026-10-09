@@ -453,6 +453,32 @@ Object.assign(window.POWER_BASE, {
     danger: "The 1958 Delgado campaign, which showed that the restricted electorate could still turn; and 1961 — the Angolan rising, the Botelho Moniz attempt, the hijacking of the Santa Maria and the loss of Goa in a single year.",
     verdict: "Thirty-six years, ended by incapacity rather than by his coalition. The coalition outlived him under Caetano for less than six years and then fell to the army it had relied on — when the colonial wars made the military's private costs higher than its rewards."
   },
+  pinochet: {
+    system: "Personal military dictatorship inside a junta — a small coalition of generals, admirals, security chiefs, technocrats and business groups, with a selectorate that could vote only in plebiscites the regime called",
+    w_scale: 2, sizes: { n: 7400000, s: 50000, w: 100 },
+    n: { who: "Chileans over 18, who could vote only in the 1978 'consulta', the 1980 constitutional plebiscite (held without electoral registers) and the 1988 plebiscite, for which 7.4 million registered.", size: "~7.4 million (1988)" },
+    s: { who: "The officer corps of the four services and the Carabineros, the business associations and large economic groups, the gremialista and Chicago-trained cadres, and the notables of the right.", size: "~50,000 (estimate)" },
+    w: { who: "The other junta members, the army's generals, the DINA/CNI chiefs, the economic team, the advisers around Jaime Guzmán and the heads of the main conglomerates.", size: "~100 (estimate)" },
+    loyalty: "Strong inside the army, whose commander controlled promotions and retirements, and conditional in the other services, whose commanders sat beside him in the junta. Fear of the left's return, and of prosecution, held the coalition together; the 1978 amnesty and the constitution's guarantees were paid to it as insurance.",
+    currency: "Private goods for the military — budgets, autonomy, the copper levy, impunity — and for business, privatisations on favourable terms; and a public good the coalition prized above all, the defeat of the left, followed after 1985 by growth.",
+    revenue: "Copper, VAT, privatisation receipts and foreign borrowing — which made the regime hostage to the debt crisis of 1982, the moment its coalition wobbled.",
+    shuffle: "Removed Leigh in July 1978, together with much of the air force's high command; replaced the economic team after the 1982 crash and again in 1985 with Hernán Büchi; saw the Carabineros chief César Mendoza resign after the 1985 'degollados' murders.",
+    danger: "1982–83, when the crash cut output by more than a tenth, unemployment soared and monthly national protests began; and the night of 5 October 1988, when the other commanders would not back him against the count.",
+    verdict: "Sixteen and a half years, ended not by a coup but by the rules his own coalition had insisted on — then eight more as army commander. A coalition whose essentials feared prosecution needed guarantees more than it needed a leader, and the constitution gave it both."
+  },
+  peron: {
+    system: "Mass electoral presidency with a corporatist core — elected by a working-class majority, but resting on the union apparatus, and on an army that kept the last word",
+    w_scale: 5, sizes: { n: 8600000, s: 7600000, w: 4700000 },
+    n: { who: "Registered voters in November 1951 — the first presidential election in which women voted, enfranchised in 1947.", size: "~8.6 million (1951)" },
+    s: { who: "The voters of 1951, on a turnout of 88 per cent.", size: "~7.6 million" },
+    w: { who: "The Perón vote of 1951 — 63.5 per cent — organised through the CGT unions and the men's and women's Peronist parties; behind it, the essentials who could actually end the government: the army command.", size: "~4.7 million voters; a few dozen generals" },
+    loyalty: "Stronger than an electoral W usually is, because the benefits were personal and identity-forming — workers credited Perón and Evita, not the state — and that loyalty survived eighteen years of proscription. But the army, outside the electoral coalition, was the veto player the electoral W leaves out.",
+    currency: "Public goods for the working majority — wages, pensions, holidays, housing, hospitals — and private goods for the union leaders and the movement's cadres: recognition, posts, Foundation funds.",
+    revenue: "The IAPI export monopoly's margin on grain and meat, the wartime reserves, social-security surpluses, and inflation once those ran out in 1949.",
+    shuffle: "Union leaders with bases of their own were removed — Luis Gay from the CGT in 1947, Cipriano Reyes jailed in 1948 — and the economic team was replaced in 1949 when the reserves ran out.",
+    danger: "October 1945, when the army forced him out and the unions brought him back; September 1951, the failed Menéndez coup; and June–September 1955 — the bombing of the Plaza de Mayo, the quarrel with the Church and the revolt that ended the government.",
+    verdict: "Nine years, seventeen in exile, then nine months: a large-W leader brought down not by the voters but by the small coalition with guns that the electoral arithmetic never captured. Returned in 1973 with 62 per cent, he died before the movement's left and right could be reconciled, and his widow's government ended in the coup of March 1976."
+  },
   kissinger: {
     system: "A courtier's power base — one essential at a time: the president",
     w_scale: 1, sizes: { n: 10000, s: 1000, w: 2 },
