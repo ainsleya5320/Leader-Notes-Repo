@@ -279,7 +279,7 @@ window.LIBRARY = [
     leaders: [], tags: ["clientelism", "nationalism"],
     note: "The participant/subject/parochial spectrum — whether the governed expect to be consulted, commanded, or left alone. The empirical basis of the Political Culture section." },
   { id: "anatomy-of-fascism", title: "The Anatomy of Fascism", author: "Robert O. Paxton", year: 2004,
-    leaders: ["hitler"], tags: ["cultpersonality", "propaganda", "coercive"],
+    leaders: ["hitler", "mussolini"], tags: ["cultpersonality", "propaganda", "coercive"],
     note: "Defines fascism by what it does in stages rather than what it claims to believe. The best guard against using the word loosely." },
   { id: "how-democracies-die", title: "How Democracies Die", author: "Steven Levitsky & Daniel Ziblatt", year: 2018,
     leaders: ["erdogan", "putin"], tags: ["machine", "coercive", "institutional"],
@@ -1057,5 +1057,28 @@ window.LIBRARY = [
     note: "Shows how the presidency changed from an office that rarely addressed the public to one that leads through popular speech — and what that cost deliberation." },
   { id: "kernell-going-public", title: "Going Public: New Strategies of Presidential Leadership", author: "Samuel Kernell", year: 1986,
     leaders: [], tags: ["propaganda"],
-    note: "Explains why modern presidents appeal over Congress's head to the public instead of bargaining in private, and what the strategy changes." }
+    note: "Explains why modern presidents appeal over Congress's head to the public instead of bargaining in private, and what the strategy changes." },
+  // ---------------- Mussolini ----------------
+  { id: "mack-smith-mussolini", title: "Mussolini", author: "Denis Mack Smith", year: 1981,
+    leaders: ["mussolini"], tags: ["propaganda", "cultpersonality", "micromanage"],
+    note: "The hostile classic: Mussolini as a gifted journalist and propagandist but a poor administrator and strategist, whose power rested on publicity more than on government, and who took Italy into wars it was not equipped to fight." },
+  { id: "bosworth-mussolini", title: "Mussolini", author: "R. J. B. Bosworth", year: 2002,
+    leaders: ["mussolini"], tags: ["charismatic", "propaganda", "cultpersonality"],
+    note: "A full biography that strips away the myth of the man of iron will: Bosworth's Mussolini is a provincial intellectual and opportunist whose dictatorship was more improvised, and more dependent on bargains with the King, the Church and the old elites, than its propaganda claimed. Revised edition 2010." },
+  { id: "duggan-fascist-voices", title: "Fascist Voices: An Intimate History of Mussolini's Italy", author: "Christopher Duggan", year: 2012,
+    leaders: ["mussolini"], tags: ["cultpersonality", "propaganda", "politicalreligion"],
+    note: "Built from diaries and the letters ordinary Italians wrote to Mussolini, it argues that the cult of the Duce produced real emotional attachment — discontent fell on the party and the hierarchs rather than on him — and that the regime borrowed the Catholic language of faith. Wolfson History Prize; a central text in the contested debate over how far Italians consented to Fascism." },
+  { id: "bonsaver-censorship-fascist-italy", title: "Censorship and Literature in Fascist Italy", author: "Guido Bonsaver", year: 2007,
+    leaders: ["mussolini"], tags: ["propaganda"],
+    note: "From the archives of the censorship apparatus, shows Mussolini acting in person as the regime's chief censor of books, and how writers and publishers negotiated with a system that relied more on pressure, favour and self-censorship than on outright bans." },
+  // ---------------- Berlusconi ----------------
+  { id: "ginsborg-berlusconi", title: "Silvio Berlusconi: Television, Power and Patrimony", author: "Paul Ginsborg", year: 2004,
+    leaders: ["berlusconi"], tags: ["spectacle", "clientelism"],
+    note: "A short political essay by a historian of modern Italy on how a construction and television fortune became a political project, setting Berlusconi's media power and family-centred business empire in the long history of Italian patrimonial politics, and arguing that the fusion of media ownership and executive power posed a new kind of danger to democracy." },
+  { id: "stille-sack-of-rome", title: "The Sack of Rome: How a Beautiful European Country with a Fabled History and a Storied Culture Was Taken Over by a Man Named Silvio Berlusconi", author: "Alexander Stille", year: 2006,
+    leaders: ["berlusconi"], tags: ["spectacle"],
+    note: "A journalist's account of the rise from Milano 2 to Canale 5 to Palazzo Chigi, arguing that owning the medium through which most Italians followed politics gave Berlusconi an advantage no democratic politician had held before. Critical by design." },
+  { id: "friedman-my-way", title: "My Way: Berlusconi in His Own Words", author: "Alan Friedman", year: 2015,
+    leaders: ["berlusconi"], tags: [],
+    note: "Built on some 100 hours of interviews with Berlusconi, set beside conversations with friends and opponents. The fullest version of his own account of his life; reviewers found it an easy ride for its subject, so read it as testimony rather than verdict." }
 ];

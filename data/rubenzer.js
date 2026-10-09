@@ -1169,6 +1169,16 @@ window.TEMPERAMENT = {
       nstr: "Agreed under American pressure to restore civilian rule and then won the 1963 election as a civilian; promised after his 1967 victory to stand down in 1971, and then had the constitution amended to let him run a third time."
     }
   },
+  mussolini: {
+    source: "estimate",
+    profile: "A journalist's temperament in a dictator: ceiling-level assertiveness and concealment, real warmth before a crowd, a quick and unstable intellect, and very low tender-mindedness. Included, as Hitler is, because leaving him out would flatter the scale.",
+    f: { ach: [85, 96], com: [80, 95], act: [78, 93], int: [55, 80], nvul: [30, 62], ass: [93, 99], nstr: [88, 98], pos: [55, 85], ten: [4, 22] },
+    notes: {
+      int: "Read widely, wrote fast and spoke French and some German; the band is wide because quickness and consistency point different ways — positions shifted with the day's effect.",
+      nvul: "Steady through the March on Rome gamble; visibly shaken in the Matteotti crisis of 1924, and in 1943, ill with a stomach complaint, he let the Grand Council meet and vote against him without trying to stop it.",
+      ten: "Poison gas in Ethiopia, which he authorised himself, the racial laws of 1938 and internal exile for opponents."
+    }
+  },
   kissinger: {
     source: "estimate",
     profile: "The highest combination of intellect and concealment in the file. On Rubenzer's scale that is close to an optimal profile, which is precisely why the man remains contested.",
@@ -1198,6 +1208,17 @@ window.TEMPERAMENT = {
       act: "Reportedly works eighteen-hour days and takes essentially no holidays; the sheer output is not in dispute even among critics.",
       int: "The low band reflects a closed advisory circle and a documented impatience with contrary expertise — demonetisation was decided by very few people.",
       ten: "The band spans the welfare delivery to hundreds of millions and Gujarat in 2002."
+    }
+  },
+  berlusconi: {
+    source: "estimate",
+    profile: "The salesman's profile: ceiling-level warmth and self-belief, very high energy and concealment, and a composure that survived three falls from office, a definitive conviction and expulsion from parliament.",
+    contested: "A recent and polarising figure, and readers will disagree about several bands here for reasons that are not psychometric.",
+    f: { ach: [88, 97], com: [92, 99], act: [85, 96], int: [40, 70], nvul: [80, 95], ass: [88, 97], nstr: [85, 97], pos: [92, 99], ten: [30, 62] },
+    notes: {
+      pos: "Jokes, songs, compliments and the public show of enjoyment were his trademark from the cruise ships onward — the least disputed band in the profile.",
+      nvul: "Lost office in 1995, 2006 and 2011 and came back after the first two; after the 2013 conviction and expulsion from the Senate he returned to the European Parliament at 82 and the Senate at 85.",
+      nstr: "The unresolved conflict of interest, and the 2001 'Contract with the Italians', signed with a promise not to stand again unless at least four of its five pledges were met — he stood again in 2006, and the extent of fulfilment is disputed."
     }
   }
 };

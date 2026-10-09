@@ -186,6 +186,8 @@ window.LEADER_STYLES = {
     note: "High Charismatic and Creative with a low Deliberative reading — demonetisation was decided in a very small room and announced to the country directly." },
   erdogan:     { domain: "adapted", s: { inter: 55, charis: 88, delib: 45, creat: 78, neuro: 72 },
     note: "Charismatic majoritarian style, with a Neurotic score that rose sharply after 2016 as criticism became prosecutable." },
+  berlusconi:  { domain: "adapted", s: { inter: 85, charis: 95, delib: 35, creat: 72, neuro: 72 },
+    note: "The salesman's pairing of near-ceiling Interpersonal and Charismatic styles — the dinner, the telephone call, the camera — with a low Deliberative score. The Neurotic reading carries two decades of open conflict with prosecutors, which shaped much of his legislative agenda." },
   indira:      { domain: "adapted", s: { inter: 40, charis: 78, delib: 60, creat: 72, neuro: 85 },
     note: "The Emergency is the highest-consequence Neurotic reading in a democracy in this file — an institutional suspension driven substantially by a personal legal defeat." },
 
@@ -232,6 +234,8 @@ window.LEADER_STYLES = {
     note: "Low Charismatic and low Neurotic: a man who governed without oratory and rarely visibly lost his composure. The Creative score reflects institutional invention — Golkar, the party fusion, the five-year plans — rather than personal style." },
   parkchunghee: { domain: "extended", s: { inter: 35, charis: 55, delib: 65, creat: 85, neuro: 58 },
     note: "Creative near the ceiling — the export-led state, Saemaul and the heavy-industry drive were his inventions and his instruments — with a weak Interpersonal style: he governed through institutions and two rival security chiefs rather than through relationships. The Neurotic score rises after 1972, as dissent became a threat to be removed." },
+  mussolini:   { domain: "extended", s: { inter: 45, charis: 97, delib: 25, creat: 78, neuro: 85 },
+    note: "Charismatic at the ceiling — the balcony, the newsreel, the journalist's instinct for the day's effect — with a low Deliberative score: Ethiopia, the racial laws and the June 1940 declaration were each decided by a man who consulted little and weighed the long term less. The Creative score is the one-party state and the corporative apparatus, more announced than realised." },
   cixi:        { domain: "extended", s: { inter: 52, charis: 48, delib: 72, creat: 45, neuro: 75 },
     note: "Deliberative in the service of personal survival and Creative near the floor: she managed a court superbly and reformed almost nothing until it was too late." },
   putin:       { domain: "extended", s: { inter: 40, charis: 55, delib: 78, creat: 70, neuro: 65 },

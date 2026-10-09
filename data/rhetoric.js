@@ -42,7 +42,7 @@ window.RHET_STYLES = [
     techniques: ["Choreographed rallies and set designs", "Call-and-response with the crowd", "Repetition of slogans", "Film and broadcast of the crowd"],
     strengths: "Mobilises intense loyalty and fear of being left out.",
     failure: "Rewards the already committed; in its extreme forms it served totalitarian movements.",
-    exemplars: ["hitler", "nkrumah", "erdogan", "modi", "trump"] },
+    exemplars: ["mussolini", "hitler", "nkrumah", "erdogan", "modi", "trump"] },
   { key: "press", name: "The press manager", color: "var(--reg-loyalty)",
     def: "Working through journalists — access, briefings, leaks and the daily story — rather than around them.",
     mechanism: "Whoever supplies reporters with the story they need on deadline shapes how it is told.",
@@ -56,7 +56,7 @@ window.RHET_STYLES = [
     techniques: ["Adopting the newest medium early", "Volume and frequency", "Casting the press as an obstacle", "Speaking in the audience's own idiom"],
     strengths: "Speed and control of the agenda; an unfiltered bond with supporters.",
     failure: "Without editors, errors and excess go straight out; and casting the press as an enemy damages the institution.",
-    exemplars: ["hueylong", "nasser", "trump", "modi", "indira"] },
+    exemplars: ["hueylong", "nasser", "berlusconi", "trump", "modi", "indira"] },
   { key: "control", name: "The controlled information state", color: "var(--bad)",
     def: "Owning the channels: censorship, state media, repetition and the cult of the leader, so that rival versions cannot circulate.",
     mechanism: "When there is only one story, repetition makes it familiar and familiarity makes it feel true; dissent becomes invisible.",
@@ -93,9 +93,9 @@ window.RHET_MAP = {
   ataturk: [80, 55, 60, "orator"], castro: [80, 85, 90, "orator"], mandela: [65, 40, 5, "gesture"],
   fdr: [45, 80, 10, "fireside"], reagan: [50, 60, 10, "fireside"], zelensky: [45, 90, 30, "fireside"], ardern: [30, 80, 5, "fireside"], clinton: [50, 60, 10, "fireside"],
   truman: [20, 40, 10, "plain"], coolidge: [25, 50, 10, "plain"], merkel: [15, 30, 5, "plain"], gwbush: [25, 45, 10, "plain"], biden: [30, 50, 10, "plain"], lula: [45, 70, 15, "plain"], gorbachev: [50, 45, 45, "plain"],
-  hitler: [90, 85, 95, "spectacle"], nkrumah: [70, 75, 60, "spectacle"], erdogan: [60, 80, 75, "spectacle"],
+  mussolini: [85, 85, 90, "spectacle"], hitler: [90, 85, 95, "spectacle"], nkrumah: [70, 75, 60, "spectacle"], erdogan: [60, 80, 75, "spectacle"],
   troosevelt: [70, 55, 10, "press"], thatcher: [55, 35, 15, "press"], kissinger: [40, 15, 20, "press"], bismarck: [50, 20, 55, "press"], leekuanyew: [60, 40, 75, "press"],
-  hueylong: [40, 90, 40, "bypass"], nasser: [70, 85, 80, "bypass"], trump: [15, 95, 20, "bypass"], modi: [55, 90, 55, "bypass"], indira: [55, 70, 65, "bypass"],
+  hueylong: [40, 90, 40, "bypass"], berlusconi: [25, 75, 65, "bypass"], nasser: [70, 85, 80, "bypass"], trump: [15, 95, 20, "bypass"], modi: [55, 90, 55, "bypass"], indira: [55, 70, 65, "bypass"],
   stalin: [35, 70, 100, "control"], mao: [70, 80, 100, "control"], xi: [40, 70, 95, "control"], putin: [35, 75, 85, "control"],
   napoleon: [70, 70, 75, "pen"], lenin: [60, 60, 80, "pen"], wilson: [85, 55, 45, "pen"],
   degaulle: [90, 60, 40, "majesty"], meiji: [90, 20, 60, "majesty"], victoria: [70, 20, 20, "majesty"]
@@ -437,7 +437,31 @@ window.RHET_CASES = [
     context: "Three weeks into Russia's full-scale invasion.",
     technique: ["Invoking Pearl Harbor and 9/11 — the audience's own histories", "Paraphrasing Martin Luther King: 'I have a dream… I have a need'", "A video of the destruction played mid-speech"],
     look: "Tailoring: he wrote each foreign parliament a speech in its own historical language.",
-    effect: "Part of a campaign that built Western support for military aid." }
+    effect: "Part of a campaign that built Western support for military aid." },
+  { id: "thirdjanuary", leader: "mussolini", title: "The speech of 3 January 1925", date: "3 January 1925", channel: "Chamber of Deputies", style: "spectacle",
+    quote: "I alone assume the political, moral and historical responsibility for all that has happened.",
+    context: "Six months after Fascist thugs murdered the socialist deputy Giacomo Matteotti, with the government in crisis and the opposition boycotting parliament.",
+    technique: ["Defiance instead of defence: he dared the Chamber to impeach him", "Taking responsibility as a show of strength rather than an admission", "A threat of force in parliamentary language"],
+    look: "The moment a crisis that could have ended him was turned into the founding of the dictatorship.",
+    effect: "Opposition parties and the free press were suppressed over the following two years." },
+  { id: "balcony36", leader: "mussolini", title: "The balcony at Palazzo Venezia", date: "9 May 1936", channel: "Balcony speech, radio, newsreel", style: "spectacle",
+    quote: null,
+    context: "Proclaiming the Italian empire after the conquest of Ethiopia, to a crowd filling the square below.",
+    technique: ["Short, staccato phrases with pauses for the crowd's response", "Jutting jaw and hands on hips — poses fixed by photographers and newsreel cameras", "Loudspeakers in squares across Italy relaying the speech live"],
+    look: "Call-and-response as government: the crowd's roar was part of the message, and the newsreel multiplied it.",
+    effect: "The high point of the regime's popularity; he declared war from the same balcony on 10 June 1940." },
+  { id: "scendereincampo", leader: "berlusconi", title: "Entering the field", date: "26 January 1994", channel: "Videotape broadcast on television", style: "bypass",
+    quote: "L'Italia è il Paese che amo.",
+    context: "A media tycoon announcing his entry into politics weeks before an election, as the old parties collapsed in corruption scandals.",
+    technique: ["A pre-recorded message of about nine minutes, sent to the networks — including his own — rather than a speech to a crowd", "The language of advertising and football ('entering the field')", "An appeal to voters as consumers of a new product"],
+    look: "A political launch designed like a commercial, carried on channels the candidate owned.",
+    effect: "His new party, Forza Italia, won the election two months later." },
+  { id: "contratto", leader: "berlusconi", title: "The Contract with the Italians", date: "8 May 2001", channel: "Television talk show", style: "bypass",
+    quote: null,
+    context: "Days before the 2001 election, on the political talk show Porta a Porta.",
+    technique: ["Signing a written 'contract' of five promises on live television", "A pledge not to stand again if four were not met", "Turning a programme into a personal guarantee"],
+    look: "Politics as a salesman's deal — the voter as the other party to a contract.",
+    effect: "He won; whether the contract was kept became a running dispute."}
 ];
 
 window.RHET_PRESS = [
@@ -486,7 +510,8 @@ window.RHET_PRESS = [
     cases: [
       { id: "nixon", how: "An 'enemies list' that included journalists and his vice-president's attacks on the networks; in 1971 his administration went to court to stop The New York Times publishing the Pentagon Papers, and lost in the Supreme Court.", when: "1969–74" },
       { id: "trump", how: "Called the news media 'the enemy of the American people' in February 2017.", when: "2017–" },
-      { id: "hitler", how: "Before taking power, Nazi propaganda attacked the 'Lügenpresse' — the 'lying press' — as an enemy of the people.", when: "1920s–33" }
+      { id: "hitler", how: "Before taking power, Nazi propaganda attacked the 'Lügenpresse' — the 'lying press' — as an enemy of the people.", when: "1920s–33" },
+      { id: "berlusconi", how: "In the 'Bulgarian edict' of April 2002, speaking in Sofia, he accused the journalists Enzo Biagi and Michele Santoro and the comedian Daniele Luttazzi of a 'criminal' use of public television; all three soon lost their programmes on RAI.", when: "2002" }
     ] },
   { key: "own", name: "Own the press", def: "Control the channels outright through state ownership, capture or censorship.",
     cases: [
@@ -504,7 +529,9 @@ window.RHET_PRESS = [
       { id: "leekuanyew", how: "Closed two newspapers and detained executives of a third in 1971, then legislated in 1974 that newspapers issue management shares whose holders the government approved — control through licensing and ownership rather than nationalisation.", when: "1971–90" },
       { id: "erdogan", how: "The opposition daily Zaman was seized in March 2016, and after the coup attempt that July some 150 media outlets were closed by decree.", when: "2016–" },
       { id: "zelensky", how: "Under martial law the main national channels were combined in 2022 into a single 'United News' telemarathon — defended as wartime necessity, criticised as reducing pluralism.", when: "2022–" },
-      { id: "churchill", how: "During the 1926 General Strike, with Fleet Street shut, he edited the government's own newspaper, the British Gazette.", when: "1926" }
+      { id: "churchill", how: "During the 1926 General Strike, with Fleet Street shut, he edited the government's own newspaper, the British Gazette.", when: "1926" },
+      { id: "mussolini", how: "A former editor who built control step by step: press laws in 1925–26, then a press office that became the Ministry of Popular Culture, which sent newspapers daily instructions — the 'veline' — on what to print and what to ignore.", when: "1925–43" },
+      { id: "berlusconi", how: "Owned Italy's three main commercial television channels while, as prime minister, his government also oversaw the state broadcaster RAI — a conflict of interest without precedent in a Western democracy.", when: "1994–2011" }
     ] }
 ];
 
@@ -516,11 +543,11 @@ window.RHET_CHANNELS = [
   { key: "radio", name: "Radio", years: "1920s–1950s",
     def: "The leader's own voice in every home, live.",
     shift: "Intimacy at scale — and, in dictatorships, cheap receivers for mass propaganda.",
-    cases: [{ id: "fdr", how: "The fireside chats, from 1933." }, { id: "hitler", how: "The regime subsidised cheap 'people's receivers' from 1933." }, { id: "churchill", how: "Wartime broadcasts on the BBC." }, { id: "degaulle", how: "The Appeal of 18 June 1940." }, { id: "nasser", how: "Voice of the Arabs, from 1953." }] },
+    cases: [{ id: "fdr", how: "The fireside chats, from 1933." }, { id: "hitler", how: "The regime subsidised cheap 'people's receivers' from 1933." }, { id: "mussolini", how: "Speeches relayed by loudspeaker to squares across Italy, and the Istituto Luce newsreels shown in every cinema." }, { id: "churchill", how: "Wartime broadcasts on the BBC." }, { id: "degaulle", how: "The Appeal of 18 June 1940." }, { id: "nasser", how: "Voice of the Arabs, from 1953." }] },
   { key: "tv", name: "Television", years: "1950s–2000s",
     def: "The image joined the voice; the evening news became the arena.",
     shift: "Appearance, setting and the soundbite mattered; politics became staged for the camera.",
-    cases: [{ id: "eisenhower", how: "The first filmed press conference, 1955." }, { id: "jfk", how: "The 1960 debates and live press conferences from 1961." }, { id: "reagan", how: "The 'line of the day' and visuals built for the news." }, { id: "degaulle", how: "Mastered television addresses and staged press conferences." }] },
+    cases: [{ id: "eisenhower", how: "The first filmed press conference, 1955." }, { id: "berlusconi", how: "Built commercial television in Italy, then used it as a political platform." }, { id: "jfk", how: "The 1960 debates and live press conferences from 1961." }, { id: "reagan", how: "The 'line of the day' and visuals built for the news." }, { id: "degaulle", how: "Mastered television addresses and staged press conferences." }] },
   { key: "digital", name: "Digital and social", years: "2000s–",
     def: "Anyone can publish; the leader can reach followers directly and constantly.",
     shift: "Volume, speed and direct contact; the editor's filter weakened, and so did shared facts.",

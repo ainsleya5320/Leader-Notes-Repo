@@ -331,6 +331,21 @@ window.POWER_BASE = {
     verdict: "The most unusual exit in the modern index: withdrawn from the 2024 race in July by his own coalition — donors, congressional leadership, and eventually Pelosi — through a mechanism that does not formally exist. American presidents cannot be deselected; this one effectively was, which is a reminder that the essentials' power does not depend on there being a procedure for it."
   },
 
+  berlusconi: {
+    system: "Parliamentary democracy with a fragmented coalition — a personal party whose leader was also the country's largest private broadcaster",
+    w_scale: 5,
+    sizes: { n: 49000000, s: 40000000, w: 18000000 },
+    n: { who: "Italian adults eligible to vote for the Chamber of Deputies, under the mixed electoral law of 1993 and, from 2006, a proportional law with a majority bonus.", size: "~49 million (2001)" },
+    s: { who: "Those who voted — turnout above 80 per cent in each of his victories.", size: "~40 million voters (2001)" },
+    w: { who: "The House of Freedoms vote in 2001 — Forza Italia, the National Alliance, the Northern League and the Christian Democratic splinters — and in parliament the leaders of those parties, each able to withdraw a majority.", size: "~18 million voters (estimate); a handful of party leaders" },
+    loyalty: "Weak by the arithmetic of a mass electorate, but tightened by dependence: his partners needed his votes and his television audience, and Forza Italia's own deputies had no organisation that did not run through him. The partners could still leave — the League did in December 1994, Fini's followers in 2010.",
+    currency: "Public goods promised as tax cuts (the 2001 contract; abolition of the property tax on first homes in 2008) and delivered partly as tax amnesties; private goods in candidacies and ministries for allies and for managers from his own companies.",
+    revenue: "Taxes on a slow-growing economy carrying public debt above 100 per cent of GDP — which left the government exposed to the bond market in 2011.",
+    shuffle: "Allies dropped and re-adopted as needed: the League walked out in 1994 and returned in 2000; the National Alliance was merged into the People of Freedom in 2009 and Fini's group pushed out in 2010.",
+    danger: "December 1994, when the League withdrew; 14 December 2010, a confidence vote won 314 to 311 after Fini's split; and November 2011, when the bond spread and defections ended the government.",
+    verdict: "About nine years as prime minister across seventeen, ended once by a coalition partner, once by the voters and once by defections under market pressure — the large-W pattern of performance-contingent tenure, with the unusual feature that the leader's private media empire was part of what held the coalition together."
+  },
+
   // ============================================================
   // THREE ANOMALIES — the succession problem, solved and failed
   // Every small-coalition entry above ends the same way: nothing

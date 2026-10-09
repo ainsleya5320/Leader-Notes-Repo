@@ -652,6 +652,12 @@ window.LEADERS = [
     delegation: "High trust in a small veteran circle; the age question became the delegation question in the end.",
     tags: ["transactional", "cabinet", "collegial", "institutional"] },
 
+  { id: "berlusconi", name: "Silvio Berlusconi", years: "PM 1994–95, 2001–06, 2008–11", title: "PM of Italy; founder of Fininvest and Forza Italia", country: "Italy", iso: "380", era: "c21", president: false,
+    style: "The salesman in politics — a builder and television owner who announced his candidacy on videotape, sold his programme as a contract signed on air, and made the polls, the camera and his own life story the campaign.",
+    structure: "A personal party assembled in weeks from his own companies — Publitalia's sales managers chose the candidates and a company-founded pollster did the research — at the head of centre-right coalitions that depended on the Northern League and the post-fascist National Alliance.",
+    delegation: "Kept the brand, the candidate lists and the coalition bargains to himself; left economic policy to Giulio Tremonti and the running of the prime minister's office to Gianni Letta; never built a successor who lasted, so the party rose and fell with him.",
+    tags: ["charismatic", "transactional", "hubspoke", "spectacle", "coalitionbrokerage"] },
+
   // ---- Completing the 20th-century U.S. presidents (biographies in data/bios.js) ----
   { id: "mckinley", name: "William McKinley", years: "in office 1897–1901", title: "25th U.S. President", country: "United States", iso: "840", era: "c20", president: true,
     style: "Genial consensus-builder — quiet mastery over bombast; expanded American power abroad while projecting Midwestern calm.",
@@ -773,6 +779,12 @@ window.LEADERS = [
     structure: "A junta that turned itself into a civilian presidency: the KCIA and the Presidential Security Service for control, the Economic Planning Board and state-directed credit for the five-year plans, and after the 1972 Yushin constitution an electoral college and a third of the National Assembly filled on his nomination.",
     delegation: "Left economic detail to technocrats and the chaebol but chaired the monthly export-promotion meetings himself, and kept the KCIA and the Presidential Security Service as rivals — the feud between their two chiefs ended in his death.",
     tags: ["coercive", "transformational", "bureaucratic", "micromanage", "dividerule", "nationalism"] },
+
+  { id: "mussolini", name: "Benito Mussolini", years: "in power 1922–1943", title: "Prime Minister & Duce of Italy; head of the Salò republic 1943–45", country: "Italy", iso: "380", era: "c20", president: false,
+    style: "The journalist as dictator — a former socialist editor who governed through headlines, balcony speeches and the photograph, improvised policy for the day's effect, and let 'Mussolini is always right' become the regime's slogan.",
+    structure: "A one-party state built inside a surviving monarchy: the Fascist party, its militia and the corporations on one side; the King, the army and, after 1929, the Church left standing on the other. The Grand Council of Fascism, created as his instrument, was the body that voted against him in July 1943.",
+    delegation: "Held as many as seven ministries himself at once and rotated ministers and party secretaries in periodic 'changings of the guard' so that none built a base; decisions were his, but the information that reached him was filtered by courtiers, and the armed forces he claimed to command were unready for the war he declared.",
+    tags: ["charismatic", "coercive", "propaganda", "cultpersonality", "spectacle", "hubspoke", "micromanage", "nationalism"] },
 
   { id: "goh", name: "Goh Chok Tong", years: "PM 1990–2004", title: "PM of Singapore", country: "Singapore", iso: "702", era: "c20", president: false,
     style: "Deliberately consultative — promised a 'kinder, gentler' Singapore and ran national conversations, defining himself against the founder without repudiating him.",

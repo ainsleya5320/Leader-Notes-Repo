@@ -644,6 +644,27 @@ window.COLLABORATORS = {
     { name: "Yuk Young-soo", role: "Wife; killed by a stray bullet in the August 1974 assassination attempt" },
     { name: "Park Geun-hye", role: "Daughter; acted as first lady after 1974 and was president of South Korea 2013–17, impeached and removed" }
   ],
+  mussolini: [
+    { name: "Galeazzo Ciano", role: "Son-in-law (married Edda Mussolini in 1930), head of the press office, then foreign minister 1936–43; voted against him in the Grand Council and was shot at Verona on 11 January 1944" },
+    { name: "Dino Grandi", role: "Squadrist leader from Bologna, foreign minister 1929–32 and ambassador in London; author of the Grand Council motion of 24–25 July 1943" },
+    { name: "Italo Balbo", role: "One of the four quadrumvirs of the March on Rome, air minister and leader of the transatlantic formation flights, sent to govern Libya in 1933; killed when Italian anti-aircraft guns shot down his plane over Tobruk on 28 June 1940" },
+    { name: "Arnaldo Mussolini", role: "Younger brother; ran Il Popolo d'Italia from 1922 until his death in December 1931, and the confidant he trusted most" },
+    { name: "Achille Starace", role: "Party secretary 1931–39, who organised the rallies, the uniforms and the rituals of the Duce cult; shot by partisans in April 1945" },
+    { name: "Roberto Farinacci", role: "Intransigent squadrist boss of Cremona, party secretary 1925–26, removed when his radicalism became a liability" },
+    { name: "Giovanni Gentile", role: "Philosopher and education minister 1922–24; drafted the philosophical part of the 1932 'Doctrine of Fascism' published under Mussolini's name" },
+    { name: "Victor Emmanuel III", role: "King of Italy; appointed him in October 1922 and dismissed him on 25 July 1943 — the one power the regime never removed" },
+    { name: "Pietro Badoglio", role: "Army chief of staff and commander who took Addis Ababa in 1936; succeeded him as head of government in July 1943" }
+  ],
+  berlusconi: [
+    { name: "Fedele Confalonieri", role: "School friend and bandmate from the 1950s; ran the television business for decades and chaired Mediaset" },
+    { name: "Marcello Dell'Utri", role: "Head of Publitalia and co-founder of Forza Italia, whose sales managers he turned into the party's first organisers; definitively convicted in 2014 of external association with the Mafia" },
+    { name: "Gianni Letta", role: "Former newspaper editor; undersecretary to the prime minister's office in all four governments and his envoy to the Vatican, the Quirinale and the opposition" },
+    { name: "Giulio Tremonti", role: "Economy minister in 2001–04, 2005–06 and 2008–11; the coalition's link to the Northern League and the brake on its spending promises" },
+    { name: "Umberto Bossi", role: "Leader of the Northern League; brought down the first government in December 1994, then returned as an ally from 2000 and served as a minister in the second and fourth governments" },
+    { name: "Gianfranco Fini", role: "Leader of the post-fascist National Alliance, deputy prime minister and foreign minister; merged his party into the People of Freedom in 2009 and broke with Berlusconi in 2010" },
+    { name: "Cesare Previti", role: "Fininvest lawyer and defence minister in 1994; definitively convicted in May 2006 of bribing judges in the IMI-SIR case" },
+    { name: "Angelino Alfano", role: "Justice minister from 2008 and party secretary from 2011, the designated heir who broke away in November 2013 to found the New Centre-Right" }
+  ],
   goh: [
     { name: "Lee Kuan Yew", role: "Predecessor, retained in his cabinet as Senior Minister" },
     { name: "Lee Hsien Loong", role: "Deputy, groomed successor, and the founder's son" },

@@ -414,6 +414,19 @@ Object.assign(window.POWER_BASE, {
     danger: "1963 (a margin of 1.5 per cent), 1971 (a narrow win over Kim Dae-jung), the 1978 legislative election (the opposition won the popular vote), and October 1979: the Pusan–Masan protests, the expulsion of Kim Young-sam from the assembly, and the feud between Kim Jae-gyu and Cha Ji-chul.",
     verdict: "Eighteen years, ended by an essential — his own security chief — not by voters or an outside coup. The coalition then regrouped around Chun Doo-hwan within seven weeks."
   },
+  mussolini: {
+    system: "Personal dictatorship inside a surviving monarchy — a small coalition of hierarchs, generals and the Crown, with the King keeping the power to dismiss",
+    w_scale: 2, sizes: { n: 10000000, s: 2500000, w: 200 },
+    n: { who: "Adult male voters, who after the 1928 electoral law could only approve or reject a single list of candidates in the plebiscites of 1929 and 1934.", size: "~10 million (estimate)" },
+    s: { who: "Members of the Fascist party, the officer corps, the court, and the industrial and landowning leadership.", size: "~2–3 million (estimate)" },
+    w: { who: "The Grand Council, the leading ministers and party bosses, the army chiefs, the police chief, the court around Victor Emmanuel III and the heads of the largest firms.", size: "~200 (estimate)" },
+    loyalty: "Weaker than it looked: the hierarchs owed their places to him, but the army and much of the state answered also to the King. His essentials therefore had an alternative paymaster — the Crown — that most dictators' coalitions lack, and when the war was lost they used it.",
+    currency: "Private goods for the hierarchs — ministries, prefectures and party offices, rotated in periodic 'changings of the guard' — and public goods mostly in propaganda form for everyone else: land reclamation, the Battle for Grain, the empire.",
+    revenue: "Taxes on a market economy, the IRI state holdings after 1933, and from 1935 borrowing for Ethiopia, Spain and the war — revenue that depended on a productive population, which the wars then exhausted.",
+    shuffle: "Rotation and exile to honourable posts: Farinacci removed as party secretary in 1926, Grandi moved from the Foreign Ministry to the London embassy in 1932, Balbo sent to govern Libya in 1933, and the whole cabinet reshuffled in February 1943.",
+    danger: "The second half of 1924, after the Matteotti murder, when the opposition's Aventine secession and the doubts of his liberal allies left his position in question; and July 1943, after the Allied landing in Sicily.",
+    verdict: "Twenty-one years, then removal by his own Grand Council and the King — an insider coup carried out through constitutional forms. The coalition did not regroup around him: the Salò republic was a German creation, and it ended with his death."
+  },
   kissinger: {
     system: "A courtier's power base — one essential at a time: the president",
     w_scale: 1, sizes: { n: 10000, s: 1000, w: 2 },

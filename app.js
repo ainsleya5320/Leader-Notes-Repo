@@ -1488,7 +1488,8 @@ const LEADER_ALIASES = {
   goh: ["Goh Chok Tong"],
   kissinger: ["Kissinger"],
   suharto: ["Soeharto", "Pak Harto"],
-  parkchunghee: ["Park Chung Hee", "Park Chunghee"]
+  parkchunghee: ["Park Chung Hee", "Park Chunghee"],
+  mussolini: ["Mussolini", "Il Duce"], berlusconi: ["Berlusconi", "Il Cavaliere"]
 };
 const NUMERAL = /^(I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII|XIV|XV)$/i;
 // surnames that are also ordinary English words — never match on these alone

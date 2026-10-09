@@ -621,6 +621,19 @@ window.LEADER_INSTRUMENTS = {
       { reg: "fear", key: "f_exemplary", detail: "Eight men were executed in April 1975 after the People's Revolutionary Party case, brought under the National Security Law; a court cleared them posthumously in 2007." }
     ]
   },
+  mussolini: {
+    creed: "'Everything within the State, nothing outside the State, nothing against the State' (Milan, 28 October 1925) — and the slogan painted on walls across Italy, 'Mussolini is always right'.",
+    practice: "Spectacle and censorship for the population, internal exile for opponents, and rotation and favour for the hierarchs. The violence that brought him to power was local and squadrist; once in office he moved it into law — a special tribunal, a political police, confino — and kept the theatre running on top.",
+    tools: [
+      { reg: "fear", key: "f_exemplary", detail: "The squads of 1920–22, and the murder of the Socialist deputy Giacomo Matteotti in June 1924 by a squad led by Amerigo Dumini. How directly Mussolini ordered it is still debated; on 3 January 1925 he claimed responsibility for 'all that has happened'." },
+      { reg: "fear", key: "f_legal", detail: "The 'exceptional laws' of November 1926: the other parties dissolved, a Special Tribunal for the Defence of the State, and confino — internal exile to islands and remote villages — imposed without trial." },
+      { reg: "fear", key: "f_surveillance", detail: "The OVRA political police under the police chief Arturo Bocchini, informers, and police reports on the hierarchs themselves that reached Mussolini's desk." },
+      { reg: "fear", key: "f_majesty", detail: "The 'oceanic' crowds under the Palazzo Venezia balcony, the Roman salute and the Fascist Saturday of uniformed drill — awe staged for the newsreel camera." },
+      { reg: "motivate", key: "m_glory", detail: "The Ethiopian war and the proclamation of empire from the balcony on 9 May 1936 — the regime's moment of greatest apparent support." },
+      { reg: "motivate", key: "m_emulation", detail: "The 'Battle for Grain' from 1925: prizes for the most productive farmers, and photographs of the Duce threshing wheat stripped to the waist." },
+      { reg: "loyalty", key: "l_spoils", detail: "Party membership became, in practice, the key to a career in the public administration, and the hierarchs were paid in ministries, prefectures and party posts — rotated so that none was held long." }
+    ]
+  },
   kissinger: {
     creed: "“Power is the ultimate aphrodisiac” — and a scholar's conviction that stability, not justice, is what foreign policy can actually deliver.",
     practice: "The purest courtier's toolkit in the index: flattery upward, information hoarded sideways, and the channel never delegated.",
