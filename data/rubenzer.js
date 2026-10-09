@@ -546,6 +546,42 @@ window.TEMPERAMENT = {
     }
   },
 
+  walpole: {
+    source: "estimate",
+    profile: "The clubbable fixer: ceiling-level assertiveness and composure, near the top for worldly guile and good humour, a manager rather than a thinker, and indifferent to suffering that did not cost votes.",
+    f: { ach: [80, 94], com: [85, 97], act: [70, 90], int: [30, 55], nvul: [85, 97], ass: [85, 97], nstr: [85, 97], pos: [80, 95], ten: [20, 45] },
+    notes: {
+      nvul: "Survived impeachment, the Tower, the South Sea crash, the Excise riots and twenty years of the Craftsman's abuse with his majority and his appetite intact.",
+      int: "Bookish enough at Eton and King's, but no reader as a minister; the band reflects a sharp practical intelligence with little interest in ideas.",
+      nstr: "Patronage, managed elections and secret-service money were the system's working parts; he said of the opposition 'patriots' that all those men had their price.",
+      ten: "The Black Act of 1723 multiplied capital offences against poachers; the poor appear in his politics mainly as a source of excise revenue and riot."
+    }
+  },
+
+  pittyounger: {
+    source: "estimate",
+    profile: "The prodigy: ceiling-level achievement striving and self-belief, a first-rate analytical mind, cool in public and warm only with a small circle, and steadier under political fire than under the strain on his own health.",
+    f: { ach: [92, 99], com: [88, 98], act: [80, 95], int: [80, 95], nvul: [55, 82], ass: [80, 95], nstr: [35, 65], pos: [20, 50], ten: [45, 70] },
+    notes: {
+      ach: "Chancellor of the Exchequer at twenty-three and prime minister at twenty-four, with almost no other life — he never married, and politics filled the space.",
+      pos: "Stiff and haughty to strangers and the House; witty and boyish with Wilberforce and the friends of Goostree's club. The band covers both.",
+      nvul: "Held his nerve through the defeats of early 1784 and fought a duel in 1798; but his health broke in office more than once, and the news of Austerlitz is said to have hastened his death.",
+      ten: "Spoke for the abolition of the slave trade and took the income tax from the rich, but presided over the repression of the 1790s."
+    }
+  },
+
+  peel: {
+    source: "estimate",
+    profile: "The conscientious administrator: near the ceiling for striving, competence and sheer work, notably candid by the standards of the office, cold in manner and thin-skinned, with a sense of public duty that outran his party loyalty.",
+    f: { ach: [88, 98], com: [88, 98], act: [85, 97], int: [75, 90], nvul: [35, 65], ass: [75, 92], nstr: [15, 40], pos: [10, 35], ten: [55, 80] },
+    notes: {
+      nstr: "Low guile for a party leader: he changed his position on emancipation and on the Corn Laws openly, argued the case on the evidence and paid the full political price both times.",
+      pos: "Shy and stiff in public; the line comparing his smile to the silver plate on a coffin is folklore, but the reputation for coldness was universal.",
+      nvul: "Proud and sensitive to attack: he came close to duels with O'Connell in 1815, and in February 1843, weeks after his secretary's murder, took Cobden's words as an incitement.",
+      act: "Prime minister, budget-maker and supervisor of every department at once in 1841–46; colleagues and doctors thought the load was breaking him by 1846."
+    }
+  },
+
   disraeli: {
     source: "estimate",
     profile: "The novelist in politics: the highest positive-emotion and flattery scores of any 19th-century figure here, with achievement facets well below his rival Gladstone.",
@@ -553,6 +589,39 @@ window.TEMPERAMENT = {
     notes: {
       nstr: "'Everyone likes flattery; and when you come to royalty you should lay it on with a trowel' — a stated method, applied successfully to Victoria for years.",
       pos: "Wit, charm and visible enjoyment of the game; he is among the few in this file whose company people actively sought."
+    }
+  },
+
+  palmerston: {
+    source: "estimate",
+    profile: "The cheerful professional: ceiling-level steadiness and good humour, high assertiveness and a ready willingness to manage the truth through the press — with an intellect that was well trained but practical rather than curious.",
+    f: { ach: [75, 90], com: [85, 97], act: [80, 95], int: [50, 72], nvul: [88, 98], ass: [85, 96], nstr: [75, 92], pos: [88, 98], ten: [25, 55] },
+    notes: {
+      nstr: "Wrote leading articles for friendly papers that repeated his own despatches word for word, leaked selected documents, and in 1851 sent the French a private approval of Louis Napoleon's coup that his cabinet had not given.",
+      pos: "'Pam' to the public; John Bright called him an 'aged charlatan', but even his enemies conceded the jauntiness — and in 1864, at 79, he ran up the stairs to the Ladies' Gallery at half past two in the morning to tell his wife he had won.",
+      ten: "The band spans the landlord who cleared some 2,000 tenants from his Sligo estate during the Famine and the man who paid the legal defence of the deranged officer who shot him in 1818, and who sent boys from Parkhurst to a reformatory."
+    }
+  },
+
+  gladstone: {
+    source: "estimate",
+    profile: "The file's nineteenth-century engine: ceiling-level striving, activity and intellect, extreme assertiveness, and an unusually low score on concealment — a man who believed what he said, which his opponents found more maddening than lying.",
+    f: { ach: [96, 99], com: [88, 97], act: [95, 99], int: [95, 99], nvul: [45, 75], ass: [88, 97], nstr: [30, 60], pos: [45, 75], ten: [60, 85] },
+    notes: {
+      nstr: "Resigned from Peel's cabinet in 1845 over the Maynooth grant, a measure he then voted for, so that no one could say he had stayed in office by compromising a principle. The band reaches up for the casuistry with which he could reconcile his conscience with almost anything.",
+      nvul: "Steady under parliamentary fire for sixty years, but the diaries record intense self-reproach — he marked with a whip sign the days on which he scourged himself — and his rescue work among prostitutes troubled him for decades.",
+      int: "A Homeric scholar and theologian who records reading some 20,500 books; Lord Acton ranked him with Burke and Macaulay among the greatest Liberals."
+    }
+  },
+
+  salisbury: {
+    source: "estimate",
+    profile: "The melancholy intellectual: ceiling-level intellect, low positive emotion and real vulnerability — a depressive, shy man who nonetheless held his nerve in crises, and who was more assertive and more ruthless than his manner suggested.",
+    f: { ach: [60, 85], com: [80, 95], act: [55, 80], int: [92, 99], nvul: [25, 55], ass: [75, 92], nstr: [55, 80], pos: [10, 35], ten: [25, 55] },
+    notes: {
+      nvul: "His ODNB biographer Paul Smith calls him 'deeply neurotic, depressive, agitated, introverted, fearful of change and loss of control, and self-effacing but capable of extraordinary competitiveness'.",
+      ach: "Wrote in 1884 that no one is conscious of liking politics and no one is able to leave them; he showed 'indecent joy', his private secretary said, at being released from office in 1892 — yet he held the premiership for over thirteen years.",
+      ass: "Resigned from Derby's cabinet in 1867 rather than accept Disraeli's Reform Bill, walking out as Derby declared 'The party is ruined!'; in December 1886 he let Lord Randolph Churchill's resignation stand and was rid of his most dangerous colleague."
     }
   },
 
@@ -1222,6 +1291,73 @@ window.TEMPERAMENT = {
       int: "Taught military history at the War College and published on it (1932); his 1951 lectures on political 'conducción' draw on Napoleon and Clausewitz."
     }
   },
+  asquith: {
+    source: "estimate",
+    profile: "The cool intellect: near-ceiling intellect and self-assurance, unshakeable composure in peacetime crises, and a moderate, even lazy-seeming tempo — the barrister who mastered a brief fast and saw no need to look busy. Drive and assertiveness were real but intermittent.",
+    contested: "How far drink and the Venetia Stanley affair impaired him in 1914–16 is disputed; David Owen argues he became an alcoholic in office, others that the political effect has been overstated.",
+    f: { ach: [55, 80], com: [85, 96], act: [30, 55], int: [90, 98], nvul: [60, 85], ass: [55, 80], nstr: [40, 65], pos: [55, 78], ten: [45, 70] },
+    notes: {
+      int: "An 'easy' double first at Balliol, a prize fellowship, and a reputation for absorbing a brief faster than anyone at the bar or in cabinet.",
+      act: "Bridge, dinner parties, weekend motor drives and long letters to Venetia Stanley; Lord Riddell recorded that he 'never moves until he is forced'.",
+      nvul: "The band spans the nerve of 1910–11 — Roy Jenkins's 'masterly display of political nerve' — and the strain of May 1915, when the shell crisis, Fisher's resignation and Venetia's engagement came in the same fortnight."
+    }
+  },
+  lloydgeorge: {
+    source: "estimate",
+    profile: "Everything turned up: ceiling-level drive, energy and assertiveness, enormous charm, and a flexibility with the truth his own allies remarked on. Intellect was quick and practical rather than reflective.",
+    f: { ach: [92, 99], com: [88, 97], act: [92, 99], int: [65, 85], nvul: [70, 90], ass: [92, 99], nstr: [88, 98], pos: [80, 95], ten: [50, 75] },
+    notes: {
+      nstr: "The Marconi affair, the December 1916 manoeuvre and the honours trade; his friend Lord Riddell called him 'one of the craftiest of men'.",
+      act: "Munitions, the War Office and the premiership in eighteen months; within a year the Ministry of Munitions he built was the country's largest buyer, seller and employer.",
+      ten: "The band spans the author of pensions and National Insurance and the prime minister who sent the Black and Tans into Ireland."
+    }
+  },
+  baldwin: {
+    source: "estimate",
+    profile: "The calm countryman: low tempo, middling drive, real warmth and conscience, and a shrewdness hidden under a show of simplicity. Assertiveness came in bursts at the decisive moments.",
+    contested: "He suffered periods of nervous exhaustion, notably after the General Strike and in 1936; whether they reflect vulnerability or overwork is argued.",
+    f: { ach: [50, 75], com: [60, 82], act: [25, 50], int: [55, 78], nvul: [45, 75], ass: [45, 75], nstr: [65, 88], pos: [45, 70], ten: [70, 90] },
+    notes: {
+      ten: "Gave a fifth of his fortune to the Treasury anonymously in 1919, and refused to triumph over the strikers in 1926.",
+      nstr: "The plain-man persona was a performance by a wealthy ironmaster and a skilled tactician; in November 1936 he admitted 'with appalling frankness' that he could not have won the 1933–34 public to rearmament.",
+      act: "Long summer holidays at Aix-les-Bains and a reputation, among colleagues and critics, for doing as little as the job allowed."
+    }
+  },
+  attlee: {
+    source: "estimate",
+    profile: "The quiet engine: high striving and composure, very little warmth on display and almost no taste for self-advertisement — a profile the presidential model rarely produces, because men like this seldom win American elections.",
+    f: { ach: [75, 92], com: [80, 92], act: [60, 80], int: [55, 75], nvul: [85, 96], ass: [60, 82], nstr: [15, 40], pos: [15, 40], ten: [65, 85] },
+    notes: {
+      nvul: "Gallipoli, where he was the second-last man off at Suvla; and July 1945, when he went to the Palace to accept office while Morrison was still lobbying for the leadership.",
+      nstr: "Low: he said what he meant in as few words as possible — 'Not up to it' to a sacked minister, in the usual retelling — and a reputation for straight dealing was the base of his authority over larger egos.",
+      pos: "Reserved to the point of shyness; he called himself diffident, answered questions in monosyllables and thought himself a poor subject for publicity."
+    }
+  },
+
+  macmillan: {
+    source: "estimate",
+    profile: "A high-intellect, high-concealment performer whose public unflappability was a role: biographers describe acute nervous strain behind it. 'Not straightforward' carries the act; the wide 'not vulnerable' band carries the gap between the act and the actor.",
+    contested: "How much of the calm was pose is debated; the Somme record and the panic of the July 1962 reshuffle point opposite ways.",
+    f: { ach: [80, 93], com: [65, 85], act: [55, 78], int: [85, 96], nvul: [45, 75], ass: [70, 88], nstr: [80, 95], pos: [45, 72], ten: [60, 82] },
+    notes: {
+      int: "A Balliol classicist who read Aeschylus in a shell hole at the Somme and Trollope in Downing Street, and wrote The Middle Way.",
+      nstr: "The Edwardian grandee was partly a costume, worn knowingly; 'a little local difficulty' for the resignation of an entire Treasury team is the persona in a phrase.",
+      ten: "The band reflects Stockton: the unemployment he saw there in the 1930s shaped his politics for life."
+    }
+  },
+
+  blair: {
+    source: "estimate",
+    profile: "Near-ceiling self-belief and drive, high warmth and charm, and a facility for presentation that the model scores as concealment — the facet most argued over since Iraq.",
+    contested: "Whether Iraq shows deception or sincere conviction is the central dispute. The Chilcot report found certainty presented that the intelligence did not justify; it did not find that he lied.",
+    f: { ach: [90, 98], com: [92, 99], act: [82, 95], int: [65, 82], nvul: [78, 93], ass: [85, 96], nstr: [65, 90], pos: [80, 95], ten: [55, 80] },
+    notes: {
+      com: "Stephen Dyson's at-a-distance coding of his Commons answers found a very high belief in his ability to control events; colleagues described the same certainty from inside.",
+      nstr: "The wide band is the argument over Iraq and over the Granita understanding with Brown — conviction politician, consummate presenter, or both.",
+      pos: "Informality as method — he asked his first cabinet to call him Tony — and a charm opponents found as hard to resist as colleagues did."
+    }
+  },
+
   kissinger: {
     source: "estimate",
     profile: "The highest combination of intellect and concealment in the file. On Rubenzer's scale that is close to an optimal profile, which is precisely why the man remains contested.",

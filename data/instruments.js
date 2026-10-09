@@ -531,6 +531,43 @@ window.LEADER_INSTRUMENTS = {
     ]
   },
 
+  walpole: {
+    creed: "“Quieta non movere” — let sleeping dogs lie (the maxim traditionally attached to him) — and, of the opposition 'patriots': “All those men have their price” (as reported by Coxe in 1798, who says the saying was later shortened to 'all men have their price').",
+    practice: "Bought quiet: low taxes, peace abroad and offices at home for anyone whose vote could be had. The fear register was used sparingly and mostly against Jacobites and the press; the real instrument was the Treasury's patronage, applied with a minute knowledge of what each member wanted.",
+    tools: [
+      { reg: "loyalty", key: "l_spoils", detail: "Places, pensions, sinecures, army commissions, customs and excise posts and church preferments distributed through the Treasury and Newcastle's office to hold a Commons majority; the 1742 Committee of Secrecy found that more than £50,000 had gone to pro-government writers and printers in 1731–41." },
+      { reg: "loyalty", key: "l_honors", detail: "Revived the Order of the Bath in 1725 to have more ribbons to give, and took the Garter himself in 1726 ('Sir Bluestring' to his enemies)." },
+      { reg: "fear", key: "f_surveillance", detail: "The Post Office's secret office opened suspect mail and the deciphering branch broke the Jacobites' codes; the intercepted letters convicted Bishop Atterbury, banished by a bill of pains and penalties in 1723." },
+      { reg: "fear", key: "f_purgefavorite", detail: "Drove out colleagues who grew too strong — Carteret in 1724, his brother-in-law Townshend in 1730 — and after the Excise crisis of 1733 dismissed Lord Chesterfield and took their regiments from Lord Cobham and the Duke of Bolton for voting against him." },
+      { reg: "fear", key: "f_legal", detail: "The Black Act of 1723 created dozens of new capital offences against poachers and deer-stealers; printers of The Craftsman were prosecuted for seditious libel, and the Licensing Act of 1737 put the London stage under the Lord Chamberlain's censorship." },
+      { reg: "loyalty", key: "l_attention", detail: "Knew the House as a club: dined, drank and hunted with its members and their patrons, and held the summer 'Houghton congresses' at which allies were entertained and the next session planned." }
+    ]
+  },
+  pittyounger: {
+    creed: "“Necessity is the plea for every infringement of human freedom. It is the argument of tyrants; it is the creed of slaves.” (House of Commons, 18 November 1783, against Fox's India Bill) — a line his opponents threw back at him in the 1790s.",
+    practice: "Ruled by competence and argument in peacetime — the budget speech as the instrument of authority — and in wartime added the apparatus of a security state: suspended habeas corpus, gagging acts, paid informers and loyalist associations. Patronage was used freely, peerages above all, but he took little for himself and died in debt.",
+    tools: [
+      { reg: "trust", key: "t_selfbind", detail: "The sinking fund of 1786 put £1 million a year in the hands of independent commissioners to buy back debt — a commitment designed to be beyond the reach of future chancellors (though wartime borrowing soon outran it)." },
+      { reg: "trust", key: "t_audit", detail: "Acted on the reports of the Commissioners for Examining the Public Accounts, consolidated the tangle of customs and excise funds into a single Consolidated Fund (1787) and abolished many customs sinecures as their holders died." },
+      { reg: "loyalty", key: "l_honors", detail: "Created peerages on an unprecedented scale to reward supporters and to secure the Lords for the King's ministers — the 'Pitt peers' of the 1780s and 1790s." },
+      { reg: "loyalty", key: "l_spoils", detail: "Left the business to lieutenants: George Rose at the Treasury for places and elections, Henry Dundas for Scotland and the patronage of India." },
+      { reg: "fear", key: "f_legal", detail: "The suspension of habeas corpus in 1794, the treason trials of radical leaders that autumn (the London juries acquitted), and the Treason and Seditious Meetings Acts of 1795 — the 'Two Acts' or 'gagging acts'." },
+      { reg: "fear", key: "f_surveillance", detail: "Home Office spies and informers inside the London Corresponding Society and other radical clubs, and the Alien Office, created in 1793, which watched foreigners and ran agents abroad." },
+      { reg: "motivate", key: "m_glory", detail: "The war rhetoric of 1803–05, ending in the Guildhall reply of 9 November 1805: 'England has saved herself by her exertions, and will, as I trust, save Europe by her example.'" }
+    ]
+  },
+  peel: {
+    creed: "The Tamworth Manifesto (18 December 1834): the Reform Act as 'a final and irrevocable settlement of a great constitutional question', and a promise of 'the correction of proved abuses and the redress of real grievances'.",
+    practice: "Persuasion by evidence and the published rule. He kept patronage at arm's length, despised the party's place-hunters, and relied on the authority of competence — which held the country and lost him the party, twice.",
+    tools: [
+      { reg: "trust", key: "t_publicrule", detail: "Consolidated the criminal statutes into 'Peel's Acts' in the 1820s; put sterling back on gold in 1819 and fixed the rules of note issue in the Bank Charter Act of 1844 — monetary policy as published law rather than discretion." },
+      { reg: "trust", key: "t_selfbind", detail: "In 1829, having changed his mind on Catholic emancipation, he resigned his Oxford University seat to give his constituents the chance to judge him — and lost it." },
+      { reg: "trust", key: "t_audit", detail: "The Metropolitan Police of 1829: a salaried, uniformed, unarmed force under two commissioners answerable to the Home Secretary, built to replace the parish watch and the military." },
+      { reg: "loyalty", key: "l_mobility", detail: "Promoted on ability rather than connection — Gladstone, Sidney Herbert, Edward Cardwell, Lord Dalhousie — and refused office to clamorous backbenchers, Disraeli among them in 1841." },
+      { reg: "motivate", key: "m_intent", detail: "Explained his policies at length and in figures — the long budget speech of 11 March 1842 that brought back the income tax to pay for tariff cuts — so that the case, not the party whip, carried the House." }
+    ]
+  },
+
   churchill: {
     creed: "“I have nothing to offer but blood, toil, tears and sweat.”",
     practice: "Governed almost entirely through language at the moment when he had almost nothing else — the clearest demonstration in the index that the glory register is a material instrument, not decoration.",
@@ -539,6 +576,37 @@ window.LEADER_INSTRUMENTS = {
       { reg: "trust", key: "t_hardship", detail: "Walked bombed streets in the East End; stayed in London through the Blitz when he could have governed from safety." },
       { reg: "loyalty", key: "l_attention", detail: "The 'Action This Day' minutes — relentless, personal, and evidence to every recipient that the centre was awake." },
       { reg: "motivate", key: "m_intent", detail: "Insisted on written argument and gave commanders his strategic reasoning, even while interfering with their execution of it." }
+    ]
+  },
+
+  palmerston: {
+    creed: "“We have no eternal allies, and we have no perpetual enemies. Our interests are eternal and perpetual, and those interests it is our duty to follow.”",
+    practice: "Ruled through national pride and the newspapers rather than patronage or fear: a foreign policy of brinkmanship, bluff and the occasional gunboat, explained to the public in terms of honour and sold through friendly editors — while at home he held the line against further reform.",
+    tools: [
+      { reg: "motivate", key: "m_glory", detail: "The Don Pacifico speech of 25 June 1850 — every British subject to be as safe abroad as a Roman citizen — turned a squalid debt-collection into national honour, and the 1857 election into a vote on standing by 'British subjects at the extreme end of the globe'." },
+      { reg: "fear", key: "f_exemplary", detail: "Gunboat diplomacy: the blockade of Piraeus in 1850 over Don Pacifico's claims, and support for the bombardment of Canton in 1856 — examples made of weak states, aimed at the watching great powers." },
+      { reg: "loyalty", key: "l_spoils", detail: "Church patronage guided by his evangelical stepson-in-law Lord Shaftesbury — the 'Shaftesbury bishops' — which bound the evangelical wing of the Church of England to a prime minister of no marked piety." },
+      { reg: "trust", key: "t_publicrule", detail: "Put his policy on the public record — selected despatches published, documents leaked, his own arguments printed as newspaper leaders — so that opinion, not the Court, became the judge of it." }
+    ]
+  },
+  gladstone: {
+    creed: "“No Chancellor of the Exchequer is worth his salt who is not ready to save what are meant by candle-ends and cheese-parings in the cause of his country.”",
+    practice: "Persuasion on an industrial scale and finance as a moral discipline. He moved people by argument — budgets, pamphlets, five-hour speeches — and bound them with cheap government that he presented as a matter of conscience; he had little use for patronage and none for fear.",
+    tools: [
+      { reg: "motivate", key: "m_conviction", detail: "The Bulgarian Horrors pamphlet of September 1876, written in four days, sold some 200,000 copies within a month, and turned foreign policy into a moral crusade that carried him back to power through Midlothian." },
+      { reg: "trust", key: "t_audit", detail: "Built Parliament's control of spending: the Public Accounts Committee (1861), a single annual Finance Bill (1861) and the Exchequer and Audit Departments Act (1866), which created the Comptroller and Auditor General." },
+      { reg: "trust", key: "t_selfbind", detail: "Renewed the income tax in 1853 on a published timetable for its abolition by 1860, and paid for the Crimean War by raising taxes rather than borrowing — 'the moral check' that made the public feel the cost of war." },
+      { reg: "motivate", key: "m_ownership", detail: "The Post Office Savings Bank (1861) put a state-guaranteed account within reach of working families — thrift as the citizen's stake, in place of state provision." }
+    ]
+  },
+  salisbury: {
+    creed: "“Whatever happens will be for the worse, and therefore it is in our interest that as little should happen as possible.” (attributed; quoted by his biographers as his credo)",
+    practice: "Kept power by management rather than inspiration: an alliance with the Liberal Unionists paid for with concessions, family and trusted lieutenants in the key places, coercion and land purchase together in Ireland, and a mass party organisation he did not love but used.",
+    tools: [
+      { reg: "loyalty", key: "l_kinship", detail: "His nephew Arthur Balfour made Chief Secretary for Ireland in 1887, Leader of the Commons in 1891 and his successor in 1902; by 1900 the cabinet held enough Cecils and in-laws to be nicknamed the 'Hotel Cecil'." },
+      { reg: "fear", key: "f_legal", detail: "The permanent Crimes Act of 1887 in Ireland, enforced by Balfour — 'Bloody Balfour' to the nationalists after the police killed three people at Mitchelstown that September." },
+      { reg: "motivate", key: "m_ownership", detail: "Land purchase — the Ashbourne Act of 1885 and Balfour's act of 1891 — lent Irish tenants the money to buy their farms: 'killing Home Rule with kindness'." },
+      { reg: "loyalty", key: "l_honors", detail: "The Primrose League, of which he was Grand Master, bound a million members to the party with knighthoods and dameships of its own invention, badges and summer fêtes in the parks of country houses." }
     ]
   },
 
@@ -683,6 +751,71 @@ window.LEADER_INSTRUMENTS = {
       { reg: "motivate", key: "m_conviction", detail: "Justicialism as a doctrine: the Twenty Truths, a Peronist school for cadres from 1951, and Eva's La razón de mi vida made required reading in schools." }
     ]
   },
+  asquith: {
+    creed: "Liberalism as the rule of reason and law — let the argument run, let the case ripen, and act when the votes are there. 'Wait and see', his stock reply to opposition questions on 4 April 1910, became the motto his critics hung on him.",
+    practice: "Governed through temperament and the constitution rather than through fear or favour: patient, legalistic and loyal to colleagues. The method that carried the Parliament Act through two elections broke down in a war that rewarded urgency and publicity.",
+    tools: [
+      { reg: "trust", key: "t_publicrule", detail: "The Parliament Act of 1911: the Lords' power over money bills abolished and their veto over other bills cut to a delay of about two years — a settlement fought for through two general elections and written into statute rather than left to convention." },
+      { reg: "loyalty", key: "l_honors", detail: "Honours as a weapon: in November 1910 he obtained George V's secret undertaking to create enough Liberal peers to outvote the Lords if necessary; disclosed in July 1911, the threat was enough, and the Lords passed the bill on 10 August." },
+      { reg: "loyalty", key: "l_mobility", detail: "A cabinet chosen for talent rather than seniority: Lloyd George at the Treasury, Churchill at the Board of Trade, the Home Office and the Admiralty, Herbert Samuel as the first practising Jew in a British cabinet, Rufus Isaacs as attorney-general and then Lord Chief Justice." }
+    ]
+  },
+
+  lloydgeorge: {
+    creed: "A war on poverty and then a war to the finish — and after it, in his words at Wolverhampton on 24 November 1918, 'a country fit for heroes to live in'.",
+    practice: "Used every instrument in the British kit and one outside it: platform oratory, breakfast-table charm, the press barons, the coupon, and a personal political fund fed by the sale of honours. The radicalism was real; so was the trade in titles that paid for his politics.",
+    tools: [
+      { reg: "loyalty", key: "l_honors", detail: "The sale of honours: a knighthood reportedly went for about £10,000 and a baronetcy for £40,000, brokered by Maundy Gregory, and more than 120 hereditary peerages were created in 1917–22. The proceeds built the Lloyd George Fund, estimated at £1–3 million, which he controlled personally." },
+      { reg: "loyalty", key: "l_spoils", detail: "The 1918 'coupon' — the letter of endorsement he and Bonar Law gave to 159 Liberal and 364 Conservative candidates — decided who would sit in the next Parliament; most Liberals without one lost, Asquith among them." },
+      { reg: "loyalty", key: "l_debt", detail: "Old-age pensions, first paid in January 1909, and the National Insurance Act of 1911, sold as 'ninepence for fourpence' — the worker's contribution matched by employer and state — reached millions of households in person." },
+      { reg: "motivate", key: "m_intent", detail: "In September 1916, still War Secretary, he told the American journalist Roy Howard that the fight must be to a finish — a 'knock-out' — closing the door on a negotiated peace and defining the aim he would pursue as prime minister." }
+    ]
+  },
+
+  baldwin: {
+    creed: "Peace at home — 'Give peace in our time, O Lord', the prayer that closed his Commons speech of 6 March 1925 against his own backbenchers' bill to cut the unions' political levy — and the decency of an England he described as the country, the smithy and the plough team.",
+    practice: "Restraint as an instrument: he held back his own party in 1925, broke the General Strike in 1926 without triumphalism, and then let the Trade Disputes Act of 1927 punish the unions anyway. Public trust was his capital, and he spent it sparingly.",
+    tools: [
+      { reg: "trust", key: "t_selfbind", detail: "Gave about £120,000 of War Loan — a fifth of his fortune — anonymously to the Treasury in 1919, appealing as 'FST' in The Times for others to follow; and in March 1925 talked his own majority out of the Macquisten bill, which the Commons set aside 325 to 153 on his amendment." },
+      { reg: "trust", key: "t_clemency", detail: "When the General Strike was called off on 12 May 1926 he broadcast that the government's business was not to triumph over those who had failed. The miners, left to fight on alone, were not spared, and the 1927 Act made sympathetic general strikes illegal." },
+      { reg: "fear", key: "f_legal", detail: "The Emergency Powers Act of 1920 used to keep supplies moving during the strike, with volunteers and troops; then the Trade Disputes and Trade Unions Act of 1927, which also made union members opt in to the political levy." },
+      { reg: "motivate", key: "m_shame", detail: "Turned the press lords' campaign against him into a question of shame — 'power without responsibility', at the Queen's Hall on 17 March 1931 — making the issue whether newspaper owners should choose the Conservative leader." }
+    ]
+  },
+
+  attlee: {
+    creed: "“Democracy means government by discussion, but it is only effective if you can stop people talking.” (attributed — a speech at Oxford in 1957)",
+    practice: "Almost none of the usual instruments — no oratory, no patronage machine, no fear beyond the occasional curt dismissal. He moved people by fixing the agenda, keeping the meeting short and making the decision stick, which in a cabinet of Bevin, Morrison, Bevan and Cripps was itself a form of power.",
+    tools: [
+      { reg: "motivate", key: "m_intent", detail: "Governed from a published programme — the 1945 manifesto Let Us Face the Future — driven through cabinet committees, so that ministers knew what they were for and the legislative timetable was fixed in advance." },
+      { reg: "fear", key: "f_purgefavorite", detail: "Accepted Hugh Dalton's resignation at once after the budget leak of November 1947 — the architect of the government's finances — and put Stafford Cripps in the Treasury the same day." },
+      { reg: "motivate", key: "m_ownership", detail: "The National Health Service and national insurance gave every citizen a personal stake in the post-war settlement, which is why the next Conservative government kept it." },
+      { reg: "trust", key: "t_hardship", detail: "Shared the austerity he imposed: lived modestly, travelled without an entourage — Violet drove him round the country in their own car in 1945 — and governed through years of rationing." }
+    ]
+  },
+
+  macmillan: {
+    creed: "“Let us be frank about it — most of our people have never had it so good.” (Bedford, 20 July 1957)",
+    practice: "Ran a conciliatory, managerial government — houses, honours, a consensual economy — behind a carefully performed unflappability; when the performance stopped working in 1962 he reached for the bluntest instrument in the British repertoire, the mass sacking.",
+    tools: [
+      { reg: "motivate", key: "m_ownership", detail: "As housing minister met the pledge of 300,000 homes a year by the end of 1953, and as prime minister presided over rising home ownership and a boom in consumer goods." },
+      { reg: "fear", key: "f_purgefavorite", detail: "The Night of the Long Knives, 13 July 1962: seven cabinet ministers dismissed at once, among them the Chancellor Selwyn Lloyd, a loyal ally made to carry the blame for an unpopular pay pause." },
+      { reg: "loyalty", key: "l_honors", detail: "The Life Peerages Act 1958 created a seat in the Lords that could not be inherited and was open to women — a new and renewable currency of patronage." },
+      { reg: "fear", key: "f_majesty", detail: "The 'Supermac' image — Vicky's mocking cartoon of 1958 turned into a compliment — and a studied Edwardian calm, with 'Quiet, calm deliberation disentangles every knot' from The Gondoliers hung on his private secretaries' door." }
+    ]
+  },
+
+  blair: {
+    creed: "“Ask me my three main priorities for government, and I tell you: education, education and education.” (Labour conference, 1 October 1996)",
+    practice: "Persuasion first and almost always — a gift for explaining himself to a television audience — backed by an unusually controlling centre: the grid, rebuttal, targets and the Delivery Unit's league tables. The instruments of trust he used most were also the ones Iraq spent.",
+    tools: [
+      { reg: "trust", key: "t_selfbind", detail: "Days after taking office, gave the Bank of England operational control of interest rates — surrendering a lever every previous government had used before elections, to buy credibility with markets that had distrusted Labour." },
+      { reg: "motivate", key: "m_conviction", detail: "Made 'modernisation' a creed: Clause IV rewritten in 1995, the party presented as New Labour, and opponents inside it cast as defenders of the past." },
+      { reg: "trust", key: "t_audit", detail: "The Prime Minister's Delivery Unit under Michael Barber from 2001: a few priority targets, regular data and 'stocktakes' at which ministers answered for progress in his presence." },
+      { reg: "loyalty", key: "l_honors", detail: "The cost side: the 2006–07 'cash for honours' police inquiry into loans to the party and peerage nominations, in which he became the first serving prime minister questioned by police in a criminal inquiry; no charges were brought." }
+    ]
+  },
+
   kissinger: {
     creed: "“Power is the ultimate aphrodisiac” — and a scholar's conviction that stability, not justice, is what foreign policy can actually deliver.",
     practice: "The purest courtier's toolkit in the index: flattery upward, information hoarded sideways, and the channel never delegated.",

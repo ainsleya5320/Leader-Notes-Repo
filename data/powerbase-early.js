@@ -350,6 +350,45 @@ Object.assign(window.POWER_BASE, {
     danger: "The accession of Wilhelm II in 1888: his W changed from one man to another.",
     verdict: "Dismissed in 1890 by the new emperor — the purest case in the index of losing power because a single essential changed."
   },
+  walpole: {
+    system: "Parliamentary oligarchy under a monarch — a minister who needed both the King's confidence and a Commons majority",
+    w_scale: 2, sizes: { n: 300000, s: 800, w: 300 },
+    n: { who: "The electorate of England, Wales and Scotland — forty-shilling freeholders in the counties and a jumble of borough franchises — most of whom never saw a contested poll.", size: "~300,000 (estimate)" },
+    s: { who: "The 558 members of the Commons and some 200 peers, together with the borough patrons who chose many of the members — and above them the King.", size: "~800" },
+    w: { who: "The King and Queen, and a working Commons majority of about 300: placemen, the Scottish members, the Treasury boroughs and enough independent country gentlemen.", size: "~300 (estimate)" },
+    loyalty: "Unusually strong for a parliamentary leader, because the Crown's patronage flowed through him: an office-holder who crossed him lost his place, and the opposition had nothing to offer until the King's favour or the independents moved.",
+    currency: "Private goods for members and patrons — places, pensions, peerages, commissions, church livings — and one public good the landed majority prized: a low land tax and peace.",
+    revenue: "Customs, excise and borrowing; the Excise scheme of 1733 was an attempt to raise more from consumption and less from land, and the uproar showed how narrow the line was.",
+    shuffle: "Removed rivals inside the ministry (Carteret 1724, Townshend 1730) and punished defectors after the Excise vote of 1733; built up the Pelhams as successors who owed him everything.",
+    danger: "The accession of George II in 1727, met with the civil list; the Excise crisis of 1733; Queen Caroline's death in 1737; and the war fever of 1739, which split the independents from him.",
+    verdict: "Twenty-one years — the longest tenure in the office — because S was small, patronage-sensitive and controlled through the Crown. The independent country members were the swing; when the war and the 1741 election turned them, he lost the House and resigned."
+  },
+  pittyounger: {
+    system: "Parliamentary monarchy — the King's chosen minister, sustained by a Commons majority he won at the polls in 1784",
+    w_scale: 2, sizes: { n: 340000, s: 800, w: 320 },
+    n: { who: "The unreformed electorate of Great Britain — county freeholders and borough voters — joined after 1801 by Ireland's.", size: "~340,000 in Great Britain (estimate)" },
+    s: { who: "The Commons (558 members, 658 after the Union) and the peers — with the King, and the borough patrons behind a third or more of the seats.", size: "~800" },
+    w: { who: "George III, and a Commons majority of 'the party of the Crown', borough patrons' members, Dundas's Scots and the independent country gentlemen won over in 1784.", size: "~320 (estimate)" },
+    loyalty: "Two-sided: the King's confidence was the one essential he could not replace — when he lost it on Catholic emancipation in 1801 he resigned at once — while the Commons majority was held by results and by the Crown's patronage.",
+    currency: "Peerages and places for patrons and members; for the independents and the commercial classes, the public good of sound finance and, after 1793, national defence.",
+    revenue: "Customs, excise and assessed taxes, and in the war the income tax and enormous borrowing from the City — which made the funded debt's holders a constituency of their own.",
+    shuffle: "Brought the Portland Whigs into the cabinet in 1794, splitting the opposition and leaving Fox with a rump; kept Dundas and Grenville as the fixed points.",
+    danger: "January–March 1784, governing against a Commons majority; the Regency crisis of 1788–89; the King's veto of 1801.",
+    verdict: "Seventeen continuous years because the essential coalition was the King plus a majority he could win; he fell when the first essential refused him, not the voters or the House."
+  },
+  peel: {
+    system: "Reformed parliamentary government — a prime minister who needed a Commons majority of his own party, elected by a propertied electorate",
+    w_scale: 4, sizes: { n: 900000, s: 900000, w: 370 },
+    n: { who: "The United Kingdom electorate after the Reform Act of 1832 — £10 householders in the boroughs, freeholders and tenants in the counties.", size: "~0.8–1 million (1841, estimate)" },
+    s: { who: "Voters — but many seats went uncontested, so the operative selectorate was the Commons, 658 members chosen by them.", size: "~0.9 million voters; 658 MPs" },
+    w: { who: "The Conservative majority returned in 1841 — about 367 MPs, most of them county members of the landed interest — together with the Queen's acceptance.", size: "~370 MPs" },
+    loyalty: "Conditional, and on one issue above all: the county members had been elected to defend the Corn Laws. Peel treated the party as the instrument of a government; they treated the government as the instrument of a party.",
+    currency: "Public goods — order, sound money, cheaper food, lower tariffs paid for by the income tax — rather than private ones: he gave his backbenchers few places and fewer thanks.",
+    revenue: "The income tax from 1842 and a shrinking list of customs duties.",
+    shuffle: "Brought in talent over seniority (Gladstone, Herbert, Cardwell, Dalhousie); lost Stanley in December 1845 and resigned briefly himself, returning when Russell could not form a government.",
+    danger: "The Maynooth grant of 1845, when half his party voted against him; and the session of 1846, when the protectionist majority of the party organised under Bentinck and Disraeli.",
+    verdict: "The textbook large-coalition failure of a different kind: he delivered the public good he believed the country needed and broke the coalition that elected him. Repeal passed on Whig votes; the essentials he had defied removed him the same night, and the Conservatives were out of majority government for twenty-eight years."
+  },
   disraeli: {
     system: "Parliamentary democracy with a franchise he himself widened",
     w_scale: 5, sizes: { n: 2500000, s: 2500000, w: 1100000 },
@@ -362,6 +401,45 @@ Object.assign(window.POWER_BASE, {
     shuffle: "'Dished the Whigs' in 1867 by enlarging S himself and betting the new voters would reward the party that enfranchised them.",
     danger: "The 1880 election, fought on his foreign policy.",
     verdict: "Lost the 1880 election and died a year later — a large-coalition leader removed by performance."
+  },
+  palmerston: {
+    system: "Parliamentary government on a restricted, propertied franchise — ministries made and unmade by Commons majorities more than by voters",
+    w_scale: 4, sizes: { n: 1300000, s: 800000, w: 350 },
+    n: { who: "The electorate of the 1832 settlement — £10 householders in the boroughs, forty-shilling freeholders and tenants in the counties.", size: "~1.0–1.4 million (estimate)" },
+    s: { who: "Voters in contested seats — many seats went uncontested — and the MPs they returned.", size: "~0.8 million (estimate)" },
+    w: { who: "The Commons majority that sustained the ministry: some 350 Whig, Liberal and Peelite MPs, and behind them the Court and the Lords, which could not remove a minister the House supported.", size: "~350 MPs (estimate)" },
+    loyalty: "Weak in the House — party discipline was loose, and in February 1858 a majority of 83 won the year before dissolved over a single bill — but strong out of doors, where his popularity made him hard to replace.",
+    currency: "Public goods: national prestige, cheap government, law reform; and for the political class, the ordinary patronage of office, including the Church.",
+    revenue: "Income tax and customs, cut by Gladstone's free-trade budgets.",
+    shuffle: "Combined the factions of 1859 — Whigs, Peelites and Radicals — into one ministry at Willis's Rooms, and kept them together until his death with fewer resignations than usual.",
+    danger: "February 1858, when the Conspiracy to Murder Bill lost by nineteen votes; and July 1864, when the censure over Denmark was defeated by only eighteen.",
+    verdict: "Ten years as prime minister at the head of a fluid Commons majority, ended only by death. The case for small effective W even in a parliamentary system: the 1858 fall came from MPs, not voters."
+  },
+  gladstone: {
+    system: "Parliamentary democracy on a widening male franchise — the electorate roughly doubled in 1867 and again in 1884",
+    w_scale: 5, sizes: { n: 3000000, s: 2500000, w: 1800000 },
+    n: { who: "The electorate of the Second Reform Act (1868–85), then of the Third: male householders in borough and county alike.", size: "~2.5 million (1868) to ~5.7 million (1885)" },
+    s: { who: "Voters in contested seats.", size: "~2.5 million (1880, estimate)" },
+    w: { who: "The Liberal vote of 1880 — Nonconformists, Scottish and Welsh voters, skilled working men and Whig landowners — and from 1885 the Irish Nationalist MPs on whom his majority depended.", size: "~1.8 million voters (1880, estimate)" },
+    loyalty: "Personal and moral rather than material — 'the People's William' — which survived his defeats; but the coalition was a federation of Whigs and Radicals that a single issue could split.",
+    currency: "Public goods above all: free trade, cheap government, religious equality, the ballot, the franchise.",
+    revenue: "Income tax and a few large indirect taxes.",
+    shuffle: "Rarely replaced essentials; instead he changed the question — disestablishment in 1868, the Eastern Question in 1876, Home Rule in 1886 — and let the coalition re-form around it.",
+    danger: "1874, when the Liberal vote held but the seats were lost, and above all June 1886, when 93 Liberals voted against Home Rule and the Liberal Unionists left for good.",
+    verdict: "A large-coalition leader who won with public goods and lost when he chose a public good — Home Rule — that a large part of his own coalition would not accept."
+  },
+  salisbury: {
+    system: "Parliamentary democracy after the Third Reform Act, governed by a two-party alliance and checked by a Conservative House of Lords",
+    w_scale: 5, sizes: { n: 6000000, s: 4500000, w: 1800000 },
+    n: { who: "Some 5.7 million voters after 1885, rising to about 6.7 million by 1900 — still only about three adult men in five.", size: "~5.7–6.7 million" },
+    s: { who: "Voters in contested seats; many Unionist seats were not fought at all.", size: "~4.5 million (estimate)" },
+    w: { who: "The Unionist vote — Conservatives and Liberal Unionists — together with the Liberal Unionist MPs whose defection could end the government, and the Lords as a veto.", size: "~1.8 million voters (1895, estimate)" },
+    loyalty: "Durable: Home Rule gave the Unionists a cause and the Liberal Unionists nowhere else to go, while the Primrose League and Central Office kept the voters organised.",
+    currency: "Public goods for the propertied and the patriotic — the Union, the empire, the navy, order — with concessions to the Liberal Unionists: county councils, free elementary education, Irish land purchase.",
+    revenue: "Income tax and indirect taxes, and borrowing for the Boer War.",
+    shuffle: "Let Lord Randolph Churchill go in December 1886 and brought in the Liberal Unionist Goschen; took Hartington, Chamberlain and Lansdowne into the cabinet in 1895.",
+    danger: "July 1886, when the government's life depended on Hartington's followers, and December 1886, when Churchill's resignation threatened to bring them down.",
+    verdict: "Thirteen years in office by keeping a two-party coalition together on one issue, the Union; retired undefeated, leaving his nephew a coalition that broke on tariff reform within four years."
   },
   cavour: {
     system: "Constitutional monarchy with a narrow, propertied electorate",

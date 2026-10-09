@@ -573,6 +573,32 @@ Object.assign(window.POWER_BASE, {
     danger: "The poll tax (1990) and Heseltine's leadership challenge, which she led but did not win outright.",
     verdict: "Removed by her own party in November 1990 while still undefeated at the polls."
   },
+  attlee: {
+    system: "Parliamentary democracy — a party leader whose real selectorate was his own MPs and the unions behind them",
+    w_scale: 5, sizes: { n: 33200000, s: 25100000, w: 12000000 },
+    n: { who: "The electorate in 1945, including millions in the forces voting by post or proxy.", size: "~33.2 million" },
+    s: { who: "Voters — turnout about 73 per cent, with the count held back three weeks for the service vote.", size: "~25 million" },
+    w: { who: "The Labour vote — almost half of those who voted, and 393 of 640 seats — and, more narrowly, the parliamentary party, which elected the leader, and the big unions, whose block votes controlled conference.", size: "~12 million" },
+    loyalty: "Weak in the ordinary democratic way; inside the party he held because no rival could combine the others against him — Bevin's loyalty was the decisive asset.",
+    currency: "Public goods on a scale never before attempted: full employment, the NHS, national insurance, council housing; for the unions, the repeal of the 1927 Trade Disputes Act.",
+    revenue: "Wartime tax rates kept on, purchase tax, and American and Marshall Plan dollars.",
+    shuffle: "Promoted and dismissed without sentiment: Bevin to the Foreign Office and Dalton to the Treasury in the first days, Cripps to the Treasury in November 1947, Gaitskell in 1950.",
+    danger: "Morrison's bid for the leadership on the day of victory in July 1945, the Cripps–Dalton move to replace him with Bevin in September 1947, the convertibility crisis that summer, and the Bevanite resignations of April 1951.",
+    verdict: "Lost the October 1951 election with more votes than the winners — the electoral system, not the coalition, ended the government. He stayed as leader until 1955."
+  },
+  macmillan: {
+    system: "Parliamentary democracy — a leader who 'emerged' through the Conservative Party's informal soundings",
+    w_scale: 5, sizes: { n: 35400000, s: 27900000, w: 13700000 },
+    n: { who: "The electorate in 1959.", size: "~35.4 million" },
+    s: { who: "Voters — turnout about 79 per cent.", size: "~27.9 million" },
+    w: { who: "The Conservative vote of 1959; and before it the small circle that chose him in January 1957 — the cabinet, sounded one by one by Lord Salisbury and Lord Kilmuir, with Churchill and the party's elders consulted.", size: "~13.7 million voters; a cabinet of about twenty" },
+    loyalty: "Weak electorally; and the informal circle that had made him could, in principle, unmake him — which is why the by-election defeats of 1962 frightened him into the July purge.",
+    currency: "Affluence: houses, rising wages, consumer goods and tax cuts timed for the 1959 election; for the party, peerages, honours and office.",
+    revenue: "Income tax, purchase tax and a growing economy.",
+    shuffle: "The Night of the Long Knives, 13 July 1962 — a third of the cabinet removed in a day.",
+    danger: "The Treasury resignations of January 1958, the Orpington by-election of March 1962, de Gaulle's veto in January 1963, and the Profumo affair, after which 27 Conservatives abstained in the confidence vote of 17 June 1963.",
+    verdict: "Resigned through illness in October 1963 and managed his own succession from a hospital bed, passing over Butler for Home; the party lost the 1964 election narrowly."
+  },
   mandela: {
     system: "Constitutional democracy under a dominant liberation party",
     w_scale: 5, sizes: { n: 23000000, s: 19500000, w: 12200000 },
@@ -585,6 +611,45 @@ Object.assign(window.POWER_BASE, {
     shuffle: "A government of national unity including the National Party.",
     danger: "Pre-election violence in KwaZulu-Natal.",
     verdict: "Retired after one term; succession orderly."
+  },
+  asquith: {
+    system: "Parliamentary democracy on a male, property-based franchise — a Liberal government that after 1910 depended on Irish Nationalist and Labour votes",
+    w_scale: 5, sizes: { n: 7700000, s: 4900000, w: 2200000 },
+    n: { who: "The electorate of December 1910 — men only, registered under household and lodger qualifications, perhaps six in ten adult men.", size: "~7.7 million" },
+    s: { who: "Votes cast in December 1910, on a turnout of 81.6 per cent in contested seats.", size: "~4.9 million" },
+    w: { who: "The Liberal vote — 44.2 per cent, slightly fewer votes than the Unionists — and, in the Commons, the 272 Liberal MPs plus the 74 Irish Nationalists and 42 Labour members whose votes kept the government in office.", size: "~2.2 million voters; ~390 MPs" },
+    loyalty: "Weak in the country and conditional in the Commons: the Irish price was Home Rule, which brought Ulster to the edge of rebellion. In wartime the real W shrank to the Conservative leaders and the Liberal ministers who could make or break a coalition — and in December 1916 Lloyd George and Bonar Law did.",
+    currency: "Public goods for a working-class and Nonconformist coalition — old-age pensions, National Insurance, labour exchanges — paid for by taxes on land and high incomes; Home Rule for the Irish; the Lords' veto removed for all of them.",
+    revenue: "Income tax, the supertax and land duties of 1909 and death duties; from 1914, borrowing on a scale never seen before.",
+    shuffle: "Brought the Conservatives and Labour into a coalition in May 1915, dropping Haldane and moving Churchill from the Admiralty as the price.",
+    danger: "The Lords' veto crisis of 1909–11; Ulster and the Curragh in 1914; the shell scandal of May 1915; December 1916.",
+    verdict: "Eight years and eight months — the longest continuous premiership of the century until Thatcher — ended not by the voters but by the parliamentary W re-forming itself around a more energetic war leader."
+  },
+  lloydgeorge: {
+    system: "Parliamentary democracy just made mass — a prime minister without a party majority, at the head of a Conservative-dominated coalition",
+    w_scale: 5, sizes: { n: 21400000, s: 10800000, w: 5800000 },
+    n: { who: "The electorate of December 1918, nearly tripled by the Representation of the People Act: all men over 21 and, for the first time, most women over 30.", size: "~21.4 million" },
+    s: { who: "Votes cast on 14 December 1918, on a turnout of 55–57 per cent; many servicemen never voted.", size: "~10.8 million" },
+    w: { who: "The coalition vote — 53 per cent for candidates holding the 'coupon' — and the 523 coalition MPs it elected, 382 of them Conservatives. The essentials who could end him were the Conservative MPs, and on 19 October 1922 they did.", size: "~5.8 million voters; ~380 Conservative MPs" },
+    loyalty: "The thinnest party base of any modern British prime minister: his Coalition Liberals were a minority inside the majority, and the Conservatives kept him only while he was an electoral asset.",
+    currency: "Victory, and the promise of 'a country fit for heroes' — housing, insurance, education — cut back by the Geddes Axe in 1922; and for the cadre, honours, peerages and posts.",
+    revenue: "Wartime income tax, excess profits duty, war loans and American credit; for his own political fund, the sale of honours and newspaper investments.",
+    shuffle: "The coupon itself — choosing which candidates would carry his endorsement in 1918 — and ministries and peerages for the press barons: Rothermere at the Air Ministry, Beaverbrook at Information, Northcliffe in charge of propaganda in enemy countries.",
+    danger: "The Maurice debate of May 1918; the honours scandal of 1922; the Chanak crisis of September 1922.",
+    verdict: "Six years with a huge majority that was never his own: a large-W leader whose real W was someone else's parliamentary party, and who never held office again once it left him."
+  },
+  baldwin: {
+    system: "Mass parliamentary democracy — the Conservative party as the dominant force of interwar Britain",
+    w_scale: 5, sizes: { n: 21700000, s: 16600000, w: 7900000 },
+    n: { who: "The electorate of October 1924 — women under 30 were added by his own Equal Franchise Act of 1928.", size: "~21.7 million" },
+    s: { who: "Votes cast in October 1924, on a 77 per cent turnout.", size: "~16.6 million" },
+    w: { who: "The Conservative vote — 46.8 per cent and 412 seats — and behind it the parliamentary party and constituency associations that could remove a leader, as the press lords tried to make them do in 1929–31.", size: "~7.9 million" },
+    loyalty: "Weak electorally, as in any democracy, but durable inside the party, because he was its best asset with the voters the 1918 and 1928 franchise acts had added — women and the respectable working class.",
+    currency: "Public goods and reassurance: stability, sound money, pensions, and an image of English decency that defined Conservatism against both Lloyd George's adventurism and Labour's socialism.",
+    revenue: "Income tax and supertax; after 1932, the tariff.",
+    shuffle: "Ended the Lloyd George coalition in 1922 to restore an independent Conservative party; in 1931 joined a National Government under a Labour prime minister to widen W beyond the party.",
+    danger: "The tariff election of December 1923; the press lords' campaign and the St George's by-election of March 1931; the Hoare–Laval pact of December 1935.",
+    verdict: "Three premierships and fourteen years as party leader, ended by his own choice after the coronation of 1937 — and a reputation that then collapsed with the policies his successor inherited."
   },
   goh: {
     system: "Dominant-party electoral state",

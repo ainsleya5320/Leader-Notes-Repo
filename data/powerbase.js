@@ -346,6 +346,21 @@ window.POWER_BASE = {
     verdict: "About nine years as prime minister across seventeen, ended once by a coalition partner, once by the voters and once by defections under market pressure — the large-W pattern of performance-contingent tenure, with the unusual feature that the leader's private media empire was part of what held the coalition together."
   },
 
+  blair: {
+    system: "Parliamentary democracy with a single-party majority — and a second power centre inside the government, in the Treasury",
+    w_scale: 5,
+    sizes: { n: 43800000, s: 31300000, w: 13500000 },
+    n: { who: "The United Kingdom electorate in 1997, voting in single-member constituencies where a plurality of the vote can bring a large majority of seats.", size: "~43.8 million eligible" },
+    s: { who: "Voters — turnout about 71 per cent in 1997, falling to 59 per cent in 2001.", size: "~31.3 million voters (1997)" },
+    w: { who: "The Labour vote — 43 per cent in 1997, which first-past-the-post turned into 418 of 659 seats — and inside the government the parliamentary party and the Brown camp, whose cooperation he could not do without.", size: "~13.5 million voters (1997); about 9.6 million, 35 per cent, in 2005" },
+    loyalty: "Weak electorally, and weaker internally than his majorities suggested: Labour's rules made a leader hard to depose, but Brown could make government impossible, and the September 2006 letter from junior ministers showed how a timetable could be forced.",
+    currency: "Public goods — Bank independence, the minimum wage, rising health and education spending from 2000, peace in Northern Ireland — and for the party's own coalition, office, peerages and the promise of the succession to Brown.",
+    revenue: "Taxes on a growing service and financial economy; the 1997 windfall tax; a National Insurance increase for the NHS from 2003.",
+    shuffle: "Frequent reshuffles of everyone except Brown, whom he never felt able to move from the Treasury; Mandelson brought back twice after resignations.",
+    danger: "The fuel protests of September 2000; the Iraq vote of 18 March 2003, when 139 Labour MPs voted against him, and the death of David Kelly and the Hutton inquiry that summer; finally the Brown camp's revolt of September 2006.",
+    verdict: "Ten years and three elections won, an exit timed under pressure but carried out as an orderly handover to Brown — who lost the 2010 election. A large-W leader survives by winning; once he looked like a loser, his essentials moved to the successor."
+  },
+
   // ============================================================
   // THREE ANOMALIES — the succession problem, solved and failed
   // Every small-coalition entry above ends the same way: nothing

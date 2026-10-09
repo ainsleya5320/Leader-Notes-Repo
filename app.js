@@ -37,7 +37,8 @@ const SUCCESSIONS = { orderly: "Orderly succession", crisis: "Succession crisis"
 // Wikipedia page titles for portraits where the display name won't resolve
 const WIKI_OVERRIDES = {
   parkchunghee: "Park Chung Hee",
-  peron: "Juan Perón",
+  peron: "Juan Perón", walpole: "Robert Walpole", peel: "Robert Peel",
+  palmerston: "Henry John Temple, 3rd Viscount Palmerston", salisbury: "Robert Gascoyne-Cecil, 3rd Marquess of Salisbury",
   ramesses2: "Ramesses II", cyrus: "Cyrus the Great", darius1: "Darius the Great",
   qinshihuang: "Qin Shi Huang", jcaesar: "Julius Caesar", alexander: "Alexander the Great",
   william1: "William the Conqueror", louis9: "Louis IX of France", louis14: "Louis XIV",
@@ -240,6 +241,8 @@ function initials(name) {
   if (!w.length) return "?";
   if (w.length === 1) return w[0].slice(0, 2).toUpperCase();
   if (w.length > 2 && /^(II|III|IV|Jr\.?|Sr\.?)$/i.test(w[w.length - 1])) w.pop();   // 'James A. Baker III' -> JB, not JI
+  if (w.length > 2 && /^(Sir|Dame)$/i.test(w[0])) w.shift();                         // 'Sir Robert Peel' -> RP
+  const th = w.findIndex((x, i) => i > 0 && /^the$/i.test(x)); if (th > 1) w.splice(th);   // 'William Pitt the Younger' -> WP
   return (w[0][0] + w[w.length - 1][0]).toUpperCase();
 }
 function cachedImg(l) {
@@ -1512,14 +1515,19 @@ const LEADER_ALIASES = {
   parkchunghee: ["Park Chung Hee", "Park Chunghee"],
   mussolini: ["Mussolini", "Il Duce"], berlusconi: ["Berlusconi", "Il Cavaliere"],
   franco: ["Francisco Franco", "General Franco", "Generalísimo Franco", "Francoist"], salazar: ["Oliveira Salazar", "Salazarist"],
-  pinochet: ["General Pinochet", "Pinochetista"], peron: ["Juan Peron", "General Peron", "Peronism", "Peronist"]
+  pinochet: ["General Pinochet", "Pinochetista"], peron: ["Juan Peron", "General Peron", "Peronism", "Peronist"],
+  walpole: ["Robert Walpole", "Earl of Orford"], pittyounger: ["Pitt the Younger", "the Younger Pitt", "Younger Pitt"],
+  peel: ["Robert Peel"], palmerston: ["Palmerston", "Henry John Temple"], gladstone: ["Gladstone", "Grand Old Man"],
+  salisbury: ["Lord Salisbury", "Marquess of Salisbury", "Lord Cranborne"], asquith: ["Asquith", "Herbert Asquith", "Herbert Henry Asquith"],
+  lloydgeorge: ["Lloyd George", "Lloyd-George", "Welsh Wizard"], baldwin: ["Stanley Baldwin"], attlee: ["Attlee", "Clem Attlee"],
+  macmillan: ["Harold Macmillan", "Supermac"], blair: ["Tony Blair"]
 };
 const NUMERAL = /^(I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII|XIV|XV)$/i;
 // surnames that are also ordinary English words — never match on these alone
 // ("Long" would otherwise pull in Long Walk to Freedom, "Ford" the Ford Motor Company)
 const SURNAME_STOPWORDS = new Set(["long", "ford", "franco", "bush", "grant", "king", "pope", "young", "white",
   "black", "green", "brown", "stone", "wood", "hill", "field", "park", "price", "best", "moore", "rice",
-  "bruce", "daley", "huang", "conqueror"]);   // "Bruce" would match every author named Bruce; "Daley" alone would catch books on Richard M. Daley, the son
+  "bruce", "daley", "huang", "conqueror", "younger", "george", "peel", "blair", "wilson", "salisbury", "baldwin", "macmillan"]);   // "Younger" and "George" are the last words of Pitt the Younger and Lloyd George; Macmillan and Baldwin are also publishers and other people   // "Bruce" would match every author named Bruce; "Daley" alone would catch books on Richard M. Daley, the son
 
 var MATCHERS = null;   // var: assigned from rebuildAll(), which runs earlier in the file
 function buildMatchers() {
@@ -2792,7 +2800,8 @@ function ltaBars(r) {
 }
 // a compact label that still identifies the person: "Henry VIII", "Peter", "Bismarck"
 const TAG_NAMES = { fdr: "FDR", troosevelt: "T. Roosevelt", jfk: "JFK", lbj: "LBJ", ghwbush: "Bush 41", gwbush: "Bush 43",
-  hannibal: "Hannibal", harun: "Harun", degaulle: "de Gaulle", lula: "Lula", leekuanyew: "Lee Kuan Yew", mandela: "Mandela", meiji: "Meiji" };
+  hannibal: "Hannibal", harun: "Harun", degaulle: "de Gaulle", lula: "Lula", leekuanyew: "Lee Kuan Yew", mandela: "Mandela", meiji: "Meiji",
+  pittyounger: "Pitt the Younger", lloydgeorge: "Lloyd George", walpole: "Walpole", peel: "Peel", palmerston: "Palmerston", salisbury: "Salisbury" };
 function tagName(l) {
   if (TAG_NAMES[l.id]) return TAG_NAMES[l.id];
   const n = shortName(l);

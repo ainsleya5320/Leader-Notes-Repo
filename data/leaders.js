@@ -300,6 +300,12 @@ window.LEADERS = [
     delegation: "Promoted talent from nowhere (Menshikov, a pie-seller's boy) but flogged and executed failures — including his own son.",
     tags: ["coercive", "transformational", "meritocracy", "micromanage"] },
 
+  { id: "walpole", name: "Sir Robert Walpole", years: "PM 1721–1742", title: "First Lord of the Treasury of Great Britain — conventionally the first Prime Minister", country: "United Kingdom", iso: "826", era: "earlymodern", president: false,
+    style: "The manager as statesman — a Norfolk squire who ran Britain for twenty-one years by keeping the peace, keeping the land tax low, keeping the King and Queen on side, and knowing what every vote in the Commons would cost; 'let sleeping dogs lie' as a system of government.",
+    structure: "A ministry resting on two legs: the confidence of George I and George II (above all through Queen Caroline) and a Commons majority built from Treasury patronage, placemen, the Scottish and Cornish boroughs and the country gentlemen's dislike of taxes. He stayed in the Commons, where the money was voted, rather than take a peerage.",
+    delegation: "Kept the Treasury, the Commons and the closet to himself; let Newcastle run elections and church and borough patronage, Ilay manage Scotland and Bishop Gibson the bench of bishops — and drove out colleagues who grew too strong, Carteret in 1724 and his brother-in-law Townshend in 1730.",
+    tags: ["transactional", "cabinet", "spoils", "clientelism", "court"] },
+
   { id: "frederick2p", name: "Frederick the Great", years: "r. 1740–1786", title: "King of Prussia", country: "Germany", iso: "276", era: "earlymodern", president: false,
     style: "'First servant of the state' — enlightened absolutism with a soldier's discipline and a philosopher's correspondence.",
     structure: "Kabinettsregierung: governed from his desk by written order, ministers reduced to executors.",
@@ -317,6 +323,12 @@ window.LEADERS = [
     structure: "Court politics of favorites, formalized provincial administration after Pugachev's revolt scared her.",
     delegation: "Favorites as ministers — Potemkin effectively co-ruled the south, a genuine delegated viceroyalty built on personal trust.",
     tags: ["charismatic", "viziers", "court", "transactional"] },
+
+  { id: "pittyounger", name: "William Pitt the Younger", years: "PM 1783–1801, 1804–06", title: "Prime Minister of Great Britain (from 1801 of the United Kingdom)", country: "United Kingdom", iso: "826", era: "earlymodern", president: false,
+    style: "The prodigy as chief executive — prime minister at twenty-four, master of the Commons by argument and of the public finances by arithmetic, who rebuilt the Treasury after the American war and then spent the rest of his life paying for the war against revolutionary France.",
+    structure: "The King's minister with the Commons behind him: George III's confidence won him office in 1783 and the 1784 election, and he held both for seventeen years. He insisted that one minister must have the chief direction, kept the Treasury and finance in his own hands and ran a small inner group of colleagues.",
+    delegation: "Trusted a few lieutenants deeply — Henry Dundas for India, Scotland and the war, William Grenville for foreign policy, George Rose for Treasury patronage and elections — and did the budgets, the big speeches and the management of the King himself.",
+    tags: ["cabinet", "institutional", "transactional"] },
 
   // ---------------- COLONIAL ----------------
   { id: "nzinga", name: "Nzinga of Ndongo and Matamba", years: "r. 1624–1663", title: "Queen, Ndongo & Matamba", country: "Angola", iso: "024", era: "colonial", president: false,
@@ -368,6 +380,12 @@ window.LEADERS = [
     delegation: "Bypassed his official cabinet for an informal 'Kitchen Cabinet' of cronies and editors.",
     tags: ["charismatic", "machine", "hubspoke", "coercive", "spoils", "clientelism"] },
 
+  { id: "peel", name: "Sir Robert Peel", years: "PM 1834–35, 1841–46", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c19", president: false,
+    style: "The administrator who changed his mind in public — mastery of the brief, cold in the chamber and to his own backbenchers, who reformed the criminal law and the police, conceded Catholic emancipation in 1829 and repealed the Corn Laws in 1846 because the evidence said so, and broke his party twice doing it.",
+    structure: "Cabinet government with the prime minister as working head of every department: in 1841–46 he presented the budget himself, read his colleagues' papers and drafted their policy, and governed from a Conservative party he had rebuilt after 1832 but never cultivated.",
+    delegation: "Chose able ministers — Graham at the Home Office, Aberdeen at the Foreign Office, Goulburn at the Exchequer, the young Gladstone at the Board of Trade — and then supervised them closely; left the party organisation to the Carlton Club and its agent F. R. Bonham, and patronage requests to the bottom of the pile.",
+    tags: ["cabinet", "bureaucratic", "micromanage", "institutional"] },
+
   { id: "victoria", name: "Queen Victoria", years: "r. 1837–1901", title: "Queen of the United Kingdom", country: "United Kingdom", iso: "826", era: "c19", president: false,
     style: "Constitutional symbol perfected — Bagehot's trio: the right to be consulted, to encourage, to warn.",
     structure: "Reigned while ministers ruled; the crown as continuity above the party churn of Gladstone and Disraeli.",
@@ -397,6 +415,24 @@ window.LEADERS = [
     structure: "Cabinet government, mastered through parliamentary performance and the management of Victoria.",
     delegation: "Big strokes delegated to able ministers; kept the narrative — and the Queen — for himself.",
     tags: ["charismatic", "cabinet", "transactional"] },
+
+  { id: "palmerston", name: "Lord Palmerston", years: "PM 1855–58, 1859–65", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c19", president: false,
+    style: "The jaunty professional — a Canningite Tory who ran British foreign policy for most of twenty years as a Whig, then became at seventy the first genuinely popular prime minister by speaking for national pride: 'civis Romanus sum', the gunboat, and a joke for every crisis.",
+    structure: "Cabinet government managed from the Commons, at the head of the Whig–Peelite–Radical coalition that became the Liberal party at Willis's Rooms in 1859. His authority rested less on the Court, which distrusted him, than on the House, the friendly press and opinion 'out of doors'.",
+    delegation: "Left domestic business to his ministers and the Treasury to Gladstone, whom he contained rather than overruled; kept a hand on foreign policy even as prime minister, and in his Foreign Office years drafted nearly every despatch himself.",
+    tags: ["cabinet", "nationalism", "charismatic", "transactional"] },
+
+  { id: "gladstone", name: "William Ewart Gladstone", years: "PM 1868–74, 1880–85, 1886, 1892–94", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c19", president: false,
+    style: "Moral energy as political method — the double-first who made budgets into epics, turned a pamphlet and a county campaign into a national crusade, and argued every great question, from free trade to Irish Home Rule, as a matter of conscience before Parliament and people alike.",
+    structure: "Cabinet government driven by the prime minister's own legislation — he drafted the great Irish measures largely himself — and backed by a mass Liberal electorate of Nonconformists and working men whom he addressed directly, over the heads of colleagues and Queen.",
+    delegation: "Poor at managing colleagues and worse at managing Victoria; left foreign affairs largely to Granville, but kept the great measures and the finance in his own hands — he was his own Chancellor of the Exchequer in 1873–74 and 1880–82.",
+    tags: ["transformational", "charismatic", "cabinet", "micromanage"] },
+
+  { id: "salisbury", name: "Lord Salisbury", years: "PM 1885–86, 1886–92, 1895–1902", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c19", president: false,
+    style: "The pessimist in power — a shy, sardonic, formidably clever aristocrat and former journalist who held that as little as possible should happen, defended the Union and the old order against a democracy he distrusted, and ran foreign policy himself with cool, patient realism.",
+    structure: "Cabinet government led from the House of Lords and from Hatfield. For most of his premierships he was his own Foreign Secretary, with the Commons and the Treasury left to W. H. Smith and then his nephew Arthur Balfour, and his majority rested on the alliance with the Liberal Unionists of Hartington and Chamberlain.",
+    delegation: "Delegated domestic policy almost wholesale — to Smith, Balfour, Goschen and, after 1895, to Chamberlain at the Colonial Office, who ran much of the Boer War — while keeping diplomacy in his own hand. A cabinet full of relatives earned the name 'Hotel Cecil'.",
+    tags: ["cabinet", "coalitionbrokerage", "transactional"] },
 
   { id: "cavour", name: "Camillo di Cavour", years: "in office 1852–1861", title: "Prime Minister of Piedmont-Sardinia", country: "Italy", iso: "380", era: "c19", president: false,
     style: "Diplomatic engineer of unification — achieved with newspapers, railways, alliances and other people's revolutions what armies alone couldn't.",
@@ -652,6 +688,12 @@ window.LEADERS = [
     delegation: "High trust in a small veteran circle; the age question became the delegation question in the end.",
     tags: ["transactional", "cabinet", "collegial", "institutional"] },
 
+  { id: "blair", name: "Tony Blair", years: "PM 1997–2007", title: "UK Prime Minister; Labour leader 1994–2007", country: "United Kingdom", iso: "826", era: "c21", president: false,
+    style: "The moderniser as communicator — a barrister's fluency and an actor's ear harnessed to a project that rewrote Labour's constitution, accepted much of what Thatcher had built, won three general elections, and then staked his reputation on a moral case for intervention, above all in Iraq.",
+    structure: "A strengthened centre around a small inner circle — 'sofa government' in its critics' phrase — with Alastair Campbell's communications grid, Jonathan Powell as chief of staff, a Delivery Unit tracking targets, and a parallel power centre in Gordon Brown's Treasury.",
+    delegation: "Delegated the economy to Brown almost wholesale and kept foreign policy, Northern Ireland and public-service reform for Number 10; governed through bilaterals and small meetings rather than cabinet, which by most accounts rarely decided anything.",
+    tags: ["charismatic", "transformational", "hubspoke", "viziers"] },
+
   { id: "berlusconi", name: "Silvio Berlusconi", years: "PM 1994–95, 2001–06, 2008–11", title: "PM of Italy; founder of Fininvest and Forza Italia", country: "Italy", iso: "380", era: "c21", president: false,
     style: "The salesman in politics — a builder and television owner who announced his candidacy on videotape, sold his programme as a contract signed on air, and made the polls, the camera and his own life story the campaign.",
     structure: "A personal party assembled in weeks from his own companies — Publitalia's sales managers chose the candidates and a company-founded pollster did the research — at the head of centre-right coalitions that depended on the Northern League and the post-fascist National Alliance.",
@@ -809,6 +851,36 @@ window.LEADERS = [
     structure: "An elected presidency with a movement behind it — the CGT unions, the men's and women's Peronist parties and the Eva Perón Foundation — under a 1949 constitution that allowed his re-election, and increasingly a purged Supreme Court, a captured press and jailed opponents. The army remained a separate power, and removed him in 1955.",
     delegation: "Kept the 'conducción' — strategy and the last word — strictly personal and delegated the rest: Eva took the unions' petitions and the poor, Miguel Miranda the economy until 1949, and in exile a series of personal delegates (John William Cooke, later Jorge Daniel Paladino and Héctor Cámpora) whom he raised and dropped.",
     tags: ["charismatic", "transformational", "machine", "clientelism", "spectacle", "cultpersonality", "nationalism", "hubspoke"] },
+
+  { id: "asquith", name: "H. H. Asquith", years: "PM 1908–1916", title: "UK Prime Minister (Liberal)", country: "United Kingdom", iso: "826", era: "c20", president: false,
+    style: "The barrister as prime minister — lucid, unhurried and unflappable, a master of the Commons and the cabinet room who let colleagues argue, then summed up and decided. 'Wait and see' was his method in peace and became the charge against him in war.",
+    structure: "Classic cabinet government with no secretariat and no minutes — the only record of a meeting was his own letter to the King — governing from 1910 on Irish Nationalist and Labour votes, and from May 1915 through a coalition with the Conservatives.",
+    delegation: "Gave brilliant, difficult ministers wide latitude and defended them — Lloyd George at the Treasury, Churchill at the Admiralty, Grey at the Foreign Office, Kitchener at the War Office. His gift was holding them together; his weakness, a reluctance to intervene until forced.",
+    tags: ["cabinet", "collegial", "coalitionbrokerage", "institutional"] },
+
+  { id: "lloydgeorge", name: "David Lloyd George", years: "PM 1916–1922", title: "UK Prime Minister (Liberal; head of the wartime and postwar coalition)", country: "United Kingdom", iso: "826", era: "c20", president: false,
+    style: "The Welsh outsider as a force of nature — a platform orator who could set a hall alight, a negotiator who charmed and frightened by turns, and an improviser who treated institutions, parties and sometimes the truth as instruments.",
+    structure: "A presidential premiership inside a cabinet system: a War Cabinet of five with a new secretariat under Maurice Hankey, his own 'Garden Suburb' of advisers in huts behind Number 10, and no party majority of his own — the Conservatives supplied the votes, the sale of honours his political fund.",
+    delegation: "Pulled businessmen into government, gave press barons ministries, and worked around ministers and generals he distrusted; much was settled over breakfast with whoever he needed that morning. Churchill served him at Munitions, the War Office and the Colonial Office.",
+    tags: ["charismatic", "transformational", "hubspoke", "coalitionbrokerage", "spoils"] },
+
+  { id: "baldwin", name: "Stanley Baldwin", years: "PM 1923–24, 1924–29, 1935–37", title: "UK Prime Minister (Conservative)", country: "United Kingdom", iso: "826", era: "c20", president: false,
+    style: "Calm, plain and deliberately unclever — the pipe-smoking countryman who was in fact an ironmaster, talking to the nation on the wireless as if to a neighbour, and winning by patience, timing and a sense of what the public would bear.",
+    structure: "Cabinet and party government at its most conventional, run through a small circle of trusted aides — J. C. C. Davidson at Central Office, Tom Jones at the Cabinet Office — and from 1931 a National Government in which he held the majority while Ramsay MacDonald held the title.",
+    delegation: "Left ministers alone to an unusual degree — Churchill at the Treasury, Neville Chamberlain at Health — and kept himself for the large moments: the General Strike, the press lords, the abdication. Critics called it indolence; admirers, a sense of proportion.",
+    tags: ["cabinet", "collegial", "steward", "nationalism"] },
+
+  { id: "attlee", name: "Clement Attlee", years: "PM 1945–1951", title: "UK Prime Minister; Labour leader 1935–55", country: "United Kingdom", iso: "826", era: "c20", president: false,
+    style: "The chairman as leader — a small, laconic former East End social worker and Gallipoli officer who spoke little, decided briskly, and ran the most reforming government of the century by keeping a cabinet of larger personalities working in harness.",
+    structure: "Cabinet government at its most orderly: a dense system of cabinet committees serviced by the Cabinet Office, short meetings and short minutes, and a programme fixed in advance by the 1945 manifesto Let Us Face the Future. Churchill's wartime deputy, he had chaired the home-front committees since 1940.",
+    delegation: "Gave big ministers big departments and left them to run them — Bevin at the Foreign Office, Bevan at Health, Morrison on the legislative programme, Cripps on the economy — intervening as arbiter, and dismissing the ones who failed in a sentence.",
+    tags: ["collegial", "cabinet", "institutional", "transformational"] },
+
+  { id: "macmillan", name: "Harold Macmillan", years: "PM 1957–1963", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c20", president: false,
+    style: "The actor-manager — an Edwardian grandee's manner worn over a Stockton-scarred interventionist and a nervous temperament, projecting unflappable calm ('Supermac') while managing affluence at home and the retreat from empire abroad.",
+    structure: "Cabinet government run from the chair, with a small, strong private office and a press secretary (Harold Evans); the American alliance, Europe and the succession kept in his own hands.",
+    delegation: "Wide latitude to ministers — Macleod on the colonies, Sandys on defence, Heath on Europe — with intervention when things went wrong; when the government sagged in July 1962 he removed seven of his cabinet in a day.",
+    tags: ["cabinet", "transactional", "institutional"] },
 
   { id: "goh", name: "Goh Chok Tong", years: "PM 1990–2004", title: "PM of Singapore", country: "Singapore", iso: "702", era: "c20", president: false,
     style: "Deliberately consultative — promised a 'kinder, gentler' Singapore and ran national conversations, defining himself against the founder without repudiating him.",
