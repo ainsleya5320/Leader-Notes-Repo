@@ -427,6 +427,32 @@ Object.assign(window.POWER_BASE, {
     danger: "The second half of 1924, after the Matteotti murder, when the opposition's Aventine secession and the doubts of his liberal allies left his position in question; and July 1943, after the Allied landing in Sicily.",
     verdict: "Twenty-one years, then removal by his own Grand Council and the King — an insider coup carried out through constitutional forms. The coalition did not regroup around him: the Salò republic was a German creation, and it ended with his death."
   },
+  franco: {
+    system: "Personal military dictatorship with a corporate façade — a small coalition of generals, ministers drawn from the regime's 'families', bishops and bankers inside a large, administered selectorate",
+    w_scale: 2, sizes: { n: 21300000, s: 1000000, w: 250 },
+    n: { who: "Spaniards over 21, who could vote only in the referendums of 1947 and 1966 (21.3 million registered in 1966) and, for some, in the corporative 'family' elections to the Cortes after 1967.", size: "~21 million (1966)" },
+    s: { who: "The officer corps, the clergy, the Movement's cadres, the vertical syndicates' officials, the landowning and banking elite and the senior civil service.", size: "~1 million (estimate)" },
+    w: { who: "The ministers, the captains-general and senior commanders, the leaders of the 'families' (Falange, Catholic, monarchist, Opus Dei), the bishops, the big banks and the household at El Pardo.", size: "~250 (estimate)" },
+    loyalty: "Strong: a small W drawn from a large and divided S, in which each 'family' feared that its rivals would inherit if Franco fell. The army had no alternative paymaster — there was no king until he named one — and the families' rivalry was the regime's insurance.",
+    currency: "Private goods for the essentials — ministries, commands, licences, monopoly rents and titles — and, from 1959, the public good of growth, which bought the quiet of a new middle class.",
+    revenue: "Taxes and state monopolies, autarky rents in the 1940s, and then tourism, remittances and foreign investment — revenue that came to depend on a productive population, which pushed him to open the economy.",
+    shuffle: "Balanced reshuffles at long intervals: Serrano Suñer dropped in 1942 together with the army ministers who had clashed with the Falange; Catholics brought in in 1945, technocrats in 1957, an Opus Dei 'monocolour' government after the Matesa scandal in 1969.",
+    danger: "1943–46, when the Axis was losing, the monarchist generals asked him to restore the king, and the victorious Allies isolated Spain; he waited, and the Cold War came.",
+    verdict: "Thirty-nine years and death in office: the small-coalition dictator's ideal outcome. The succession he designed held — and the successor then gave the selectorate the vote, which dissolved the coalition within three years."
+  },
+  salazar: {
+    system: "Civilian personal dictatorship under military tutelage — a narrow coalition of officers, the Church, the great economic groups and the regime's administrators, with an electorate restricted by literacy and property",
+    w_scale: 2, sizes: { n: 1300000, s: 200000, w: 150 },
+    n: { who: "The restricted electorate — about 1.3 million registered voters in 1958, in a country of some 9 million — who voted for the National Assembly and, until 1959, the president.", size: "~1.3 million (1958)" },
+    s: { who: "Army and navy officers, the clergy, the National Union's notables, the corporative and civil-service hierarchy and the owners of the large economic groups.", size: "~200,000 (estimate)" },
+    w: { who: "The president of the republic, the military commanders, the ministers and under-secretaries, Cardinal Cerejeira and the hierarchy, the PIDE chiefs and the heads of a handful of industrial and banking groups.", size: "~150 (estimate)" },
+    loyalty: "Strong but conditional: the officers were replaceable and dependent, yet the army kept, through the president, the power to dismiss him — the alternative paymaster that a Crown gave Mussolini's coalition.",
+    currency: "Private goods kept modest and orderly — posts, licences under 'industrial conditioning', colonial concessions — and a single public good he guarded above all: financial stability.",
+    revenue: "Taxes on a poor population, colonial trade, wartime tungsten exports and later remittances; the balanced budget meant the coalition was paid sparingly.",
+    shuffle: "Ministers changed by bilateral dismissal rather than open crisis; the major reshuffles of 1944, 1958 and April 1961 (after Botelho Moniz's failed attempt to have the president remove him) were used to reassert control.",
+    danger: "The 1958 Delgado campaign, which showed that the restricted electorate could still turn; and 1961 — the Angolan rising, the Botelho Moniz attempt, the hijacking of the Santa Maria and the loss of Goa in a single year.",
+    verdict: "Thirty-six years, ended by incapacity rather than by his coalition. The coalition outlived him under Caetano for less than six years and then fell to the army it had relied on — when the colonial wars made the military's private costs higher than its rewards."
+  },
   kissinger: {
     system: "A courtier's power base — one essential at a time: the president",
     w_scale: 1, sizes: { n: 10000, s: 1000, w: 2 },

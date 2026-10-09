@@ -158,6 +158,8 @@ window.OUTCOMES = {
   suharto:        { exit: "deposed",      succession: "orderly" },
   parkchunghee:   { exit: "assassinated", succession: "crisis" },
   mussolini:      { exit: "deposed",      succession: "crisis" },
+  franco:         { exit: "died",         succession: "orderly" },
+  salazar:        { exit: "died",         succession: "orderly" },
   goh:            { exit: "voluntary",    succession: "orderly" },
   berlusconi:     { exit: "deposed",      succession: "orderly" },
   kissinger:      { exit: "defeated",     succession: "na" }

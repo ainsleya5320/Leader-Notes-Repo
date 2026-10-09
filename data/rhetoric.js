@@ -63,7 +63,7 @@ window.RHET_STYLES = [
     techniques: ["State ownership or capture of media", "Censorship and self-censorship", "The cult of personality", "In newer forms, flooding the space with contradictory claims"],
     strengths: "Near-total short-run control of what most people hear.",
     failure: "The leader stops hearing the truth too; trust collapses when reality breaks through.",
-    exemplars: ["stalin", "mao", "xi", "putin", "hitler"] },
+    exemplars: ["stalin", "mao", "xi", "putin", "hitler", "franco"] },
   { key: "pen", name: "The pen", color: "var(--era-c19)",
     def: "Leading through the written word — public letters, bulletins, pamphlets and memoirs that set the terms of debate.",
     mechanism: "Writing can be prepared, reread and reprinted, and a published text outlasts the news cycle that prompted it.",
@@ -77,7 +77,7 @@ window.RHET_STYLES = [
     techniques: ["Rare, set-piece appearances", "Controlled images", "Distance from daily politics"],
     strengths: "Authority above the fray; every appearance becomes an event.",
     failure: "Remoteness; when the image and the reality diverge, the distance makes it hard to repair.",
-    exemplars: ["degaulle", "meiji", "victoria"] },
+    exemplars: ["degaulle", "meiji", "victoria", "salazar"] },
   { key: "gesture", name: "The gesture", color: "var(--era-c21)",
     def: "A single symbolic act that communicates more than any speech.",
     mechanism: "A picture of an action is understood instantly across languages and remembered for decades.",
@@ -96,9 +96,9 @@ window.RHET_MAP = {
   mussolini: [85, 85, 90, "spectacle"], hitler: [90, 85, 95, "spectacle"], nkrumah: [70, 75, 60, "spectacle"], erdogan: [60, 80, 75, "spectacle"],
   troosevelt: [70, 55, 10, "press"], thatcher: [55, 35, 15, "press"], kissinger: [40, 15, 20, "press"], bismarck: [50, 20, 55, "press"], leekuanyew: [60, 40, 75, "press"],
   hueylong: [40, 90, 40, "bypass"], berlusconi: [25, 75, 65, "bypass"], nasser: [70, 85, 80, "bypass"], trump: [15, 95, 20, "bypass"], modi: [55, 90, 55, "bypass"], indira: [55, 70, 65, "bypass"],
-  stalin: [35, 70, 100, "control"], mao: [70, 80, 100, "control"], xi: [40, 70, 95, "control"], putin: [35, 75, 85, "control"],
+  franco: [45, 55, 90, "control"], stalin: [35, 70, 100, "control"], mao: [70, 80, 100, "control"], xi: [40, 70, 95, "control"], putin: [35, 75, 85, "control"],
   napoleon: [70, 70, 75, "pen"], lenin: [60, 60, 80, "pen"], wilson: [85, 55, 45, "pen"],
-  degaulle: [90, 60, 40, "majesty"], meiji: [90, 20, 60, "majesty"], victoria: [70, 20, 20, "majesty"]
+  salazar: [75, 30, 85, "majesty"], degaulle: [90, 60, 40, "majesty"], meiji: [90, 20, 60, "majesty"], victoria: [70, 20, 20, "majesty"]
 };
 
 window.RHET_CASES = [
@@ -461,7 +461,31 @@ window.RHET_CASES = [
     context: "Days before the 2001 election, on the political talk show Porta a Porta.",
     technique: ["Signing a written 'contract' of five promises on live television", "A pledge not to stand again if four were not met", "Turning a programme into a personal guarantee"],
     look: "Politics as a salesman's deal — the voter as the other party to a contract.",
-    effect: "He won; whether the contract was kept became a running dispute."}
+    effect: "He won; whether the contract was kept became a running dispute."},
+  { id: "salazar1928", leader: "salazar", title: "Taking the finance ministry", date: "27 April 1928", channel: "Inauguration speech, printed", style: "majesty",
+    quote: "Sei muito bem o que quero e para onde vou, mas não se me exija que chegue ao fim em poucos meses.",
+    context: "A Coimbra economics professor accepting the finance ministry of the military dictatorship, on condition that he could veto spending by every other ministry.",
+    technique: ["Office presented as a sacrifice made from duty, not ambition", "A professor's calm against the politicians' noise", "A demand for obedience in plain terms: the country might study, discuss and complain, but must obey when it was time to command"],
+    look: "The founding tone of a forty-year rule: authority claimed through competence and self-denial rather than charisma.",
+    effect: "He balanced the budget in his first year, and became prime minister in 1932." },
+  { id: "orgulhosamentesos", leader: "salazar", title: "'Proudly alone'", date: "18 February 1965", channel: "Speech to the National Union, printed and broadcast", style: "majesty",
+    quote: "Orgulhosamente sós.",
+    context: "Four years into colonial wars in Angola, Guinea and Mozambique, with Portugal condemned at the United Nations as the rest of Europe decolonised.",
+    technique: ["Turning diplomatic isolation into a badge of national honour", "The empire framed as Portugal's identity, not its policy", "Two words that could be repeated everywhere"],
+    look: "How a leader makes a weakness into a virtue — and so makes it impossible to change course.",
+    effect: "The wars went on until the army's own officers overthrew the regime on 25 April 1974." },
+  { id: "atadoybienatado", leader: "franco", title: "'Tied up, and well tied up'", date: "30 December 1969", channel: "End-of-year message, radio and television", style: "control",
+    quote: "Todo ha quedado atado, y bien atado.",
+    context: "The annual end-of-year broadcast, six months after Franco had named Juan Carlos de Borbón as his successor with the title of king.",
+    technique: ["The ritual annual address of a leader who otherwise said little", "Reassurance aimed at the regime's own factions, not the public", "Succession presented as already settled"],
+    look: "The confidence of a ruler who believed institutions he had designed would bind his successors.",
+    effect: "Within two years of his death in 1975, Juan Carlos and Adolfo Suárez had dismantled the regime; free elections were held in June 1977." },
+  { id: "francotestament", leader: "franco", title: "The political testament", date: "20 November 1975", channel: "Read on television by the prime minister", style: "control",
+    quote: null,
+    context: "Read to the nation by the prime minister, Carlos Arias Navarro, hours after Franco's death.",
+    technique: ["A last appeal for the unity of Spain and loyalty to the future king", "Forgiveness asked of all, and offered to those who had declared themselves his enemies", "Delivered by a weeping successor, which became the image of the day"],
+    look: "A dictator's last word, written to bind the future — and set aside within months.",
+    effect: "Juan Carlos was proclaimed king two days later and steered the transition to democracy." }
 ];
 
 window.RHET_PRESS = [
@@ -493,7 +517,8 @@ window.RHET_PRESS = [
       { id: "eisenhower", how: "Allowed the first filmed press conference in January 1955, with his press secretary editing the footage before release.", when: "1955" },
       { id: "merkel", how: "Gave few interviews and kept to set formats — above all an annual summer press conference before the federal press corps, where she answered questions at length.", when: "2005–21" },
       { id: "biden", how: "Held markedly fewer solo press conferences and interviews than his recent predecessors.", when: "2021–25" },
-      { id: "modi", how: "Has rarely, if ever, held an open, unscripted press conference in India as prime minister, preferring set-piece interviews and his own channels.", when: "2014–" }
+      { id: "modi", how: "Has rarely, if ever, held an open, unscripted press conference in India as prime minister, preferring set-piece interviews and his own channels.", when: "2014–" },
+      { id: "salazar", how: "Rarely gave interviews; the regime introduced him to the public through a series of interviews with the journalist António Ferro in Diário de Notícias in December 1932, published as a book in 1933 — and Ferro then ran the regime's propaganda office.", when: "1932–33" }
     ] },
   { key: "bypass", name: "Bypass the press", def: "Go straight to the public through a channel the press does not control.",
     cases: [
@@ -531,7 +556,9 @@ window.RHET_PRESS = [
       { id: "zelensky", how: "Under martial law the main national channels were combined in 2022 into a single 'United News' telemarathon — defended as wartime necessity, criticised as reducing pluralism.", when: "2022–" },
       { id: "churchill", how: "During the 1926 General Strike, with Fleet Street shut, he edited the government's own newspaper, the British Gazette.", when: "1926" },
       { id: "mussolini", how: "A former editor who built control step by step: press laws in 1925–26, then a press office that became the Ministry of Popular Culture, which sent newspapers daily instructions — the 'veline' — on what to print and what to ignore.", when: "1925–43" },
-      { id: "berlusconi", how: "Owned Italy's three main commercial television channels while, as prime minister, his government also oversaw the state broadcaster RAI — a conflict of interest without precedent in a Western democracy.", when: "1994–2011" }
+      { id: "berlusconi", how: "Owned Italy's three main commercial television channels while, as prime minister, his government also oversaw the state broadcaster RAI — a conflict of interest without precedent in a Western democracy.", when: "1994–2011" },
+      { id: "franco", how: "The wartime Press Law of 1938 gave the state prior censorship and the right to appoint editors; from 1943 the NO-DO newsreel was compulsory in every cinema. Manuel Fraga's Press Law of 1966 ended prior censorship but kept heavy penalties, which made editors censor themselves.", when: "1938–75" },
+      { id: "salazar", how: "Prior censorship of the press — the 'blue pencil' — inherited from the military dictatorship and formalised in 1933, alongside a Secretariat of National Propaganda under António Ferro that built the image of the austere, reluctant ruler.", when: "1933–68" }
     ] }
 ];
 

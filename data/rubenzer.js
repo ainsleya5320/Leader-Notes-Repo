@@ -1179,6 +1179,27 @@ window.TEMPERAMENT = {
       ten: "Poison gas in Ethiopia, which he authorised himself, the racial laws of 1938 and internal exile for opponents."
     }
   },
+  franco: {
+    source: "estimate",
+    profile: "The cold, patient survivor: ceiling-level concealment and composure, slow and unshowy in activity, low in intellectual curiosity, and near the floor in tender-mindedness. Included for the same reason as Hitler and Mussolini — leaving out the dictators would flatter the scale.",
+    f: { ach: [80, 94], com: [72, 90], act: [35, 62], int: [10, 35], nvul: [88, 98], ass: [65, 88], nstr: [90, 99], pos: [10, 35], ten: [2, 15] },
+    notes: {
+      nvul: "Calm under fire in Morocco, where he survived an abdominal wound in 1916, and famously unhurried in crisis — the war, the isolation of 1945–50 and the succession were all handled by waiting.",
+      nstr: "Rarely said what he intended. At Hendaye in 1940 he gave Hitler no date for entering the war while raising his price; at home he let each 'family' believe it had his ear.",
+      int: "Read little beyond military history and newspapers and distrusted intellectuals; the band reaches up because he wrote the screenplay of the 1941 film Raza under a pseudonym and could master a dossier.",
+      ten: "Confirmed death sentences from 1936 to September 1975; the post-war repression was policy, not excess."
+    }
+  },
+  salazar: {
+    source: "estimate",
+    profile: "The ascetic professor: very high competence and achievement striving, high intellect, deep reserve and almost no visible warmth; his composure was real at the desk and thinner in public. Included as a dictator, not as a model.",
+    f: { ach: [82, 96], com: [85, 97], act: [40, 65], int: [72, 92], nvul: [40, 72], ass: [55, 85], nstr: [80, 95], pos: [5, 25], ten: [10, 32] },
+    notes: {
+      com: "The 1928 stabilisation — a deficit-ridden Treasury turned to surplus within a year — is the basis of his reputation and was real; the long-run cost was an economy and a school system left behind the rest of Western Europe until the 1960s.",
+      nvul: "Disliked crowds and public speaking and withdrew from both; the band is wide because in office he held his nerve through the Spanish war, the Second World War and the crises of 1958 and 1961.",
+      ten: "Tarrafal, PIDE and the colonial wars, set against a ruler who took pains over individual letters and refugees in 1940 — the band reaches up for that reason."
+    }
+  },
   kissinger: {
     source: "estimate",
     profile: "The highest combination of intellect and concealment in the file. On Rubenzer's scale that is close to an optimal profile, which is precisely why the man remains contested.",

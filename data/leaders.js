@@ -786,6 +786,18 @@ window.LEADERS = [
     delegation: "Held as many as seven ministries himself at once and rotated ministers and party secretaries in periodic 'changings of the guard' so that none built a base; decisions were his, but the information that reached him was filtered by courtiers, and the armed forces he claimed to command were unready for the war he declared.",
     tags: ["charismatic", "coercive", "propaganda", "cultpersonality", "spectacle", "hubspoke", "micromanage", "nationalism"] },
 
+  { id: "franco", name: "Francisco Franco", years: "in power 1936–1975", title: "Head of State (Caudillo) of Spain; also head of government until 1973", country: "Spain", iso: "724", era: "c20", president: false,
+    style: "The cautious general — taciturn, patient and suspicious, a colonial officer who won a civil war slowly, said as little as possible, let rivals wear each other out, and outlasted every ally and enemy he had for almost forty years.",
+    structure: "A military dictatorship that called itself a kingdom from 1947: a single 'Movement' (the merged Falange and Carlists), an advisory Cortes, the Church given education and morals, and the army as final guarantor — with every institution answering to the Caudillo, 'responsible before God and History'.",
+    delegation: "Balanced the regime's 'families' — army, Falange, Catholics, monarchists and, from 1957, the Opus Dei technocrats — by giving each ministries and none control; let ministers run their departments with wide latitude, reshuffled at long intervals, and from 1941 relied on one indispensable aide, Luis Carrero Blanco.",
+    tags: ["coercive", "warrior", "dividerule", "hubspoke", "politicalreligion", "nationalism", "clientelism"] },
+
+  { id: "salazar", name: "António de Oliveira Salazar", years: "in power 1932–1968", title: "President of the Council of Ministers of Portugal (the Estado Novo); finance minister from 1928", country: "Portugal", iso: "620", era: "c20", president: false,
+    style: "The professor as dictator — a Coimbra economist who came in to balance the budget, made the Treasury's veto the centre of the state, and ruled for four decades from his desk: ascetic, reclusive, legalistic and unbending.",
+    structure: "A corporative 'New State' under the 1933 constitution: a single 'non-party', the National Union; a president, always a military officer, who formally appointed and could dismiss him; corporations in place of free unions; the Church under the 1940 Concordat; and behind it censorship and the PVDE/PIDE political police.",
+    delegation: "Governed through bilateral meetings with each minister rather than a working cabinet, kept finance, and at times war and foreign affairs, in his own hands, read the files himself, and chose loyal technicians over politicians — which left the regime without a successor he trusted until a fall in 1968 decided it for him.",
+    tags: ["bureaucratic", "micromanage", "hubspoke", "politicalreligion", "nationalism", "coercive"] },
+
   { id: "goh", name: "Goh Chok Tong", years: "PM 1990–2004", title: "PM of Singapore", country: "Singapore", iso: "702", era: "c20", president: false,
     style: "Deliberately consultative — promised a 'kinder, gentler' Singapore and ran national conversations, defining himself against the founder without repudiating him.",
     structure: "Inherited the PAP mandarinate intact and governed as first among equals — in a cabinet that still contained Lee Kuan Yew as Senior Minister.",

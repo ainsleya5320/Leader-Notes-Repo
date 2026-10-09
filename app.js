@@ -1489,12 +1489,13 @@ const LEADER_ALIASES = {
   kissinger: ["Kissinger"],
   suharto: ["Soeharto", "Pak Harto"],
   parkchunghee: ["Park Chung Hee", "Park Chunghee"],
-  mussolini: ["Mussolini", "Il Duce"], berlusconi: ["Berlusconi", "Il Cavaliere"]
+  mussolini: ["Mussolini", "Il Duce"], berlusconi: ["Berlusconi", "Il Cavaliere"],
+  franco: ["Francisco Franco", "General Franco", "Generalísimo Franco", "Francoist"], salazar: ["Oliveira Salazar", "Salazarist"]
 };
 const NUMERAL = /^(I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII|XIV|XV)$/i;
 // surnames that are also ordinary English words — never match on these alone
 // ("Long" would otherwise pull in Long Walk to Freedom, "Ford" the Ford Motor Company)
-const SURNAME_STOPWORDS = new Set(["long", "ford", "bush", "grant", "king", "pope", "young", "white",
+const SURNAME_STOPWORDS = new Set(["long", "ford", "franco", "bush", "grant", "king", "pope", "young", "white",
   "black", "green", "brown", "stone", "wood", "hill", "field", "park", "price", "best", "moore", "rice",
   "bruce", "daley", "huang", "conqueror"]);   // "Bruce" would match every author named Bruce; "Daley" alone would catch books on Richard M. Daley, the son
 

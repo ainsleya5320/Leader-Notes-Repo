@@ -634,6 +634,30 @@ window.LEADER_INSTRUMENTS = {
       { reg: "loyalty", key: "l_spoils", detail: "Party membership became, in practice, the key to a career in the public administration, and the hierarchs were paid in ministries, prefectures and party posts — rotated so that none was held long." }
     ]
   },
+  franco: {
+    creed: "'Spain: One, Great and Free' — with the Caudillo, under the single party's 1937 statutes, answerable only 'before God and History', and his coins reading 'Caudillo of Spain by the Grace of God'.",
+    practice: "The victor's peace: the defeated half of Spain was treated for years as an enemy under military law, while the winning coalition — army, Church, Falange, monarchists, landowners and later the technocrats — was paid in ministries, morals and licences. Fear came first and was never wholly withdrawn; prosperity came later and bought the quiet of the 1960s.",
+    tools: [
+      { reg: "fear", key: "f_exemplary", detail: "Mass executions during and after the civil war — the commonest estimates of the White Terror run from about 100,000 to 200,000 dead, disputed — and, to the end, confirmed death sentences: Julián Grimau in 1963, five men on 27 September 1975 despite appeals from the Pope." },
+      { reg: "fear", key: "f_legal", detail: "The Law of Political Responsibilities (February 1939), applied retroactively to 1934, which fined and confiscated from the Republic's supporters; the 1940 law for the repression of Freemasonry and Communism; military courts for political offences until the Tribunal of Public Order took them over in 1963." },
+      { reg: "fear", key: "f_denunciation", detail: "Post-war purges of teachers, civil servants and workers relied on denunciations and on certificates of good conduct ('avales') from priests, Falangists or the Civil Guard — repression devolved to neighbours." },
+      { reg: "loyalty", key: "l_spoils", detail: "Ministries shared among the regime's 'families', import licences and permits in the autarky years, and posts in the Movement, the vertical syndicates and the state holding company INI (1941)." },
+      { reg: "loyalty", key: "l_honors", detail: "Titles of nobility created by the head of state, promotions and decorations for the victorious officers, and the cult of the 'Crusade' and its dead at the Valley of the Fallen, built partly with prisoner labour." },
+      { reg: "motivate", key: "m_conviction", detail: "National Catholicism: the war presented as a crusade, the Church given control of education and public morals, and the Concordat of 1953 binding the regime and the Vatican." }
+    ]
+  },
+  salazar: {
+    creed: "'God, Fatherland, Family' — and 'Everything for the Nation, nothing against the Nation', a corporative order presented as the antidote to both liberal disorder and the totalitarian state.",
+    practice: "Order through restraint rather than spectacle: the population was demobilised, not mobilised — kept poor, Catholic and uninformed by censorship — while the political police watched the small opposition and the budget was guarded as the regime's proof of competence.",
+    tools: [
+      { reg: "fear", key: "f_surveillance", detail: "The political police — PVDE from 1933, PIDE from 1945 — and its paid informers, the 'bufos', who reached into workplaces, universities and the émigré opposition." },
+      { reg: "fear", key: "f_deportation", detail: "The Tarrafal camp in Cape Verde, opened in 1936 and known as the 'camp of slow death': 340 prisoners passed through it before 1954, and 34 died there. Reopened in 1961 for prisoners from the African liberation movements." },
+      { reg: "fear", key: "f_legal", detail: "Prior censorship by commissions of officers whose blue pencil cut the press, books and theatre; the 1933 constitution's 'freedoms' limited by law; elections held under a narrow franchise, and direct presidential elections abolished after the Delgado scare of 1958." },
+      { reg: "trust", key: "t_audit", detail: "The balanced budget, published and defended year after year from 1928, as the regime's evidence that it could be trusted with money — and its justification for refusing to spend." },
+      { reg: "trust", key: "t_hardship", detail: "A conspicuously frugal private life — no marriage, no wealth, a housekeeper and a cottage at Vimieiro — that let the regime present austerity as something the ruler shared." },
+      { reg: "motivate", key: "m_conviction", detail: "Catholic corporatism and the 'civilising mission' of a pluricontinental nation, the creed in whose name Portugal fought on three African fronts from 1961." }
+    ]
+  },
   kissinger: {
     creed: "“Power is the ultimate aphrodisiac” — and a scholar's conviction that stability, not justice, is what foreign policy can actually deliver.",
     practice: "The purest courtier's toolkit in the index: flattery upward, information hoarded sideways, and the channel never delegated.",

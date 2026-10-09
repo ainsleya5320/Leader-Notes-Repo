@@ -665,6 +665,30 @@ window.COLLABORATORS = {
     { name: "Cesare Previti", role: "Fininvest lawyer and defence minister in 1994; definitively convicted in May 2006 of bribing judges in the IMI-SIR case" },
     { name: "Angelino Alfano", role: "Justice minister from 2008 and party secretary from 2011, the designated heir who broke away in November 2013 to found the New Centre-Right" }
   ],
+  franco: [
+    { name: "Luis Carrero Blanco", role: "Naval officer; under-secretary of the presidency from 1941, minister from 1951, vice-president from 1967 and prime minister from June 1973 — the indispensable aide, killed by an ETA bomb in Madrid on 20 December 1973" },
+    { name: "Ramón Serrano Suñer", role: "Brother-in-law (the 'cuñadísimo'); interior minister 1938–40 and foreign minister 1940–42, builder of the single party's institutions; dropped in September 1942 after the Begoña incident" },
+    { name: "Emilio Mola", role: "The 'director' of the July 1936 military conspiracy, commander in the north; killed in an air crash on 3 June 1937, leaving Franco without a rival among the generals" },
+    { name: "Nicolás Franco", role: "Elder brother; ran his political secretariat in 1936–37 and was ambassador to Portugal from 1938 to 1957" },
+    { name: "Carmen Polo", role: "Wife from 1923; a presence at El Pardo whose circle and family connections shaped the court of his later years" },
+    { name: "Agustín Muñoz Grandes", role: "Commander of the Blue Division in Russia 1941–42, army minister 1951–57 and vice-president 1962–67" },
+    { name: "Alberto Martín-Artajo", role: "Catholic Action leader brought in as foreign minister in 1945 to give the regime a Catholic rather than a fascist face; negotiated the 1953 Concordat" },
+    { name: "Laureano López Rodó", role: "Opus Dei-linked technocrat; ran the development plans from 1962 and, with Carrero Blanco, steered the choice of Juan Carlos as successor" },
+    { name: "Manuel Fraga", role: "Minister of information and tourism 1962–69; author of the 1966 Press Law, which replaced prior censorship with penalties after publication" },
+    { name: "Juan Carlos de Borbón", role: "Educated in Spain under Franco's supervision from 1948, named his successor on 22 July 1969, king on 22 November 1975 — and the man who dismantled the regime" }
+  ],
+  salazar: [
+    { name: "Óscar Carmona", role: "General and president of the republic 1926–51; appointed him finance minister in 1928 and prime minister in 1932, and kept the army behind him" },
+    { name: "Manuel Gonçalves Cerejeira", role: "Friend and fellow Catholic activist from Coimbra; Cardinal Patriarch of Lisbon 1929–71" },
+    { name: "António Ferro", role: "Journalist whose 1932 interviews made Salazar's public image; director of the Secretariat of National Propaganda (SPN, later SNI) 1933–49" },
+    { name: "Duarte Pacheco", role: "Minister of public works 1932–36 and 1938–43, builder of the regime's roads, stadium and Lisbon works; killed in a car crash in 1943" },
+    { name: "Fernando Santos Costa", role: "Army officer; under-secretary and then minister of war 1936–58, Salazar's guarantor inside the army" },
+    { name: "Marcelo Caetano", role: "Coimbra-trained law professor and architect of corporative law; colonies minister 1944–47, minister of the presidency 1955–58, and his successor in September 1968" },
+    { name: "Américo Tomás", role: "Admiral; navy minister 1944–58, president of the republic 1958–74, who replaced him with Caetano in 1968" },
+    { name: "Alberto Franco Nogueira", role: "Foreign minister 1961–69, defender of the African policy at the UN, and later author of a six-volume biography" },
+    { name: "Maria de Jesus Caetano Freire", role: "Housekeeper from his Coimbra years who ran the São Bento household for the rest of his life" },
+    { name: "Humberto Delgado", role: "Air force general and former regime official who ran against the regime's candidate in 1958 ('Obviously, I'll sack him' — of Salazar); murdered by PIDE agents in Spain in 1965" }
+  ],
   goh: [
     { name: "Lee Kuan Yew", role: "Predecessor, retained in his cabinet as Senior Minister" },
     { name: "Lee Hsien Loong", role: "Deputy, groomed successor, and the founder's son" },
