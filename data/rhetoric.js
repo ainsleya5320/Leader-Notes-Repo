@@ -89,6 +89,7 @@ window.RHET_STYLES = [
 
 // [register, route, control, style] — my estimates, for comparison only
 window.RHET_MAP = {
+  liverpool: [40, 10, 50, "plain"], grey: [75, 30, 20, "orator"], haroldwilson: [40, 60, 15, "press"], heath: [30, 35, 10, "plain"],
   walpole: [25, 20, 45, "press"], pittyounger: [85, 25, 40, "orator"], peel: [50, 40, 10, "plain"], gladstone: [90, 80, 10, "orator"], palmerston: [45, 30, 20, "press"], salisbury: [60, 25, 10, "pen"], asquith: [55, 20, 10, "plain"], lloydgeorge: [85, 75, 25, "orator"], baldwin: [30, 75, 15, "fireside"], attlee: [15, 25, 10, "plain"], macmillan: [70, 50, 15, "orator"], blair: [50, 55, 25, "press"],
   lincoln: [75, 40, 10, "orator"], churchill: [95, 45, 15, "orator"], jfk: [85, 50, 10, "orator"], obama: [85, 65, 10, "orator"],
   ataturk: [80, 55, 60, "orator"], castro: [80, 85, 90, "orator"], mandela: [65, 40, 5, "gesture"],
@@ -630,7 +631,37 @@ window.RHET_CASES = [
     context: "Arriving in Northern Ireland as the talks that became the Good Friday Agreement were close to collapse over David Trimble's objections to the proposed North–South bodies.",
     technique: ["The disclaimer that frames the soundbite it introduces", "History invoked to raise the cost of walking away for every party", "Built, intended or not, for the evening bulletins"],
     look: "The paradox is the point: his advisers asked at once whether he realised what he had said, and the line is remembered for the contradiction as much as for the moment.",
-    effect: "The Good Friday Agreement was concluded on 10 April. Blair said in 2018 that he recalled the phrase with a mixture of pride and embarrassment." }
+    effect: "The Good Friday Agreement was concluded on 10 April. Blair said in 2018 that he recalled the phrase with a mixture of pride and embarrassment." },
+{ id: "preserve1830", leader: "grey", title: "'Reforming to preserve' — the first statement as prime minister", date: "22 November 1830", channel: "House of Lords, reported in Hansard and the press", style: "orator",
+    quote: "The principle of my reform is, to prevent the necessity for revolution… reforming to preserve, and not to overthrow.",
+    context: "Wellington had fallen a week earlier, after declaring that the existing system of representation could not be improved; Grey took office on 22 November pledged to reform, with the Swing riots spreading across the southern counties and the July Revolution in Paris four months old.",
+    technique: ["Reform framed as conservation — the radical measure presented as the only way to keep the constitution", "Drawing the line in advance: 'I never have supported universal suffrage and annual Parliaments'", "Bundling reform with 'peace' and 'the most rigid economy', the Whigs' older programme", "Revolution named as the alternative, so that resistance becomes the radical choice"],
+    look: "The whole strategy of 1830–32 in one sentence: concede to the middle classes in order to detach them from the radicals, and tell the Lords that the choice is reform or revolution.",
+    effect: "Set the terms of the debate for eighteen months and supplied the argument with which the King and enough Tory peers were brought to accept the bill; it also told the radicals and the working-class reformers how far the Whigs would go — and no further." },
+{ id: "whiteheat", leader: "haroldwilson", title: "The white heat", date: "1 October 1963", channel: "Speech to the Labour Party conference, Scarborough", style: "orator",
+    quote: "The Britain that is going to be forged in the white heat of this revolution will be no place for restrictive practices or for outdated methods on either side of industry.",
+    context: "Eight months after he became leader on Gaitskell's death, with Labour still divided over nationalisation and nuclear weapons, and a year before a general election.",
+    technique: ["Recasting an old argument in new terms: socialism re-stated as the planned harnessing of a scientific revolution, which let left and right each hear what they wanted", "A modernising image that made the opponents, not Labour, look old", "An even-handed sting — restrictive practices 'on either side of industry' — aimed at unions as well as management"],
+    look: "How the leader of a split party unites it by changing the subject to the future. The phrase is usually misquoted as 'the white heat of technology'.",
+    effect: "Set the theme of Labour's 1964 campaign, which it won by a majority of four. The promise of technological modernisation became the yardstick his record was judged against." },
+  { id: "poundinyourpocket", leader: "haroldwilson", title: "'The pound in your pocket'", date: "19 November 1967", channel: "Television broadcast", style: "fireside",
+    quote: "That doesn't mean, of course, that the pound here in Britain, in your pocket or purse or in your bank, has been devalued.",
+    context: "The day after the government devalued sterling by about 14 per cent, from $2.80 to $2.40, having spent three years and much of its political capital defending the parity.",
+    technique: ["Reassurance addressed to the household rather than the market", "A technically defensible distinction — domestic purchasing power against the exchange rate — that sounded like a denial", "The calm, homely register of a fireside talk used to announce a defeat"],
+    look: "The failure case of the fireside style: when reassurance contradicts what listeners can see, the memorable phrase becomes the evidence against the speaker.",
+    effect: "Remembered as evasion, the line dogged him for the rest of his career; Callaghan left the Treasury within days, exchanging posts with Roy Jenkins." },
+  { id: "unacceptableface", leader: "heath", title: "'The unacceptable face of capitalism'", date: "15 May 1973", channel: "House of Commons", style: "plain",
+    quote: "It is the unpleasant and unacceptable face of capitalism.",
+    context: "Answering on the Lonrho affair — large payments to directors arranged through an offshore tax haven — while his government was asking the unions to accept a statutory limit on pay.",
+    technique: ["A Conservative prime minister condemning a company in his opponents' vocabulary", "Moral language aimed at the bargain he needed: restraint by workers required restraint at the top", "A short, quotable judgement delivered without ornament"],
+    look: "A plain speaker's rare memorable phrase, and the clearest statement of Heath's corporatism — the state as referee between capital and labour.",
+    effect: "Entered the language; for the Conservative right it became evidence of how far he had moved from Selsdon." },
+  { id: "whogoverns", leader: "heath", title: "'Who governs Britain?'", date: "7 February 1974", channel: "Televised ministerial broadcast announcing a general election", style: "plain",
+    quote: null,
+    context: "With the miners' overtime ban and the oil crisis forcing industry onto a three-day week, and a full miners' strike imminent, he called an election for 28 February — three weeks away, the shortest campaign possible. He told viewers that the dispute had to end and that only they could end it, with their votes.",
+    technique: ["Turning an industrial dispute into a constitutional question", "Making the voters the arbiters of a quarrel the government could not settle", "Grave, plain delivery — the opposite of a campaigner's appeal"],
+    look: "The danger of the single-question election: voters may answer a different question. Many asked not who governed but whether this government could.",
+    effect: "A hung parliament: the Conservatives won the most votes but four fewer seats than Labour. Heath resigned on 4 March after failing to agree a coalition with the Liberals." }
 ];
 
 window.RHET_PRESS = [
@@ -660,7 +691,8 @@ window.RHET_PRESS = [
       { id: "walpole", how: "Paid a stable of writers, among them William Arnall, and from 1735 a consolidated government paper, the Daily Gazetteer; the 1742 Committee of Secrecy found more than £50,000 paid to writers and printers in 1731–41.", when: "1726–42" },
       { id: "pittyounger", how: "Treasury money and official advertising for friendly papers in the 1790s, among them new ministerial dailies — the practice Arthur Aspinall documented in Politics and the Press (1949).", when: "1790s" },
       { id: "palmerston", how: "Wrote or inspired leading articles for friendly papers — the Globe, which took Whig briefings in the 1840s, and the Morning Post, closely identified with his ministry in the 1850s — sometimes repeating his own despatches word for word, and leaked or published selected documents to set the story. A. J. P. Taylor called him the only prime minister to become an accomplished leader-writer.", when: "1830–65" },
-      { id: "blair", how: "Alastair Campbell made the lobby briefings attributable to 'the Prime Minister's official spokesman', and ran a rebuttal unit and 'the grid', a forward calendar of every department's announcements, so that each day carried one message.", when: "1997–2003" }
+      { id: "blair", how: "Alastair Campbell made the lobby briefings attributable to 'the Prime Minister's official spokesman', and ran a rebuttal unit and 'the grid', a forward calendar of every department's announcements, so that each day carried one message.", when: "1997–2003" },
+      { id: "haroldwilson", how: "Ran press relations from his own political office rather than leaving them to civil servants — Gerald Kaufman in the 1960s, Joe Haines as press secretary from 1969 — cultivated the lobby correspondents assiduously as opposition leader and in 1964–66, and came to believe much of the press was against him. 'A week is a long time in politics' is, by the usual account, a lobby-briefing line.", when: "1963–76" }
     ] },
   { key: "ration", name: "Ration the press", def: "Appear seldom and on your own terms; make every appearance an event.",
     cases: [
@@ -695,7 +727,8 @@ window.RHET_PRESS = [
       { id: "berlusconi", how: "In the 'Bulgarian edict' of April 2002, speaking in Sofia, he accused the journalists Enzo Biagi and Michele Santoro and the comedian Daniele Luttazzi of a 'criminal' use of public television; all three soon lost their programmes on RAI.", when: "2002" },
       { id: "pittyounger", how: "A royal proclamation against seditious writings in May 1792 and the prosecution of Thomas Paine for Rights of Man, convicted in his absence that December; then the Treason and Seditious Meetings Acts of 1795.", when: "1792–95" },
       { id: "baldwin", how: "Answered the Beaverbrook and Rothermere campaign to remove him by attacking the press lords themselves — 'power without responsibility, the prerogative of the harlot throughout the ages' — at the Queen's Hall on 17 March 1931; his candidate won the St George's by-election two days later.", when: "1930–31" },
-      { id: "blair", how: "In a farewell lecture at Reuters on 12 June 2007 he said the media hunted in a pack and in that mode was 'like a feral beast, just tearing people and reputations to bits' — while conceding that New Labour had paid inordinate attention in its early days to courting and persuading the press.", when: "2007" }
+      { id: "blair", how: "In a farewell lecture at Reuters on 12 June 2007 he said the media hunted in a pack and in that mode was 'like a feral beast, just tearing people and reputations to bits' — while conceding that New Labour had paid inordinate attention in its early days to courting and persuading the press.", when: "2007" },
+      { id: "liverpool", how: "After Peterloo his government thanked the Manchester magistrates in the Prince Regent's name and passed the Six Acts (December 1819), which raised the penalty for blasphemous and seditious libel to up to fourteen years' transportation and extended the fourpenny newspaper stamp to cheap papers of opinion, with bonds for good behaviour; prosecutions of radical publishers ran alongside — William Hone was acquitted three times in December 1817, Richard Carlile jailed in 1819.", when: "1817–20" }
     ] },
   { key: "own", name: "Own the press", def: "Control the channels outright through state ownership, capture or censorship.",
     cases: [

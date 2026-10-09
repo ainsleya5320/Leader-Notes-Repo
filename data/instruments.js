@@ -556,6 +556,27 @@ window.LEADER_INSTRUMENTS = {
       { reg: "motivate", key: "m_glory", detail: "The war rhetoric of 1803–05, ending in the Guildhall reply of 9 November 1805: 'England has saved herself by her exertions, and will, as I trust, save Europe by her example.'" }
     ]
   },
+  liverpool: {
+    creed: "No signature line survives; the working creed was the Pittite one — order first, sound money, and the elective franchise as 'a public trust', granted for the good of the public rather than of the voter (his view as summarised by the Prime Minister's Office).",
+    practice: "Held power by conciliation and administration rather than inspiration: a cabinet of strong rivals kept together by an open question and a patient chairman, a currency rule and patronage handled cleanly — and, in 1816–20, informers, suspended liberties and the Six Acts against a radical movement he believed revolutionary.",
+    tools: [
+      { reg: "fear", key: "f_surveillance", detail: "Home Office spies and informers: 'Oliver the Spy' encouraged the Pentrich rising of 1817, and George Edwards, a police informer, was second-in-command of the Cato Street conspirators in 1820 — five of whom were executed and five transported." },
+      { reg: "fear", key: "f_legal", detail: "Habeas corpus suspended in 1817; after Peterloo, the Six Acts of December 1819 against drilling, seditious meetings of more than fifty, and 'blasphemous and seditious' libel, with the stamp duty extended to cheap political papers." },
+      { reg: "trust", key: "t_publicrule", detail: "The return to gold, recommended by Peel's committee in 1819 — monetary policy put under a published rule after twenty-two years of inconvertible paper." },
+      { reg: "loyalty", key: "l_mobility", detail: "Brought in Peel, Canning, Robinson and Huskisson in 1822–23; six of the next ten prime ministers had served under him. His Victorian biographer stressed his 'rare scrupulousness' in patronage." }
+    ]
+  },
+  grey: {
+    creed: "“The principle of my reform is, to prevent the necessity for revolution… reforming to preserve, and not to overthrow.” (House of Lords, 22 November 1830)",
+    practice: "Persistence and leverage: a cause held for forty years, a reform bill drafted bold and in secret, then carried by every lever a prime minister of 1831–32 had — dissolution, the political unions out of doors, resignation, and the Crown's power to make peers — by a cabinet of aristocrats and relations.",
+    tools: [
+      { reg: "loyalty", key: "l_kinship", detail: "A government of kin: his son-in-law Lord Durham in the cabinet, his brother-in-law Edward Ellice as chief whip, his son Lord Howick a junior minister — a family share of office the print-makers of 1830–31 lampooned." },
+      { reg: "loyalty", key: "l_honors", detail: "The peerage as a weapon: in May 1832 he demanded that the King create enough new peers — at least fifty — to outvote the Lords, resigned when refused, and returned with a written promise. The threat alone made Wellington's peers abstain." },
+      { reg: "trust", key: "t_selfbind", detail: "Resigned rather than bend — in 1807, rather than give George III a pledge never to raise the Catholic question, and in May 1832, rather than accept a mutilated Reform Bill — so his word on reform was believed." },
+      { reg: "fear", key: "f_exemplary", detail: "The Swing riots of 1830–31 were put down by special commissions under his Home Secretary Melbourne: nineteen executed and some five hundred transported (the numbers usually given) — a stain, in Trevelyan's word, on Grey's reputation." }
+    ]
+  },
+
   peel: {
     creed: "The Tamworth Manifesto (18 December 1834): the Reform Act as 'a final and irrevocable settlement of a great constitutional question', and a promise of 'the correction of proved abuses and the redress of real grievances'.",
     practice: "Persuasion by evidence and the published rule. He kept patronage at arm's length, despised the party's place-hunters, and relied on the authority of competence — which held the country and lost him the party, twice.",
@@ -802,6 +823,28 @@ window.LEADER_INSTRUMENTS = {
       { reg: "fear", key: "f_purgefavorite", detail: "The Night of the Long Knives, 13 July 1962: seven cabinet ministers dismissed at once, among them the Chancellor Selwyn Lloyd, a loyal ally made to carry the blame for an unpopular pay pause." },
       { reg: "loyalty", key: "l_honors", detail: "The Life Peerages Act 1958 created a seat in the Lords that could not be inherited and was open to women — a new and renewable currency of patronage." },
       { reg: "fear", key: "f_majesty", detail: "The 'Supermac' image — Vicky's mocking cartoon of 1958 turned into a compliment — and a studied Edwardian calm, with 'Quiet, calm deliberation disentangles every knot' from The Gondoliers hung on his private secretaries' door." }
+    ]
+  },
+
+  haroldwilson: {
+    creed: "“This party is a moral crusade or it is nothing.” (Labour conference, Brighton, 1 October 1962)",
+    practice: "Management by balance: rivals given big jobs and set against one another, left and right both represented in every cabinet, honours and office distributed with care — and, when the party could not agree, a device that let it disagree in public without splitting. What the instruments bought was unity; what they cost was a sense of direction.",
+    tools: [
+      { reg: "motivate", key: "m_emulation", detail: "Split economic policy in 1964 between George Brown's new Department of Economic Affairs and James Callaghan's Treasury — a rivalry built into the machinery that kept both men busy and neither supreme." },
+      { reg: "loyalty", key: "l_spoils", detail: "Balanced every cabinet between Labour's wings — Benn, Foot and Castle beside Jenkins, Healey and Crosland in 1974 — so that each faction had a stake in the government's survival." },
+      { reg: "trust", key: "t_selfbind", detail: "Committed the government in advance to a referendum on renegotiated terms of Community membership, and abided by the result of 5 June 1975; ministers were released from collective responsibility to campaign on either side." },
+      { reg: "loyalty", key: "l_honors", detail: "MBEs for the Beatles in 1965 were popular; the resignation honours of 1976, the 'Lavender List' associated with Marcia Williams, became the scandal that shadowed his reputation." }
+    ]
+  },
+
+  heath: {
+    creed: "“A revolution so quiet and yet so total, that it will go far beyond the programme for a parliament.” (Conservative conference, 10 October 1970)",
+    practice: "Programmes, machinery and rules rather than people: a policy worked out in opposition, a think tank to keep the cabinet on strategy, legislation to put the unions under law and a statutory code for pay and prices. He used almost none of the personal instruments — little patronage, less charm — and when the rules failed against the miners he had nothing else to fall back on.",
+    tools: [
+      { reg: "motivate", key: "m_intent", detail: "Came to office with a programme worked out in unusual detail by policy groups in opposition and reviewed by the shadow cabinet at the Selsdon Park Hotel in January 1970." },
+      { reg: "trust", key: "t_audit", detail: "The Central Policy Review Staff under Lord Rothschild (1971) reviewed the whole of government strategy and presented its findings to ministers at regular sessions." },
+      { reg: "trust", key: "t_publicrule", detail: "The Industrial Relations Act of 1971 put collective bargaining under a legal code and a new court; from November 1972 a statutory incomes policy set pay and prices by published stages, policed by a Pay Board and a Price Commission." },
+      { reg: "motivate", key: "m_conviction", detail: "Europe as a lifelong cause — the subject of his maiden speech in 1950 and of his negotiation in 1961–63 — carried through the Commons in October 1971 with a free vote that brought sixty-nine Labour members into his lobby." }
     ]
   },
 

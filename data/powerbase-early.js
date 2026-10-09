@@ -376,6 +376,32 @@ Object.assign(window.POWER_BASE, {
     danger: "January–March 1784, governing against a Commons majority; the Regency crisis of 1788–89; the King's veto of 1801.",
     verdict: "Seventeen continuous years because the essential coalition was the King plus a majority he could win; he fell when the first essential refused him, not the voters or the House."
   },
+  liverpool: {
+    system: "Unreformed parliamentary monarchy — the Crown's chosen minister, sustained by a Commons majority of borough members and country gentlemen",
+    w_scale: 2, sizes: { n: 440000, s: 1000, w: 340 },
+    n: { who: "The unreformed electorate of the United Kingdom — county freeholders, borough voters under a patchwork of franchises, and Ireland's forty-shilling freeholders.", size: "~0.4–0.5 million (estimate)" },
+    s: { who: "The Commons (658 members, a large share returned by borough patrons) and the peers — with the Prince Regent, later George IV.", size: "~1,000" },
+    w: { who: "The Regent's confidence and a Pittite Commons majority: office-holders, patrons' members, Irish and Scottish members, and the independent country gentlemen who could desert on taxes, as they did on the income tax in 1816.", size: "~340 MPs (estimate)" },
+    loyalty: "Soft: the independents voted on issues, and the 1812 vote was lost by four. What held was the cabinet — no rival could command both the Commons and the Crown — and his own refusal to let a quarrel become a resignation.",
+    currency: "The Crown's patronage, used more sparingly than before; for the landed interest the Corn Law; for the propertied classes order and, after 1819, sound money.",
+    revenue: "Customs and excise, and from 1816 no income tax.",
+    shuffle: "Brought Canning back in 1816 and remade the government in 1822–23 — Peel for Sidmouth, Canning for Castlereagh, Robinson and Huskisson — without losing a majority.",
+    danger: "June 1812, when the Commons voted for a stronger administration; 1816–20, the years of Spa Fields, Peterloo and Cato Street; and November 1820, when the Queen Caroline bill had to be dropped.",
+    verdict: "Fifteen years by small-coalition parliamentary craft: the essentials were the Crown and a cabinet of rivals, and he kept both. His successors broke the coalition within two years of his stroke."
+  },
+  grey: {
+    system: "Parliamentary monarchy at the moment of reform — the King's minister, the Commons won at an election fought on one question, and a hostile House of Lords",
+    w_scale: 2, sizes: { n: 440000, s: 1000, w: 370 },
+    n: { who: "The unreformed electorate that returned the reform majority of 1831, enlarged after 1832 by the £10 householders of the boroughs and new county voters.", size: "~0.44 million before 1832; ~0.8 million after (estimate)" },
+    s: { who: "The Commons and the peers — with William IV, whose consent to a dissolution and to new peers was decisive.", size: "~1,000" },
+    w: { who: "A Commons majority of well over a hundred after the 1831 election, the King's reluctant support, and, out of doors, the political unions whose pressure the Lords could not ignore.", size: "~370 MPs (estimate)" },
+    loyalty: "Strong while reform was the question; once it was won, the coalition of Whigs, Canningites and an Ultra came apart over Ireland.",
+    currency: "One public good — the reform of Parliament — and for the political class the ordinary patronage of office, much of it given to his family.",
+    revenue: "Customs, excise and assessed taxes, and borrowing for slave-owner compensation.",
+    shuffle: "Took in Canningites (Palmerston, Melbourne, Goderich) and the Ultra Duke of Richmond in 1830; lost Durham in 1833 and Stanley, Graham, Richmond and Ripon in May 1834.",
+    danger: "April 1831, when the Commons defeated the first bill; October 1831, when the Lords threw out the second; and 9–15 May 1832, when he was out of office.",
+    verdict: "A selectorate leader who changed the selectorate: he used the old electorate and the threat to the Lords to create a new one — and then could not hold his own coalition for two years in it."
+  },
   peel: {
     system: "Reformed parliamentary government — a prime minister who needed a Commons majority of his own party, elected by a propertied electorate",
     w_scale: 4, sizes: { n: 900000, s: 900000, w: 370 },

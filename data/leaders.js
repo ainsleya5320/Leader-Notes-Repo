@@ -380,6 +380,18 @@ window.LEADERS = [
     delegation: "Bypassed his official cabinet for an informal 'Kitchen Cabinet' of cronies and editors.",
     tags: ["charismatic", "machine", "hubspoke", "coercive", "spoils", "clientelism"] },
 
+  { id: "liverpool", name: "Lord Liverpool", years: "PM 1812–1827", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c19", president: false,
+    style: "The great chairman — a nervous, conscientious, unglamorous Pittite who held the longest premiership since Pitt by conciliating rather than commanding: he kept Castlereagh and Canning, who had fought a duel, in one cabinet, left the Catholic question open so both sides could serve, and steered from war through repression to 'Liberal Toryism'.",
+    structure: "Cabinet government led from the House of Lords, with the Commons managed by a lieutenant — Castlereagh, then Canning — and resting on the Crown's confidence, the Treasury's patronage and a Pittite majority of borough members and independent country gentlemen.",
+    delegation: "Let strong ministers run their departments — Castlereagh foreign policy, Sidmouth and then Peel the Home Office — while keeping economic and financial policy and the management of the King in his own hands, and acting as arbiter whenever his colleagues quarrelled.",
+    tags: ["cabinet", "collegial", "coalitionbrokerage", "institutional"] },
+
+  { id: "grey", name: "Earl Grey", years: "PM 1830–1834", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c19", president: false,
+    style: "The aristocratic reformer — a proud, eloquent Foxite Whig who moved for parliamentary reform in 1793, spent most of the next forty years out of office, and then carried the Great Reform Act in eighteen months by dissolution, popular pressure and the threat to swamp the Lords with new peers — reforming, as he said, to preserve.",
+    structure: "Cabinet government from the House of Lords, at the head of a coalition of Whigs, Canningites and one Ultra Tory; all but one of his thirteen cabinet ministers were peers or heirs to peerages. Its authority rested on the Commons majority won in the reform election of 1831 and on William IV's reluctant consent.",
+    delegation: "Delegated the drafting of the Reform Bill to a committee of four and its management in the Commons to Althorp and Russell, and ran Ireland and the colonies through ministers who disagreed with one another; kept for himself the King, the Lords and the decision to stake the government on the bill.",
+    tags: ["cabinet", "transformational", "coalitionbrokerage"] },
+
   { id: "peel", name: "Sir Robert Peel", years: "PM 1834–35, 1841–46", title: "UK Prime Minister", country: "United Kingdom", iso: "826", era: "c19", president: false,
     style: "The administrator who changed his mind in public — mastery of the brief, cold in the chamber and to his own backbenchers, who reformed the criminal law and the police, conceded Catholic emancipation in 1829 and repealed the Corn Laws in 1846 because the evidence said so, and broke his party twice doing it.",
     structure: "Cabinet government with the prime minister as working head of every department: in 1841–46 he presented the budget himself, read his colleagues' papers and drafted their policy, and governed from a Conservative party he had rebuilt after 1832 but never cultivated.",
@@ -881,6 +893,18 @@ window.LEADERS = [
     structure: "Cabinet government run from the chair, with a small, strong private office and a press secretary (Harold Evans); the American alliance, Europe and the succession kept in his own hands.",
     delegation: "Wide latitude to ministers — Macleod on the colonies, Sandys on defence, Heath on Europe — with intervention when things went wrong; when the government sagged in July 1962 he removed seven of his cabinet in a day.",
     tags: ["cabinet", "transactional", "institutional"] },
+
+  { id: "haroldwilson", name: "Harold Wilson", years: "PM 1964–70, 1974–76", title: "UK Prime Minister; Labour leader 1963–76", country: "United Kingdom", iso: "826", era: "c20", president: false,
+    style: "The party manager as prime minister — an Oxford economist and wartime statistician who wore a Yorkshire everyman's image (the pipe, the Gannex raincoat) and spent his talents keeping a divided Labour Party in one piece through four election victories, devaluation, the unions and the Common Market, at the price of a reputation for tactics over strategy.",
+    structure: "Cabinet government balanced between Labour's left and right, with a personal political office under Marcia Williams beside the civil-service private office — the 'kitchen cabinet' of his critics — and, from 1974, the first Number 10 Policy Unit under Bernard Donoughue.",
+    delegation: "Gave the big rivals big jobs and set them against each other — George Brown's new Department of Economic Affairs against Callaghan's Treasury in 1964 — left social reform largely to Roy Jenkins, kept the economy, Rhodesia, Europe and the party for himself, and in 1975 let his cabinet campaign on both sides of the European referendum.",
+    tags: ["transactional", "cabinet", "coalitionbrokerage"] },
+
+  { id: "heath", name: "Edward Heath", years: "PM 1970–1974", title: "UK Prime Minister; Conservative leader 1965–75", country: "United Kingdom", iso: "826", era: "c20", president: false,
+    style: "The technocrat with a mission — a carpenter's son from Broadstairs, Balliol organ scholar and wartime gunner who believed in Europe, in planning and in getting things done, and who had little patience for the persuasion, small talk and party management that politics also required.",
+    structure: "Cabinet government leaning heavily on the civil service — the head of the Home Civil Service, Sir William Armstrong, was so close to him in 1973 that critics called him the deputy prime minister — with a new Central Policy Review Staff (1971) to think strategically for the cabinet as a whole.",
+    delegation: "Trusted officials more than politicians and a few ministers more than the rest — Whitelaw above all, sent to Northern Ireland in 1972 — but kept Europe and, after the 1972 U-turn, the incomes policy and the miners in his own hands, negotiating with union leaders himself at Downing Street.",
+    tags: ["cabinet", "bureaucratic", "transformational"] },
 
   { id: "goh", name: "Goh Chok Tong", years: "PM 1990–2004", title: "PM of Singapore", country: "Singapore", iso: "702", era: "c20", president: false,
     style: "Deliberately consultative — promised a 'kinder, gentler' Singapore and ran national conversations, defining himself against the founder without repudiating him.",

@@ -570,6 +570,30 @@ window.TEMPERAMENT = {
     }
   },
 
+  liverpool: {
+    source: "estimate",
+    profile: "The anxious conciliator: very high competence and steady industry, notably honest, but nervous, irritable and cold in company — a man who held a cabinet of brilliant rivals together because he wanted no glory for himself.",
+    f: { ach: [55, 80], com: [85, 97], act: [65, 85], int: [55, 75], nvul: [10, 35], ass: [45, 70], nstr: [15, 40], pos: [15, 40], ten: [35, 60] },
+    notes: {
+      nvul: "Outwardly calm and 'a bag of nerves', in his recent biographer's account: he is said to have trembled before opening letters, was given to tears, and was made ill by a quarrel with Wellington over a bishopric.",
+      nstr: "His first biographer stressed his 'undeviating freedom from jobbery' and noted that he left office poorer than he entered it; even Mrs Arbuthnot, who disliked his temper, called him upright and honest.",
+      com: "Had held every secretaryship of state before 1812 — Foreign, Home, War — which gave him, Seton-Watson wrote, an 'unrivalled insight into the whole machinery of government'.",
+      ten: "The band spans the Six Acts and the government's thanks to the Peterloo magistrates, and the later criminal-law and prison reforms he backed under Peel."
+    }
+  },
+
+  grey: {
+    source: "estimate",
+    profile: "The proud aristocrat with a cause: high assertiveness and a long, real commitment to reform and abolition, set against low activity — he hated leaving Northumberland — and a tendency to despair and to offer his resignation.",
+    f: { ach: [45, 75], com: [65, 85], act: [25, 50], int: [60, 80], nvul: [25, 50], ass: [75, 92], nstr: [30, 55], pos: [45, 70], ten: [60, 82] },
+    notes: {
+      act: "Notoriously reluctant to make the journey from Howick to London; led the Whigs from the Lords for more than twenty years without maintaining an active leadership, and more than once offered to retire.",
+      ass: "An Eton master remembered him as 'impetuous, overbearing'; as prime minister he faced down the Lords and the King with the threat of fifty new peers.",
+      ten: "Moved the abolition of the slave trade in 1807 and presided over the abolition of slavery in 1833 — though his government also sent the Swing rioters to the gallows and to Australia, and passed the New Poor Law.",
+      nvul: "Wrote after his first Lords speech in 1808 that he could never do anything there 'worth thinking of', and in 1834 that he felt 'depressed and totally deprived of all energy and power'."
+    }
+  },
+
   peel: {
     source: "estimate",
     profile: "The conscientious administrator: near the ceiling for striving, competence and sheer work, notably candid by the standards of the office, cold in manner and thin-skinned, with a sense of public duty that outran his party loyalty.",
@@ -1343,6 +1367,30 @@ window.TEMPERAMENT = {
       int: "A Balliol classicist who read Aeschylus in a shell hole at the Somme and Trollope in Downing Street, and wrote The Middle Way.",
       nstr: "The Edwardian grandee was partly a costume, worn knowingly; 'a little local difficulty' for the resignation of an entire Treasury team is the persona in a phrase.",
       ten: "The band reflects Stockton: the unemployment he saw there in the 1930s shaped his politics for life."
+    }
+  },
+
+  haroldwilson: {
+    source: "estimate",
+    profile: "A very high intellect and work rate with an unusually low 'not vulnerable' reading for a four-time election winner: the brilliance and the tactical gift came with anxiety about plots and a need to be liked that colleagues and biographers both describe.",
+    contested: "Revisionists (Pimlott above all) read the endless manoeuvre as the necessary craft of holding Labour together; critics, including colleagues such as Healey, as an absence of direction.",
+    f: { ach: [75, 90], com: [80, 93], act: [70, 88], int: [82, 95], nvul: [25, 55], ass: [45, 70], nstr: [80, 95], pos: [55, 80], ten: [55, 78] },
+    notes: {
+      int: "A first in PPE at Oxford and research for Beveridge; contemporaries remarked on his memory for figures.",
+      nvul: "Suspicion of plots — from the press, from colleagues and, by 1976, from elements in MI5 — ran through both premierships.",
+      nstr: "The pipe in public and cigars in private is the persona in a detail; 'devious' was the adjective his opponents reached for first."
+    }
+  },
+
+  heath: {
+    source: "estimate",
+    profile: "High striving, competence and assertiveness with very little warmth on display and almost no concealment — a man who said what he thought, did not court colleagues, and could not hide either his convictions or his resentments.",
+    contested: "Whether the 1972 U-turn showed pragmatic responsiveness to unemployment or a loss of nerve is the central argument over his premiership; the long feud with Thatcher colours most later assessments.",
+    f: { ach: [82, 95], com: [80, 93], act: [65, 85], int: [65, 85], nvul: [55, 80], ass: [82, 96], nstr: [8, 30], pos: [10, 35], ten: [40, 68] },
+    notes: {
+      ach: "Took up ocean racing in middle age and captained Britain's winning Admiral's Cup team in 1971 while prime minister.",
+      nstr: "Very low: he could not or would not disguise contempt, whether for the Selsdon label, for Powell, or for Thatcher after 1975.",
+      pos: "Colleagues and journalists describe brusqueness, long silences and an absence of small talk; the warmth showed in music and sailing rather than politics."
     }
   },
 

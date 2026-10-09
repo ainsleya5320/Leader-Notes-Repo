@@ -332,6 +332,34 @@ window.COLLABORATORS = {
     { name: "George Canning", role: "Protégé and under-secretary at the Foreign Office from 1796; the most gifted of the young Pittites, who kept his name as a cause after 1806" },
     { name: "Lady Hester Stanhope", role: "Niece who kept house for him at Walmer Castle and Putney from 1803 to his death" }
   ],
+  liverpool: [
+    { name: "Viscount Castlereagh", role: "Foreign Secretary and Leader of the House of Commons 1812–22, who negotiated the peace at Vienna and carried the government's business in the Commons for a prime minister in the Lords; his suicide in August 1822 forced the reconstruction of the ministry" },
+    { name: "George Canning", role: "Friend since Christ Church and rival-in-harness: refused office in 1812 rather than serve under Castlereagh, his opponent in the duel of 1809; brought back to the Board of Control in 1816, then Foreign Secretary and Leader of the Commons from 1822 — and his successor in 1827" },
+    { name: "Lord Sidmouth", role: "The former prime minister Henry Addington; Home Secretary 1812–22, who ran the repression of 1817–20 — habeas corpus, the spies and the Six Acts" },
+    { name: "Duke of Wellington", role: "The general whose victories underpinned the ministry's survival, then Master-General of the Ordnance in the cabinet from 1819 and its strongest voice against Catholic emancipation" },
+    { name: "Robert Peel", role: "Chief Secretary for Ireland 1812–18 and chairman of the bullion committee of 1819 that put sterling back on gold; Home Secretary from 1822, the face of the 'Liberal Tory' reforms" },
+    { name: "Nicholas Vansittart", role: "Chancellor of the Exchequer 1812–23, who financed the last years of the war and lost the income tax in 1816; kept under the prime minister's close control of economic policy" },
+    { name: "F. J. Robinson", role: "Chancellor of the Exchequer from 1823 — 'Prosperity Robinson' — whose budgets cut taxes and tariffs; briefly prime minister himself, as Lord Goderich, in 1827–28" },
+    { name: "William Huskisson", role: "President of the Board of Trade from 1823, who reduced tariffs and relaxed the Navigation Acts — the economic engine of 'Liberal Toryism'" },
+    { name: "Lord Eldon", role: "Lord Chancellor throughout the ministry and the cabinet's most immovable opponent of Catholic emancipation — one reason the question had to be left open" },
+    { name: "Lord Bathurst", role: "Secretary for War and the Colonies for the whole fifteen years; a loyal, unobtrusive pillar of the cabinet" },
+    { name: "Charles Arbuthnot", role: "Joint Secretary to the Treasury, who managed the government's patronage and its supporters in the Commons until 1823; his wife Harriet's journal is a sharp record of Liverpool's temper" },
+    { name: "George IV", role: "As Prince Regent he made Liverpool prime minister only after four other attempts failed; as King he forced the Queen Caroline proceedings on the cabinet in 1820 and resisted Canning's return" }
+  ],
+  grey: [
+    { name: "Mary, Countess Grey", role: "Wife from 1794 (née Ponsonby, from an Irish liberal family), mother of their fifteen children and his chief correspondent; he wrote to her in 1834 that he felt 'totally deprived of all energy and power'" },
+    { name: "Charles James Fox", role: "His political master from 1787, with whom he campaigned against Pitt's repression and seceded from Parliament in 1797; on Fox's death in 1806 Grey succeeded him as Foreign Secretary and Whig leader" },
+    { name: "Lord Althorp", role: "Chancellor of the Exchequer and Leader of the House of Commons 1830–34, who piloted the Reform Bill clause by clause; his resignation in July 1834 brought Grey's own" },
+    { name: "Lord John Russell", role: "Paymaster-General and a member of the committee of four that drafted the Reform Bill, which he introduced in the Commons on 1 March 1831" },
+    { name: "Lord Durham", role: "Son-in-law ('Radical Jack' Lambton), Lord Privy Seal and the most radical member of the drafting committee; left the cabinet in 1833" },
+    { name: "Edward Ellice", role: "Brother-in-law and the government's chief whip in 1830–32, who managed the election of 1831 and the votes for reform" },
+    { name: "Henry Brougham", role: "Lord Chancellor 1830–34, the Whigs' most famous orator and campaigner for reform, whose appointment took him out of the Commons and into the Lords" },
+    { name: "Lord Melbourne", role: "Home Secretary, who put down the Swing riots with special commissions; his successor as prime minister in July 1834" },
+    { name: "Lord Palmerston", role: "Canningite Foreign Secretary in his coalition, 1830–34, who secured Belgian independence" },
+    { name: "Edward Stanley", role: "Chief Secretary for Ireland, then Colonial Secretary, who carried the Slavery Abolition Act of 1833; resigned in May 1834 over the Irish Church, the split that ended the ministry" },
+    { name: "William IV", role: "The King who sent for him in 1830, granted the dissolution of 1831, refused to create peers in May 1832 and then gave the written promise that passed the Reform Act" },
+    { name: "Princess Lieven", role: "Wife of the Russian ambassador, his confidante and correspondent through the reform years; their letters were published in 1890" }
+  ],
   peel: [
     { name: "Duke of Wellington", role: "His senior partner in 1828–30 — together they carried Catholic emancipation — caretaker for him in 1834 and Leader of the Lords in his cabinets; backed repeal in 1846" },
     { name: "Sir James Graham", role: "Home Secretary 1841–46 and his closest cabinet confidant; a former Whig who had left Grey's government in 1834" },
@@ -869,6 +897,34 @@ window.COLLABORATORS = {
     { name: "John F. Kennedy", role: "The president with whom he made the Nassau agreement on Polaris in December 1962" },
     { name: "Harold Evans", role: "Press secretary at Downing Street, 1957–64" },
     { name: "Philip de Zulueta", role: "Private secretary for foreign affairs in the small private office on which he relied" }
+  ],
+  haroldwilson: [
+    { name: "Marcia Williams", role: "Private secretary from 1956 and political secretary at Number 10 (1964–70, 1974–76); head of the political office, the centre of the 'kitchen cabinet', and Lady Falkender from 1974" },
+    { name: "Joe Haines", role: "Press secretary 1969–70 and 1974–76, and later a critical chronicler of the kitchen cabinet's feuds" },
+    { name: "Gerald Kaufman", role: "Press adviser in the political office in the 1960s, later an MP and minister" },
+    { name: "Bernard Donoughue", role: "Founding head of the Number 10 Policy Unit from March 1974, and its diarist" },
+    { name: "George Brown", role: "Deputy leader and rival for the leadership in 1963; First Secretary at the Department of Economic Affairs (1964–66), then Foreign Secretary until his resignation in 1968" },
+    { name: "James Callaghan", role: "Rival in 1963, Chancellor until devaluation in November 1967, Home Secretary, Foreign Secretary in the 1974 renegotiation, and his successor in 1976" },
+    { name: "Roy Jenkins", role: "Home Secretary of the liberal reforms (1965–67) and Chancellor after devaluation (1967–70); led Labour's pro-Europeans into the government lobby in October 1971" },
+    { name: "Denis Healey", role: "Defence Secretary 1964–70 and Chancellor 1974–79" },
+    { name: "Barbara Castle", role: "Transport, then Employment Secretary, who wrote In Place of Strife (1969); her diaries are a main source on his cabinets" },
+    { name: "Tony Benn", role: "Minister of Technology (1966–70) and Industry Secretary from 1974; a leader of the 'no' campaign in 1975, moved to Energy after the vote" },
+    { name: "Richard Crossman", role: "Housing Minister, Leader of the House and cabinet diarist" },
+    { name: "Edward Heath", role: "Opponent in four general elections: beaten in 1966 and both 1974 elections, the victor in 1970" }
+  ],
+  heath: [
+    { name: "William Whitelaw", role: "Chief Whip in opposition, Leader of the House, the first Secretary of State for Northern Ireland (1972–73) and Employment Secretary in the 1974 crisis — his most trusted colleague" },
+    { name: "Iain Macleod", role: "Chancellor who died a month after the 1970 election, a loss many of Heath's colleagues thought fatal to the government" },
+    { name: "Anthony Barber", role: "Chancellor 1970–74, whose expansionary budgets became the 'Barber boom'" },
+    { name: "Sir William Armstrong", role: "Head of the Home Civil Service, so close to the prime minister in the pay negotiations of 1973 that he was called the deputy prime minister" },
+    { name: "Lord Rothschild", role: "First head of the Central Policy Review Staff, 1971–74" },
+    { name: "Robert Armstrong", role: "Principal private secretary at Number 10" },
+    { name: "Douglas Hurd", role: "Political secretary in opposition and at Number 10, 1968–74" },
+    { name: "Geoffrey Rippon", role: "Minister who conducted the detailed negotiations for entry to the European Community, 1970–72" },
+    { name: "Alec Douglas-Home", role: "His predecessor as leader, who devised the ballot by which Heath was elected, and Foreign Secretary 1970–74" },
+    { name: "Georges Pompidou", role: "French president whose summit with Heath in Paris in May 1971 opened the way to entry" },
+    { name: "Enoch Powell", role: "Rival for the leadership in 1965, sacked from the shadow cabinet in 1968, and in February 1974 an advocate of voting Labour to get a referendum on Europe" },
+    { name: "Margaret Thatcher", role: "Education Secretary in his cabinet, who defeated him for the leadership in February 1975" }
   ],
   blair: [
     { name: "Gordon Brown", role: "Chancellor for all ten years, partner in the New Labour project and rival for its leadership; succeeded him in 2007" },

@@ -599,6 +599,32 @@ Object.assign(window.POWER_BASE, {
     danger: "The Treasury resignations of January 1958, the Orpington by-election of March 1962, de Gaulle's veto in January 1963, and the Profumo affair, after which 27 Conservatives abstained in the confidence vote of 17 June 1963.",
     verdict: "Resigned through illness in October 1963 and managed his own succession from a hospital bed, passing over Butler for Home; the party lost the 1964 election narrowly."
   },
+  haroldwilson: {
+    system: "Parliamentary democracy — a party leader governing on thin or no majorities in three of his four parliaments",
+    w_scale: 5, sizes: { n: 36000000, s: 27300000, w: 13100000 },
+    n: { who: "The electorate in 1966, the election that gave him his only comfortable majority.", size: "~36 million" },
+    s: { who: "Voters — turnout about 76 per cent.", size: "~27.3 million" },
+    w: { who: "The Labour vote of 1966 — about 48 per cent, and a majority of ninety-six — and inside it the parliamentary party that elected the leader and the unions whose block votes ruled conference.", size: "~13.1 million voters" },
+    loyalty: "Weak electorally, with majorities of four (1964) and three (October 1974); inside the party he survived because left and right each feared the other's candidate more than him.",
+    currency: "Office balanced between factions; for the unions, influence over policy (and from 1974 a 'social contract'); for voters, public spending, comprehensive schools and the Open University.",
+    revenue: "Income tax and surtax, corporation tax (1965), the Selective Employment Tax (1966).",
+    shuffle: "Frequent, factional reshuffles; the Callaghan–Jenkins swap after devaluation (November 1967); Benn moved from Industry to Energy after the 1975 referendum.",
+    danger: "The sterling crises of 1964–67, the plotting of 1968–69 against his leadership, the unions' defeat of In Place of Strife (1969), the party's split over Europe, and in 1974–76 inflation and suspicion of the security services.",
+    verdict: "Left at a time of his own choosing in 1976, with the party still in one piece — which, by his own account, had been the point."
+  },
+  heath: {
+    system: "Parliamentary democracy — the first Conservative leader elected by ballot of the party's MPs, and therefore removable by them",
+    w_scale: 5, sizes: { n: 39300000, s: 28300000, w: 13100000 },
+    n: { who: "The electorate in 1970, the first general election with a voting age of eighteen.", size: "~39.3 million" },
+    s: { who: "Voters — turnout about 72 per cent.", size: "~28.3 million" },
+    w: { who: "The Conservative vote of 1970 — 330 seats and a majority of thirty — and the parliamentary party, about three hundred MPs, who had chosen him in 1965 and could replace him under the rules he had accepted.", size: "~13.1 million voters; ~300 MPs" },
+    loyalty: "Weak, and weakened further by a manner that won him few friends on the back benches; after two defeats in 1974 the MPs used the ballot against him.",
+    currency: "Programme rather than patronage: Europe, reorganisation of the state, growth; after 1972, subsidies to industry and the Barber boom.",
+    revenue: "Income tax, purchase tax and, from April 1973, value added tax.",
+    shuffle: "Few and reluctant; Macleod's death in July 1970 forced the first, and Maudling's resignation in July 1972 another.",
+    danger: "The miners' strikes of 1972 and 1974, the U-turn that alienated the free-market right, Powell's call to vote Labour in February 1974, and the Ulster Unionists' break with the party over Sunningdale.",
+    verdict: "Lost office on a minority of seats in February 1974 and the leadership a year later to his own former Education Secretary, 130 votes to 119 on the first ballot."
+  },
   mandela: {
     system: "Constitutional democracy under a dominant liberation party",
     w_scale: 5, sizes: { n: 23000000, s: 19500000, w: 12200000 },
