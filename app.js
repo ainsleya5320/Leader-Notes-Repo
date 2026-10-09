@@ -97,7 +97,7 @@ const state = {
   view: "index",
   leaderId: null,
   eras: new Set(ERAS.map(e => e.key)),
-  presFilter: null,         // null | "us" | "other" — the two presidents buckets
+  presFilter: null,         // null | "us" | "other" | "pm" — the office buckets
   country: null, countryName: null,
   tags: new Set(),          // every selected concept must be present (AND)
   search: "",
@@ -196,16 +196,22 @@ function cycleShelf(id) {
 // Presidents are one flag in the data; the bucket comes from the country.
 const US_RE = /^(united states|usa|u\.s\.a?\.?)$/i;
 function presKind(l) { return l.president ? (US_RE.test(String(l.country || "").trim()) ? "us" : "other") : null; }
-const PRES_LABEL = { us: "U.S. Presidents", other: "Other presidents" };
+// Westminster prime ministers: Britain and the Commonwealth parliamentary democracies,
+// whose heads of government answer to a Commons-style chamber and can be removed by it.
+const WESTMINSTER = new Set(["united kingdom", "india", "singapore", "new zealand", "australia", "canada"]);
+function pmKind(l) { return !l.president && WESTMINSTER.has(String(l.country || "").trim().toLowerCase()) && /\bPM\b|prime minister|first lord of the treasury/i.test(l.title || "") ? "pm" : null; }
+function officeKind(l) { return presKind(l) || pmKind(l); }
+const PRES_LABEL = { us: "U.S. Presidents", other: "Other presidents", pm: "Westminster PMs" };
 function presMark(l) {
-  const k = presKind(l);
-  return k === "us" ? '<span class="star" title="U.S. President">★</span>' : k === "other" ? '<span class="star other" title="President (outside the U.S.)">☆</span>' : "";
+  const k = officeKind(l);
+  return k === "us" ? '<span class="star" title="U.S. President">★</span>' : k === "other" ? '<span class="star other" title="President (outside the U.S.)">☆</span>'
+    : k === "pm" ? '<span class="star pm" title="Westminster prime minister">◆</span>' : "";
 }
 
 function matchesBase(l) {
   const q = state.search.trim().toLowerCase();
   if (!state.eras.has(l.era)) return false;
-  if (state.presFilter && presKind(l) !== state.presFilter) return false;
+  if (state.presFilter && officeKind(l) !== state.presFilter) return false;
   for (const t of state.tags) if (!(l.tags || []).includes(t)) return false;
   if (q && !(l.name + " " + l.title + " " + l.country + " " + l.years).toLowerCase().includes(q)) return false;
   return true;
@@ -283,7 +289,7 @@ function buildChips() {
     };
     wrap.appendChild(b);
   });
-  const presChips = { us: $("#chip-presidents"), other: $("#chip-presidents-other") };
+  const presChips = { us: $("#chip-presidents"), other: $("#chip-presidents-other"), pm: $("#chip-pms") };
   Object.entries(presChips).forEach(([k, el]) => el.onclick = () => {
     state.presFilter = state.presFilter === k ? null : k;
     Object.entries(presChips).forEach(([k2, el2]) => el2.classList.toggle("on", state.presFilter === k2));
@@ -293,7 +299,7 @@ function buildChips() {
     state.eras = new Set(ERAS.map(e => e.key)); state.presFilter = null; state.tags = new Set();
     state.country = null; state.countryName = null; state.search = ""; $("#search").value = "";
     document.querySelectorAll("#era-chips .chip").forEach(c => c.classList.add("on"));
-    $("#chip-presidents").classList.remove("on"); $("#chip-presidents-other").classList.remove("on");
+    $("#chip-presidents").classList.remove("on"); $("#chip-presidents-other").classList.remove("on"); $("#chip-pms").classList.remove("on");
     render();
   };
   $("#btn-add").onclick = () => openForm(null);
@@ -345,7 +351,7 @@ function renderList() {
       row.className = "leader-row"; row.style.setProperty("--era-color", era.color);
       const mine = customIds.has(l.id) && !isSeeded(l.id), editedSeed = customIds.has(l.id) && isSeeded(l.id);
       row.innerHTML = avatarMarkup(l) +
-        `<span class="lname">${esc(l.name)}${l.president ? " " + presMark(l) : ""}` +
+        `<span class="lname">${esc(l.name)}${officeKind(l) ? " " + presMark(l) : ""}` +
         `${mine ? ' <span class="custom-dot" title="Added by you">●</span>' : ""}${editedSeed ? ' <span class="custom-dot" title="Edited by you">✎</span>' : ""}</span>` +
         `<span class="lmeta">${esc(l.country)}<br>${esc(l.years)}</span>`;
       row.onclick = () => openDetail(l.id);
@@ -2681,7 +2687,7 @@ function renderLeader(id) {
     <header class="lp-hero" style="--era-color:${era.color}">
       <div class="lp-portrait" id="lp-portrait">${initials(l.name)}</div>
       <div class="lp-headtext">
-        <div class="lp-kicker"><i></i>${esc(era.label)}${presKind(l) === "us" ? " · ★ U.S. President" : presKind(l) === "other" ? " · ☆ President" : ""}</div>
+        <div class="lp-kicker"><i></i>${esc(era.label)}${({ us: " · ★ U.S. President", other: " · ☆ President", pm: " · ◆ Prime Minister" })[officeKind(l)] || ""}</div>
         <h1 class="lp-name">${esc(l.name)}</h1>
         <div class="lp-sub">${esc(l.title)}${l.country ? " · " + esc(l.country) : ""} · ${esc(l.years)}</div>
         ${outcomeChips(l)}
