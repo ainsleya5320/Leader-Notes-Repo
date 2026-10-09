@@ -97,7 +97,7 @@ const state = {
   view: "index",
   leaderId: null,
   eras: new Set(ERAS.map(e => e.key)),
-  presidentsOnly: false,
+  presFilter: null,         // null | "us" | "other" — the two presidents buckets
   country: null, countryName: null,
   tags: new Set(),          // every selected concept must be present (AND)
   search: "",
@@ -193,10 +193,19 @@ function cycleShelf(id) {
 
 /* ---------------- filtering ---------------- */
 
+// Presidents are one flag in the data; the bucket comes from the country.
+const US_RE = /^(united states|usa|u\.s\.a?\.?)$/i;
+function presKind(l) { return l.president ? (US_RE.test(String(l.country || "").trim()) ? "us" : "other") : null; }
+const PRES_LABEL = { us: "U.S. Presidents", other: "Other presidents" };
+function presMark(l) {
+  const k = presKind(l);
+  return k === "us" ? '<span class="star" title="U.S. President">★</span>' : k === "other" ? '<span class="star other" title="President (outside the U.S.)">☆</span>' : "";
+}
+
 function matchesBase(l) {
   const q = state.search.trim().toLowerCase();
   if (!state.eras.has(l.era)) return false;
-  if (state.presidentsOnly && !l.president) return false;
+  if (state.presFilter && presKind(l) !== state.presFilter) return false;
   for (const t of state.tags) if (!(l.tags || []).includes(t)) return false;
   if (q && !(l.name + " " + l.title + " " + l.country + " " + l.years).toLowerCase().includes(q)) return false;
   return true;
@@ -274,12 +283,17 @@ function buildChips() {
     };
     wrap.appendChild(b);
   });
-  $("#chip-presidents").onclick = () => { state.presidentsOnly = !state.presidentsOnly; $("#chip-presidents").classList.toggle("on", state.presidentsOnly); render(); };
+  const presChips = { us: $("#chip-presidents"), other: $("#chip-presidents-other") };
+  Object.entries(presChips).forEach(([k, el]) => el.onclick = () => {
+    state.presFilter = state.presFilter === k ? null : k;
+    Object.entries(presChips).forEach(([k2, el2]) => el2.classList.toggle("on", state.presFilter === k2));
+    render();
+  });
   $("#chip-all").onclick = () => {
-    state.eras = new Set(ERAS.map(e => e.key)); state.presidentsOnly = false; state.tags = new Set();
+    state.eras = new Set(ERAS.map(e => e.key)); state.presFilter = null; state.tags = new Set();
     state.country = null; state.countryName = null; state.search = ""; $("#search").value = "";
     document.querySelectorAll("#era-chips .chip").forEach(c => c.classList.add("on"));
-    $("#chip-presidents").classList.remove("on");
+    $("#chip-presidents").classList.remove("on"); $("#chip-presidents-other").classList.remove("on");
     render();
   };
   $("#btn-add").onclick = () => openForm(null);
@@ -315,7 +329,7 @@ function renderList() {
   list.innerHTML = "";
   const parts = [];
   if (state.country) parts.push(state.countryName);
-  if (state.presidentsOnly) parts.push("Presidents");
+  if (state.presFilter) parts.push(PRES_LABEL[state.presFilter]);
   state.tags.forEach(k => { if (TRAIT_BY_KEY[k]) parts.push(TRAIT_BY_KEY[k].name); });
   $("#list-meta").textContent = `${leaders.length} leader${leaders.length === 1 ? "" : "s"}` + (parts.length ? ` · ${parts.join(" · ")}` : "") + ` · ${window.ALL_LEADERS.length} in the index`;
   if (!leaders.length) { list.innerHTML = `<div class="empty-note">No leaders match the current filters.<br>Toggle more eras on, clear a filter above, or add a new leader.</div>`; return; }
@@ -331,7 +345,7 @@ function renderList() {
       row.className = "leader-row"; row.style.setProperty("--era-color", era.color);
       const mine = customIds.has(l.id) && !isSeeded(l.id), editedSeed = customIds.has(l.id) && isSeeded(l.id);
       row.innerHTML = avatarMarkup(l) +
-        `<span class="lname">${esc(l.name)}${l.president ? ' <span class="star" title="President">★</span>' : ""}` +
+        `<span class="lname">${esc(l.name)}${l.president ? " " + presMark(l) : ""}` +
         `${mine ? ' <span class="custom-dot" title="Added by you">●</span>' : ""}${editedSeed ? ' <span class="custom-dot" title="Edited by you">✎</span>' : ""}</span>` +
         `<span class="lmeta">${esc(l.country)}<br>${esc(l.years)}</span>`;
       row.onclick = () => openDetail(l.id);
@@ -693,7 +707,7 @@ function openForm(leader) {
       <div><label>Country (places on map)</label><select id="f-country">${cOpts}</select></div>
       <div><label>Era</label><select id="f-era">${eraOpts}</select></div>
     </div>
-    <div class="f-row f-check"><input type="checkbox" id="f-pres" ${l.president ? "checked" : ""}><label style="margin:0;letter-spacing:0;text-transform:none;color:var(--text);font-size:13.5px">★ Show under the Presidents filter</label></div>
+    <div class="f-row f-check"><input type="checkbox" id="f-pres" ${l.president ? "checked" : ""}><label style="margin:0;letter-spacing:0;text-transform:none;color:var(--text);font-size:13.5px">★ Held the office of president (filed under U.S. Presidents or Other presidents by country)</label></div>
     <div class="f-row two">
       <div><label>How power ended (exit)</label><select id="f-exit">${exitOpts}</select></div>
       <div><label>What followed (succession)</label><select id="f-succ">${sucOpts}</select></div>
@@ -2432,7 +2446,7 @@ function renderIndex() {
   const leaders = visibleLeaders();
   const parts = [];
   if (state.country) parts.push(esc(state.countryName));
-  if (state.presidentsOnly) parts.push("Presidents");
+  if (state.presFilter) parts.push(PRES_LABEL[state.presFilter]);
   state.tags.forEach(k => { if (TRAIT_BY_KEY[k]) parts.push(esc(TRAIT_BY_KEY[k].name)); });
   $("#index-toolbar").innerHTML = `<span class="ix-count"><b>${leaders.length}</b> of ${n} leaders${parts.length ? " · " + parts.join(" · ") : ""}</span>
     ${S.mode === "cards" ? `<select id="ix-sort">${IX_COLS.filter(c => c.k !== "exit").map(c => `<option value="${c.k}" ${S.sort === c.k ? "selected" : ""}>Sort: ${c.label}</option>`).join("")}</select>` : ""}
@@ -2454,7 +2468,7 @@ function renderIndex() {
   const compCell = l => { const t = getTemperament(l); if (!t) return `<span class="ix-dash">—</span>`; const v = Math.round(composite(t)); return `<span class="ix-meter"><i style="width:${v}%"></i></span>${v}`; };
   const convCell = l => { const c = convergenceOf(l); return c && c.eligible ? `<span class="cv-num ${scoreClass(c.score)}">${c.score}</span>` : `<span class="ix-dash">—</span>`; };
   const exitCell = l => { const o = getOutcome(l); return o.exit ? `<span class="ix-exit ${o.succession === "crisis" ? "crisis" : o.succession === "orderly" ? "orderly" : ""}" title="${esc(EXITS[o.exit] || "")}${o.succession && o.succession !== "na" ? " · " + esc(SUCCESSIONS[o.succession]) : ""}">${EXIT_SHORT[o.exit] || o.exit}</span>` : `<span class="ix-dash">—</span>`; };
-  const marks = l => (l.president ? '<span class="star" title="President">★</span>' : "") +
+  const marks = l => presMark(l) +
     (customIds.has(l.id) ? `<span class="custom-dot" title="${isSeeded(l.id) ? "Edited by you" : "Added by you"}">${isSeeded(l.id) ? "✎" : "●"}</span>` : "");
 
   if (S.mode === "cards") {
@@ -2667,7 +2681,7 @@ function renderLeader(id) {
     <header class="lp-hero" style="--era-color:${era.color}">
       <div class="lp-portrait" id="lp-portrait">${initials(l.name)}</div>
       <div class="lp-headtext">
-        <div class="lp-kicker"><i></i>${esc(era.label)}${l.president ? " · ★ President" : ""}</div>
+        <div class="lp-kicker"><i></i>${esc(era.label)}${presKind(l) === "us" ? " · ★ U.S. President" : presKind(l) === "other" ? " · ☆ President" : ""}</div>
         <h1 class="lp-name">${esc(l.name)}</h1>
         <div class="lp-sub">${esc(l.title)}${l.country ? " · " + esc(l.country) : ""} · ${esc(l.years)}</div>
         ${outcomeChips(l)}
