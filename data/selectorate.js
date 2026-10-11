@@ -37,7 +37,8 @@ window.BDM_RULES = [
       { id: "louis14", how: "Moved the court to Versailles so that the few dozen grandees who mattered lived where he could pay and watch them." }
     ],
     broke: [
-      { id: "gorbachev", how: "Widened W with contested elections in 1989 and a presidency chosen by a congress, giving up the small coalition without acquiring a mass one." }
+      { id: "gorbachev", how: "Widened W with contested elections in 1989 and a presidency chosen by a congress, giving up the small coalition without acquiring a mass one." },
+      { id: "diocletian", how: "Broke it on purpose: four emperors, four courts and four sets of essentials, so that no army lacked an emperor of its own. It worked while he arbitrated. Within a year of his retirement the four coalitions were at war." }
     ] },
   { n: 2, rule: "Keep your nominal selectorate as large as possible.",
     gloss: "A vast pool of interchangeables makes every essential replaceable — and so loyal.",
@@ -54,7 +55,8 @@ window.BDM_RULES = [
     followed: [
       { id: "putin", how: "Oil and gas rents, with Yukos as the lesson in 2003–04 of what happens to anyone else who controls a revenue stream." },
       { id: "castro", how: "Nationalised almost everything in 1959–60, then lived on Soviet sugar prices and subsidy." },
-      { id: "cixi", how: "Kept the court's revenues under her own hand; the navy's money rebuilding the Summer Palace is the famous, and disputed, emblem of it." }
+      { id: "cixi", how: "Kept the court's revenues under her own hand; the navy's money rebuilding the Summer Palace is the famous, and disputed, emblem of it." },
+      { id: "constantine", how: "Took the gold of the pagan temples, which needed no one's consent, and minted it into the solidus that paid his army and his court." }
     ],
     broke: [
       { id: "leekuanyew", how: "The counter-case: a state with no rents to live on had to grow the economy to pay anyone — which pushed Singapore toward public goods despite a small party elite." }
@@ -67,7 +69,8 @@ window.BDM_RULES = [
       { id: "louis14", how: "Pensions, offices and precedence at Versailles, rationed so that no one had enough to stop competing." }
     ],
     broke: [
-      { id: "nkrumah", how: "Starved the regular army while favouring his own guard regiment; the army removed him in 1966 while he was abroad." }
+      { id: "nkrumah", how: "Starved the regular army while favouring his own guard regiment; the army removed him in 1966 while he was abroad." },
+      { id: "aurelian", how: "Squeezed his own officials and officers for graft. A secretary caught in a lie forged a list of officers marked for death, and they killed him first." }
     ] },
   { n: 5, rule: "Don't take money out of your supporters' pockets to make the people's lives better.",
     gloss: "Reform that transfers from the coalition to the population is the classic way good rulers fall.",

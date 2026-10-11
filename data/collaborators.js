@@ -72,6 +72,36 @@ window.COLLABORATORS = {
     { name: "Julius Caesar", role: "Patron and ally who restored her throne" },
     { name: "Mark Antony", role: "Partner and co-ruler of the Roman East" }
   ],
+  aurelian: [
+    { name: "Claudius II Gothicus", role: "Predecessor and patron; Aurelian commanded his cavalry and was acclaimed when he died of plague" },
+    { name: "Probus", role: "Leading general, used in Egypt and the East; emperor himself in 276" },
+    { name: "Marcellinus", role: "Commander in the East during the second Palmyrene revolt; consul in 275" },
+    { name: "Ulpia Severina", role: "Empress; her coins may mean she held the government during the interregnum after his murder" },
+    { name: "Tetricus", role: "The surrendered Gallic emperor, paraded in the triumph and then made governor (corrector) in southern Italy" },
+    { name: "Zenobia", role: "Palmyrene queen and his chief adversary; spared for the triumph and pensioned at Tibur" },
+    { name: "Eros (Mnestheus)", role: "Secretary whose forged list of officers marked for death set off the murder" }
+  ],
+  diocletian: [
+    { name: "Maximian", role: "Co-Augustus of the West from 286 (Herculius to his Jovius); abdicated with him in 305, unwillingly" },
+    { name: "Galerius", role: "Caesar of the East from 293 and his son-in-law; won the Persian war of 298, drove the persecution, succeeded him" },
+    { name: "Constantius I", role: "Caesar of the West from 293; recovered Britain from Allectus; father of Constantine" },
+    { name: "Afranius Hannibalianus & Julius Asclepiodotus", role: "Praetorian prefects of the first decade" },
+    { name: "Hermogenianus", role: "Jurist who compiled the Hermogenian Code of imperial rescripts (c. 295)" },
+    { name: "Sossianus Hierocles", role: "Governor and anti-Christian polemicist who helped make the case for persecution" },
+    { name: "Prisca & Valeria", role: "Wife and daughter; Valeria married Galerius — both were executed by Licinius after his death" }
+  ],
+  constantine: [
+    { name: "Helena", role: "Mother; Augusta from 324, pilgrim and church-builder in Palestine" },
+    { name: "Fausta", role: "Wife, daughter of Maximian; died in 326, soon after Crispus, in circumstances never explained" },
+    { name: "Crispus", role: "Eldest son, Caesar and victorious admiral of 324; executed in 326" },
+    { name: "Licinius", role: "Co-emperor and brother-in-law (the 'Edict of Milan', 313); defeated in 324, spared, then executed" },
+    { name: "Ossius of Corduba", role: "Bishop and religious adviser; his envoy to Alexandria and probably presiding figure at Nicaea" },
+    { name: "Eusebius of Caesarea", role: "Bishop, historian and panegyrist; author of the Life of Constantine" },
+    { name: "Eusebius of Nicomedia", role: "Court bishop and Arius's ally; baptised him on his deathbed" },
+    { name: "Lactantius", role: "Christian rhetorician, tutor to Crispus, and the earliest narrator of the Milvian Bridge dream" },
+    { name: "Flavius Ablabius", role: "Praetorian prefect of the East, 329–337 — the chief minister of the last years" },
+    { name: "Constantius II", role: "Son and eventual sole heir; at least complicit in the massacre of 337" }
+  ],
 
   // ---------------- WARLORDS ----------------
   caocao: [
