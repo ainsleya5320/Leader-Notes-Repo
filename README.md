@@ -121,7 +121,7 @@ Margaret Hermann's Leadership Trait Analysis scores seven traits from what a lea
 
 ## Political time — Skowronek
 
-The one lens that measures position rather than person. Is the leader **affiliated** with the governing order they inherited, or **opposed** to it — and is that order **resilient** or **vulnerable**? Reconstruction (opposed, vulnerable: Jefferson, Jackson, Lincoln, FDR, Reagan — and de Gaulle, Deng, Thatcher), articulation (affiliated, resilient: TR, LBJ — the "orthodox innovator" whose innovations split the party), preemption (opposed, resilient: Wilson, Eisenhower, Nixon, Clinton, Lula — the third way, and the type most prone to impeachment), disjunction (affiliated, vulnerable: Hoover, Carter, Gorbachev, Golda Meir — able leaders in the worst chair). U.S. presidents follow Skowronek's own classifications; modern executives are my extension (the "order" is a party or constitutional regime); pre-modern rulers are read by analogy with the dynastic cycle. Contested placements (Obama, Trump, Biden, Xi, Chiang, Indira Gandhi…) are marked and argued. 128 leaders; five are outside the framework, with the reason.
+The one lens that measures position rather than person. Is the leader **affiliated** with the governing order they inherited, or **opposed** to it — and is that order **resilient** or **vulnerable**? Reconstruction (opposed, vulnerable: Jefferson, Jackson, Lincoln, FDR, Reagan — and de Gaulle, Deng, Thatcher), articulation (affiliated, resilient: TR, LBJ — the "orthodox innovator" whose innovations split the party), preemption (opposed, resilient: Wilson, Eisenhower, Nixon, Clinton, Lula — the third way, and the type most prone to impeachment), disjunction (affiliated, vulnerable: Hoover, Carter, Gorbachev, Golda Meir — able leaders in the worst chair). U.S. presidents follow Skowronek's own classifications; modern executives are my extension (the "order" is a party or constitutional regime); pre-modern rulers are read by analogy with the dynastic cycle. Contested placements (Obama, Trump, Biden, Xi, Chiang, Indira Gandhi…) are marked and argued. 124 leaders are classified; five are outside the framework, with the reason.
 
 ## Autocratic survival — Svolik
 
@@ -268,7 +268,7 @@ Edit `data/leaders.js` — fields are documented at the top. `iso` is the 3-digi
 | `data/anecdotes.js` | 143 sourced anecdotes illustrating each facet at its high and low ends |
 | `data/simonton.js` | Simonton's five leadership-style factors and 77 categorised leaders |
 | `data/hermann.js` | Hermann's seven LTA traits, eight styles, and 78 scored leaders |
-| `data/politicaltime.js` | Skowronek's four positions, the U.S. order sequence, 128 classified leaders and the not-applicable list |
+| `data/politicaltime.js` | Skowronek's four positions, the U.S. order sequence, 124 classified leaders and the not-applicable list |
 | `data/svolik.js` | Svolik's power-sharing, army-role and end categories, and 78 autocrats |
 | `data/fate.js` | Entry, fate and a note for all 129 leaders (after Archigos) |
 | `data/selectorate.js` | Bueno de Mesquita's propositions, the five rules with atlas cases, his books, and tenure corrections for leaders whose dates are lifetimes |
