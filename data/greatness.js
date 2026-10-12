@@ -69,10 +69,11 @@
 // THE PREDICTORS (GREATNESS_US only). Simonton ("Presidential
 // greatness: the historical consensus and its psychological
 // significance", Political Psychology 1986; Why Presidents Succeed,
-// 1987) screened some 200 variables against 13 greatness ratings.
-// Five survived every test. In his order of generality: years in
-// office, years as a wartime commander-in-chief, administration
-// scandal, assassination, and entering office as a national war hero.
+// 1987) screened over 200 variables against 13 greatness ratings.
+// Five held up across all of them and across eras. In his order of
+// generality: years in office, years as a wartime commander-in-chief,
+// administration scandal, assassination, and entering office as a
+// national war hero.
 // His six-variable model adds intellectual brilliance; it is left out
 // here because it is a rating rather than a fact of record, and his
 // estimates stop at G. W. Bush. As reported by McCann (Journal of
@@ -350,7 +351,7 @@ window.GREATNESS_US = [
   { id: "reagan", name: "Ronald Reagan", from: 1981, to: 1989, inAtlas: true,
     ranks: { siena2022: 18, cspan2021: 9, pgp2024: 16 },
     years: 8.0, war: 0, scandal: 1, killed: 0, hero: 0,
-    note: "Iran–Contra: Secretary of Defense Caspar Weinberger was indicted in 1992 (and pardoned that December); national security advisers McFarlane and Poindexter were convicted, Poindexter's conviction later overturned. Simonton coded Reagan 0 in 1987, before the prosecutions. Lebanon, Grenada and the 1986 Libya raid are not counted as war." },
+    note: "Iran–Contra: Secretary of Defense Caspar Weinberger was indicted in 1992 (and pardoned that December); national security adviser Robert McFarlane pleaded guilty, and his successor John Poindexter was convicted (overturned on appeal). Simonton coded Reagan 0 in 1987, before the prosecutions. Lebanon, Grenada and the 1986 Libya raid are not counted as war." },
   { id: "ghwbush", name: "George H. W. Bush", from: 1989, to: 1993, inAtlas: true,
     ranks: { siena2022: 20, cspan2021: 21, pgp2024: 19 },
     years: 4.0, war: 0.1, scandal: 0, killed: 0, hero: 0,
@@ -420,7 +421,7 @@ window.GREATNESS_UK = [
     ranks: { leeds2004: 15, leeds2016: 6, leeds2021: 7 } },
   { id: "blair", name: "Tony Blair", from: 1997, to: 2007, inAtlas: true,
     ranks: { leeds2004: 6, leeds2016: 3, leeds2021: 3 },
-    note: "Rated in 2004 while still in office, seven years in." },
+    note: "Rated in 2004 while still in office, in his seventh year." },
   { id: "brown", name: "Gordon Brown", from: 2007, to: 2010, inAtlas: false,
     ranks: { leeds2016: 10, leeds2021: 6 } },
   { id: "cameron", name: "David Cameron", from: 2010, to: 2016, inAtlas: false,
