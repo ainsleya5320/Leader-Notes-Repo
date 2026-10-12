@@ -119,7 +119,9 @@ const state = {
   pat: { mode: "cases", caseId: null, yAxis: "coercion", focusDebate: null, rotParties: true },
   prac: { mode: "leader", leader: "lbj", cat: "all", cmp: ["lbj", "clinton", "churchill", "napoleon", "baker"], bq: "", bcat: "all", bgrade: "all", bself: false, bera: "all" },
   gloss: "",
-  rhet: { mode: "styles", cmp: ["orator", "fireside", "bypass"], caseStyle: "all", yAxis: "register" }
+  rhet: { mode: "styles", cmp: ["orator", "fireside", "bypass"], caseStyle: "all", yAxis: "register" },
+  great: { mode: "rank", office: "us" },
+  cmd: { sort: "mask" }
 };
 
 /* ---------------- leader store (seeded + custom) ---------------- */
@@ -1117,7 +1119,7 @@ function renderInstrumentsBody() {
 function renderTemperament() {
   const S = state.temperament, tb = $("#temperament-toolbar");
   const mode = (k, label) => `<button class="chip ${S.mode === k ? "on" : ""}" data-tmode="${k}">${label}</button>`;
-  tb.innerHTML = mode("ranked", "Ranked") + mode("profile", "Profile chart") + mode("anecdotes", "Anecdotes") + mode("facets", "The nine facets") + mode("styles", "Simonton styles") + mode("lta", "Hermann traits") +
+  tb.innerHTML = mode("ranked", "Ranked") + mode("profile", "Profile chart") + mode("anecdotes", "Anecdotes") + mode("facets", "The nine facets") + mode("styles", "Simonton styles") + mode("lta", "Hermann traits") + mode("dark", "Dark side") +
     (S.mode === "ranked" || S.mode === "anecdotes" || S.mode === "styles" || S.mode === "lta"
       ? `<input type="search" id="rz-search" placeholder="${S.mode === "anecdotes" ? "Search anecdotes…" : "Search leaders…"}" value="${esc(S.search)}" class="tb-search">`
       : "");
@@ -1185,6 +1187,7 @@ function renderTemperamentBody() {
   const S = state.temperament, body = $("#temperament-body");
 
   if (S.mode === "lta") { renderLTABody(body); return; }
+  if (S.mode === "dark") { renderDarkBody(body); return; }
   if (S.mode === "styles") {
     const all = styledLeaders();
     const q = S.search.trim().toLowerCase();
@@ -2651,13 +2654,17 @@ function renderLeader(id) {
     sec("sec-portrait", "Portrait", "Portrait", "", overview) +
     sec("sec-essays", "Essays", "Essays", `${essaysFor(l.id).length} long-form`, essaysHtml(l)) +
     sec("sec-convergence", "Convergence", "Convergence", "do the five frameworks agree?", convergenceHtml(l)) +
+    sec("sec-greatness", "Greatness", "Greatness", "how scholars rank them, and what Simonton's predictors expect", greatnessHtml(l)) +
     sec("sec-temperament", "Temperament", "Temperament", `Rubenzer facet profile ${temp ? sourceBadge(temp) : ""}`, temperamentHtml(l)) +
+    sec("sec-dark", "Dark side", "The dark side", "narcissism, fearless dominance and hubris", darkHtml(l)) +
     sec("sec-style", "Style", "Leadership style", sty ? `Simonton's five factors <span class="sm-domain ${sty.domain}">${esc(DOMAIN_LABEL[sty.domain])}</span>` : "", stylesHtml(l)) +
     sec("sec-lta", "Trait analysis", "Trait analysis", getLTA(l) ? `Hermann's seven traits <span class="sm-domain ${getLTA(l).domain === "core" ? "core" : getLTA(l).domain === "extended" ? "extended" : ""}">${esc(LTA_DOMAIN[getLTA(l).domain])}</span>` : "", ltaHtml(l)) +
     sec("sec-time", "Political time", "Political time", getTime(l) ? `Skowronek <span class="sm-domain ${getTime(l).domain === "core" ? "core" : getTime(l).domain === "extended" ? "extended" : ""}">${esc(TIME_DOMAIN[getTime(l).domain])}</span>` : "", timeHtml(l)) +
     sec("sec-power", "Power base", "Power base", "selectorate analysis", powerBaseHtml(l)) +
     sec("sec-olson", "Bandit & horizon", "Bandit &amp; horizon", "Olson — how they taxed, and how long they expected to", olsonHtml(l)) +
     sec("sec-autocracy", "Autocratic survival", "Autocratic survival", "Svolik — power-sharing and control", autocracyHtml(l)) +
+    sec("sec-spin", "Fear or spin", "Fear or spin", "Guriev &amp; Treisman — how the dictatorship kept control", spinHtml(l)) +
+    sec("sec-command", "Command", "Command", "Keegan — the mask they wore before their armies", commandHtml(l)) +
     sec("sec-instruments", "Carrots & sticks", "Carrots &amp; sticks", "the instruments they reached for", instrumentsHtml(l)) +
     sec("sec-people", "People", "Key subordinates &amp; collaborators", "", collabsHtml(l)) +
     sec("sec-orgs", "Organizations", "Organizations &amp; machines", "the apparatus they built, used or fought", orgsHtml(l)) +
@@ -2675,6 +2682,11 @@ function renderLeader(id) {
   const ol = getOlson(l);
   if (ol) glance.push(`<div class="rg-row" data-sec="sec-olson"><span class="rg-k">Bandit</span><span class="rg-v" style="color:${OLSON_TYPE_BY_KEY[ol.type].color}">${esc(OLSON_TYPE_BY_KEY[ol.type].name)}</span></div>`);
   if (au) glance.push(`<div class="rg-row" data-sec="sec-autocracy"><span class="rg-k">Autocracy</span><span class="rg-v">${au.sharing === "contested" ? "Contested" : "Established"}</span></div>`);
+  const ge = getGreatness(l), sp = getSpin(l), cm = getCommand(l), hb = getHubris(l);
+  if (ge) glance.push(`<div class="rg-row" data-sec="sec-greatness"><span class="rg-k">Greatness</span><span class="rg-v">${Math.round(ge.score)}<span style="color:var(--muted);font-weight:400"> / 100</span></span></div>`);
+  if (sp && SPIN_TYPE_BY_KEY[sp.type]) glance.push(`<div class="rg-row" data-sec="sec-spin"><span class="rg-k">Dictator type</span><span class="rg-v" style="color:${SPIN_TYPE_BY_KEY[sp.type].color}">${esc(SPIN_TYPE_BY_KEY[sp.type].name)}</span></div>`);
+  if (cm && CMD_MASK[cm.mask]) glance.push(`<div class="rg-row" data-sec="sec-command"><span class="rg-k">Command</span><span class="rg-v" style="color:${CMD_MASK[cm.mask].color}">${esc(CMD_MASK[cm.mask].name)}</span></div>`);
+  if (hb && hb.owen !== "no") glance.push(`<div class="rg-row" data-sec="sec-dark"><span class="rg-k">Hubris</span><span class="rg-v" style="color:${HB_COLOR[hb.owen]}">${esc(HB_LABEL[hb.owen])}</span></div>`);
   if (temp) glance.push(`<div class="rg-row" data-sec="sec-temperament"><span class="rg-k">Temperament</span><span class="rg-v">${Math.round(composite(temp))}<span style="color:var(--muted);font-weight:400"> / 100</span></span></div>`);
   if (cv && cv.score != null) glance.push(`<div class="rg-row" data-sec="sec-convergence"><span class="rg-k">Convergence</span><span class="rg-v cv-num ${scoreClass(cv.score)}">${cv.score}</span></div>`);
   if (pb) glance.push(`<div class="rg-row" data-sec="sec-power"><span class="rg-k">Coalition</span><span class="rg-v">W ≈ ${esc(W_SCALE[pb.w_scale] || "?")}</span></div>`);
@@ -2737,6 +2749,10 @@ function renderLeader(id) {
   if ($("#d-sv-open")) $("#d-sv-open").onclick = () => { state.surv.tab = "svolik"; switchView("survival"); };
   if ($("#d-bdm-open")) $("#d-bdm-open").onclick = () => { state.surv.tab = "bdm"; switchView("survival"); };
   if ($("#d-ol-open")) $("#d-ol-open").onclick = () => { state.surv.tab = "olson"; switchView("survival"); };
+  if ($("#d-spin-open")) $("#d-spin-open").onclick = () => { state.surv.tab = "spin"; switchView("survival"); };
+  if ($("#d-gt-open")) $("#d-gt-open").onclick = () => { const g = getGreatness(l); state.great.mode = "rank"; if (g) state.great.office = g.office; switchView("greatness"); };
+  if ($("#d-dark-open")) $("#d-dark-open").onclick = () => { state.temperament.mode = "dark"; switchView("temperament"); };
+  if ($("#d-cmd-open")) $("#d-cmd-open").onclick = () => switchView("command");
   body.querySelectorAll(".pb-book").forEach(a => a.onclick = () => { if (bookById(a.dataset.book)) openBookEditor(a.dataset.book); });
   body.querySelectorAll(".cs-tool").forEach(b => b.onclick = () => { state.instruments.reg = "all"; state.instruments.focus = b.dataset.inst; switchView("instruments"); });
   $("#d-edit").onclick = () => openForm(l);
@@ -3042,10 +3058,11 @@ function renderSurvival() {
       ? `Leaders with a catalogued toolkit only. The fear-heavy group ends badly more often (${pct(hiF.bad, hiF.n)} against ${pct(loF.bad, loF.n)}) — consistent with Goemans: rulers who govern by fear rarely get a quiet retirement, which is why they cannot afford to lose.`
       : `Leaders with a catalogued toolkit only. Not what Goemans would predict: the fear-heavy group ends badly <em>less</em> often (${pct(hiF.bad, hiF.n)} against ${pct(loF.bad, loF.n)}). The likely reason is that most of them never left — ${hiOffice} of ${hiF.n} died in power. Goemans's punishment falls on those who lose office; the fear-rulers here mostly didn't, and the violent ends in the other group include assassinations in office.`;
 
-  const tabs = [["svolik", "Autocracy — Svolik"], ["bdm", "Selectorate — Bueno de Mesquita"], ["olson", "Bandits — Olson"], ["fate", "Entry, exit & fate"]];
+  const tabs = [["svolik", "Autocracy — Svolik"], ["bdm", "Selectorate — Bueno de Mesquita"], ["olson", "Bandits — Olson"], ["spin", "Fear & spin — Guriev & Treisman"], ["fate", "Entry, exit & fate"]];
   $("#survival-body").innerHTML = `<div class="seg sv-tabs">${tabs.map(([k, label]) => `<button data-svtab="${k}" class="${state.surv.tab === k ? "on" : ""}">${label}</button>`).join("")}</div>
     <div data-tab="bdm">${bdmSectionHtml()}</div>
     <div data-tab="olson">${olsonSectionHtml()}</div>
+    <div data-tab="spin">${spinSectionHtml()}</div>
     <div data-tab="svolik">
     <div class="reg-head"><h3>Power-sharing</h3><span class="reg-sub">${auto.length} autocrats · can the allies still remove the ruler?</span></div>
     <div class="cmp-summary">A dictator cannot sign a contract with his allies: nothing enforces it. So he promises to share, they promise to stay loyal, and each watches for the moment the other becomes too strong to be bound. Councils, politburos and parties exist, in Svolik's account, so the allies can <em>see</em> what the ruler is doing.</div>
@@ -3089,9 +3106,10 @@ function renderSurvival() {
   body.querySelectorAll(".bdm-link").forEach(a => a.onclick = () => { state.traitCat = "machines"; switchView("traits"); });
   const tip = tipEl();
   body.querySelectorAll(".sv-pt").forEach(p => {
-    const l = byId(p.dataset.id), inOlson = !!p.closest('[data-tab="olson"]'), inBdm = !!p.closest('[data-tab="bdm"]');
+    const l = byId(p.dataset.id), inOlson = !!p.closest('[data-tab="olson"]'), inBdm = !!p.closest('[data-tab="bdm"]'), inSpin = !!p.closest('[data-tab="spin"]');
     p.onmouseenter = () => {
       if (inBdm) { const pb = getPowerBase(l); tip.innerHTML = `<b>${esc(l.name)}</b><div class="m">${esc(l.years)} · W ≈ ${fmtCount(pb.sizes.w)} · S ≈ ${fmtCount(pb.sizes.s)} · N ≈ ${fmtCount(pb.sizes.n)}</div><div class="co">loyalty norm ${oneIn(pb.sizes.w, pb.sizes.s)}</div>`; }
+      else if (inSpin) { const r = getSpin(l); tip.innerHTML = `<b>${esc(l.name)}</b><div class="m">${esc(l.years)} · ${esc((SPIN_TYPE_BY_KEY[r.type] || {}).name || r.type)}${r.path ? " · " + esc(r.path) : ""}</div><div class="co">open violence ${r.violence} · disguise ${r.disguise}</div>`; }
       else if (inOlson) { const r = getOlson(l); tip.innerHTML = `<b>${esc(l.name)}</b><div class="m">${esc(l.years)} · ${esc(OLSON_TYPE_BY_KEY[r.type].name)}</div><div class="co">horizon ${r.horizon} · take ${r.take} · public goods ${r.goods}</div>`; }
       else { const r = getAutocracy(l); tip.innerHTML = `<b>${esc(l.name)}</b><div class="m">${esc(l.years)} · ${esc(window.SVOLIK_SHARING[r.sharing].name)}</div><div class="co">repression ${r.rep} · co-optation ${r.coopt}</div>`; }
       tip.hidden = false;
@@ -4243,6 +4261,11 @@ function glBuild() {
   const RH_PROSE = { anaphora: 1, epistrophe: 1, tricolon: 1, antithesis: 1, chiasmus: 1, kairos: 1, ethos: 1, pathos: 1, soundbite: 1 };
   (W.RHET_TOOLKIT || []).forEach(g => g.terms.forEach(t => glAdd(t.term, t.def, "Rhetoric · " + g.group, /\s|-/.test(t.term) ? {} : { prose: !!RH_PROSE[t.term.toLowerCase()] })));
   (W.RHET_STYLES || []).forEach(s => glAdd(s.name, s.def, "Communication style", { prose: false }));
+  (W.SPIN_TYPES || []).forEach(t => glAdd(t.name, t.def, "Guriev & Treisman"));
+  (W.GWF_TYPES || []).forEach(t => glAdd(t.name, t.def, "Geddes, Wright & Frantz: regime type", { prose: false }));
+  Object.values(W.DARK_STUDIES || {}).forEach(d => glAdd(d.name, d.def, "Lilienfeld group: " + d.cite));
+  (W.COMMAND_MASKS || []).forEach(m => glAdd(m.name, m.def, "Keegan: masks of command", { prose: false }));
+  (W.COMMAND_IMPERATIVES || []).forEach(i => glAdd(i.name, i.def, "Keegan: imperatives of command", { prose: false, hide: true }));
   (W.GLOSSARY_EXTRA || []).forEach(g => glAdd(g.term, g.def, g.src, g));
   glCompile();
 }
@@ -4340,8 +4363,9 @@ function glInit() {
 }
 
 const GL_GROUPS = [
-  ["Temperament & style", ["Rubenzer facet", "Simonton leadership style", "Hermann trait", "Hermann style", "Hermann", "Personality psychology", "Rubenzer & Faschingbauer", "Domain label"]],
-  ["Power & survival", ["Bueno de Mesquita et al.", "Svolik", "Olson", "Goemans, Gleditsch & Chiozza", "Skowronek", "Convergence view"]],
+  ["Temperament & style", ["Rubenzer facet", "Simonton leadership style", "Hermann trait", "Hermann style", "Hermann", "Personality psychology", "Rubenzer & Faschingbauer", "Domain label", "Lilienfeld group", "Owen & Davidson"]],
+  ["Power & survival", ["Bueno de Mesquita et al.", "Svolik", "Olson", "Goemans, Gleditsch & Chiozza", "Skowronek", "Convergence view", "Guriev & Treisman", "Geddes, Wright & Frantz"]],
+  ["Greatness & command", ["Greatness", "Simonton", "Keegan"]],
   ["Organizations & dossiers", ["Organization type", "Rot ledger", "Dossier engine", "Kitschelt & Wilkinson", "This atlas (my construction)", "Robert Michels"]],
   ["Patronage", ["Patronage", "Patronage placement", "Kanchan Chandra", "Richard Joseph", "Nigerian politics", "Electoral systems", "Mexico", "Japan", "Indonesia", "South Korea", "Argentina", "India", "Singapore", "South Africa"]],
   ["Concepts", ["Concept", "Max Weber"]],
@@ -4530,6 +4554,471 @@ function rhetProfileHtml(l) {
 }
 
 /* ================================================================
+   GREATNESS — expert rankings, and Simonton's predictors refit live
+   ================================================================ */
+// Every survey's rank is turned into a percentile of its own field (100 = first,
+// 0 = last), so surveys of different sizes can be averaged. The rows include
+// presidents and prime ministers who are not in the atlas: the rankings and the
+// regression need the whole field, and those rows are shown greyed out.
+
+const GT_SURVEYS = window.GREATNESS_SURVEYS || [];
+const GT_SURVEY = Object.fromEntries(GT_SURVEYS.map(s => [s.key, s]));
+const GT_OFFICE = { us: "U.S. presidents", uk: "British prime ministers" };
+const GT_PREDICTORS = [
+  { key: "years", name: "Years in office", unit: "per year" },
+  { key: "war", name: "Years at war", unit: "per year" },
+  { key: "scandal", name: "Administration scandal", unit: "if yes" },
+  { key: "killed", name: "Assassinated", unit: "if yes" },
+  { key: "hero", name: "War hero", unit: "if yes" }
+];
+function gtPct(rank, n) { return n > 1 ? 100 * (n - rank) / (n - 1) : null; }
+function gtOrd(n) { const s = ["th", "st", "nd", "rd"], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+let GT_CACHE = null;
+function gtData() {
+  if (GT_CACHE) return GT_CACHE;
+  const office = {};
+  ["us", "uk"].forEach(k => {
+    const rows = (k === "us" ? window.GREATNESS_US : window.GREATNESS_UK) || [];
+    const scored = rows.map(row => {
+      const ps = Object.entries(row.ranks || {}).filter(([s]) => GT_SURVEY[s]).map(([s, r]) => gtPct(r, GT_SURVEY[s].n)).filter(v => v != null);
+      return ps.length ? { row, office: k, score: ps.reduce((a, b) => a + b, 0) / ps.length, spread: ps.length > 1 ? Math.max(...ps) - Math.min(...ps) : null, ns: ps.length } : null;
+    }).filter(Boolean).sort((a, b) => b.score - a.score);
+    scored.forEach((e, i) => { e.pos = i + 1; e.of = scored.length; });
+    office[k] = scored;
+  });
+  const byLeader = {};
+  ["us", "uk"].forEach(k => office[k].forEach(e => { if (e.row.inAtlas && byId(e.row.id)) byLeader[e.row.id] = e; }));
+  // Simonton's five predictors, refit on these rankings over every rated president
+  const usFit = office.us.filter(e => GT_PREDICTORS.every(p => typeof e.row[p.key] === "number"));
+  const fit = olsFit(usFit.map(e => GT_PREDICTORS.map(p => e.row[p.key])), usFit.map(e => e.score));
+  if (fit) usFit.forEach((e, i) => { e.pred = fit.pred[i]; e.resid = e.score - fit.pred[i]; });
+  // the same five plus Intellectual Brilliance, on the presidents the atlas has a Rubenzer reading for
+  const ibRows = usFit.filter(e => byLeader[e.row.id] && facetMid(byId(e.row.id), "int") != null);
+  const X5 = ibRows.map(e => GT_PREDICTORS.map(p => e.row[p.key]));
+  const fitIB = olsFit(ibRows.map((e, i) => X5[i].concat(facetMid(byId(e.row.id), "int"))), ibRows.map(e => e.score));
+  const fit5sub = olsFit(X5, ibRows.map(e => e.score));
+  GT_CACHE = { office, byLeader, fit, usFit, fitIB, fit5sub, nIB: ibRows.length };
+  return GT_CACHE;
+}
+function getGreatness(l) { return l ? gtData().byLeader[l.id] || null : null; }
+
+// ordinary least squares with an intercept; returns coefficients, standard errors and fit
+function olsFit(X, y) {
+  const n = X.length;
+  if (!n) return null;
+  const Z = X.map(r => [1].concat(r)), p = Z[0].length;
+  if (n <= p + 1) return null;
+  const M = Array.from({ length: p }, (_, i) => Array.from({ length: 2 * p }, (_, j) => j < p ? Z.reduce((s, r) => s + r[i] * r[j], 0) : (j - p === i ? 1 : 0)));
+  for (let c = 0; c < p; c++) {
+    let m = c;
+    for (let r = c + 1; r < p; r++) if (Math.abs(M[r][c]) > Math.abs(M[m][c])) m = r;
+    if (Math.abs(M[m][c]) < 1e-9) return null;   // a predictor with no variation, or two that move together
+    [M[c], M[m]] = [M[m], M[c]];
+    const d = M[c][c];
+    for (let j = 0; j < 2 * p; j++) M[c][j] /= d;
+    for (let r = 0; r < p; r++) if (r !== c) { const f = M[r][c]; for (let j = 0; j < 2 * p; j++) M[r][j] -= f * M[c][j]; }
+  }
+  const inv = M.map(r => r.slice(p));
+  const zty = Array.from({ length: p }, (_, i) => Z.reduce((s, r, t) => s + r[i] * y[t], 0));
+  const b = inv.map(r => r.reduce((s, v, j) => s + v * zty[j], 0));
+  const pred = Z.map(r => r.reduce((s, v, i) => s + v * b[i], 0));
+  const my = y.reduce((a, v) => a + v, 0) / n;
+  const ssr = y.reduce((s, v, i) => s + (v - pred[i]) ** 2, 0), sst = y.reduce((s, v) => s + (v - my) ** 2, 0);
+  const s2 = ssr / (n - p);
+  const r2 = sst ? 1 - ssr / sst : null;
+  return { b, se: inv.map((r, i) => Math.sqrt(Math.max(0, s2 * r[i]))), pred, r2, adj: r2 == null ? null : 1 - (1 - r2) * (n - 1) / (n - p), n, p };
+}
+function fmtSigned(v, d) { return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d == null ? 1 : d); }
+
+function gtName(e) { return e.row.inAtlas && byId(e.row.id) ? shortName(byId(e.row.id)) : e.row.name; }
+function gtYears(row) { return row.from + (row.to && row.to !== row.from ? "–" + (row.to >= NOW_YEAR ? "" : row.to) : ""); }
+
+function renderGreatness() {
+  const S = state.great, tb = $("#greatness-toolbar");
+  const mode = (k, label) => `<button class="chip ${S.mode === k ? "on" : ""}" data-gmode="${k}">${label}</button>`;
+  const off = (k, label, n) => `<button class="chip ${S.office === k ? "on" : ""}" data-goff="${k}">${label} <span style="opacity:.6">${n}</span></button>`;
+  const D = gtData();
+  tb.innerHTML = `<div class="cv-pills">${mode("rank", "Rankings")}${mode("formula", "The formula")}${mode("tests", "Tests against the other lenses")}
+    ${S.mode === "rank" ? `<span class="rz-sortsep"></span>${off("us", "U.S. presidents", D.office.us.length)}${off("uk", "British prime ministers", D.office.uk.length)}` : ""}</div>`;
+  tb.querySelectorAll("[data-gmode]").forEach(b => b.onclick = () => { S.mode = b.dataset.gmode; renderGreatness(); });
+  tb.querySelectorAll("[data-goff]").forEach(b => b.onclick = () => { S.office = b.dataset.goff; renderGreatness(); });
+  const body = $("#greatness-body");
+  if (!GT_SURVEYS.length) { body.innerHTML = `<div class="ins-empty">The rankings file (data/greatness.js) didn't load.</div>`; return; }
+  body.innerHTML = S.mode === "formula" ? gtFormulaHtml() : S.mode === "tests" ? gtTestsHtml() : gtRankHtml(S.office);
+  body.querySelectorAll("[data-id]").forEach(el => el.onclick = () => openDetail(el.dataset.id));
+  const tip = tipEl();
+  body.querySelectorAll(".gt-pt").forEach(p => {
+    p.onmouseenter = () => { tip.innerHTML = p.dataset.tip; tip.hidden = false; };
+    p.onmousemove = moveTip;
+    p.onmouseleave = () => { tip.hidden = true; };
+  });
+  hydrateAvatars(body);
+}
+
+function gtRankHtml(office) {
+  const D = gtData(), list = D.office[office], surveys = GT_SURVEYS.filter(s => s.office === office);
+  const inAtlas = list.filter(e => D.byLeader[e.row.id] === e).length;
+  return `<div class="rz-explain"><div class="rz-exhead"><b>How to read it</b><span class="rz-neo">${list.length} ${GT_OFFICE[office]} · ${surveys.length} survey${surveys.length === 1 ? "" : "s"} · ${inAtlas} in the atlas</span></div>
+    <div class="rz-exdef">Each survey's rank becomes a percentile of the field it ranked: 100 is first, 0 is last. <b>Greatness</b> is the mean of those percentiles; <b>spread</b> is how far the surveys disagree about the same person. Greyed rows aren't in the atlas, but they stay in the table because a rank only means something against the whole field.</div>
+    <div class="rz-misread"><b>What it is not</b> — a measure of what a leader achieved. These are scholars' judgements, and they carry known biases: war, long tenure and dramatic death all lift a rank, which is exactly what <em>The formula</em> tab tests.</div></div>
+    <div class="gt-surveys">${surveys.map(s => `<div class="gt-survey"><b>${esc(s.name)}</b>${esc(s.raters || "")}${s.n ? ` · ranked ${s.n}` : ""}${s.method ? `<div>${esc(s.method)}</div>` : ""}</div>`).join("")}</div>
+    <table class="xtab gt-table"><thead><tr><th>#</th><th>${office === "us" ? "President" : "Prime minister"}</th><th>In office</th>${surveys.map(s => `<th class="num">${esc(s.short)}</th>`).join("")}<th>Greatness</th><th class="num">Spread</th></tr></thead><tbody>
+      ${list.map(e => { const atlas = D.byLeader[e.row.id] === e;
+        return `<tr class="${atlas ? "" : "gt-out"}" ${atlas ? `data-id="${e.row.id}"` : ""}><td class="num">${e.pos}</td><td>${atlas ? `<b>${esc(gtName(e))}</b>` : esc(e.row.name)}</td><td class="num">${esc(gtYears(e.row))}</td>
+        ${surveys.map(s => `<td class="num">${e.row.ranks[s.key] != null ? e.row.ranks[s.key] : "—"}</td>`).join("")}
+        <td><span class="bar good" style="width:${Math.round(e.score * 1.1)}px"></span>${Math.round(e.score)}</td><td class="num">${e.spread == null ? "—" : Math.round(e.spread)}</td></tr>`; }).join("")}
+    </tbody></table>`;
+}
+
+// predicted against actual, with the line where they agree
+function gtScatter(points, xl, yl) {
+  const W = 640, H = 430, M = { l: 52, r: 18, t: 18, b: 48 };
+  const lo = Math.min(0, ...points.map(p => p.x)), hi = Math.max(100, ...points.map(p => p.x));
+  const x = v => M.l + (W - M.l - M.r) * (v - lo) / (hi - lo), y = v => H - M.b - (H - M.t - M.b) * v / 100;
+  const ticks = [0, 25, 50, 75, 100];
+  let grid = ticks.map(v => `<line class="rz-grid" x1="${M.l}" y1="${y(v)}" x2="${W - M.r}" y2="${y(v)}"/><text class="rz-ytick" x="${M.l - 8}" y="${y(v) + 4}">${v}</text>`).join("");
+  grid += ticks.filter(v => v >= lo && v <= hi).map(v => `<line class="rz-grid" x1="${x(v)}" y1="${M.t}" x2="${x(v)}" y2="${H - M.b}"/><text class="rz-ytick" style="text-anchor:middle" x="${x(v)}" y="${H - M.b + 16}">${v}</text>`).join("");
+  const diag = `<line class="gt-diag" x1="${x(Math.max(lo, 0))}" y1="${y(Math.max(lo, 0))}" x2="${x(Math.min(hi, 100))}" y2="${y(Math.min(hi, 100))}"/>`;
+  let dots = "", labels = "";
+  const placed = [];
+  points.slice().sort((a, b) => (a.atlas ? 1 : 0) - (b.atlas ? 1 : 0)).forEach(p => {
+    const cx = x(p.x), cy = y(p.y);
+    dots += `<circle class="sv-pt gt-pt ${p.atlas ? "" : "out"}" ${p.atlas ? `data-id="${p.id}"` : ""} data-tip="${esc(p.tip)}" cx="${cx}" cy="${cy}" r="${p.atlas ? 5.5 : 4}" fill="${p.color}"/>`;
+    if (!p.atlas) return;
+    const w = p.label.length * 5.6 + 4, box = [cx + 7, cy - 6, cx + 7 + w, cy + 5];
+    if (box[2] < W - 4 && !placed.some(b => !(box[2] < b[0] || box[0] > b[2] || box[3] < b[1] || box[1] > b[3]))) {
+      placed.push(box); labels += `<text class="sv-lab" x="${box[0]}" y="${cy + 3.5}">${esc(p.label)}</text>`;
+    }
+  });
+  return `<svg class="sv-scatter" viewBox="0 0 ${W} ${H}" width="100%">${grid}${diag}
+    <text class="sv-quad" x="${M.l + 8}" y="${M.t + 14}" style="text-anchor:start">RATED ABOVE THE FORMULA</text>
+    <text class="sv-quad" x="${W - M.r - 8}" y="${H - M.b - 8}" style="text-anchor:end">RATED BELOW THE FORMULA</text>
+    <text class="rz-ylabel" x="${(M.l + W - M.r) / 2}" y="${H - 8}">${xl} →</text>
+    <text class="rz-ylabel" transform="translate(12,${(M.t + H - M.b) / 2}) rotate(-90)">${yl} →</text>${dots}${labels}</svg>`;
+}
+
+function gtFormulaHtml() {
+  const D = gtData(), f = D.fit;
+  const intro = `<div class="rz-explain"><div class="rz-exhead"><b>Simonton's formula</b><span class="rz-neo">Dean Keith Simonton, <i>Why Presidents Succeed</i> (1987)</span></div>
+    <div class="rz-exdef">Simonton found that a handful of facts about a presidency, none of them about its policies, predict where historians rank it: how long it lasted, how many years it spent at war, whether a scandal touched it, whether the president was assassinated, and whether he came to office a war hero. Later work added intellectual brilliance. Here the predictors are refit on today's surveys, so the weights below are this atlas's, not his.</div>
+    <div class="rz-misread"><b>How to read it</b> — if the formula fits well, a rank says as much about circumstance as about conduct. The interesting presidents are the ones far from the line: rated well above or below what their circumstances predict.</div></div>`;
+  if (!f) return intro + `<div class="ins-empty">Not enough complete rows to fit the model.</div>`;
+  const eff = (p, i) => { const b = f.b[i + 1], se = f.se[i + 1], clear = Math.abs(b) > 2 * se;
+    return `<tr><td><b>${esc(p.name)}</b></td><td class="num">${fmtSigned(b)} <span class="lowN">${p.unit}</span></td><td class="num">± ${(2 * se).toFixed(1)}</td><td>${clear ? `<span class="gt-ok">clear of zero</span>` : `<span class="lowN" style="font-style:normal">could be zero</span>`}</td></tr>`; };
+  const pts = D.usFit.map(e => { const atlas = D.byLeader[e.row.id] === e, l = atlas ? byId(e.row.id) : null;
+    return { id: e.row.id, atlas, x: e.pred, y: e.score, color: l ? eraColor(l) : "var(--faint)", label: atlas ? tagName(l) : "",
+      tip: `<b>${esc(e.row.name)}</b><div class="m">${esc(gtYears(e.row))}</div><div class="co">rated ${Math.round(e.score)} · formula ${Math.round(e.pred)} · ${fmtSigned(e.resid, 0)}</div>` }; });
+  const byResid = D.usFit.slice().sort((a, b) => b.resid - a.resid);
+  const resRow = e => { const atlas = D.byLeader[e.row.id] === e;
+    return `<tr class="${atlas ? "" : "gt-out"}" ${atlas ? `data-id="${e.row.id}"` : ""}><td>${atlas ? `<b>${esc(gtName(e))}</b>` : esc(e.row.name)}</td><td class="num">${Math.round(e.score)}</td><td class="num">${Math.round(e.pred)}</td><td class="num"><b>${fmtSigned(e.resid, 0)}</b></td></tr>`; };
+  const resTable = (title, rows) => `<table class="xtab"><thead><tr><th>${title}</th><th class="num">Rated</th><th class="num">Formula</th><th class="num">Gap</th></tr></thead><tbody>${rows.map(resRow).join("")}</tbody></table>`;
+  const ib = D.fitIB, five = D.fit5sub;
+  const ibBlock = ib && five ? (() => { const b = ib.b[ib.b.length - 1], se = ib.se[ib.se.length - 1];
+    return `<div class="reg-head"><h3>Adding intellectual brilliance</h3><span class="reg-sub">the ${D.nIB} presidents with a Rubenzer reading in the atlas</span></div>
+    <div class="cmp-summary">On the same ${D.nIB} presidents, the five predictors explain <strong>${Math.round(five.r2 * 100)}%</strong> of the variation in rank; adding Rubenzer's Intellectual Brilliance facet takes it to <strong>${Math.round(ib.r2 * 100)}%</strong> (adjusted for the extra predictor: ${Math.round(five.adj * 100)}% → ${Math.round(ib.adj * 100)}%). Each 10 points of the facet is worth <strong>${fmtSigned(b * 10)}</strong> points of greatness (± ${(20 * se).toFixed(1)}). Most facet readings here are estimates, not Simonton's own scores, and the sample is small for six predictors, so take the direction more seriously than the size.</div>`; })() : "";
+  return intro + `
+    <div class="reg-head"><h3>The fit</h3><span class="reg-sub">${f.n} rated presidents · ${Math.round(f.r2 * 100)}% of the variation explained (adjusted ${Math.round(f.adj * 100)}%)</span></div>
+    <table class="xtab"><thead><tr><th>Predictor</th><th class="num">Effect on greatness</th><th class="num">Uncertainty (2 SE)</th><th></th></tr></thead><tbody>${GT_PREDICTORS.map(eff).join("")}</tbody></table>
+    <p class="ch-note" style="margin-top:8px">Greatness is on the 0–100 percentile scale. "Could be zero" means the effect is smaller than twice its standard error, so this sample can't tell it from nothing. The coding rules for each predictor are in data/greatness.js.</p>
+    <div class="reg-head"><h3>Rated against predicted</h3><span class="reg-sub">every rated president · atlas leaders labelled · hover for numbers</span></div>
+    <div class="rz-chartwrap">${gtScatter(pts, "Greatness the formula predicts", "Greatness the scholars give")}</div>
+    <div class="sv-duo">${resTable("Rated above the formula", byResid.slice(0, 8))}${resTable("Rated below the formula", byResid.slice(-8).reverse())}</div>
+    ${ibBlock}`;
+}
+
+function gtTestsHtml() {
+  const D = gtData();
+  const rated = Object.values(D.byLeader);
+  const mean = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : null;
+  const fmtR = r => r == null ? "—" : (r >= 0 ? "+" : "−") + Math.abs(r).toFixed(2);
+  const chip = e => `<span class="pt-chip" data-id="${e.row.id}">${esc(gtName(e))}</span>`;
+  const groupRows = (groups, labelOf, colorOf) => groups.filter(g => g.mem.length).map(g => { const m = mean(g.mem.map(e => e.score));
+    return `<tr><td style="${colorOf ? `color:${colorOf(g.k)};` : ""}font-weight:600">${esc(labelOf(g.k))}</td><td class="num">${g.mem.length}</td><td><span class="bar good" style="width:${Math.round(m * 1.1)}px"></span>${Math.round(m)}</td><td><div class="pt-chips">${g.mem.sort((a, b) => b.score - a.score).map(chip).join("")}</div></td></tr>`; }).join("");
+  const head = `<thead><tr><th></th><th class="num">Leaders</th><th>Mean greatness</th><th>Who, best first</th></tr></thead>`;
+
+  // 1 — Skowronek: reconstructors at the top, disjunctive presidents at the bottom
+  const tGroups = (window.TIME_TYPES || []).map(t => ({ k: t.key, mem: rated.filter(e => (getTime(byId(e.row.id)) || {}).t === t.key) }));
+  const tMeans = tGroups.filter(g => g.mem.length).map(g => ({ k: g.k, m: mean(g.mem.map(e => e.score)) })).sort((a, b) => b.m - a.m);
+  const tVerdict = tMeans.length < 2 ? "" : tMeans[0].k === "reconstruct" && tMeans[tMeans.length - 1].k === "disjunct"
+    ? "Skowronek's pattern holds here: leaders who rebuilt an order rank highest, and those who presided over its collapse rank lowest."
+    : `Skowronek would expect reconstruction on top and disjunction at the bottom; here the order runs ${tMeans.map(t => (TIME_TYPE_BY_KEY[t.k] || {}).name).join(" → ")}.`;
+
+  // 2 — temperament, convergence and the formula's other cousins
+  const pair = (list, f) => { const xs = [], ys = []; list.forEach(e => { const v = f(byId(e.row.id)); if (v != null) { xs.push(v); ys.push(e.score); } }); return { r: pearson(xs, ys), n: xs.length }; };
+  const comp = l => { const t = getTemperament(l); return t ? composite(t) : null; };
+  const cv = l => { const c = convergenceOf(l); return c && c.eligible ? c.score : null; };
+  const us = rated.filter(e => e.office === "us"), uk = rated.filter(e => e.office === "uk");
+  const narcOf = l => { const d = getDark(l); return d && typeof d.narc === "number" ? d.narc : null; };
+  const fdOf = l => { const d = getDark(l); return d && typeof d.fd === "number" ? d.fd : null; };
+  const corr = [
+    ["Rubenzer temperament composite", "U.S. presidents", pair(us, comp), "Expected to be positive: Rubenzer chose his nine facets because they predicted these ratings. A strong figure is partly circular."],
+    ["Rubenzer temperament composite", "British prime ministers", pair(uk, comp), "The out-of-sample check — the facets were chosen on presidents, not prime ministers. Prime-minister readings are estimates."],
+    ["Convergence score", "everyone ranked", pair(rated, cv), "No prediction: do leaders the frameworks agree about rank higher?"],
+    ["Grandiose narcissism (published)", "U.S. presidents", pair(us, narcOf), "Watts and colleagues found narcissism went with higher greatness ratings."],
+    ["Fearless dominance (published)", "U.S. presidents", pair(us, fdOf), "Lilienfeld and colleagues found the same for fearless dominance."]
+  ].filter(c => c[2].n >= 4);
+
+  // 3 — style and how it ended
+  const sGroups = SSTYLES.map(s => ({ k: s.key, mem: rated.filter(e => { const r = getStyles(byId(e.row.id)); return r && dominantStyle(r).key === s.key; }) }));
+  const xGroups = Object.keys(EXITS).map(k => ({ k, mem: rated.filter(e => getOutcome(byId(e.row.id)).exit === k) }));
+  const hGroups = [["diagnosed", "Hubris syndrome (Owen)"], ["possible", "Possible hubris"], ["none", "No hubris reading"]].map(([k]) => ({ k, mem: rated.filter(e => { const h = getHubris(byId(e.row.id)); return k === "none" ? !h || h.owen === "no" : h && h.owen === k; }) }));
+  const hLabel = { diagnosed: "Hubris syndrome (Owen)", possible: "Possible hubris (Owen)", none: "No hubris reading" };
+
+  return `<div class="cmp-summary">The rankings give the atlas something it lacked: a measure of how a leader is judged, not just how their power ended. Below, the ${rated.length} ranked leaders in the atlas (${us.length} presidents, ${uk.length} prime ministers) are sorted by the other lenses. Greatness is the mean survey percentile, so presidents and prime ministers sit on the same 0–100 scale. Samples are small; read each table as a prompt rather than a finding.</div>
+    <div class="reg-head"><h3>Political time</h3><span class="reg-sub">Skowronek: position in the order, not talent, decides what a leader can do</span></div>
+    <div class="cmp-summary">${tVerdict}</div>
+    <table class="xtab">${head}<tbody>${groupRows(tGroups, k => (TIME_TYPE_BY_KEY[k] || {}).name || k, k => (TIME_TYPE_BY_KEY[k] || {}).color)}</tbody></table>
+    <div class="reg-head"><h3>Correlations</h3><span class="reg-sub">Pearson r against the greatness percentile</span></div>
+    <table class="xtab"><thead><tr><th>Lens</th><th>Who</th><th class="num">r</th><th class="num">n</th><th>Why it's here</th></tr></thead><tbody>
+      ${corr.map(([lens, who, c, why]) => `<tr><td><b>${esc(lens)}</b></td><td>${esc(who)}</td><td class="num"><b>${fmtR(c.r)}</b></td><td class="num">${c.n}</td><td class="lowN" style="font-style:normal">${esc(why)}</td></tr>`).join("")}
+    </tbody></table>
+    <div class="reg-head"><h3>Simonton's styles</h3><span class="reg-sub">dominant style, from the Temperament view</span></div>
+    <table class="xtab">${head}<tbody>${groupRows(sGroups, k => SSTYLE_BY_KEY[k].name, k => SSTYLE_BY_KEY[k].color)}</tbody></table>
+    <div class="reg-head"><h3>How it ended</h3><span class="reg-sub">from the outcome data</span></div>
+    <table class="xtab">${head}<tbody>${groupRows(xGroups, k => EXITS[k])}</tbody></table>
+    ${hGroups.some(g => g.k !== "none" && g.mem.length) ? `<div class="reg-head"><h3>Hubris</h3><span class="reg-sub">Owen's diagnoses, from the Dark side mode of Temperament</span></div>
+    <table class="xtab">${head}<tbody>${groupRows(hGroups, k => hLabel[k])}</tbody></table>` : ""}`;
+}
+
+function greatnessHtml(l) {
+  const e = getGreatness(l);
+  if (!e) return "";
+  const ranks = Object.entries(e.row.ranks).filter(([k]) => GT_SURVEY[k]).map(([k, r]) => `<div><span class="k">${esc(GT_SURVEY[k].name)}</span>${gtOrd(r)} of ${GT_SURVEY[k].n}</div>`).join("");
+  const formula = e.pred != null ? `<p class="pt-note">Simonton's predictors, refit on these surveys, expect <b>${Math.round(e.pred)}</b>. The scholars' rating is <b>${Math.abs(Math.round(e.resid))} points ${e.resid >= 0 ? "higher" : "lower"}</b> than tenure, war, scandal, assassination and war-hero status alone would predict.</p>` : "";
+  const facts = e.office === "us" ? `<div class="gt-facts">${GT_PREDICTORS.map(p => `<span class="ol-sign ${p.key === "scandal" ? "short" : ""}">${esc(p.name)}: ${p.unit === "if yes" ? (e.row[p.key] ? "yes" : "no") : e.row[p.key]}</span>`).join("")}</div>` : "";
+  return `<div class="d-styles pt-panel" style="--c:var(--good)">
+    <div class="pt-head"><span class="pt-badge">${Math.round(e.score)} <small style="font-size:14px;color:var(--muted)">/ 100</small></span><span class="pt-posture">${gtOrd(e.pos)} of ${e.of} ${GT_OFFICE[e.office]} by the mean of the surveys${e.spread != null && e.spread >= 20 ? ` · the surveys disagree by ${Math.round(e.spread)} points` : ""}</span></div>
+    ${formula}${facts}
+    <div class="pt-rows">${ranks}${e.row.note ? `<div><span class="k">Coding note</span>${esc(e.row.note)}</div>` : ""}</div>
+    <div class="pb-src">Greatness is the mean of each survey's rank as a percentile of its field (100 = first). These are scholars' judgements, not measures of achievement.</div>
+    <div class="d-actions" style="margin-top:10px"><button id="d-gt-open">↗ Open in Greatness</button></div>
+  </div>`;
+}
+
+/* ================================================================
+   FEAR & SPIN — Guriev & Treisman; regime types after Geddes, Wright & Frantz
+   ================================================================ */
+
+const SPIN_TYPE_BY_KEY = Object.fromEntries((window.SPIN_TYPES || []).map(t => [t.key, t]));
+const GWF_BY_KEY = Object.fromEntries((window.GWF_TYPES || []).map(t => [t.key, t]));
+function getSpin(l) { return (l && l.spin) || (window.LEADER_SPIN && window.LEADER_SPIN[l.id]) || null; }
+function spinMarker(k) { const m = (window.SPIN_MARKERS || {})[k]; return m ? `<span class="ol-sign ${m.pole === "fear" ? "short" : "long"}" title="${esc(m.def || "")}">${esc(m.label)}</span>` : ""; }
+
+function spinSectionHtml() {
+  const all = window.ALL_LEADERS.map(l => ({ l, r: getSpin(l) })).filter(e => e.r && byId(e.l.id)).sort((a, b) => startYear(a.l) - startYear(b.l));
+  if (!all.length) return `<div class="ins-empty">The fear-and-spin file (data/spin.js) didn't load.</div>`;
+  const chip = e => `<span class="pt-chip" data-id="${e.l.id}" title="${esc(e.r.path || "")}">${esc(shortName(e.l))}${e.r.path ? " ↗" : ""}</span>`;
+  const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "—";
+  const types = (window.SPIN_TYPES || []).map(ty => { const mem = all.filter(e => e.r.type === ty.key);
+    return `<div class="pt-cell" style="--c:${ty.color}"><div class="pt-cell-h"><b>${esc(ty.name)}</b><span>${mem.length}</span></div><div class="pt-cell-def">${esc(ty.def)}</div><div class="pt-chips">${mem.map(chip).join("")}</div></div>`; }).join("");
+  const scatter = scatterSvg(all.slice().sort((a, b) => a.r.violence - b.r.violence).map(e => ({ id: e.l.id, x: e.r.disguise, y: e.r.violence, color: (SPIN_TYPE_BY_KEY[e.r.type] || {}).color || "var(--muted)", label: tagName(e.l) })),
+    { xl: "Democratic disguise — elections, courts and press kept up for show", yl: "Open violence against the population", q: ["FEAR", "TERROR BEHIND A FAÇADE", "QUIET CLOSED RULE", "SPIN"] });
+  // Guriev & Treisman's central claim is a shift over time
+  const eras = [["Took power before 1945", -1e9, 1945], ["1945–1979", 1945, 1980], ["1980 on", 1980, 1e9]].map(([label, a, b]) => ({ label, mem: all.filter(e => { const y = startYear(e.l); return y >= a && y < b; }) }));
+  const tKeys = (window.SPIN_TYPES || []).map(t => t.key);
+  const shift = eras.map(g => `<tr><td><b>${g.label}</b></td><td class="num">${g.mem.length}</td>${tKeys.map(k => { const n = g.mem.filter(e => e.r.type === k).length; return `<td><span class="bar ${k === "spin" ? "good" : ""}" style="width:${g.mem.length ? Math.round(80 * n / g.mem.length) : 0}px;${k === "mixed" ? "background:var(--reg-loyalty)" : ""}"></span>${n}</td>`; }).join("")}</tr>`).join("");
+  const markers = Object.entries(window.SPIN_MARKERS || {}).map(([k, m]) => ({ k, m, mem: all.filter(e => (e.r.markers || []).includes(k)) })).filter(x => x.mem.length);
+  // how the two kinds of ruler ended, and how the GWF regime types did
+  const fateRow = (label, g, color) => { const done = g.map(e => getFate(e.l)).filter(f => f && f.fate !== "incumbent"); const bad = done.filter(badFate).length; const office = done.filter(f => f.fate === "office").length; const ins = g.filter(e => (getAutocracy(e.l) || {}).end === "insider").length;
+    return `<tr><td style="${color ? `color:${color};` : ""}font-weight:600">${esc(label)}</td><td class="num">${g.length}</td><td class="num">${pct(office, done.length)} <span class="lowN">(${office}/${done.length})</span></td><td><span class="bar" style="width:${done.length ? Math.round(100 * bad / done.length) : 0}px"></span>${pct(bad, done.length)} <span class="lowN">(${bad}/${done.length})</span></td><td class="num">${pct(ins, g.length)} <span class="lowN">(${ins})</span></td></tr>`; };
+  const fateHead = `<thead><tr><th></th><th class="num">Rulers</th><th class="num">Died in power</th><th>Killed, exiled or imprisoned</th><th class="num">Removed by insiders</th></tr></thead>`;
+  const gwfGroups = (window.GWF_TYPES || []).map(t => ({ t, mem: all.filter(e => e.r.gwf === t.key) })).filter(g => g.mem.length);
+  const named = all.filter(e => e.r.gt === "named");
+  return `
+    <div class="cmp-summary">Sergei Guriev and Daniel Treisman's argument: twentieth-century dictators mostly ruled by <strong>fear</strong> — mass violence, ideology, sealed borders, 99% plebiscites. Since the 1980s a new kind has spread, the <strong>spin dictator</strong>, who rules by persuading people he is competent: little open violence, media bought rather than banned, elections won with believable margins, borders open. Spin is cheaper in a world of educated, connected citizens — and it fails differently, because it depends on keeping up an appearance. ${named.length} of the ${all.length} rulers here are discussed by name in their work; the rest are my readings in their framework.</div>
+    <div class="ol-types">${types}</div>
+    <div class="reg-head"><h3>Violence against disguise</h3><span class="reg-sub">hover or click a point · colour is the type</span></div>
+    <div class="cmp-summary">The two things that separate the types. Both scores are my estimates in Guriev and Treisman's framework, kept consistent with the repression scores in the Autocracy tab.</div>
+    <div class="rz-chartwrap">${scatter}</div>
+    <div class="reg-head"><h3>The shift over time</h3><span class="reg-sub">by when the ruler took power</span></div>
+    <div class="cmp-summary">Their claim is historical: the share of spin dictators rises after 1980. The atlas holds few late-century autocrats, so this is a thin test of it.</div>
+    <table class="xtab"><thead><tr><th>Took power</th><th class="num">Rulers</th>${tKeys.map(k => `<th>${esc((SPIN_TYPE_BY_KEY[k] || {}).name || k)}</th>`).join("")}</tr></thead><tbody>${shift}</tbody></table>
+    <div class="reg-head"><h3>The markers</h3><span class="reg-sub">the observable signs Guriev and Treisman use to tell them apart</span></div>
+    <table class="xtab"><thead><tr><th>Marker</th><th>Points to</th><th class="num">Rulers</th><th>Who</th></tr></thead><tbody>
+      ${markers.map(x => `<tr><td>${spinMarker(x.k)}</td><td style="color:var(--muted)">${x.m.pole === "fear" ? "fear" : "spin"}</td><td class="num">${x.mem.length}</td><td><div class="pt-chips">${x.mem.map(chip).join("")}</div></td></tr>`).join("")}
+    </tbody></table>
+    <div class="reg-head"><h3>How it ended</h3><span class="reg-sub">against the fate and Svolik data</span></div>
+    <table class="xtab">${fateHead}<tbody>${(window.SPIN_TYPES || []).map(t => fateRow(t.name, all.filter(e => e.r.type === t.key), t.color)).join("")}</tbody></table>
+    <div class="reg-head"><h3>Regime types</h3><span class="reg-sub">Geddes, Wright &amp; Frantz, <i>How Dictatorships Work</i> (2018)</span></div>
+    <div class="cmp-summary">Barbara Geddes, Joseph Wright and Erica Frantz classify autocracies by who controls policy and the choice of leader: a party, the military, a royal family, or one man. Their finding is that the type shapes the ending — personalist rulers are the most likely to be killed, jailed or exiled after losing power, and military regimes the most likely to hand power back and go home. Rulers marked † governed outside the dataset's years (1946–2010) and are classified by analogy.</div>
+    <table class="xtab">${fateHead.replace("<th></th>", "<th>Regime type</th>")}<tbody>${gwfGroups.map(g => fateRow(g.t.name, g.mem)).join("")}</tbody></table>
+    <div class="gwf-list">${gwfGroups.map(g => `<div class="gwf-row"><span class="gwf-k" title="${esc(g.t.def)}">${esc(g.t.name)}</span><div class="pt-chips">${g.mem.map(e => `<span class="pt-chip" data-id="${e.l.id}" title="${esc(e.r.gwfRegime || "")}">${esc(shortName(e.l))}${e.r.gwfSrc === "estimate" ? "†" : ""}</span>`).join("")}</div></div>`).join("")}</div>`;
+}
+
+function spinHtml(l) {
+  const r = getSpin(l);
+  if (!r) return "";
+  const ty = SPIN_TYPE_BY_KEY[r.type] || { name: r.type, color: "var(--muted)", def: "" }, g = GWF_BY_KEY[r.gwf];
+  const meter = (label, v, c) => `<div class="sm-row"><span class="sm-name">${label}</span><span class="sm-track"><span class="sm-fill" style="width:${v}%;background:${c}"></span></span><span class="sm-val">${v}</span></div>`;
+  return `<div class="d-styles pt-panel" style="--c:${ty.color}">
+    <div class="pt-head"><span class="pt-badge">${esc(ty.name)}</span>${r.path ? `<span class="pt-posture">${esc(r.path)}</span>` : ""}</div>
+    <p class="pt-note">${esc(r.note)}</p>
+    <div class="sm-list">${meter("Open violence", r.violence, "var(--reg-fear)")}${meter("Disguise", r.disguise, "var(--reg-motivate)")}</div>
+    ${(r.markers || []).length ? `<div class="ol-signs">${r.markers.map(spinMarker).join("")}</div>` : ""}
+    <div class="pt-rows">
+      ${r.gt === "named" && r.gtNote ? `<div><span class="k">Guriev &amp; Treisman</span>${esc(r.gtNote)}</div>` : ""}
+      ${g ? `<div><span class="k">Regime type</span><b>${esc(g.name)}</b>${r.gwfRegime ? ` · ${esc(r.gwfRegime)}` : ""}${r.gwfSrc === "estimate" ? " <span class=\"lowN\">(outside the GWF dataset's years — by analogy)</span>" : ""}. ${esc(g.def)}</div>` : ""}
+      <div><span class="k">${esc(ty.name)}</span>${esc(ty.def)}</div>
+    </div>
+    <div class="pb-src">Framework: Sergei Guriev &amp; Daniel Treisman, <i>Spin Dictators</i> (2022); regime types after Geddes, Wright &amp; Frantz (2018). ${r.gt === "named" ? "They discuss this ruler by name; the scores are my estimates." : "My reading in their framework."}</div>
+    <div class="d-actions" style="margin-top:10px"><button id="d-spin-open">↗ Open in Survival</button></div>
+  </div>`;
+}
+
+/* ================================================================
+   THE DARK SIDE — narcissism, fearless dominance and hubris
+   ================================================================ */
+
+function getDark(l) { return (l && window.LEADER_DARK && window.LEADER_DARK[l.id]) || null; }
+function getHubris(l) { return (l && window.LEADER_HUBRIS && window.LEADER_HUBRIS[l.id]) || null; }
+const HB_LABEL = { diagnosed: "Hubris syndrome", possible: "Possible hubris", other: "Hubris (later study)", no: "No hubris" };
+const HB_COLOR = { diagnosed: "var(--bad)", possible: "var(--reg-loyalty)", other: "var(--reg-fear)", no: "var(--good)" };
+function hbSym(n) { const s = (window.HUBRIS_SYMPTOMS || []).find(x => x.n === n); return s ? `<span class="hb-sym ${s.unique ? "u" : ""}" title="${esc(s.n + ". " + s.text)}">${s.n} · ${esc(s.short)}</span>` : ""; }
+
+function darkRankHtml(key) {
+  const st = (window.DARK_STUDIES || {})[key];
+  const rows = Object.entries(window.LEADER_DARK || {}).map(([id, d]) => ({ id, d, v: typeof d[key] === "number" ? d[key] : null, rank: d[key + "Rank"] || null, l: d.inAtlas !== false ? byId(id) : null }))
+    .filter(x => x.v != null || x.rank != null);
+  if (!st || !rows.length) return "";
+  const hasV = rows.some(x => x.v != null);
+  rows.sort((a, b) => (a.rank != null && b.rank != null) ? a.rank - b.rank : hasV ? (b.v ?? -1e9) - (a.v ?? -1e9) : 0);
+  const vs = rows.map(x => x.v).filter(v => v != null), lo = Math.min(...vs, 0), hi = Math.max(...vs, 0);
+  const w = v => hi > lo ? Math.round(100 * (v - lo) / (hi - lo)) : 50, zero = w(0);
+  return `<div class="rz-explain"><div class="rz-exhead"><b>${esc(st.name)}</b><span class="rz-neo">${esc(st.cite)}</span></div>
+    <div class="rz-exdef">${esc(st.def)}</div>
+    ${(st.findings || []).length ? `<ul class="dk-find">${st.findings.map(f => `<li>${esc(f)}</li>`).join("")}</ul>` : ""}
+    ${st.units ? `<div class="rz-misread"><b>The numbers</b> — ${esc(st.units)}</div>` : ""}</div>
+    <div class="rz-rank">${rows.map((x, i) => `<div class="rz-row ${x.l ? "" : "gt-out"}" ${x.l ? `data-id="${x.id}"` : ""}><span class="rz-n">${x.rank != null ? x.rank : i + 1}</span>${x.l ? avatarMarkup(x.l) : `<span class="avatar"></span>`}
+      <span class="rz-name">${esc(x.l ? x.l.name : x.d.name || x.id)}${x.l ? `<span class="rz-yr">${esc(x.l.years)}</span>` : ""}</span>
+      ${x.v != null ? `<span class="rz-track"><span class="rz-mid" style="left:${zero}%"></span><span class="rz-bar" style="left:${Math.min(zero, w(x.v))}%;width:${Math.abs(w(x.v) - zero)}%;background:var(--reg-fear)"></span><span class="rz-notch" style="left:${w(x.v)}%;background:var(--reg-fear)"></span></span><span class="rz-val">${x.v.toFixed(2)}</span>` : `<span class="rz-track"></span><span class="rz-val"></span>`}</div>`).join("")}</div>
+    ${hasV ? "" : `<p class="ch-note">Only the order was published, not the scores, so the bars are left empty.</p>`}`;
+}
+
+function renderDarkBody(body) {
+  const H = window.LEADER_HUBRIS || {}, syms = window.HUBRIS_SYMPTOMS || [];
+  const intro = `<div class="rz-explain"><div class="rz-exhead"><b>The dark side</b><span class="rz-neo">narcissism · fearless dominance · hubris</span></div>
+    <div class="rz-exdef">Rubenzer's nine facets measure the bright side: the traits that predict a good rating. These lenses measure the traits that cut both ways. The first two were scored by Scott Lilienfeld's group from the same expert ratings Rubenzer collected, so they are published numbers for U.S. presidents, not estimates. The third is David Owen's <em>hubris syndrome</em>: not a trait a leader brings to office but a change that office produces, and that fades once power is gone.</div>
+    <div class="rz-misread"><b>A caution</b> — all three are judgements made at a distance, and the psychiatric profession's Goldwater rule discourages exactly this. Owen, who practised neurology and psychiatry before politics, frames hubris as an acquired pattern of behaviour, not a diagnosis of the person.</div></div>`;
+  const cases = Object.entries(H).map(([id, h]) => ({ id, h, l: h.inAtlas !== false ? byId(id) : null }));
+  const groups = ["diagnosed", "possible", "other", "no"].map(k => ({ k, mem: cases.filter(c => c.h.owen === k) })).filter(g => g.mem.length);
+  const card = c => `<div class="hb-card" ${c.l ? `data-id="${c.id}"` : ""} style="--c:${HB_COLOR[c.h.owen]}">
+      <div class="hb-head">${c.l ? avatarMarkup(c.l) : ""}<b>${esc(c.l ? c.l.name : c.h.name || c.id)}</b>${c.l ? "" : ` <span class="lowN">not in the atlas</span>`}${c.h.onset ? `<span class="hb-when">${esc(c.h.onset)}</span>` : ""}</div>
+      ${c.h.trigger ? `<div class="hb-trig"><span class="k">Fed by</span>${esc(c.h.trigger)}</div>` : ""}
+      <p>${esc(c.h.note)}</p>
+      ${(c.h.symptoms || []).length ? `<div class="hb-syms">${c.h.symptoms.map(hbSym).join("")}</div>` : ""}
+      ${c.h.abated ? `<div class="hb-trig"><span class="k">Afterwards</span>${esc(c.h.abated)}</div>` : ""}
+      ${c.h.illness ? `<div class="hb-trig"><span class="k">Illness</span>${esc(c.h.illness)}</div>` : ""}
+      <div class="lowN" style="font-style:normal">${esc(c.h.src || "")}</div></div>`;
+  // how the diagnosed left office, from the outcome data
+  const exitsOf = mem => { const c = {}; mem.filter(m => m.l).forEach(m => { const x = getOutcome(m.l).exit; if (x) c[x] = (c[x] || 0) + 1; }); return Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${EXITS[k]} ${n}`).join(" · ") || "—"; };
+  body.innerHTML = intro + darkRankHtml("narc") + darkRankHtml("fd") +
+    (syms.length ? `<div class="reg-head"><h3>Hubris syndrome</h3><span class="reg-sub">David Owen &amp; Jonathan Davidson, <i>Brain</i> (2009)</span></div>
+    <div class="cmp-summary">${esc(window.HUBRIS_RULE || "")} The ones marked in red are the five Owen and Davidson count as distinctive — not simply narcissism under another name.</div>
+    <ol class="hb-list">${syms.map(s => `<li class="${s.unique ? "u" : ""}"><b>${esc(s.short)}</b> — ${esc(s.text)}</li>`).join("")}</ol>
+    ${groups.map(g => `<div class="reg-head" style="--reg-color:${HB_COLOR[g.k]}"><h3>${esc(HB_LABEL[g.k])}</h3><span class="reg-sub">${g.mem.length} · how they left office: ${esc(exitsOf(g.mem))}</span></div>
+      <div class="hb-grid">${g.mem.map(card).join("")}</div>`).join("")}` : "");
+  body.querySelectorAll("[data-id]").forEach(c => c.onclick = () => openDetail(c.dataset.id));
+  hydrateAvatars(body);
+}
+
+function darkHtml(l) {
+  const d = getDark(l), h = getHubris(l), ST = window.DARK_STUDIES || {};
+  if (!d && !h) return "";
+  const stat = key => { if (!d || (d[key] == null && d[key + "Rank"] == null)) return ""; const st = ST[key] || { name: key };
+    const n = Object.values(window.LEADER_DARK || {}).filter(x => x[key] != null || x[key + "Rank"] != null).length;
+    return `<div><span class="k">${esc(st.name)}</span>${d[key + "Rank"] != null ? `${gtOrd(d[key + "Rank"])} highest of ${n} listed` : ""}${typeof d[key] === "number" ? `${d[key + "Rank"] != null ? " · " : ""}score ${d[key].toFixed(2)}` : ""} <span class="lowN">${esc(st.cite || "")}</span></div>`; };
+  return `<div class="d-styles pt-panel" style="--c:${h ? HB_COLOR[h.owen] : "var(--reg-fear)"}">
+    ${h ? `<div class="pt-head"><span class="pt-badge">${esc(HB_LABEL[h.owen])}</span>${h.onset ? `<span class="pt-posture">${esc(h.onset)}${h.trigger ? " · " + esc(h.trigger) : ""}</span>` : ""}</div><p class="pt-note">${esc(h.note)}</p>
+      ${(h.symptoms || []).length ? `<div class="hb-syms" style="margin-bottom:10px">${h.symptoms.map(hbSym).join("")}</div>` : ""}` : ""}
+    <div class="pt-rows">${stat("narc")}${stat("fd")}${h && h.abated ? `<div><span class="k">After office</span>${esc(h.abated)}</div>` : ""}${h && h.illness ? `<div><span class="k">Illness</span>${esc(h.illness)}</div>` : ""}</div>
+    <div class="pb-src">${h ? `Hubris: ${esc(h.src || "Owen & Davidson 2009")}. ` : ""}${d ? "Narcissism and fearless dominance are published scores from the Rubenzer expert ratings, not estimates." : ""}</div>
+    <div class="d-actions" style="margin-top:10px"><button id="d-dark-open">↗ Open in Temperament</button></div>
+  </div>`;
+}
+
+/* ================================================================
+   COMMAND — John Keegan, The Mask of Command (1987)
+   ================================================================ */
+
+const CMD_MASK = Object.fromEntries((window.COMMAND_MASKS || []).map(m => [m.key, m]));
+const CMD_IMPS = window.COMMAND_IMPERATIVES || [];
+function getCommand(l) { return (l && l.command) || (window.LEADER_COMMAND && window.LEADER_COMMAND[l.id]) || null; }
+function hasPsych(l) { return !!(getTemperament(l) || getStyles(l) || getLTA(l)); }
+
+function renderCommand() {
+  const S = state.cmd;
+  const all = window.ALL_LEADERS.map(l => ({ l, r: getCommand(l) })).filter(e => e.r && CMD_MASK[e.r.mask]);
+  const pill = (k, label) => `<button class="chip rz-sortpill ${S.sort === k ? "on" : ""}" data-csort="${k}">${esc(label)}</button>`;
+  $("#command-toolbar").innerHTML = `<div class="rz-sortbar"><span class="rz-sortlab">Sort the table by</span>${pill("mask", "Mask")}${pill("chron", "Date")}<span class="rz-sortsep"></span>${CMD_IMPS.map(i => pill(i.key, i.name)).join("")}</div>`;
+  $("#command-toolbar").querySelectorAll("[data-csort]").forEach(b => b.onclick = () => { S.sort = b.dataset.csort; renderCommand(); });
+  const body = $("#command-body");
+  if (!all.length) { body.innerHTML = `<div class="ins-empty">The command file (data/command.js) didn't load.</div>`; return; }
+  const chip = e => `<span class="pt-chip" data-id="${e.l.id}" title="${esc(e.r.battle || "")}">${esc(shortName(e.l))}${e.r.keegan ? "*" : ""}</span>`;
+  const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "—";
+  const mean = a => a.length ? Math.round(a.reduce((x, y) => x + y, 0) / a.length) : null;
+  const impMean = r => mean(CMD_IMPS.map(i => r.imp[i.key]).filter(v => v != null));
+  const masks = (window.COMMAND_MASKS || []).map(m => { const mem = all.filter(e => e.r.mask === m.key).sort((a, b) => startYear(a.l) - startYear(b.l));
+    return `<div class="pt-cell" style="--c:${m.color}"><div class="pt-cell-h"><b>${esc(m.name)}</b><span>${mem.length}</span></div>
+      <div class="pt-cell-def">${esc(m.def)}</div><div class="pt-cell-fail"><span class="k">Keegan's exemplar</span>${esc(m.exemplar)}</div>
+      ${m.risk ? `<div class="pt-cell-fail"><span class="k">How it fails</span>${esc(m.risk)}</div>` : ""}<div class="pt-chips">${mem.map(chip).join("")}</div></div>`; }).join("");
+  const fronts = Object.entries(window.COMMAND_FRONT || {}).map(([k, f]) => { const mem = all.filter(e => e.r.front === k);
+    const done = mem.map(e => getFate(e.l)).filter(x => x && x.fate !== "incumbent");
+    return `<tr><td><b>${esc(f.name)}</b><div class="lowN" style="font-style:normal;max-width:300px">${esc(f.def)}</div></td><td class="num">${mem.length}</td><td class="num">${pct(mem.filter(e => e.r.wounded).length, mem.length)}</td>
+      <td><span class="bar" style="width:${done.length ? Math.round(100 * done.filter(badFate).length / done.length) : 0}px"></span>${pct(done.filter(badFate).length, done.length)} <span class="lowN">(${done.filter(badFate).length}/${done.length})</span></td><td><div class="pt-chips">${mem.map(chip).join("")}</div></td></tr>`; }).join("");
+  const order = (window.COMMAND_MASKS || []).map(m => m.key);
+  const rows = all.slice().sort(S.sort === "chron" ? (a, b) => startYear(a.l) - startYear(b.l)
+    : S.sort === "mask" ? (a, b) => order.indexOf(a.r.mask) - order.indexOf(b.r.mask) || impMean(b.r) - impMean(a.r)
+    : (a, b) => (b.r.imp[S.sort] ?? -1) - (a.r.imp[S.sort] ?? -1));
+  const matrix = `<div class="rot-wrap"><table class="rot-table cm-table"><thead><tr><th></th><th>Mask</th><th>Front</th>${CMD_IMPS.map(i => `<th title="${esc(i.def)}">${esc(i.name)}</th>`).join("")}<th>Mean</th></tr></thead><tbody>
+    ${rows.map(e => `<tr><th class="rot-name" data-id="${e.l.id}" title="${esc(e.r.note || "")}">${esc(shortName(e.l))}${e.r.keegan ? "*" : ""}</th><td class="cm-mask" style="color:${CMD_MASK[e.r.mask].color}">${esc(CMD_MASK[e.r.mask].name)}</td><td class="cm-front">${esc(((window.COMMAND_FRONT || {})[e.r.front] || {}).name || "")}</td>${CMD_IMPS.map(i => e.r.imp[i.key] == null ? "<td></td>" : heatCell(e.r.imp[i.key], true)).join("")}${heatCell(impMean(e.r), true)}</tr>`).join("")}
+  </tbody></table></div>`;
+  const dark = all.filter(e => !hasPsych(e.l)).sort((a, b) => startYear(a.l) - startYear(b.l));
+  const noPsych = window.ALL_LEADERS.filter(l => !hasPsych(l));
+  const tie = (window.COMMAND_MASKS || []).map(m => { const mem = all.filter(e => e.r.mask === m.key);
+    const done = mem.map(e => getFate(e.l)).filter(x => x && x.fate !== "incumbent"), kn = mem.filter(e => ["orderly", "crisis"].includes(getOutcome(e.l).succession));
+    return { m, n: mem.length, rep: mean(mem.map(e => (getAutocracy(e.l) || {}).rep).filter(v => v != null)), bad: done.filter(badFate).length, nf: done.length, cr: kn.filter(e => getOutcome(e.l).succession === "crisis").length, kn: kn.length }; });
+  body.innerHTML = `
+    <div class="rz-explain"><div class="rz-exhead"><b>The five imperatives</b><span class="rz-neo">what every commander must do, in Keegan's account</span></div>
+      <div class="cm-imps">${CMD_IMPS.map(i => `<div><b>${esc(i.name)}</b><span>${esc(i.def)}</span>${i.question ? `<i>${esc(i.question)}</i>` : ""}</div>`).join("")}</div>
+      <div class="rz-misread"><b>How to read it</b> — ${all.filter(e => e.r.keegan).length ? `* marks the leaders Keegan analyses himself; every other reading is my estimate in his framework.` : "every reading is my estimate in Keegan's framework."} Scores run 0–100 for how fully a leader met each imperative; 50 is adequate.</div></div>
+    <div class="reg-head"><h3>The four masks</h3><span class="reg-sub">${all.length} leaders who commanded, or directed operations</span></div>
+    <div class="ol-types">${masks}</div>
+    <div class="reg-head"><h3>Where they stood</h3><span class="reg-sub">Keegan's question: in front, sometimes, or never?</span></div>
+    <div class="cmp-summary">Keegan's argument is that the heroic style made commanders and killed them, and that modern war pushed the commander back to headquarters — with the risk that he loses touch with what his soldiers face. The last column tests the first half against the fate data: did leading from the front end badly more often?</div>
+    <table class="xtab"><thead><tr><th>Position</th><th class="num">Leaders</th><th class="num">Wounded in battle</th><th>Killed, exiled or imprisoned</th><th>Who</th></tr></thead><tbody>${fronts}</tbody></table>
+    <div class="reg-head"><h3>The imperatives, leader by leader</h3><span class="reg-sub">click a name for the profile · hover a column head for its definition</span></div>
+    ${matrix}
+    <div class="reg-head"><h3>Mask against the other lenses</h3><span class="reg-sub">Svolik's repression score, fate and succession</span></div>
+    <table class="xtab"><thead><tr><th>Mask</th><th class="num">Leaders</th><th class="num">Mean repression (Svolik)</th><th>Killed, exiled or imprisoned</th><th>Succession crisis</th></tr></thead><tbody>
+      ${tie.filter(t => t.n).map(t => `<tr><td style="color:${t.m.color};font-weight:600">${esc(t.m.name)}</td><td class="num">${t.n}</td><td class="num">${t.rep == null ? "—" : t.rep}</td><td>${pct(t.bad, t.nf)} <span class="lowN">(${t.bad}/${t.nf})</span></td><td>${pct(t.cr, t.kn)} <span class="lowN">(${t.cr}/${t.kn})</span></td></tr>`).join("")}
+    </tbody></table>
+    <div class="reg-head"><h3>Leaders the psychology lenses can't read</h3><span class="reg-sub">${dark.length} of the ${noPsych.length} with no Rubenzer, Simonton or Hermann reading</span></div>
+    <div class="cmp-summary">Keegan works from what a commander did, not from speeches or questionnaires, so he reaches rulers the atlas's three psychology lenses can't. Convergence still can't score them: its "governs by thinking" and "force of personality" signals come only from those lenses, and Keegan's imperatives answer a different question.</div>
+    <div class="pt-chips">${dark.map(chip).join("")}</div>
+    ${Object.keys(window.COMMAND_NA || {}).length ? `<p class="ch-note" style="margin-top:10px">Left out, because the record is too thin: ${Object.entries(window.COMMAND_NA).map(([id, why]) => { const l = byId(id); return l ? `<span title="${esc(why)}">${esc(shortName(l))}</span>` : ""; }).filter(Boolean).join(", ")}.</p>` : ""}`;
+  body.querySelectorAll("[data-id]").forEach(el => el.onclick = () => openDetail(el.dataset.id));
+}
+
+function commandHtml(l) {
+  const r = getCommand(l);
+  if (!r) { const why = (window.COMMAND_NA || {})[l.id]; return why ? `<div class="rz-none"><b>Outside the framework.</b> ${esc(why)}</div>` : ""; }
+  const m = CMD_MASK[r.mask] || { name: r.mask, color: "var(--muted)", def: "" }, f = (window.COMMAND_FRONT || {})[r.front];
+  const meter = i => r.imp[i.key] == null ? "" : `<div class="sm-row"><span class="sm-name" title="${esc(i.def)}">${esc(i.name)}</span><span class="sm-track"><span class="sm-fill" style="width:${r.imp[i.key]}%;background:${m.color}"></span></span><span class="sm-val">${r.imp[i.key]}</span></div>`;
+  return `<div class="d-styles pt-panel" style="--c:${m.color}">
+    <div class="pt-head"><span class="pt-badge">${esc(m.name)}</span><span class="pt-posture">${f ? esc(f.name) : ""}${r.wounded ? " · wounded in battle" : ""}</span></div>
+    <p class="pt-note">${esc(r.note)}</p>
+    <div class="sm-list">${CMD_IMPS.map(meter).join("")}</div>
+    <div class="pt-rows">
+      ${r.battle ? `<div><span class="k">The battle</span>${esc(r.battle)}</div>` : ""}
+      ${r.instance ? `<div><span class="k">The scene</span>${esc(r.instance)}</div>` : ""}
+      <div><span class="k">${esc(m.name)}</span>${esc(m.def)}</div>
+    </div>
+    <div class="pb-src">Framework: John Keegan, <i>The Mask of Command</i> (1987). ${r.keegan ? "Keegan analyses this leader himself; the scores are my estimates." : "My reading in Keegan's framework."}</div>
+    <div class="d-actions" style="margin-top:10px"><button id="d-cmd-open">↗ Open in Command</button></div>
+  </div>`;
+}
+
+/* ================================================================
    JUMP SEARCH — one box for leaders, concepts, books and views
    ================================================================ */
 
@@ -4537,9 +5026,10 @@ const NAV_VIEWS = [
   { v: "index", label: "Index", hint: "every leader" }, { v: "chronicle", label: "Chronicle", hint: "timeline by region" },
   { v: "map", label: "Map", hint: "leaders by country" }, { v: "orgs", label: "Organizations", hint: "machines, parties, cadres and courts" }, { v: "convergence", label: "Convergence", hint: "where the frameworks agree and contradict" },
   { v: "compare", label: "Compare", hint: "two leaders side by side" }, { v: "patterns", label: "Patterns", hint: "concepts × outcomes" },
-  { v: "temperament", label: "Temperament", hint: "Rubenzer · Simonton · Hermann" },
+  { v: "temperament", label: "Temperament", hint: "Rubenzer · Simonton · Hermann · the dark side" },
   { v: "time", label: "Political Time", hint: "Skowronek — reconstruction, articulation, preemption, disjunction" },
-  { v: "survival", label: "Survival", hint: "Svolik · Bueno de Mesquita · Olson · entry, exit & fate" },
+  { v: "survival", label: "Survival", hint: "Svolik · Bueno de Mesquita · Olson · fear & spin · entry, exit & fate" },
+  { v: "greatness", label: "Greatness", hint: "expert rankings, and Simonton's formula" }, { v: "command", label: "Command", hint: "Keegan — the mask of command" },
   { v: "patronage", label: "Patronage", hint: "21st-century patronage systems in depth" }, { v: "practices", label: "Practices", hint: "the daily habits behind their success" }, { v: "rhetoric", label: "Rhetoric", hint: "communication, propaganda and the press" }, { v: "instruments", label: "Carrots & Sticks", hint: "trust · loyalty · fear · motivation" },
   { v: "library", label: "Library", hint: "your books" }, { v: "insights", label: "Insights", hint: "your theses" }, { v: "traits", label: "Frameworks", hint: "the concept library" }, { v: "glossary", label: "Glossary", hint: "every term of art, defined" }
 ];
@@ -4604,7 +5094,7 @@ function onThemeChange() { paintMap(); if (state.view === "patterns") renderPatt
    VIEWS & ROUTING — #/index, #/convergence, #/leader/<id> …
    ================================================================ */
 
-const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "patronage", "practices", "rhetoric", "instruments", "library", "insights", "traits", "glossary", "leader"];
+const VIEWS = ["index", "chronicle", "map", "orgs", "org", "convergence", "compare", "patterns", "temperament", "time", "survival", "greatness", "command", "patronage", "practices", "rhetoric", "instruments", "library", "insights", "traits", "glossary", "leader"];
 const FILTERED_VIEWS = ["index", "chronicle", "map"];
 
 function switchView(v) {
@@ -4653,6 +5143,8 @@ function refreshView() {
   else if (v === "temperament") renderTemperament();
   else if (v === "time") renderTime();
   else if (v === "survival") renderSurvival();
+  else if (v === "greatness") renderGreatness();
+  else if (v === "command") renderCommand();
   else if (v === "patronage") renderPatronage();
   else if (v === "practices") renderPractices();
   else if (v === "rhetoric") renderRhetoric();

@@ -140,5 +140,13 @@ window.GLOSSARY_EXTRA = [
   { term: "The Treatment", aliases: ["Johnson Treatment"], src: "Lyndon Johnson", cs: true,
     def: "Johnson's close-range, one-on-one persuasion — flattery, argument, pleading and threat delivered inches from the target's face." },
   { term: "Five Ps", src: "James Baker", cs: true,
-    def: "'Prior preparation prevents poor performance' — the maxim Baker took from his father." }
+    def: "'Prior preparation prevents poor performance' — the maxim Baker took from his father." },
+
+  // --- greatness, hubris, command
+  { term: "Simonton's predictors", aliases: ["Simonton's formula"], src: "Simonton",
+    def: "Dean Keith Simonton's finding that a few facts about a presidency — years in office, years at war, administration scandal, assassination, and coming to office a war hero — predict most of where historians rank it, without reference to its policies. Later work added intellectual brilliance." },
+  { term: "Hubris syndrome", src: "Owen & Davidson", prose: true,
+    def: "David Owen and Jonathan Davidson's name for a pattern of behaviour acquired in power: identifying with the nation, contempt for advice, a sense of answering only to History or God, and carelessness about practical detail. It develops with prolonged power and success and usually fades once power is lost." },
+  { term: "Mask of command", src: "Keegan",
+    def: "John Keegan's term for the performance by which a commander leads armed men: what the soldiers are shown of him, and how close he stands to the risk they run." }
 ];

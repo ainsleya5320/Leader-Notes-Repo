@@ -8,7 +8,7 @@
   // set the theme before first paint so there is no flash
   try { var t = localStorage.getItem("atlas-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
 </script>
-<link rel="stylesheet" href="styles.css?v=50">
+<link rel="stylesheet" href="styles.css?v=51">
 </head>
 <body>
 
@@ -59,6 +59,8 @@
       <button class="nav-item" data-view="temperament"><svg viewBox="0 0 20 20"><path d="M2 11h3l2-5 3 9 3-7 2 3h3"/></svg>Temperament</button>
       <button class="nav-item" data-view="time"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 5v5l3.5 2"/></svg>Political Time<span class="ni-new">new</span></button>
       <button class="nav-item" data-view="survival"><svg viewBox="0 0 20 20"><path d="M10 3l6 2.5v4.5c0 3.5-2.6 6-6 7-3.4-1-6-3.5-6-7V5.5z"/></svg>Survival<span class="ni-new">new</span></button>
+      <button class="nav-item" data-view="greatness"><svg viewBox="0 0 20 20"><path d="M3 16.5h14M5 16.5v-5h3v5M8.5 16.5V7h3v9.5M12 16.5v-3.5h3v3.5"/><path d="M10 2.5l.8 1.6 1.7.2-1.3 1.2.3 1.7-1.5-.8-1.5.8.3-1.7-1.3-1.2 1.7-.2z"/></svg>Greatness<span class="ni-new">new</span></button>
+      <button class="nav-item" data-view="command"><svg viewBox="0 0 20 20"><path d="M4 4l11 11M16 4L5 15"/><path d="M13 16l3-3M4 13l3 3"/></svg>Command<span class="ni-new">new</span></button>
       <button class="nav-item" data-view="patronage"><svg viewBox="0 0 20 20"><ellipse cx="10" cy="5.5" rx="6" ry="2.3"/><path d="M4 5.5v4.2c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V5.5M4 9.7v4.2c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V9.7"/></svg>Patronage<span class="ni-new">new</span></button>
       <button class="nav-item" data-view="practices"><svg viewBox="0 0 20 20"><rect x="4" y="3" width="12" height="14" rx="1.5"/><path d="M7 7h6M7 10h6M7 13h4"/></svg>Practices<span class="ni-new">new</span></button>
       <button class="nav-item" data-view="rhetoric"><svg viewBox="0 0 20 20"><path d="M4 8v4h3l5 4V4L7 8z"/><path d="M15 7.5c1 .8 1 4.2 0 5"/></svg>Rhetoric<span class="ni-new">new</span></button>
@@ -174,7 +176,7 @@
     <section class="view" id="view-temperament" hidden>
       <div class="page-intro">
         <h2>Temperament</h2>
-        <p>Three psychologies of leadership. <strong>Rubenzer, Faschingbauer &amp; Ones</strong> measure personality <em>traits</em> &mdash; nine NEO-PI-R facets that predict presidential greatness, scored as percentiles against U.S. presidents, a reference class already extraordinary. <strong>Simonton</strong> measures leadership <em>styles</em> &mdash; five behavioural factors describing what a leader actually does in office. <strong>Hermann</strong> reads seven traits from what leaders say off-script and combines them into eight styles of handling a situation. Two facets are reverse-coded because the asset is the absence of the thing: <em>Not Vulnerable</em> and <em>Not Straightforward</em>. Bands are real scholarly disagreement, not decoration.</p>
+        <p>Three psychologies of leadership. <strong>Rubenzer, Faschingbauer &amp; Ones</strong> measure personality <em>traits</em> &mdash; nine NEO-PI-R facets that predict presidential greatness, scored as percentiles against U.S. presidents, a reference class already extraordinary. <strong>Simonton</strong> measures leadership <em>styles</em> &mdash; five behavioural factors describing what a leader actually does in office. <strong>Hermann</strong> reads seven traits from what leaders say off-script and combines them into eight styles of handling a situation. Two facets are reverse-coded because the asset is the absence of the thing: <em>Not Vulnerable</em> and <em>Not Straightforward</em>. Bands are real scholarly disagreement, not decoration. The <strong>Dark side</strong> mode adds the traits that cut both ways: grandiose narcissism and fearless dominance, scored for presidents by Lilienfeld&rsquo;s group, and David Owen&rsquo;s hubris syndrome, which office produces and loss of office cures.</p>
       </div>
       <div id="temperament-toolbar"></div>
       <div id="temperament-body"></div>
@@ -190,11 +192,31 @@
       <div id="time-body"></div>
     </section>
 
+    <!-- ===== GREATNESS ===== -->
+    <section class="view" id="view-greatness" hidden>
+      <div class="page-intro">
+        <h2>Greatness</h2>
+        <p>Every other lens in the atlas is tested against how a leader&rsquo;s power <em>ended</em>. This one asks how they are <em>judged</em>: the expert surveys that rank U.S. presidents and British prime ministers, put on one scale. Then Dean Keith Simonton&rsquo;s uncomfortable finding, refit on today&rsquo;s surveys: a few facts about a presidency &mdash; how long it lasted, how much of it was spent at war, whether a scandal touched it, whether it ended in assassination &mdash; predict most of where scholars place it, without a word about its policies. The leaders worth studying are the ones the formula gets wrong.</p>
+      </div>
+      <div id="greatness-toolbar"></div>
+      <div id="greatness-body"></div>
+    </section>
+
+    <!-- ===== COMMAND ===== -->
+    <section class="view" id="view-command" hidden>
+      <div class="page-intro">
+        <h2>Command</h2>
+        <p>John Keegan&rsquo;s <em>The Mask of Command</em> reads leaders by how they led armed men: Alexander charging at the head of the Companions, Wellington everywhere on the field but never at its head, Grant writing orders in a plain private&rsquo;s coat, Hitler directing from distant headquarters a front he almost never visited. Every commander has to meet five imperatives &mdash; <em>kinship</em>, <em>prescription</em>, <em>sanction</em>, <em>action</em> and <em>example</em> &mdash; and decide where to stand. Because it works from conduct rather than words, it reaches the ancient and medieval rulers the atlas&rsquo;s psychology lenses can&rsquo;t.</p>
+      </div>
+      <div id="command-toolbar"></div>
+      <div id="command-body"></div>
+    </section>
+
     <!-- ===== SURVIVAL ===== -->
     <section class="view" id="view-survival" hidden>
       <div class="page-intro">
         <h2>Survival</h2>
-        <p>Two questions every ruler without an independent enforcer has to answer, from Milan Svolik&rsquo;s <em>The Politics of Authoritarian Rule</em>: how to share power with the few who could remove you, and how to control everyone else &mdash; by <em>repression</em>, which empowers the armed men who do it, or by <em>co-optation</em>, which is expensive. Bruce Bueno de Mesquita asks who a leader actually has to keep happy &mdash; the winning coalition inside the selectorate &mdash; and what they must be paid. Mancur Olson&rsquo;s bandits ask how rulers taxed and how long they expected to stay. Then, for every leader in the atlas, the Archigos questions: how did they come to power, and what happened to them after it ended?</p>
+        <p>Two questions every ruler without an independent enforcer has to answer, from Milan Svolik&rsquo;s <em>The Politics of Authoritarian Rule</em>: how to share power with the few who could remove you, and how to control everyone else &mdash; by <em>repression</em>, which empowers the armed men who do it, or by <em>co-optation</em>, which is expensive. Bruce Bueno de Mesquita asks who a leader actually has to keep happy &mdash; the winning coalition inside the selectorate &mdash; and what they must be paid. Mancur Olson&rsquo;s bandits ask how rulers taxed and how long they expected to stay. Sergei Guriev and Daniel Treisman ask whether a dictator rules by fear or by spin, and Geddes, Wright and Frantz which kind of regime he heads. Then, for every leader in the atlas, the Archigos questions: how did they come to power, and what happened to them after it ended?</p>
       </div>
       <div id="survival-body"></div>
     </section>
@@ -338,6 +360,10 @@
   <script src="data/glossary.js?v=4"></script>
   <script src="data/practices.js?v=12"></script>
   <script src="data/patronage.js?v=7"></script>
-<script src="app.js?v=78"></script>
+  <script src="data/greatness.js?v=1"></script>
+  <script src="data/spin.js?v=1"></script>
+  <script src="data/darkside.js?v=1"></script>
+  <script src="data/command.js?v=1"></script>
+<script src="app.js?v=79"></script>
 </body>
 </html>

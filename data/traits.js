@@ -232,7 +232,25 @@ window.TRAIT_SECTIONS = [
         question: "What did this leader learn about violence before they had power — and did they see it up close?" },
       { name: "Operational Code (Leites · George · Walker)",
         def: "Nathan Leites's study of the Bolshevik code, generalised by Alexander George into ten questions: five philosophical (is the political universe essentially harmonious or conflictual? is the future predictable? how much control does one have?) and five instrumental (what are the best strategies and tactics, how to manage risk, timing, the utility of means). Stephen Walker's VICS codes them from speeches. The instrumental half is the theory behind a leader's carrots and sticks.",
-        question: "Does this leader believe the world is fundamentally hostile — and what does that make the best move?" }
+        question: "Does this leader believe the world is fundamentally hostile — and what does that make the best move?" },
+      { name: "Presidential Greatness (Simonton)",
+        def: "Dean Keith Simonton, Why Presidents Succeed (1987). Historians' rankings of presidents agree across surveys and decades, and a handful of facts predict most of them: years in office, years at war, administration scandal, assassination, and having come to office a war hero; later work added intellectual brilliance. The uncomfortable implication is that a rank measures circumstance as much as conduct. See the Greatness view.",
+        question: "Is this leader's reputation larger or smaller than their circumstances explain — and why?" },
+      { name: "Fear and Spin Dictators (Guriev & Treisman)",
+        def: "Sergei Guriev and Daniel Treisman, Spin Dictators (2022). Twentieth-century dictators mostly ruled by fear: mass violence, ideology, closed borders, 99% plebiscites. Since the 1980s many rule by spin instead, manipulating information to look competent and popular, using violence sparingly and deniably, and keeping up democratic forms. Spin is cheaper among educated, connected citizens, but it depends on an image that can crack. See the Fear & spin tab in Survival.",
+        question: "Did this ruler need people to be afraid, or to believe — and what happened when that stopped working?" },
+      { name: "Autocratic Regime Types (Geddes, Wright & Frantz)",
+        def: "Barbara Geddes, Joseph Wright and Erica Frantz, How Dictatorships Work (2018). Autocracies differ by who controls policy and the choice of leader: a dominant party, the military, a royal family, or one man and his clique. The type predicts how the regime lasts and ends: military regimes negotiate their way back to barracks, party regimes last longest, and personalist rulers face the worst fates when they fall.",
+        question: "Who could actually have replaced this ruler — a party, the officers, a family, or nobody?" },
+      { name: "Narcissism & Fearless Dominance (Lilienfeld group)",
+        def: "Scott Lilienfeld, Ashley Watts and colleagues (2012, 2013) scored U.S. presidents from the same expert personality ratings Rubenzer collected. Both traits went with higher greatness ratings, and narcissism also went with the conduct that gets presidents into trouble. The traits that win are the ones that overreach. See the Dark side mode in Temperament.",
+        question: "Was the self-belief that made this leader effective the same thing that later undid them?" },
+      { name: "Hubris Syndrome (Owen & Davidson)",
+        def: "David Owen and Jonathan Davidson, 'Hubris syndrome', Brain (2009). Not a trait a leader brings to office but a change that office produces: after prolonged power and success some leaders come to identify with the nation, dismiss advice, speak of answering to History or God, and lose touch with practical detail. It usually fades once power is lost. See the Dark side mode in Temperament.",
+        question: "Did power change this leader — and did they come back once it was gone?" },
+      { name: "The Mask of Command (Keegan)",
+        def: "John Keegan, The Mask of Command (1987). A commander leads armed men by a performance, of which Keegan distinguishes four kinds: heroic (Alexander, always in front), anti-heroic (Wellington, present and exposed but never theatrical), unheroic (Grant, plain and businesslike) and false heroic (Hitler, the heroic image without the shared risk). Every commander must meet five imperatives: kinship, prescription, sanction, action and example. See the Command view.",
+        question: "Where did this leader stand when the fighting started — and did the soldiers know it?" }
     ]
   }
 ];
